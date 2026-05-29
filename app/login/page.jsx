@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 
@@ -36,7 +36,7 @@ export default function LoginPage() {
   }
 
   return (
-      <>
+      <Suspense>
         <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -389,131 +389,6 @@ export default function LoginPage() {
             </p>
           </div>
         </div>
-      </>
+      </Suspense>
   )
 }
-
-// 'use client'
-//
-// import { useState } from 'react'
-// import { useRouter, useSearchParams } from 'next/navigation'
-// import { createClient } from '@/utils/supabase/client'
-//
-// export default function LoginPage() {
-//   const router = useRouter()
-//   const searchParams = useSearchParams()
-//   const redirectTo = searchParams.get('redirectTo') || '/admin/news'
-//
-//   const [email, setEmail] = useState('')
-//   const [password, setPassword] = useState('')
-//   const [error, setError] = useState('')
-//   const [loading, setLoading] = useState(false)
-//
-//   async function handleLogin() {
-//     setLoading(true)
-//     setError('')
-//     const supabase = createClient()
-//
-//     const { error } = await supabase.auth.signInWithPassword({
-//       email,
-//       password,
-//     })
-//
-//     if (error) {
-//       setError(error.message)
-//       setLoading(false)
-//     } else {
-//       router.push(redirectTo)
-//       router.refresh()
-//     }
-//   }
-//
-//   return (
-//       <div className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-//         {/* Background glow */}
-//         <div className="absolute inset-0">
-//           <div className="absolute left-[-10%] top-[-10%] h-[400px] w-[400px] rounded-full bg-white/5 blur-3xl" />
-//           <div className="absolute bottom-[-10%] right-[-10%] h-[400px] w-[400px] rounded-full bg-white/5 blur-3xl" />
-//         </div>
-//
-//         <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-10">
-//           <div className="w-full max-w-md">
-//             {/* Logo / Brand */}
-//             <div className="mb-8 text-center">
-//               <p className="mb-2 text-sm uppercase tracking-[0.3em] text-white/40">
-//                 Admin Portal
-//               </p>
-//
-//               <h1 className="text-4xl font-semibold tracking-tight text-white">
-//                 Welcome back
-//               </h1>
-//
-//               <p className="mt-3 text-sm text-white/50">
-//                 Sign in to continue to your dashboard
-//               </p>
-//             </div>
-//
-//             {/* Card */}
-//             <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
-//               <div className="space-y-5">
-//                 {/* Email */}
-//                 <div>
-//                   <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/50">
-//                     Email Address
-//                   </label>
-//
-//                   <input
-//                       type="email"
-//                       value={email}
-//                       onChange={e => setEmail(e.target.value)}
-//                       onKeyDown={e => e.key === 'Enter' && handleLogin()}
-//                       placeholder="you@example.com"
-//                       className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all duration-200 focus:border-white/30 focus:bg-white/10"
-//                   />
-//                 </div>
-//
-//                 {/* Password */}
-//                 <div>
-//                   <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/50">
-//                     Password
-//                   </label>
-//
-//                   <input
-//                       type="password"
-//                       value={password}
-//                       onChange={e => setPassword(e.target.value)}
-//                       onKeyDown={e => e.key === 'Enter' && handleLogin()}
-//                       placeholder="••••••••"
-//                       className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all duration-200 focus:border-white/30 focus:bg-white/10"
-//                   />
-//                 </div>
-//
-//                 {/* Error */}
-//                 {error && (
-//                     <div className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3">
-//                       <p className="text-sm text-red-300">{error}</p>
-//                     </div>
-//                 )}
-//
-//                 {/* Button */}
-//                 <button
-//                     onClick={handleLogin}
-//                     disabled={loading}
-//                     className="group relative mt-2 w-full overflow-hidden rounded-2xl bg-white py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:scale-[1.01] hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-50"
-//                 >
-//                 <span className="relative z-10">
-//                   {loading ? 'Signing in...' : 'Sign In'}
-//                 </span>
-//                 </button>
-//               </div>
-//             </div>
-//
-//             {/* Footer */}
-//             <p className="mt-6 text-center text-xs text-white/30">
-//               Secure authentication
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//   )
-// }
