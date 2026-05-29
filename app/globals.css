@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hok-black: #1a1a1a;
+  --color-hok-dark: #111111;
+  --color-hok-gray: #6b6b6b;
+  --color-hok-light-gray: #f5f5f5;
+  --color-hok-border: #e0e0e0;
+  --color-hok-white: #ffffff;
+  --color-hok-red: #c8102e;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+img { display: block; }
