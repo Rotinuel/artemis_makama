@@ -20,7 +20,7 @@ const NAV_ITEMS = [
     { label: 'Projects', href: '/projects', dropdown: 'projects' },
     { label: 'Ideas',    href: '/ideas',    dropdown: 'ideas'    },
     { label: 'People',  href: '/people',   dropdown: 'people'   },
-    { label: 'About',   href: '/about',    dropdown: null        },
+    { label: 'About',   href: '/about',    dropdown: 'about'        },
 ]
 
 const SCROLL_THRESHOLD = 120
@@ -286,25 +286,31 @@ export default function Navigation({ variant = 'default' }) {
                                         .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
                                 </div>
                             )}
+                            {mobileExpanded === item.label && item.dropdown === 'about' && (
+                                <div style={{
+                                    paddingLeft: 16, paddingBottom: 16 }}>
+                                    {[{ label: 'Careers', href: '/people/careers'}, { label:'News + Events', href: '/news-events'}, { label: 'Contact', href: '/contact'}]
+                                        .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
+                                </div>
+                            )}
                         </div>
                     ))}
-                    <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                        {[['Careers', '/people/careers'], ['News + Events', '/news-events'], ['Contact', '/contact'], ['中文', '/zh']]
-                            .map(([label, href]) => (
-                                <Link key={label} href={href} onClick={() => setMobileOpen(false)} style={{ fontSize: 13, color: '#666', textDecoration: 'none' }}>{label}</Link>
-                            ))}
-                    </div>
+
                 </nav>
             </div>
 
             {/* ─── SEARCH OVERLAY ─── */}
             <div style={{
-                position: 'fixed', inset: 0, background: 'white', zIndex: 300,
-                display: 'flex', flexDirection: 'column',
+                position: 'fixed',
+                inset: 0,
+                background: 'white',
+                zIndex: 300,
+                display: 'flex',
+                flexDirection: 'column',
                 transform: searchOpen ? 'translateY(0)' : 'translateY(-100%)',
                 transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 28px', height: 72, borderBottom: '1px solid #e5e5e5' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 28px', height: 72, borderBottom: '1px solid #e5e5e5' }}>
                     <span style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#888' }}>Search</span>
                     <button onClick={() => { setSearchOpen(false); setSearchQuery('') }} aria-label="Close search" style={iconBtn('#1a1a1a')}>
                         <CloseIcon />
