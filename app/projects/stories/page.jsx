@@ -6,8 +6,9 @@ import Link from 'next/link'
 import { allProjects } from '../../data/projects'
 
 export const metadata = {
-  title: 'Project Stories - HOK',
-  description: 'Explore HOK project stories from around the world.',
+  title: 'Project Stories - AAL',
+  description: 'Explore AAL project stories from around' +
+      ' the world.',
 }
 
 const featured = allProjects[0]

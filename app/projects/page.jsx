@@ -6,8 +6,9 @@ import Link from 'next/link'
 import { allProjects, markets, disciplines } from '../data/projects'
 
 export const metadata = {
-  title: 'Projects - HOK',
-  description: 'HOK designs buildings and spaces that respond to the needs of people and the environment.',
+  title: 'Projects - AAL',
+  description: 'AAL designs buildings and spaces that' +
+      ' respond to the needs of people and the environment.',
 }
 
 function ProjectCard({ project }) {
@@ -34,8 +35,8 @@ export default function ProjectsPage() {
       <PageHero
         label="Our Work"
         title="Projects"
-        description="HOK designs buildings and spaces that respond to the needs of people and the environment."
-        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1900&q=80"
+        description="AAL designs buildings and spaces that respond to the needs of people and the environment."
+        image="/51.jpg"
       />
 
       {/* Filter bar */}
