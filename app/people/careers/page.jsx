@@ -5,8 +5,9 @@ import PageHero from '../../components/PageHero'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Careers at HOK',
-  description: "Join HOK's diverse team of innovative, entrepreneurial designers and create the world's best, most sustainable places.",
+  title: 'Careers at AAL',
+  description: "Join AAL's diverse team of innovative," +
+      " entrepreneurial designers and create the world's best, most sustainable places.",
 }
 
 const openings = [
@@ -37,7 +38,7 @@ export default function CareersPage() {
       <Navigation />
       <PageHero
         label="Join Us"
-        title="Careers at HOK"
+        title="Careers at AAL"
         description="We're excited about the future. Join our team and design it with us."
         image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1900&q=80"
       />
@@ -50,7 +51,7 @@ export default function CareersPage() {
               Create the world&apos;s best, most sustainable places
             </h2>
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 font-light">
-              HOK designs buildings and spaces that inspire people. We&apos;re a diverse team of innovative, entrepreneurial people with an ambitious vision. We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special.
+              AAL designs buildings and spaces that inspire people. We&apos;re a diverse team of innovative, entrepreneurial people with an ambitious vision. We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special.
             </p>
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed font-light">
               We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge, research and innovations.

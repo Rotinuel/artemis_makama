@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'About - ARTEMIS ATELIER LTD',
-  description: 'AAL is a global design, architecture,' +
+  description: 'Artemis Atelier Ltd is a global design, architecture,' +
       ' engineering and planning firm.',
 }
 
@@ -59,10 +59,29 @@ export default function AboutPage() {
               To deliver design solutions that solve our clients&apos; most complex challenges
             </h2>
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-5 font-light">
-              HOK is a collective of future-forward thinkers and designers who are driven to face the critical challenges of our time. We are dedicated to improving people&apos;s lives, serving our clients and healing the planet.
+              Artemis Atelier Limited is one of Nigeria's leading architectural
+            and construction companies, headquartered in Lagos. Established by
+            Mr. C. E. Makama in 2010, the company was founded with a clear
+            vision to render services in the field of Architecture and
+            construction and also as general contractors. Delivering exceptional
+            service across multiple disciplines. Our core areas of
+            specialization include architectural design, building construction,
+            facility management, real estate development, and architectural
+            drafting services. With a deep understanding of both modern and
+            traditional design principles, Artemis Atelier merges creativity
+            with functionality to produce spaces that are not only aesthetically
+            compelling but also structurally sound and environmentally
+            sustainable.
             </p>
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed font-light">
-              Together, we cultivate a culture of design excellence at the confluence of art and science, blending the power of creative expression with a clear sense of purpose.
+              Our process is rooted in collaboration, innovation, and
+            a commitment to excellence, ensuring that every project—regardless
+            of scale—is delivered with precision and care. Over the years, we
+            have built a reputation for integrity, reliability, and
+            forward-thinking solutions. Our diverse portfolio spans residential,
+            commercial, and institutional developments, each reflecting our
+            dedication to quality and our passion for reshaping the Nigerian
+            architectural landscape. We have served many individuals and firms in our capacity as contractors, designers, suppliers and facility managers. The management team converge with years of experience working together on projects for banks, merchants and individuals.
             </p>
           </div>
           <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">

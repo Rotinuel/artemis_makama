@@ -18,9 +18,10 @@ const disciplines = [
 
 const NAV_ITEMS = [
     { label: 'Projects', href: '/projects', dropdown: 'projects' },
-    { label: 'Ideas',    href: '/ideas',    dropdown: 'ideas'    },
-    { label: 'People',  href: '/people',   dropdown: 'people'   },
-    { label: 'About',   href: '/about',    dropdown: 'about'        },
+    { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
+    { label: 'People', href: '/people', dropdown: 'people' },
+    { label: 'Gallery', href: '/gallery', dropdown: 'none' },
+    { label: 'About', href: '/about', dropdown: 'about' },
 ]
 
 const SCROLL_THRESHOLD = 120
@@ -28,18 +29,18 @@ const SCROLL_THRESHOLD = 120
 // variant="hero"  → animated hero effect (homepage only)
 // variant="default" (or omitted) → plain white top bar always
 export default function Navigation({ variant = 'default' }) {
-    const [scrollY,        setScrollY]        = useState(0)
-    const [scrolled,       setScrolled]       = useState(false)
-    const [mobileOpen,     setMobileOpen]     = useState(false)
-    const [searchOpen,     setSearchOpen]     = useState(false)
-    const [searchQuery,    setSearchQuery]    = useState('')
+    const [scrollY, setScrollY] = useState(0)
+    const [scrolled, setScrolled] = useState(false)
+    const [mobileOpen, setMobileOpen] = useState(false)
+    const [searchOpen, setSearchOpen] = useState(false)
+    const [searchQuery, setSearchQuery] = useState('')
     const [activeDropdown, setActiveDropdown] = useState(null)
-    const [projectsTab,    setProjectsTab]    = useState('markets')
+    const [projectsTab, setProjectsTab] = useState('markets')
     const [mobileExpanded, setMobileExpanded] = useState(null)
 
-    const isHero        = variant === 'hero'
+    const isHero = variant === 'hero'
     const searchInputRef = useRef(null)
-    const dropdownTimer  = useRef(null)
+    const dropdownTimer = useRef(null)
 
     useEffect(() => {
         if (!isHero) return // no scroll tracking needed on non-hero pages
@@ -64,10 +65,10 @@ export default function Navigation({ variant = 'default' }) {
     const enterDropdown = (key) => { clearTimeout(dropdownTimer.current); setActiveDropdown(key) }
     const leaveDropdown = () => { dropdownTimer.current = setTimeout(() => setActiveDropdown(null), 80) }
 
-    const progress          = isHero ? Math.min(scrollY / SCROLL_THRESHOLD, 1) : 1
-    const heroTranslateY    = -(progress * 55)
-    const heroScale         = 1 - progress * 0.4
-    const heroOpacity       = Math.max(1 - progress * 1.6, 0)
+    const progress = isHero ? Math.min(scrollY / SCROLL_THRESHOLD, 1) : 1
+    const heroTranslateY = -(progress * 55)
+    const heroScale = 1 - progress * 0.4
+    const heroOpacity = Math.max(1 - progress * 1.6, 0)
 
     // On non-hero pages the top bar is always visible/solid
     const topBarVisible = !isHero || scrolled
@@ -288,8 +289,9 @@ export default function Navigation({ variant = 'default' }) {
                             )}
                             {mobileExpanded === item.label && item.dropdown === 'about' && (
                                 <div style={{
-                                    paddingLeft: 16, paddingBottom: 16 }}>
-                                    {[{ label: 'Careers', href: '/people/careers'}, { label:'News + Events', href: '/news-events'}, { label: 'Contact', href: '/contact'}]
+                                    paddingLeft: 16, paddingBottom: 16
+                                }}>
+                                    {[{ label: 'Careers', href: '/people/careers' }, { label: 'News + Events', href: '/news-events' }, { label: 'Contact', href: '/contact' }]
                                         .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
                                 </div>
                             )}
@@ -310,7 +312,7 @@ export default function Navigation({ variant = 'default' }) {
                 transform: searchOpen ? 'translateY(0)' : 'translateY(-100%)',
                 transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 28px', height: 72, borderBottom: '1px solid #e5e5e5' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 28px', height: 72, borderBottom: '1px solid #e5e5e5' }}>
                     <span style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#888' }}>Search</span>
                     <button onClick={() => { setSearchOpen(false); setSearchQuery('') }} aria-label="Close search" style={iconBtn('#1a1a1a')}>
                         <CloseIcon />
@@ -411,15 +413,15 @@ function LogoMark({ color = '#07ba93', size = 52 }) {
     )
 }
 function SearchIcon() {
-    return <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4" strokeLinecap="round"/></svg>
+    return <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" strokeLinecap="round" /></svg>
 }
 function CloseIcon() {
-    return <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" strokeLinecap="round"/></svg>
+    return <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" /></svg>
 }
 function HamburgerIcon() {
-    return <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round"/></svg>
+    return <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" /></svg>
 }
 function ChevronIcon({ rotated }) {
-    return <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{ transform: rotated ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}><path d="M6 9l6 6 6-6" strokeLinecap="round"/></svg>
+    return <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{ transform: rotated ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}><path d="M6 9l6 6 6-6" strokeLinecap="round" /></svg>
 }
 const iconBtn = (color) => ({ color, background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center' })
