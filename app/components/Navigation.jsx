@@ -404,7 +404,7 @@ function DropdownContent({ type, projectsTab, setProjectsTab }) {
 }
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
-function LogoMark({ color = '#07ba93', size = 52 }) {
+function LogoMark({ color = '#07ba93', size = 24 }) {
     const isWhite = color === 'white'
     return (
         // <svg width={size} height={size} viewBox="0 0 52 52" fill="none">
@@ -412,12 +412,13 @@ function LogoMark({ color = '#07ba93', size = 52 }) {
         //     <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="700" fill={isWhite ? '#07ba93' : 'white'} letterSpacing="-0.5">AA</text>
         // </svg>
         <Link href="/" className="w-28 cursor-pointer mr-14">
-          <Image
-            src="/logo-bg.png"
-            alt="logo"
-            className="w-14 lg:w-28 cursor-pointer object-cover"
-            fill
-          />
+            <Image
+                src="/logo-bg.png"
+                alt="logo"
+                className="w-7 lg:w-14 cursor-pointer object-cover"
+                width={size}
+                height={size}
+            />
         </Link>
     )
 }
