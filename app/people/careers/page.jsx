@@ -50,7 +50,7 @@ export default function CareersPage() {
             <h2 className="text-[28px] md:text-[42px] font-light text-[#1a1a1a] leading-tight mb-6">
               Create the world&apos;s best, most sustainable places
             </h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 font-light">
+            <p className="text-[15px] text-[#1a1a1a] leading-relaxed mb-6 font-light" style={{ textAlign: "justify" }}>
               AAL designs buildings and spaces that inspire people. We&apos;re a diverse team of innovative, entrepreneurial people with an ambitious vision. We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special.
             </p>
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed font-light">

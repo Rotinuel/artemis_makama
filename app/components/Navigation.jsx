@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const markets = [
@@ -20,7 +21,7 @@ const NAV_ITEMS = [
     { label: 'Projects', href: '/projects', dropdown: 'projects' },
     { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
     { label: 'People', href: '/people', dropdown: 'people' },
-    { label: 'Gallery', href: '/gallery', dropdown: 'none' },
+    { label: 'Gallery', href: '/gallery', dropdown: 'gallery' },
     { label: 'About', href: '/about', dropdown: 'about' },
 ]
 
@@ -406,10 +407,18 @@ function DropdownContent({ type, projectsTab, setProjectsTab }) {
 function LogoMark({ color = '#07ba93', size = 52 }) {
     const isWhite = color === 'white'
     return (
-        <svg width={size} height={size} viewBox="0 0 52 52" fill="none">
-            <rect width="52" height="52" fill={isWhite ? 'rgba(255,255,255,0.9)' : color} />
-            <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="700" fill={isWhite ? '#07ba93' : 'white'} letterSpacing="-0.5">AA</text>
-        </svg>
+        // <svg width={size} height={size} viewBox="0 0 52 52" fill="none">
+        //     <rect width="52" height="52" fill={isWhite ? 'rgba(255,255,255,0.9)' : color} />
+        //     <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="700" fill={isWhite ? '#07ba93' : 'white'} letterSpacing="-0.5">AA</text>
+        // </svg>
+        <Link href="/" className="w-28 cursor-pointer mr-14">
+          <Image
+            src="/logo-bg.png"
+            alt="logo"
+            className="w-14 lg:w-28 cursor-pointer object-cover"
+            fill
+          />
+        </Link>
     )
 }
 function SearchIcon() {

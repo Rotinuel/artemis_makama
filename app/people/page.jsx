@@ -13,18 +13,18 @@ export const metadata = {
 }
 
 const leaders = [
-  { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', studio: 'Lagos, Nigeria', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80' },
-  { name: 'Ewomazino Makama', title: 'Director', studio: 'Detroit', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80' },
+  { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', studio: 'Lagos, Nigeria', image: '' },
+  { name: 'Ewomazino Makama', title: 'Director', studio: '', image: '' },
   { name: 'Awojobi Tobi PMP NIQS RIQS', title: 'Head of ' +
-        ' Operations' ,studio: 'Washington, D.C.', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80' },
-  { name: 'Zeb Ejiro OON', title: 'Director', studio: 'New York', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80' },
+        ' Operations' ,studio: '', image: '' },
+  { name: 'Zeb Ejiro OON', title: 'Director', studio: '', image: '' },
   { name: 'Collins Nneji', title: 'Consultant' +
-        ' Civil Engineer MNSE COREN', studio: 'Washington, D.C.', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80' },
-  { name: 'Ajayi Olanrewaju', title: 'IT/ELV', studio: 'Chicago', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80' },
+        ' Civil Engineer MNSE COREN', studio: '', image: '' },
+  { name: 'Ajayi Olanrewaju', title: 'IT/ELV', studio: '', image: ''},
   { name: 'Emmanuel Okhuarobo', title: 'IT Team' +
-        ' Lead', studio: 'Chicago', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80' },
+        ' Lead', studio: '', image: ''},
   { name: 'Olasunkammi Oladiran ESQ', title: 'Head' +
-        ' of legal', studio: 'Chicago', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80' },
+        ' of legal', studio: '', image: '' },
 
 ]
 
@@ -35,13 +35,16 @@ export default function PeoplePage() {
       <PageHero
         label="Our Team"
         title="People"
-        description="1,800 people across 27 studios on three continents, united by a shared commitment to design excellence."
-        image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1900&q=80"
+        description="Our team is made up of talented and experienced professionals who
+            are dedicated to delivering high-quality designs that meet the needs
+            of our clients. We work collaboratively to ensure that every project
+            is a success."
+        image="/"
       />
 
       {/* Sub-nav */}
-      <div className="border-b border-[#e0e0e0] px-6 md:px-10">
-        <div className="max-w-[1600px] mx-auto flex gap-8">
+      <div className="border-b border-aal-border px-6 md:px-10">
+        <div className="max-w-400 mx-auto flex gap-8">
           {[
             { label: 'Overview', href: '/people' },
             { label: 'Culture', href: '/people/culture' },
@@ -60,7 +63,7 @@ export default function PeoplePage() {
       </div>
 
       {/* Intro */}
-      <section className="px-6 md:px-10 py-16 max-w-[1600px] mx-auto">
+      <section className="px-6 md:px-10 py-16 max-w-400 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <h2 className="text-[28px] md:text-[40px] font-light text-[#1a1a1a] leading-tight mb-6">

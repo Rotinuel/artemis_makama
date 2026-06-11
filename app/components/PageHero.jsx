@@ -21,7 +21,7 @@ export default function PageHero({ label, title, description, image, dark = fals
           />
         </>
       )}
-      <div className="relative z-10 px-6 md:px-10 pb-14 pt-20 max-w-[1600px] mx-auto w-full">
+      <div className="relative z-10 px-6 md:px-10 pb-14 pt-20 max-w-400 mx-auto w-full">
         {label && (
           <p className={`text-[11px] tracking-[0.14em] uppercase font-medium mb-3 ${image ? 'text-white/70' : dark ? 'text-[#666]' : 'text-[#6b6b6b]'}`}>
             {label}
