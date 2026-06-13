@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { allProjects, markets, disciplines } from '../data/projects'
 
 export const metadata = {
-  title: 'Projects - AAL',
-  description: 'AAL designs buildings and spaces that' +
+  title: 'Projects - Artemis Atelier Ltd',
+  description: 'Artemis Atelier Ltd designs buildings and spaces that' +
       ' respond to the needs of people and the environment.',
 }
 
@@ -21,7 +21,7 @@ function ProjectCard({ project }) {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">{project.category}</span>
+      <span className="text-[10px] tracking-widest uppercase text-[#6b6b6b] font-medium">{project.category}</span>
       <h3 className="text-[15px] font-light text-[#1a1a1a] mt-1 leading-snug group-hover:opacity-60 transition-opacity">{project.title}</h3>
       <p className="text-[13px] text-[#6b6b6b] mt-1">{project.location}</p>
     </Link>
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
       />
 
       {/* Filter bar */}
-      <div className="border-b border-[#e0e0e0] px-6 md:px-10 py-6 max-w-[1600px] mx-auto">
+      {/* <div className="border-b border-[#e0e0e0] px-6 md:px-10 py-6 max-w-[1600px] mx-auto">
         <div className="flex flex-col md:flex-row gap-6 md:gap-12">
           <div>
             <p className="text-[11px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium mb-3">Markets</p>
@@ -63,10 +63,10 @@ export default function ProjectsPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Projects grid */}
-      <section className="px-6 md:px-10 py-16 max-w-[1600px] mx-auto">
+      <section className="px-6 md:px-10 py-16 max-w-400 mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-14">
           {allProjects.map((project, i) => (
             <ProjectCard key={i} project={project} />
