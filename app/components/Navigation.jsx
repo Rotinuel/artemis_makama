@@ -19,7 +19,7 @@ const disciplines = [
 
 const NAV_ITEMS = [
     { label: 'Projects', href: '/projects', dropdown: 'projects' },
-    { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
+    // { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
     { label: 'People', href: '/people' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'About', href: '/about' },
@@ -276,12 +276,7 @@ export default function Navigation({ variant = 'default' }) {
                                     {disciplines.map(d => <Link key={d} href="#" onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '4px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{d}</Link>)}
                                 </div>
                             )}
-                            {mobileExpanded === item.label && item.dropdown === 'ideas' && (
-                                <div style={{ paddingLeft: 16, paddingBottom: 16 }}>
-                                    {[{ label: 'Design Perspectives', href: '/ideas/design-perspectives' }, { label: 'Publications', href: '/ideas/publications' }, { label: 'Research + Insights', href: '/ideas/research' }]
-                                        .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
-                                </div>
-                            )}
+                           
                             {mobileExpanded === item.label && item.dropdown === 'people' && (
                                 <div style={{ paddingLeft: 16, paddingBottom: 16 }}>
                                     {[{ label: 'Culture', href: '/people/culture' }, { label: 'Leadership', href: '/people/leadership' }, { label: 'Careers', href: '/people/careers' }]
@@ -391,11 +386,7 @@ function DropdownContent({ type, projectsTab, setProjectsTab }) {
             </div>
         )
     }
-    const links = type === 'ideas'
-        ? [{ label: 'Design Perspectives', href: '/ideas/design-perspectives' }, { label: 'Publications', href: '/ideas/publications' }, { label: 'Research + Insights', href: '/ideas/research' }]
-        : [
-            // { label: 'Culture', href: '/people/culture' }, { label: 'Leadership', href: '/people/leadership' }, { label: 'Careers', href: '/people/careers' }
-        ]
+    const links = []
     return (
         <ul style={{ listStyle: 'none', margin: 0, padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 4 }}>
             {links.map(item => (

@@ -43,13 +43,13 @@ const publications = [
   },
   {
     title: 'AAL Forward 2025: The Evolution of' +
-        ' Neuroinclusive Workplaces',
+      ' Neuroinclusive Workplaces',
     category: 'Publication',
     image: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600&q=80',
   },
   {
     title: 'Neuroinclusive Design Guide by AAL\'s Kay' +
-        ' Sargent',
+      ' Sargent',
     category: 'Publication',
     image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=600&q=80',
   },
@@ -95,7 +95,7 @@ export default function IdeasPage() {
         label="Thinking"
         title="Ideas"
         description="Discover our insights and research on how design, planning and engineering impact the built environment."
-        image="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1900&q=80"
+        image="/104.jpeg"
       />
 
       {/* Design Perspectives */}
