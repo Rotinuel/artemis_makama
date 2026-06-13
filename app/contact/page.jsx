@@ -7,18 +7,7 @@ import PageHero from '../components/PageHero'
 import { useState } from 'react'
 
 const studios = [
-  { city: 'Atlanta', address: '1230 Peachtree St NE, Suite 900', cityState: 'Atlanta, GA 30309', phone: '+1 404.888.6600' },
-  { city: 'Austin', address: '98 San Jacinto Blvd, Suite 100', cityState: 'Austin, TX 78701', phone: '+1 512.220.0820' },
-  { city: 'Boston', address: '133 Federal St, 6th Floor', cityState: 'Boston, MA 02110', phone: '+1 617.946.4200' },
-  { city: 'Chicago', address: '70 W. Madison St, Suite 2200', cityState: 'Chicago, IL 60602', phone: '+1 312.782.1961' },
-  { city: 'Dallas', address: '2828 N Harwood St, Suite 700', cityState: 'Dallas, TX 75201', phone: '+1 214.969.5599' },
-  { city: 'Denver', address: '1670 Broadway, Suite 200', cityState: 'Denver, CO 80202', phone: '+1 303.832.7700' },
-  { city: 'Houston', address: '1990 Post Oak Blvd, Suite 2400', cityState: 'Houston, TX 77056', phone: '+1 713.407.7300' },
-  { city: 'London', address: '210 Euston Road', cityState: 'London, NW1 2DA', phone: '+44 20.3668.4800' },
-  { city: 'Los Angeles', address: '1100 S Flower St, Suite 2600', cityState: 'Los Angeles, CA 90015', phone: '+1 213.261.1100' },
-  { city: 'New York', address: '7 World Trade Center, 250 Greenwich St', cityState: 'New York, NY 10007', phone: '+1 212.741.1200' },
-  { city: 'San Francisco', address: '100 Pine St, Suite 2200', cityState: 'San Francisco, CA 94111', phone: '+1 415.243.0555' },
-  { city: 'Washington, D.C.', address: '1899 Pennsylvania Ave NW, Suite 900', cityState: 'Washington, DC 20006', phone: '+1 202.339.8700' },
+  { city: 'Ikeja', address: '70b Olorunlogbon St, Anthony', cityState: 'Lagos', phone: '+2348033502393' },
 ]
 
 const inquiryTypes = [

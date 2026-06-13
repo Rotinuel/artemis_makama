@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const markets = [
-    'Civic + Justice', 'Corporate + Commercial',
-    'Healthcare', 'Higher Education', 'Lifestyle',
-    'Mixed-Use', 'Renovation + Refurbishment',
-    'Sports + Rec + Entertainment',
-]
+// const markets = [
+//     'Civic + Justice', 'Corporate + Commercial',
+//     'Healthcare', 'Higher Education', 'Lifestyle',
+//     'Mixed-Use', 'Renovation + Refurbishment',
+//     'Sports + Rec + Entertainment',
+// ]
 
 const disciplines = [
     'Architecture', 'Landscape Architecture', 'Lighting Design',
@@ -20,9 +20,9 @@ const disciplines = [
 const NAV_ITEMS = [
     { label: 'Projects', href: '/projects', dropdown: 'projects' },
     { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
-    { label: 'People', href: '/people', dropdown: 'people' },
-    { label: 'Gallery', href: '/gallery', dropdown: 'gallery' },
-    { label: 'About', href: '/about', dropdown: 'about' },
+    { label: 'People', href: '/people' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'About', href: '/about' },
 ]
 
 const SCROLL_THRESHOLD = 120
@@ -234,9 +234,9 @@ export default function Navigation({ variant = 'default' }) {
                 </nav>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                    <button onClick={() => setSearchOpen(true)} aria-label="Search" style={iconBtn('#1a1a1a')}>
+                    {/* <button onClick={() => setSearchOpen(true)} aria-label="Search" style={iconBtn('#1a1a1a')}>
                         <SearchIcon />
-                    </button>
+                    </button> */}
                     <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={{ ...iconBtn('#1a1a1a'), display: 'none' }}>
                         <HamburgerIcon />
                     </button>
@@ -393,7 +393,9 @@ function DropdownContent({ type, projectsTab, setProjectsTab }) {
     }
     const links = type === 'ideas'
         ? [{ label: 'Design Perspectives', href: '/ideas/design-perspectives' }, { label: 'Publications', href: '/ideas/publications' }, { label: 'Research + Insights', href: '/ideas/research' }]
-        : [{ label: 'Culture', href: '/people/culture' }, { label: 'Leadership', href: '/people/leadership' }, { label: 'Careers', href: '/people/careers' }]
+        : [
+            // { label: 'Culture', href: '/people/culture' }, { label: 'Leadership', href: '/people/leadership' }, { label: 'Careers', href: '/people/careers' }
+        ]
     return (
         <ul style={{ listStyle: 'none', margin: 0, padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 4 }}>
             {links.map(item => (
@@ -407,19 +409,13 @@ function DropdownContent({ type, projectsTab, setProjectsTab }) {
 function LogoMark({ color = '#07ba93', size = 24 }) {
     const isWhite = color === 'white'
     return (
-        // <svg width={size} height={size} viewBox="0 0 52 52" fill="none">
-        //     <rect width="52" height="52" fill={isWhite ? 'rgba(255,255,255,0.9)' : color} />
-        //     <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="20" fontWeight="700" fill={isWhite ? '#07ba93' : 'white'} letterSpacing="-0.5">AA</text>
-        // </svg>
-        <Link href="/" className="w-28 cursor-pointer mr-14">
             <Image
                 src="/logo-bg.png"
                 alt="logo"
-                className="w-7 lg:w-14 cursor-pointer object-cover"
+                className="mr-14 w-7 lg:w-14 cursor-pointer object-cover"
                 width={size}
                 height={size}
             />
-        </Link>
     )
 }
 function SearchIcon() {

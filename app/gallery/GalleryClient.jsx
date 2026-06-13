@@ -6,103 +6,103 @@ import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 
 export default function GalleryClient({ categories, images }) {
-  const [activeCategory, setActiveCategory] = useState('all')
+    const [activeCategory, setActiveCategory] = useState('all')
 
-  const filtered = activeCategory === 'all'
-      ? images
-      : images.filter(img => img.gallery_categories?.slug === activeCategory)
+    const filtered = activeCategory === 'all'
+        ? images
+        : images.filter(img => img.gallery_categories?.slug === activeCategory)
 
-  return (
-      <>
-        <Navigation />
-        <style>{styles}</style>
+    return (
+        <>
+            <Navigation />
+            <style>{styles}</style>
 
-        <main className="gallery-main">
+            <main className="gallery-main">
 
-          {/* Page header */}
-          <div className="gallery-container">
-            <div className="page-header animate-in">
-              <p className="page-eyebrow">Our Work</p>
-              <h1 className="page-title">Gallery</h1>
-            </div>
-          </div>
-
-          {/* Filter bar */}
-          <div className="filter-bar animate-in delay-1">
-            <div className="gallery-container filter-inner">
-              <button
-                  onClick={() => setActiveCategory('all')}
-                  className={`filter-tab ${activeCategory === 'all' ? 'active' : ''}`}
-              >
-                All
-                <span className="filter-count">{images.length}</span>
-              </button>
-
-              {categories.map(cat => {
-                const count = images.filter(img => img.gallery_categories?.slug === cat.slug).length
-                return (
-                    <button
-                        key={cat.id}
-                        onClick={() => setActiveCategory(cat.slug)}
-                        className={`filter-tab ${activeCategory === cat.slug ? 'active' : ''}`}
-                    >
-                      {cat.name}
-                      <span className="filter-count">{count}</span>
-                    </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Grid */}
-          <div className="gallery-container grid-section animate-in delay-2">
-            {filtered.length === 0 ? (
-                <div className="empty-state">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ marginBottom: '16px', opacity: 0.2 }}>
-                    <rect x="3" y="3" width="30" height="30" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M3 24l8-8 6 6 5-5 9 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="12" cy="13" r="2.5" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
-                  <p>No images in this category yet.</p>
+                {/* Page header */}
+                <div className="gallery-container">
+                    <div className="page-header animate-in">
+                        <p className="page-eyebrow">Our Work</p>
+                        <h1 className="page-title">Gallery</h1>
+                    </div>
                 </div>
-            ) : (
-                <div className="image-grid">
-                  {filtered.map((img, i) => (
-                      <Link
-                          key={img.id}
-                          href={`/gallery/${img.id}`}
-                          className="image-card"
-                          style={{ animationDelay: `${0.24 + i * 0.04}s` }}
-                      >
-                        <div className="image-thumb">
-                          <img
-                              src={img.url}
-                              alt={img.title || 'Gallery image'}
-                          />
-                          <div className="image-overlay">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+
+                {/* Filter bar */}
+                <div className="filter-bar animate-in delay-1">
+                    <div className="gallery-container filter-inner">
+                        <button
+                            onClick={() => setActiveCategory('all')}
+                            className={`filter-tab ${activeCategory === 'all' ? 'active' : ''}`}
+                        >
+                            All
+                            <span className="filter-count">{images.length}</span>
+                        </button>
+
+                        {categories.map(cat => {
+                            const count = images.filter(img => img.gallery_categories?.slug === cat.slug).length
+                            return (
+                                <button
+                                    key={cat.id}
+                                    onClick={() => setActiveCategory(cat.slug)}
+                                    className={`filter-tab ${activeCategory === cat.slug ? 'active' : ''}`}
+                                >
+                                    {cat.name}
+                                    <span className="filter-count">{count}</span>
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                {/* Grid */}
+                <div className="gallery-container grid-section animate-in delay-2">
+                    {filtered.length === 0 ? (
+                        <div className="empty-state">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ marginBottom: '16px', opacity: 0.2 }}>
+                                <rect x="3" y="3" width="30" height="30" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                                <path d="M3 24l8-8 6 6 5-5 9 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <circle cx="12" cy="13" r="2.5" stroke="currentColor" strokeWidth="1.5" />
                             </svg>
-                          </div>
+                            <p>No images in this category yet.</p>
                         </div>
-                        <div className="image-meta">
-                          {img.gallery_categories?.name && (
-                              <span className="image-category">{img.gallery_categories.name}</span>
-                          )}
-                          {img.title && (
-                              <p className="image-title">{img.title}</p>
-                          )}
+                    ) : (
+                        <div className="image-grid">
+                            {filtered.map((img, i) => (
+                                <Link
+                                    key={img.id}
+                                    href={`/gallery/${img.id}`}
+                                    className="image-card"
+                                    style={{ animationDelay: `${0.24 + i * 0.04}s` }}
+                                >
+                                    <div className="image-thumb">
+                                        <img
+                                            src={img.url}
+                                            alt={img.title || 'Gallery image'}
+                                        />
+                                        <div className="image-overlay">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="image-meta">
+                                        {img.gallery_categories?.name && (
+                                            <span className="image-category">{img.gallery_categories.name}</span>
+                                        )}
+                                        {img.title && (
+                                            <p className="image-title">{img.title}</p>
+                                        )}
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
-                      </Link>
-                  ))}
+                    )}
                 </div>
-            )}
-          </div>
 
-        </main>
-        <Footer />
-      </>
-  )
+            </main>
+            <Footer />
+        </>
+    )
 }
 
 const styles = `
@@ -110,8 +110,8 @@ const styles = `
 
     .gallery-main {
         font-family: 'DM Sans', sans-serif;
-        background: #0c0c0c;
-        color: #e8e2d9;
+        background: #fff;
+        color: #09b697;
         min-height: 100vh;
         padding-top: 88px;
         padding-bottom: 96px;
@@ -137,7 +137,7 @@ const styles = `
         font-family: 'Cormorant Garamond', serif;
         font-size: clamp(44px, 6vw, 80px);
         font-weight: 300;
-        color: #e8e2d9;
+        color: #09b697;
         margin: 0;
         line-height: 0.95;
         letter-spacing: -0.02em;
@@ -181,15 +181,15 @@ const styles = `
     }
     .filter-tab:hover { color: #9e9588; }
     .filter-tab.active {
-        color: #e8e2d9;
-        border-bottom-color: #e8e2d9;
+        color: #09b697;
+        border-bottom-color: #09b697;
     }
     .filter-count {
         font-size: 10px;
         color: #2e2e2e;
         transition: color 0.2s;
     }
-    .filter-tab.active .filter-count { color: #5a5a5a; }
+    .filter-tab.active .filter-count { color: #09b697; }
 
     /* Grid */
     .grid-section {}
@@ -285,114 +285,3 @@ const styles = `
     .delay-1 { animation-delay: 0.08s; }
     .delay-2 { animation-delay: 0.16s; }
 `
-
-
-// 'use client'
-//
-// import { useState } from 'react'
-// import Link from 'next/link'
-// // import Navigation from '@/components/Navigation'
-// // import Footer from '@/components/Footer'
-//
-// export default function GalleryClient({ categories, images }) {
-//   const [activeCategory, setActiveCategory] = useState('all')
-//
-//   const filtered = activeCategory === 'all'
-//     ? images
-//     : images.filter(img => img.gallery_categories?.slug === activeCategory)
-//
-//   return (
-//     <>
-//       {/*<Navigation />*/}
-//
-//       <main className="pt-24 pb-20">
-//         {/* Page header */}
-//         <div className="px-6 md:px-10 max-w-[1600px] mx-auto mb-12">
-//           <p className="text-[11px] tracking-[0.18em] uppercase text-[#6b6b6b] mb-3 font-medium">
-//             Our Work
-//           </p>
-//           <h1 className="text-[36px] md:text-[52px] font-light text-[#1a1a1a] leading-tight">
-//             Gallery
-//           </h1>
-//         </div>
-//
-//         {/* Category filter tabs */}
-//         <div className="sticky top-[72px] z-20 bg-white border-b border-[#e0e0e0]">
-//           <div className="px-6 md:px-10 max-w-[1600px] mx-auto flex gap-0 overflow-x-auto scrollbar-hide">
-//             {/* All tab */}
-//             <button
-//               onClick={() => setActiveCategory('all')}
-//               className={`flex-shrink-0 text-[12px] tracking-wide py-4 px-4 border-b-2 transition-colors ${
-//                 activeCategory === 'all'
-//                   ? 'border-[#1a1a1a] text-[#1a1a1a] font-medium'
-//                   : 'border-transparent text-[#6b6b6b] hover:text-[#1a1a1a]'
-//               }`}
-//             >
-//               All
-//               <span className="ml-2 text-[11px] text-[#6b6b6b]">({images.length})</span>
-//             </button>
-//
-//             {categories.map(cat => {
-//               const count = images.filter(img => img.gallery_categories?.slug === cat.slug).length
-//               return (
-//                 <button
-//                   key={cat.id}
-//                   onClick={() => setActiveCategory(cat.slug)}
-//                   className={`flex-shrink-0 text-[12px] tracking-wide py-4 px-4 border-b-2 transition-colors ${
-//                     activeCategory === cat.slug
-//                       ? 'border-[#1a1a1a] text-[#1a1a1a] font-medium'
-//                       : 'border-transparent text-[#6b6b6b] hover:text-[#1a1a1a]'
-//                   }`}
-//                 >
-//                   {cat.name}
-//                   <span className="ml-2 text-[11px] text-[#6b6b6b]">({count})</span>
-//                 </button>
-//               )
-//             })}
-//           </div>
-//         </div>
-//
-//         {/* Grid */}
-//         <div className="px-6 md:px-10 max-w-[1600px] mx-auto mt-10">
-//           {filtered.length === 0 ? (
-//             <div className="text-center py-24">
-//               <p className="text-[14px] text-[#6b6b6b]">No images in this category yet.</p>
-//             </div>
-//           ) : (
-//             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//               {filtered.map(img => (
-//                 <Link
-//                   key={img.id}
-//                   href={`/gallery/${img.id}`}
-//                   className="group block"
-//                 >
-//                   <div className="overflow-hidden rounded-sm bg-[#f0f0f0] aspect-[4/3]">
-//                     <img
-//                       src={img.url}
-//                       alt={img.title || 'Gallery image'}
-//                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-//                     />
-//                   </div>
-//                   <div className="mt-3">
-//                     {img.gallery_categories?.name && (
-//                       <p className="text-[10px] uppercase tracking-[0.12em] text-[#6b6b6b] mb-1">
-//                         {img.gallery_categories.name}
-//                       </p>
-//                     )}
-//                     {img.title && (
-//                       <p className="text-[13px] text-[#1a1a1a] font-light leading-snug group-hover:opacity-60 transition-opacity">
-//                         {img.title}
-//                       </p>
-//                     )}
-//                   </div>
-//                 </Link>
-//               ))}
-//             </div>
-//           )}
-//         </div>
-//       </main>
-//
-//       {/*<Footer />*/}
-//     </>
-//   )
-// }

@@ -1,19 +1,13 @@
 import Link from 'next/link'
 
 const studios = [
-  'Atlanta', 'Austin', 'Beijing', 'Boston', 'Calgary', 'Chicago',
-  'Dallas', 'Denver', 'Detroit', 'Dubai', 'Hong Kong', 'Houston',
-  'Kansas City', 'London', 'Los Angeles', 'Miami', 'Mumbai', 'New York',
-  'Ottawa', 'Philadelphia', 'Salt Lake City', 'San Francisco', 'Seattle',
-  'Shanghai', 'St. Louis', 'Tampa', 'Toronto', 'Washington, D.C.',
+  'Ikeja, Lagos'
 ]
 
 const footerLinks = [
-  { label: 'Careers', href: '/people/careers' },
   { label: 'News + Events', href: '/news-events' },
   { label: 'Contact', href: '/contact' },
-  { label: 'About', href: '/about' },
-  { label: 'Corporate Responsibility', href: '/about' },
+  { label: 'About', href: '/about' }
 ]
 
 const socialLinks = [
@@ -115,10 +109,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-[1600px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <p className="text-[12px] text-[#555]">© AAL 2026</p>
+        <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026</p>
         <div className="flex flex-wrap gap-6">
-          <Link href="#" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Privacy Policy</Link>
-          <Link href="#" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Licensing + Terms of Use</Link>
           <Link href="#" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Site Credit</Link>
         </div>
       </div>
