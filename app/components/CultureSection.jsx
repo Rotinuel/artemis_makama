@@ -14,18 +14,18 @@ export default function CultureSection() {
             <p className="text-[15px] md:text-[16px] text-[#aaa] leading-relaxed mb-8 font-light">
               We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special. We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge, research and innovations.
             </p>
-            <Link
+            {/* <Link
               href="/people/culture"
               className="inline-block text-[12px] tracking-[0.12em] uppercase text-white border-b border-white pb-1 hover:opacity-60 transition-opacity"
             >
               Learn More About Culture
-            </Link>
+            </Link> */}
           </div>
 
           {/* Image */}
           <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80"
+              src="/104.jpeg"
               alt="AAL Culture"
               className="w-full h-full object-cover"
               loading="lazy"

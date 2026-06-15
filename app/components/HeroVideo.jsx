@@ -55,18 +55,18 @@ export default function HeroVideo() {
                         Featured Project
                     </p>
                     <h2 style={{ color: 'white', fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 300, lineHeight: 1.45, maxWidth: 420, fontFamily: "'Helvetica Neue', Helvetica, sans-serif", margin: 0 }}>
-                        AAL designs buildings and spaces that respond to the needs of people and the environment
+                        Artemis Atelier Ltd designs buildings and spaces that respond to the needs of people and the environment
                     </h2>
-                    <Link
+                    {/* <Link
                         href="#"
                         style={{ display: 'inline-block', marginTop: 18, color: 'white', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.7)', paddingBottom: 3, textDecoration: 'none' }}
                     >
                         Explore Our Work
-                    </Link>
+                    </Link> */}
                 </div>
 
                 {/* Mute toggle */}
-                <button
+                {/* <button
                     onClick={() => {
                         setMuted(m => !m)
                         if (videoRef.current) videoRef.current.muted = !muted
@@ -75,7 +75,7 @@ export default function HeroVideo() {
                     style={{ color: 'white', background: 'none', border: 'none', cursor: 'pointer', padding: 4, opacity: 0.7, flexShrink: 0 }}
                 >
                     {muted ? <MutedIcon /> : <UnmutedIcon />}
-                </button>
+                </button> */}
             </div>
 
             {/* Scroll indicator */}

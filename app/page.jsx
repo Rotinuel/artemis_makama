@@ -3,8 +3,8 @@ import HeroVideo from './components/HeroVideo'
 import NewsSection from './components/NewsSection'
 import ProjectStoriesSection from './components/ProjectStoriesSection'
 import CareersSection from './components/CareersSection'
-import CultureSection from './components/CultureSection'
-import IdeasSection from './components/IdeasSection'
+// import CultureSection from './components/CultureSection'
+// import IdeasSection from './components/IdeasSection'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
 
@@ -16,8 +16,8 @@ export default function HomePage() {
       <ProjectStoriesSection />
       <CareersSection/>
       <NewsSection />
-      <CultureSection />
-      <IdeasSection />
+      {/* <CultureSection /> */}
+      {/* <IdeasSection /> */}
       <Footer />
       <CookieBanner />
     </>
