@@ -8,7 +8,7 @@ import { allProjects } from '../../data/projects'
 export const metadata = {
   title: 'Project Stories - AAL',
   description: 'Explore AAL project stories from around' +
-      ' the world.',
+    ' the world.',
 }
 
 const featured = allProjects[0]
@@ -22,7 +22,7 @@ export default function StoriesPage() {
         label="Portfolio"
         title="Project Stories"
         description="A selection of our most compelling work from across the globe."
-        image="https://www.hok.com/wp-content/uploads/2022/10/013-Boston-Consulting-Group-1900x1270-2.jpg"
+        image="/100.jpeg"
       />
 
       <section className="px-6 md:px-10 py-16 max-w-[1600px] mx-auto">
