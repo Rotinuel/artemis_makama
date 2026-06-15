@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// const markets = [
-//     'Civic + Justice', 'Corporate + Commercial',
-//     'Healthcare', 'Higher Education', 'Lifestyle',
-//     'Mixed-Use', 'Renovation + Refurbishment',
-//     'Sports + Rec + Entertainment',
-// ]
+const markets = [
+    'Civic + Justice', 'Corporate + Commercial',
+    'Healthcare', 'Higher Education', 'Lifestyle',
+    'Mixed-Use', 'Renovation + Refurbishment',
+    'Sports + Rec + Entertainment',
+]
 
 const disciplines = [
     'Architecture', 'Landscape Architecture', 'Lighting Design',
@@ -18,8 +18,7 @@ const disciplines = [
 ]
 
 const NAV_ITEMS = [
-    { label: 'Projects', href: '/projects', dropdown: 'projects' },
-    // { label: 'Ideas', href: '/ideas', dropdown: 'ideas' },
+    { label: 'Projects', href: '/projects' },
     { label: 'People', href: '/people' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'About', href: '/about' },
@@ -27,8 +26,6 @@ const NAV_ITEMS = [
 
 const SCROLL_THRESHOLD = 120
 
-// variant="hero"  → animated hero effect (homepage only)
-// variant="default" (or omitted) → plain white top bar always
 export default function Navigation({ variant = 'default' }) {
     const [scrollY, setScrollY] = useState(0)
     const [scrolled, setScrolled] = useState(false)
@@ -44,7 +41,7 @@ export default function Navigation({ variant = 'default' }) {
     const dropdownTimer = useRef(null)
 
     useEffect(() => {
-        if (!isHero) return // no scroll tracking needed on non-hero pages
+        if (!isHero) return
         const onScroll = () => {
             const y = window.scrollY
             setScrollY(y)
@@ -71,7 +68,6 @@ export default function Navigation({ variant = 'default' }) {
     const heroScale = 1 - progress * 0.4
     const heroOpacity = Math.max(1 - progress * 1.6, 0)
 
-    // On non-hero pages the top bar is always visible/solid
     const topBarVisible = !isHero || scrolled
 
     return (
@@ -79,7 +75,6 @@ export default function Navigation({ variant = 'default' }) {
             {/* ─── HERO NAV (homepage only) ─── */}
             {isHero && (
                 <>
-                    {/* Big centered serif nav */}
                     <div
                         aria-hidden={scrolled}
                         className="hero-nav-wrap"
@@ -121,26 +116,11 @@ export default function Navigation({ variant = 'default' }) {
                                     >
                                         {item.label}
                                     </Link>
-                                    {item.dropdown && activeDropdown === item.dropdown && (
-                                        <div style={{
-                                            position: 'absolute',
-                                            bottom: 'calc(100% + 12px)', left: '50%',
-                                            transform: 'translateX(-50%)',
-                                            background: 'white',
-                                            boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
-                                            zIndex: 100,
-                                            minWidth: item.dropdown === 'projects' ? 520 : 220,
-                                            borderTop: '2px solid #1a1a1a',
-                                        }}>
-                                            <DropdownContent type={item.dropdown} projectsTab={projectsTab} setProjectsTab={setProjectsTab} />
-                                        </div>
-                                    )}
                                 </div>
                             ))}
                         </nav>
                     </div>
 
-                    {/* Hero corner utilities (logo + search) — fade out on scroll */}
                     <div
                         aria-hidden={scrolled}
                         style={{
@@ -154,10 +134,7 @@ export default function Navigation({ variant = 'default' }) {
                             <LogoMark color="white" size={56} />
                         </Link>
                         <div style={{ position: 'absolute', top: 28, right: 28, display: 'flex', alignItems: 'center', gap: 24 }}>
-                            <button onClick={() => setSearchOpen(true)} aria-label="Search" style={iconBtn('white')}>
-                                <SearchIcon />
-                            </button>
-                            <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={{ ...iconBtn('white'), display: 'none' }}>
+                            <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={iconBtn('white')}>
                                 <HamburgerIcon />
                             </button>
                         </div>
@@ -166,8 +143,6 @@ export default function Navigation({ variant = 'default' }) {
             )}
 
             {/* ─── TOP BAR ─── */}
-            {/* Hero pages: slides in after scroll threshold */}
-            {/* All other pages: always visible, no animation */}
             <header
                 style={{
                     position: 'fixed',
@@ -178,7 +153,6 @@ export default function Navigation({ variant = 'default' }) {
                     borderBottom: '1px solid #e5e5e5',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '0 28px',
-                    // Hero: animate in. Default: always shown, no transition
                     opacity: topBarVisible ? 1 : 0,
                     pointerEvents: topBarVisible ? 'auto' : 'none',
                     transform: isHero
@@ -198,8 +172,6 @@ export default function Navigation({ variant = 'default' }) {
                         <div
                             key={item.label}
                             style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
-                            onMouseEnter={() => item.dropdown && enterDropdown(item.dropdown)}
-                            onMouseLeave={leaveDropdown}
                         >
                             <Link
                                 href={item.href}
@@ -217,27 +189,12 @@ export default function Navigation({ variant = 'default' }) {
                             >
                                 {item.label}
                             </Link>
-                            {item.dropdown && activeDropdown === item.dropdown && (
-                                <div style={{
-                                    position: 'absolute', top: '100%', left: 0,
-                                    background: 'white',
-                                    boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
-                                    zIndex: 100,
-                                    minWidth: item.dropdown === 'projects' ? 520 : 220,
-                                    borderTop: '2px solid #1a1a1a',
-                                }}>
-                                    <DropdownContent type={item.dropdown} projectsTab={projectsTab} setProjectsTab={setProjectsTab} />
-                                </div>
-                            )}
                         </div>
                     ))}
                 </nav>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                    {/* <button onClick={() => setSearchOpen(true)} aria-label="Search" style={iconBtn('#1a1a1a')}>
-                        <SearchIcon />
-                    </button> */}
-                    <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={{ ...iconBtn('#1a1a1a'), display: 'none' }}>
+                    <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={iconBtn('#1a1a1a')}>
                         <HamburgerIcon />
                     </button>
                 </div>
@@ -261,39 +218,15 @@ export default function Navigation({ variant = 'default' }) {
                 <nav style={{ padding: '24px 24px 40px' }}>
                     {NAV_ITEMS.map(item => (
                         <div key={item.label} style={{ borderBottom: '1px solid #e5e5e5' }}>
-                            <button
-                                onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 0', fontSize: 18, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'sans-serif' }}
+                            <Link
+                                href={item.href}
+                                onClick={() => setMobileOpen(false)}
+                                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 0', fontSize: 18, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', fontFamily: 'sans-serif' }}
                             >
                                 {item.label}
-                                <ChevronIcon rotated={mobileExpanded === item.label} />
-                            </button>
-                            {mobileExpanded === item.label && item.dropdown === 'projects' && (
-                                <div style={{ paddingLeft: 16, paddingBottom: 16 }}>
-                                    <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#888', marginBottom: 8 }}>Markets</div>
-                                    {markets.map(m => <Link key={m} href="#" onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '4px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{m}</Link>)}
-                                    <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#888', marginTop: 16, marginBottom: 8 }}>Disciplines</div>
-                                    {disciplines.map(d => <Link key={d} href="#" onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '4px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{d}</Link>)}
-                                </div>
-                            )}
-                           
-                            {mobileExpanded === item.label && item.dropdown === 'people' && (
-                                <div style={{ paddingLeft: 16, paddingBottom: 16 }}>
-                                    {[{ label: 'Culture', href: '/people/culture' }, { label: 'Leadership', href: '/people/leadership' }, { label: 'Careers', href: '/people/careers' }]
-                                        .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
-                                </div>
-                            )}
-                            {mobileExpanded === item.label && item.dropdown === 'about' && (
-                                <div style={{
-                                    paddingLeft: 16, paddingBottom: 16
-                                }}>
-                                    {[{ label: 'Careers', href: '/people/careers' }, { label: 'News + Events', href: '/news-events' }, { label: 'Contact', href: '/contact' }]
-                                        .map(s => <Link key={s.label} href={s.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '6px 0', fontSize: 14, color: '#1a1a1a', textDecoration: 'none' }}>{s.label}</Link>)}
-                                </div>
-                            )}
+                            </Link>
                         </div>
                     ))}
-
                 </nav>
             </div>
 
@@ -353,60 +286,15 @@ export default function Navigation({ variant = 'default' }) {
     )
 }
 
-// ─── Dropdown content ─────────────────────────────────────────────────────────
-function DropdownContent({ type, projectsTab, setProjectsTab }) {
-    if (type === 'projects') {
-        return (
-            <div style={{ padding: '28px 32px' }}>
-                <div style={{ display: 'flex', gap: 32 }}>
-                    <div style={{ flex: 1 }}>
-                        <button onClick={() => setProjectsTab('markets')} style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 16, color: projectsTab === 'markets' ? '#1a1a1a' : '#888', background: 'none', border: 'none', borderBottom: `2px solid ${projectsTab === 'markets' ? '#1a1a1a' : 'transparent'}`, paddingBottom: 8, cursor: 'pointer', width: '100%', textAlign: 'left', fontFamily: 'sans-serif' }}>Markets</button>
-                        {projectsTab === 'markets' && (
-                            <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                                {markets.map(m => (
-                                    <li key={m}><Link href="/projects" style={{ fontSize: 13, color: '#1a1a1a', textDecoration: 'none', display: 'block', padding: '4px 0' }} onMouseEnter={e => e.currentTarget.style.color = '#888'} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>{m}</Link></li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                        <button onClick={() => setProjectsTab('disciplines')} style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 16, color: projectsTab === 'disciplines' ? '#1a1a1a' : '#888', background: 'none', border: 'none', borderBottom: `2px solid ${projectsTab === 'disciplines' ? '#1a1a1a' : 'transparent'}`, paddingBottom: 8, cursor: 'pointer', width: '100%', textAlign: 'left', fontFamily: 'sans-serif' }}>Disciplines</button>
-                        {projectsTab === 'disciplines' && (
-                            <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                                {disciplines.map(d => (
-                                    <li key={d}><Link href="/projects" style={{ fontSize: 13, color: '#1a1a1a', textDecoration: 'none', display: 'block', padding: '4px 0' }} onMouseEnter={e => e.currentTarget.style.color = '#888'} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>{d}</Link></li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                </div>
-                <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid #e5e5e5' }}>
-                    <Link href="/projects/stories" style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, color: '#1a1a1a', textDecoration: 'none' }}>Project Stories →</Link>
-                </div>
-            </div>
-        )
-    }
-    const links = []
-    return (
-        <ul style={{ listStyle: 'none', margin: 0, padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 4 }}>
-            {links.map(item => (
-                <li key={item.label}><Link href={item.href} style={{ fontSize: 13, color: '#1a1a1a', textDecoration: 'none', display: 'block', padding: '5px 0' }} onMouseEnter={e => e.currentTarget.style.color = '#888'} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>{item.label}</Link></li>
-            ))}
-        </ul>
-    )
-}
-
-// ─── Icons ────────────────────────────────────────────────────────────────────
 function LogoMark({ color = '#07ba93', size = 24 }) {
-    const isWhite = color === 'white'
     return (
-            <Image
-                src="/logo-bg.png"
-                alt="logo"
-                className="mr-14 w-7 lg:w-14 cursor-pointer object-cover"
-                width={size}
-                height={size}
-            />
+        <Image
+            src="/logo-bg.png"
+            alt="logo"
+            className="mr-14 w-7 lg:w-14 cursor-pointer object-cover"
+            width={size}
+            height={size}
+        />
     )
 }
 function SearchIcon() {
