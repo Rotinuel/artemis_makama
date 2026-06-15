@@ -27,7 +27,7 @@ export default function HeroVideo() {
                 }}
             >
                 <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1094473397/rendition/720p/file.mp4?loc=external&signature=a788475d7c8817c4492e0866b19df3c369bcf8c1ac562295aa6d82aa5387229d"
+                    src="/8.mp4"
                     type="video/mp4"
                 />
             </video>
