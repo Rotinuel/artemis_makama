@@ -57,7 +57,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#111] text-white">
       {/* Top section */}
-      <div className="px-6 md:px-10 py-16 max-w-[1600px] mx-auto">
+      <div className="px-6 md:px-10 py-16 max-w-400 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo + tagline */}
           <div className="md:col-span-1">
@@ -108,7 +108,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-[1600px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-400 mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026</p>
         <div className="flex flex-wrap gap-6">
           <Link href="#" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Site Credit</Link>

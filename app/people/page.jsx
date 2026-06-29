@@ -13,11 +13,10 @@ export const metadata = {
 }
 
 const leaders = [
-  { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', bio: ''},
+  { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', bio: '' },
   { name: 'Ewomazino Makama', title: 'Director', bio: '' },
   {
-    name: 'Awojobi Tobi PMP NIQS RIQS', title: 'Head of ' +
-      ' Operations', bio: 'Tobi Awojobi is a business development and operations leader with a focus on driving growth, strategic partnerships, and market expansion. He combines strong commercial insight with operational leadership to identify opportunities, structure deals, and deliver sustainable revenue streams. His experience spans project development, stakeholder engagement, and business scaling within the built environment sector. At ARTEMIS ATELIER LTD, he oversees operations and business development, ensuring efficient execution while positioning the company for continued growth and competitive advantage.'
+    name: 'Tobi Awojobi', title: 'ED Operations and Business Development', bio: 'Tobi Awojobi is a business development and operations leader with a focus on driving growth, strategic partnerships, and market expansion. He combines strong commercial insight with operational leadership to identify opportunities, structure deals, and deliver sustainable revenue streams. His experience spans project development, stakeholder engagement, and business scaling within the built environment sector. At ARTEMIS ATELIER LTD, he oversees operations and business development, ensuring efficient execution while positioning the company for continued growth and competitive advantage.'
   },
   { name: 'Zeb Ejiro OON', title: 'Director', bio: '' },
   {
@@ -47,7 +46,7 @@ export default function PeoplePage() {
             are dedicated to delivering high-quality designs that meet the needs
             of our clients. We work collaboratively to ensure that every project
             is a success."
-        image="/102.jpeg"
+        image="/ja.jpeg"
       />
 
 

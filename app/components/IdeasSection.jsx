@@ -38,9 +38,9 @@ const ideas = [
 
 export default function IdeasSection() {
   return (
-    <section className="py-20 md:py-28 px-6 md:px-10 max-w-[1600px] mx-auto">
+    <section className="py-20 md:py-28 px-6 md:px-10 max-w-400 mx-auto">
       {/* Header */}
-      <div className="flex items-end justify-between mb-10 border-b border-[#e0e0e0] pb-6">
+      <div className="flex items-end justify-between mb-10 border-b border-aal-border pb-6">
         <div>
           <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Insights</p>
           <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a]">Ideas</h2>
