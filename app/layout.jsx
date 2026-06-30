@@ -1,10 +1,10 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'AAL: A Global Design, Architecture,' +
+  title: 'Artemis Atelier Ltd: A Global Design, Architecture,' +
       ' Engineering, Planning Firm',
-  description: 'AAL is a global design, architecture,' +
-      ' engineering and planning firm. Our people collaborate across a network of 27 offices on three continents.',
+  description: 'Artemis Atelier Ltd is a global design, architecture,' +
+      ' engineering and planning firm.',
 }
 
 export default function RootLayout({ children }) {
