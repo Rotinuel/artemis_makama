@@ -3,18 +3,18 @@ import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
 import PageHero from '../components/PageHero'
 import Link from 'next/link'
+import { ShieldCheck, Lightbulb, Target, Users, Medal } from "lucide-react";
 
 export const metadata = {
   title: 'About - ARTEMIS ATELIER LTD',
-  description: 'Artemis Atelier Ltd is a global design, architecture,' +
-    ' engineering and planning firm.',
+  description: 'Construction without limits — residential, commercial, civil, and beyond.',
 }
 
 const stats = [
   { number: '30+', label: 'Design Professionals' },
   { number: '2', label: 'Studios Worldwide' },
   { number: '1', label: 'Continents' },
-  { number: '10+', label: 'Years of Experience' },
+  { number: '15+', label: 'Years of Experience' },
 ]
 
 const recognitions = [
@@ -34,6 +34,34 @@ const milestones = [
   { year: '2026', event: 'Artemis expands global Sports, Recreation and Entertainment practice.' },
 ]
 
+const values = [
+  {
+    icon: ShieldCheck,
+    title: "Integrity & Ethics",
+    text: "We conduct all our business activities with the highest standards of integrity, honesty, and transparency. Trust forms the foundation of our relationships with clients, partners, and employees, fostering long-term collaboration and mutual success.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation & Efficiency",
+    text: "We leverage innovative technologies and best-practice methodologies to enhance productivity, optimize costs, and deliver exceptional value while maintaining the highest standards of quality and performance.",
+  },
+  {
+    icon: Target,
+    title: "Commitment",
+    text: "We are dedicated to achieving our goals through professionalism, accountability, and a relentless pursuit of excellence in everything we do.",
+  },
+  {
+    icon: Users,
+    title: "Client Focus & Satisfaction",
+    text: "Our clients' success is at the heart of our business. We strive to exceed expectations by understanding their unique requirements and delivering tailored solutions that create sustainable value and lasting partnerships.",
+  },
+  {
+    icon: Medal,
+    title: "Quality Excellence",
+    text: "We are committed to delivering excellence across every aspect of our operations. By adhering to international standards and embracing continuous improvement, we ensure superior outcomes and consistent quality.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -41,44 +69,57 @@ export default function AboutPage() {
       <PageHero
         label="Who We Are"
         title="About Artemis Atelier Ltd"
-        description="A global design, architecture, engineering and planning firm."
+        description="Construction without limits — residential, commercial, civil, and beyond."
         image="/100.jpeg"
       />
 
       {/* Mission */}
-      <section className="px-6 md:px-10 py-20 max-w-[1600px] mx-auto border-b border-[#e0e0e0]">
+      <section className="px-6 md:px-10 py-20 max-w-400 mx-auto border-b border-[#e0e0e0]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div>
-            <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-4 font-medium">Our Mission</p>
-            <h2 className="text-[28px] md:text-[42px] font-light text-[#1a1a1a] leading-tight mb-8">
-              To deliver design solutions that solve our clients&apos; most complex challenges
-            </h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-5 font-light">
-              Artemis Atelier Limited is one of Nigeria's leading architectural
-              and construction companies, headquartered in Lagos. Established by
-              Mr. C. E. Makama in 2010, the company was founded with a clear
-              vision to render services in the field of Architecture and
-              construction and also as general contractors. Delivering exceptional
-              service across multiple disciplines. Our core areas of
-              specialization include architectural design, building construction,
-              facility management, real estate development, and architectural
-              drafting services. With a deep understanding of both modern and
-              traditional design principles, Artemis Atelier merges creativity
-              with functionality to produce spaces that are not only aesthetically
-              compelling but also structurally sound and environmentally
-              sustainable.
-            </p>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed font-light">
-              Our process is rooted in collaboration, innovation, and
-              a commitment to excellence, ensuring that every project—regardless
-              of scale—is delivered with precision and care. Over the years, we
-              have built a reputation for integrity, reliability, and
-              forward-thinking solutions. Our diverse portfolio spans residential,
-              commercial, and institutional developments, each reflecting our
-              dedication to quality and our passion for reshaping the Nigerian
-              architectural landscape. We have served many individuals and firms in our capacity as contractors, designers, suppliers and facility managers. The management team converge with years of experience working together on projects for banks, merchants and individuals.
+            <p className="text-[28px] tracking-[0.14em] uppercase text-[#08b796] mb-4 font-medium">Our Vision</p>
+            <p className="text-[15px] text-black leading-relaxed mb-5 font-light text-justify">
+              To redefine the built environment through
+              visionary architecture, creating timeless spaces
+              that balance aesthetics, functionality, and
+              sustainability while establishing lasting trust
+              with clients, partners, and communities.
             </p>
           </div>
+
+          <div>
+            <p className="text-[28px] tracking-[0.14em] uppercase text-[#08b796] mb-4 font-medium">Our Mission</p>
+            <p className="text-[15px] text-black leading-relaxed mb-5 font-light text-justify">
+              To shape meaningful and enduring spaces
+              through innovative design, technical excellence,
+              and sustainable practices. We are dedicated to
+              transforming our clients' visions into inspiring
+              architectural solutions that balance aesthetics,
+              functionality, and environmental responsibility.
+            </p>
+            <p className="text-[15px] text-black leading-relaxed mb-5 font-light text-justify">
+              Through collaboration, integrity, and attention
+              to detail, we cultivate lasting partnerships and
+              deliver projects that enrich communities and
+              stand the test of time.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-[28px] tracking-[0.14em] uppercase text-[#08b796] mb-4 font-medium">Our Core Values</p>
+            <div className="flex flex-col gap-5">
+              {values.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="flex gap-4 items-start">
+                  <Icon className="w-5 h-5 text-[#08b796] mt-1 shrink-0" />
+                  <div>
+                    <p className="text-[15px] text-black font-medium mb-1">{title}</p>
+                    <p className="text-[14px] text-[#6b6b6b] leading-relaxed font-light text-justify">{text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">
             <img
               src="/101.jpeg"
@@ -111,7 +152,7 @@ export default function AboutPage() {
           {milestones.map((m, i) => (
             <div key={i} className="flex gap-6 border-b border-[#f0f0f0] pb-8">
               <span className="text-[13px] font-medium text-[#6b6b6b] flex-shrink-0 w-12">{m.year}</span>
-              <p className="text-[14px] text-[#1a1a1a] leading-relaxed font-light">{m.event}</p>
+              <p className="text-[14px] text-[#1a1a1a] leading-relaxed font-light text-justify">{m.event}</p>
             </div>
           ))}
         </div>
@@ -143,10 +184,10 @@ export default function AboutPage() {
           <div>
             <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-4 font-medium">Environment</p>
             <h2 className="text-[28px] md:text-[38px] font-light text-[#1a1a1a] mb-6">Sustainability</h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-5 font-light">
+            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-5 font-light text-justify">
               HOK is committed to achieving net-zero carbon in the buildings we design by 2030. We have been carbon neutral in our own operations since 2022.
             </p>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-8 font-light">
+            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-8 font-light text-justify">
               We pursue regenerative design strategies that not only minimize environmental impact but actively restore and improve the ecosystems in which our buildings exist.
             </p>
             <Link href="#" className="text-[12px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity">
@@ -161,3 +202,4 @@ export default function AboutPage() {
     </>
   )
 }
+

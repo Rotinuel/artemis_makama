@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const studios = [
-  'Ikeja, Lagos'
+  '70B Olorunlogbon Street, Anthony Village, Lagos, Nigeria'
 ]
 
 const footerLinks = [
