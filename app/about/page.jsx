@@ -74,7 +74,7 @@ export default function AboutPage() {
       />
 
       {/* Mission */}
-      <section className="px-6 md:px-10 py-20 max-w-400 mx-auto border-b border-[#e0e0e0]">
+      <section className="px-6 md:px-10 py-20 max-w-400 mx-auto border-b border-aal-border">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div>
             <p className="text-[28px] tracking-[0.14em] uppercase text-[#08b796] mb-4 font-medium">Our Vision</p>

@@ -35,7 +35,7 @@ export default function ProjectsPage() {
       <PageHero
         label="Our Work"
         title="Projects"
-        description="AAL designs buildings and spaces that respond to the needs of people and the environment."
+        description="Artemis Atelier Ltd designs buildings and spaces that respond to the needs of people and the environment."
         image="/51.jpg"
       />
 

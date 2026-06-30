@@ -7,7 +7,7 @@ import LeadershipSection
   from "../components/LeaderShipSection";
 
 export const metadata = {
-  title: 'People - AAL',
+  title: 'People - Artemis Atelier Ltd',
   description: "Artemis Atelier Ltd's team brings together a global" +
     " network of experts across architecture, urban design, engineering, and planning.",
 }
