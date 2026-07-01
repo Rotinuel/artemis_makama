@@ -84,7 +84,7 @@ export default function AdminIndexPage() {
           content: '';
           position: fixed; top: -200px; right: -200px;
           width: 600px; height: 600px; border-radius: 50%;
-          background: radial-gradient(circle, rgba(196,140,40,0.09) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(8,183,150,0.18) 0%, rgba(5,120,100,0.08) 50%, transparent 70%);
           pointer-events: none; z-index: 0;
         }
         .inner {
@@ -102,7 +102,7 @@ export default function AdminIndexPage() {
           font-family: 'Cormorant Garamond', serif;
           font-size: 22px; font-weight: 300; letter-spacing: 0.02em; color: #f0ece4;
         }
-        .top-brand span { color: #c48c28; font-style: italic; }
+        .top-brand span { color: #08b796; font-style: italic; }
         .logout-btn {
           font-family: 'DM Sans', sans-serif;
           font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
@@ -115,7 +115,7 @@ export default function AdminIndexPage() {
         .heading-block { margin-bottom: 2.5rem; }
         .eyebrow {
           font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
-          color: #c48c28; margin-bottom: 8px;
+          color: #08b796; margin-bottom: 8px;
         }
         .heading {
           font-family: 'Cormorant Garamond', serif;
@@ -146,12 +146,12 @@ export default function AdminIndexPage() {
         .nav-card::before {
           content: '';
           position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(196,140,40,0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(8,183,150,0.3), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
         .nav-card:hover {
-          border-color: rgba(196,140,40,0.25);
-          background: rgba(196,140,40,0.04);
+          border-color: rgba(8,183,150,0.25);
+          background: rgba(8,183,150,0.04);
           transform: translateY(-2px);
         }
         .nav-card:hover::before { opacity: 1; }
@@ -166,9 +166,9 @@ export default function AdminIndexPage() {
           transition: color 0.2s, background 0.2s, border-color 0.2s;
         }
         .nav-card:hover .card-icon {
-          color: #c48c28;
-          background: rgba(196,140,40,0.1);
-          border-color: rgba(196,140,40,0.25);
+          color: #08b796;
+          background: rgba(8,183,150,0.1);
+          border-color: rgba(8,183,150,0.25);
         }
 
         .card-label {
@@ -181,11 +181,11 @@ export default function AdminIndexPage() {
         }
         .card-arrow {
           margin-top: 1.25rem; font-size: 16px;
-          color: rgba(196,140,40,0.4);
+          color: rgba(8,183,150,0.4);
           transition: color 0.2s, transform 0.2s;
           align-self: flex-end;
         }
-        .nav-card:hover .card-arrow { color: #c48c28; transform: translateX(3px); }
+        .nav-card:hover .card-arrow { color: #08b796; transform: translateX(3px); }
 
         .fade-in { animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -227,7 +227,6 @@ export default function AdminIndexPage() {
 
           <div className="divider" />
           <p className="footer-note">Artemis Atelier Ltd — Internal Admin Panel</p>
-
         </div>
       </div>
     </>

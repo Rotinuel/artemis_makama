@@ -7,7 +7,7 @@ import { createClient } from '@/utils/supabase/client'
 const TYPES = ['Firm News', 'Project News', 'Media Coverage', 'Award', 'Event']
 
 const TYPE_COLORS = {
-  'Firm News': { bg: 'rgba(196,140,40,0.12)', text: '#c48c28' },
+  'Firm News': { bg: 'rgba(196,140,40,0.12)', text: '#08b796' },
   'Project News': { bg: 'rgba(80,140,200,0.12)', text: '#5b9fd4' },
   'Media Coverage': { bg: 'rgba(120,180,120,0.12)', text: '#6db86d' },
   'Award': { bg: 'rgba(200,100,180,0.12)', text: '#d070c0' },
