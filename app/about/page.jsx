@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
 import PageHero from '../components/PageHero'
 import Link from 'next/link'
-import { ShieldCheck, Lightbulb, Target, Users, Medal } from "lucide-react";
+import { ShieldCheck, Lightbulb, Target, Users, Medal, HardHat } from "lucide-react";
 
 export const metadata = {
   title: 'About - ARTEMIS ATELIER LTD',
@@ -60,7 +60,35 @@ const values = [
     title: "Quality Excellence",
     text: "We are committed to delivering excellence across every aspect of our operations. By adhering to international standards and embracing continuous improvement, we ensure superior outcomes and consistent quality.",
   },
+  {
+    icon: HardHat,
+    title: "Safety First",
+    text: "The health, safety, and well-being of our employees, clients,and communities are our highest priorities.We maintain a zero- tolerance approach to safety violations and are committed to providing a safe, secure, and compliant working environment across all our operations.",
+  },
 ];
+
+const services = [
+  {
+    title: "Design",
+    text: "We create innovative, functional, and aesthetically pleasing architectural designs tailored to meet each client's unique vision and requirements. Our design process combines creativity, technical expertise, and sustainability to deliver spaces that inspire and endure.",
+  },
+  {
+    title: "Construction",
+    text: "From groundbreaking to project completion, we provide comprehensive construction services with a strong focus on quality, safety, and efficiency. Our experienced team ensures every project is executed to the highest standards while meeting timelines and budget expectations",
+  },
+  {
+    title: "General Contractors",
+    text: "As a trusted general contractor, we coordinate and manage every aspect of the construction process. We oversee subcontractors, procurement, scheduling, and quality control to ensure seamless project delivery and exceptional results.",
+  },
+  {
+    title: "Facility Management",
+    text: "The Facility Management department at Artemis Atelier Ltd. is dedicated to preserving the value, functionality, and aesthetic appeal of your real estate investments. We provide comprehensive, proactive management solutions that encompass routine maintenance, structural upkeep, and operational efficiency. By leveraging sustainable practices and meticulous attention to detail, we ensure that every property remains safe, cost-effective, and aligned with its long-term design intent, offering peace of mind to owners and an exceptional experience for occupants.",
+  },
+  {
+    title: "Project Management",
+    text: "At Artemis Atelier Ltd., our Project Management department translates vision into reality with precision, efficiency, and excellence. We oversee the entire lifecycle of a project—from initial brief and technical documentation to final site handover. By seamlessly coordinating architects, engineers, and contractors, we ensure that every development is delivered on schedule, within budget, and to the highest quality standards. Our proactive approach minimizes risk and optimizes resources, ensuring a smooth, transparent, and successful delivery for every client",
+  },
+]
 
 export default function AboutPage() {
   return (
@@ -129,6 +157,23 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section className="px-6 md:px-10 py-20 max-w-[1600px] mx-auto border-b border-[#e0e0e0]">
+      <div className="mb-12">
+        <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-3 font-medium">Our Services</p>
+        <h2 className="text-[28px] md:text-[40px] font-light text-[#1a1a1a]">What We Do</h2>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-[#e0e0e0]">
+        {services.map((s, i) => (
+          <div key={i} className="bg-white p-8 flex flex-col gap-4">
+            <div className="w-2 h-2 rounded-full bg-[#08b796]" />
+            <p className="text-[18px] font-medium text-[#1a1a1a] leading-snug">{s.title}</p>
+            <p className="text-[13px] text-[#6b6b6b] leading-relaxed font-light text-justify">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
       {/* Stats */}
       <section className="bg-[#1a1a1a] py-16 px-6 md:px-10">
