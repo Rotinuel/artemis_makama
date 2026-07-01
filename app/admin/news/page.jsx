@@ -7,7 +7,7 @@ import { createClient } from '@/utils/supabase/client'
 const TYPES = ['Firm News', 'Project News', 'Media Coverage', 'Award', 'Event']
 
 const TYPE_COLORS = {
-  'Firm News': { bg: 'rgba(196,140,40,0.12)', text: '#08b796' },
+  'Firm News': { bg: 'rgba(8,183,150.0.10)', text: '#08b796' },
   'Project News': { bg: 'rgba(80,140,200,0.12)', text: '#5b9fd4' },
   'Media Coverage': { bg: 'rgba(120,180,120,0.12)', text: '#6db86d' },
   'Award': { bg: 'rgba(200,100,180,0.12)', text: '#d070c0' },
@@ -121,12 +121,12 @@ function DatePicker({ value, onChange }) {
                   style={{
                     width: '100%', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 11, borderRadius: 6, border: 'none', cursor: d ? 'pointer' : 'default',
-                    background: isSelected ? '#c48c28' : 'transparent',
+                    background: isSelected ? '#08b796' : 'transparent',
                     color: isSelected ? '#080808' : d ? '#f0ece4' : 'transparent',
                     fontWeight: isSelected ? 500 : 300,
                     transition: 'background 0.15s',
                   }}
-                  onMouseEnter={e => { if (d && !isSelected) e.currentTarget.style.background = 'rgba(196,140,40,0.18)' }}
+                  onMouseEnter={e => { if (d && !isSelected) e.currentTarget.style.background = 'rgba(8,183,150,018)' }}
                   onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
                 >
                   {d || ''}
@@ -366,7 +366,7 @@ export default function NewsAdminPage() {
           content: '';
           position: fixed; top:-200px; right:-200px;
           width:600px; height:600px; border-radius:50%;
-          background: radial-gradient(circle, rgba(196,140,40,0.10) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(8,183,150.0.10) 0%, transparent 65%);
           pointer-events:none; z-index:0;
         }
         .inner { position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 2rem; }
@@ -383,7 +383,7 @@ export default function NewsAdminPage() {
           font-size: 22px; font-weight: 300; letter-spacing: 0.02em;
           color: #f0ece4;
         }
-        .top-brand span { color: #c48c28; font-style: italic; }
+        .top-brand span { color: #08b796; font-style: italic; }
         .logout-btn {
           font-family: 'DM Sans', sans-serif;
           font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
@@ -411,30 +411,30 @@ export default function NewsAdminPage() {
         }
         .section-label {
           font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase;
-          color: #c48c28; margin-bottom: 1.25rem;
+          color: #08b796; margin-bottom: 1.25rem;
           display: flex; align-items: center; gap: 8px;
         }
         .section-label::after {
-          content: ''; flex:1; height:1px; background: rgba(196,140,40,0.15);
+          content: ''; flex:1; height:1px; background: rgba(8,183,150,0.15);
         }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
         .grid-1 { margin-bottom: 12px; }
 
         /* add button */
         .add-btn {
-          background: linear-gradient(135deg, #c48c28, #9a650e);
+          background: #08b796;
           border: none; border-radius: 10px;
           padding: 11px 22px; cursor: pointer;
           font-family: 'DM Sans', sans-serif;
           font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
           color: #080808;
-          box-shadow: 0 4px 16px rgba(196,140,40,0.25);
+          box-shadow: 0 4px 16px rgba(8,183,150,0.15);
           transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
           position: relative; overflow: hidden;
           margin-top: 4px;
         }
         .add-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,0.14) 0%,transparent 55%); pointer-events:none; }
-        .add-btn:hover:not(:disabled) { opacity:0.9; transform:translateY(-1px); box-shadow:0 6px 24px rgba(196,140,40,0.35); }
+        .add-btn:hover:not(:disabled) { opacity:0.9; transform:translateY(-1px); box-shadow:0 6px 24px rgba(8,183,150,0.25); }
         .add-btn:active:not(:disabled) { transform:translateY(0); }
         .add-btn:disabled { opacity:0.4; cursor:not-allowed; }
 
@@ -445,7 +445,7 @@ export default function NewsAdminPage() {
         }
         .list-count {
           font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-          color: rgba(240,236,228,0.3);
+          color: rgba(0,77,77,0.3);
         }
         .news-list { list-style: none; padding:0; margin:0; }
         .news-item {
@@ -459,7 +459,7 @@ export default function NewsAdminPage() {
         .item-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
         .item-date { font-size:11px; font-weight:300; color:rgba(240,236,228,0.35); }
         .item-title { font-size:13px; font-weight:300; line-height:1.55; color:#f0ece4; }
-        .item-link { font-size:11px; color:rgba(196,140,40,0.55); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .item-link { font-size:11px; color:rgba(8,183,150,0.55); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
         /* icon buttons */
         .icon-btn {
@@ -476,12 +476,12 @@ export default function NewsAdminPage() {
         /* inline edit panel */
         .edit-panel {
           background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(196,140,40,0.18);
+          border: 1px solid rgba(8,183,150,018);
           border-radius: 14px; padding: 1.25rem; margin: 8px 0;
         }
         .edit-actions { display:flex; gap:8px; margin-top:12px; }
         .save-btn {
-          background: linear-gradient(135deg, #c48c28, #9a650e);
+          background: linear-gradient(135deg, #07a386, #045c4c);
           border:none; border-radius:8px;
           padding: 8px 18px; cursor:pointer;
           font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500;
@@ -511,7 +511,7 @@ export default function NewsAdminPage() {
         .toast.success { background:#1a1a1a; border:1px solid rgba(196,140,40,0.3); color:#f0ece4; }
         .toast.error   { background:#1a1a1a; border:1px solid rgba(220,60,60,0.35); color:#f09090; }
         .toast-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
-        .toast.success .toast-dot { background:#c48c28; }
+        .toast.success .toast-dot { background:#08b796; }
         .toast.error   .toast-dot { background:#e05050; }
 
         /* empty state */
