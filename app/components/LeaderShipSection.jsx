@@ -101,11 +101,11 @@ function MemberCard({ person, cardState, onAdvance, isActive }) {
 }
 
 export default function LeadershipSection({ leaders = [] }) {
-    const gridRef   = useRef(null)
-    const cardRefs  = useRef([])
+    const gridRef = useRef(null)
+    const cardRefs = useRef([])
     const [activeDash, setActiveDash] = useState(0)
-    const [openId,     setOpenId]     = useState(null)
-    const [openStep,   setOpenStep]   = useState(0)
+    const [openId, setOpenId] = useState(null)
+    const [openStep, setOpenStep] = useState(0)
 
     const handleAdvance = (id) => {
         if (openId !== id) {
@@ -148,7 +148,7 @@ export default function LeadershipSection({ leaders = [] }) {
             <div className="flex items-end justify-between mb-8">
                 <div>
                     <p className="text-[11px] tracking-[0.18em] uppercase text-[#6b6b6b] mb-2 font-medium">Our People</p>
-                    <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-none">Leadership</h2>
+                    <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-none">Leadership</h2>
                 </div>
                 <Link
                     href="/people/leadership"

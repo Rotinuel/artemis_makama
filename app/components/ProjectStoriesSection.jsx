@@ -98,7 +98,7 @@ function ProjectCard({ project }) {
           opacity: hovered ? 1 : 0.7,
         }}
       >
-        <h3 className="text-white text-[16px] md:text-[18px] font-light leading-snug">
+        <h3 className="text-white text-[16px] md:text-[18px]  leading-snug">
           {project.title}
         </h3>
         <span className="inline-block mt-3 text-[11px] tracking-[0.1em] uppercase text-white/80 border-b border-white/50 pb-0.5 transition-opacity duration-300"
@@ -119,7 +119,7 @@ export default function ProjectStoriesSection() {
         <div className="flex items-end justify-between mb-10 border-b border-[#e0e0e0] pb-6">
           <div>
             <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Portfolio</p>
-            <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a]">Project Stories</h2>
+            <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">Project Stories</h2>
           </div>
           <Link
             href="/projects/stories"

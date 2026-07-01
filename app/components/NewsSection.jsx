@@ -17,7 +17,7 @@ export default async function NewsSection() {
                     <p className="text-[11px] tracking-[0.18em] uppercase text-[#6b6b6b] mb-2 font-medium">
                         Latest
                     </p>
-                    <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-none">
+                    <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-none">
                         News
                     </h2>
                 </div>
@@ -47,7 +47,7 @@ export default async function NewsSection() {
                                     <span className="text-[11px] text-[#9b9b9b] flex-shrink-0 sm:w-32 tracking-wide">
                                         {item.date}
                                     </span>
-                                    <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity font-light min-w-0 truncate">
+                                    <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity  min-w-0 truncate">
                                         {item.title}
                                     </span>
                                 </Link>
@@ -90,7 +90,7 @@ export default async function NewsSection() {
 //                     <p className="text-[11px] tracking-[0.18em] uppercase text-[#6b6b6b] mb-2 font-medium">
 //                         Latest
 //                     </p>
-//                     <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-none">
+//                     <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-none">
 //                         News
 //                     </h2>
 //                 </div>
@@ -120,7 +120,7 @@ export default async function NewsSection() {
 //                                     <span className="text-[11px] text-[#9b9b9b] flex-shrink-0 sm:w-32 tracking-wide">
 //                                         {item.date}
 //                                     </span>
-//                                     <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity font-light min-w-0 break-words">
+//                                     <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity  min-w-0 break-words">
 //                                         {item.title}
 //                                     </span>
 //                                 </Link>
@@ -163,7 +163,7 @@ export default async function NewsSection() {
 // //                     <p className="text-[11px] tracking-[0.18em] uppercase text-[#6b6b6b] mb-2 font-medium">
 // //                         Latest
 // //                     </p>
-// //                     <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-none">
+// //                     <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-none">
 // //                         News
 // //                     </h2>
 // //                 </div>
@@ -193,7 +193,7 @@ export default async function NewsSection() {
 // //                                     <span className="text-[11px] text-[#9b9b9b] flex-shrink-0 sm:w-32 tracking-wide">
 // //                                         {item.date}
 // //                                     </span>
-// //                                     <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity font-light">
+// //                                     <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity ">
 // //                                         {item.title}
 // //                                     </span>
 // //                                 </Link>
@@ -234,7 +234,7 @@ export default async function NewsSection() {
 // // //             <div className="flex items-end justify-between mb-12 border-b border-[#e0e0e0] pb-6">
 // // //                 <div>
 // // //                     <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Latest</p>
-// // //                     <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a]">News</h2>
+// // //                     <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">News</h2>
 // // //                 </div>
 // // //                 <Link
 // // //                     href="/news-events"
@@ -258,7 +258,7 @@ export default async function NewsSection() {
 // // //               <span className="text-[12px] text-[#6b6b6b] flex-shrink-0 sm:w-28 pt-0.5">
 // // //                 {item.date}
 // // //               </span>
-// // //                             <span className="text-[15px] md:text-[16px] text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity font-light">
+// // //                             <span className="text-[15px] md:text-[16px] text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity ">
 // // //                 {item.title}
 // // //               </span>
 // // //                         </Link>
@@ -343,7 +343,7 @@ export default async function NewsSection() {
 // // // //       <div className="flex items-end justify-between mb-12 border-b border-[#e0e0e0] pb-6">
 // // // //         <div>
 // // // //           <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Latest</p>
-// // // //           <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a]">News</h2>
+// // // //           <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">News</h2>
 // // // //         </div>
 // // // //         <Link
 // // // //           href="/news-events"
@@ -362,7 +362,7 @@ export default async function NewsSection() {
 // // // //               className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-8 py-6 group"
 // // // //             >
 // // // //               <span className="text-[12px] text-[#6b6b6b] flex-shrink-0 sm:w-28 pt-0.5">{item.date}</span>
-// // // //               <span className="text-[15px] md:text-[16px] text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity font-light">
+// // // //               <span className="text-[15px] md:text-[16px] text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity ">
 // // // //                 {item.title}
 // // // //               </span>
 // // // //             </Link>

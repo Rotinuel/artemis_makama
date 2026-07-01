@@ -17,14 +17,14 @@ const ideas = [
   {
     type: 'Publication',
     title: 'AAL Forward 2025: The Evolution of' +
-        ' Neuroinclusive Workplaces',
+      ' Neuroinclusive Workplaces',
     href: '#',
     image: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600&q=80',
   },
   {
     type: 'Publication',
     title: 'Neuroinclusive Design Guide by AAL\'s Kay' +
-        ' Sargent',
+      ' Sargent',
     href: '#',
     image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=600&q=80',
   },
@@ -43,7 +43,7 @@ export default function IdeasSection() {
       <div className="flex items-end justify-between mb-10 border-b border-aal-border pb-6">
         <div>
           <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Insights</p>
-          <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a]">Ideas</h2>
+          <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">Ideas</h2>
         </div>
         <Link
           href="/ideas"
@@ -66,7 +66,7 @@ export default function IdeasSection() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)' }}>
               <div className="absolute bottom-0 left-0 p-8">
                 <span className="text-[10px] tracking-[0.1em] uppercase text-white/70 font-medium">{ideas[0].type}</span>
-                <h3 className="text-white text-[20px] md:text-[24px] font-light leading-snug mt-2 max-w-lg">
+                <h3 className="text-white text-[20px] md:text-[24px]  leading-snug mt-2 max-w-lg">
                   {ideas[0].title}
                 </h3>
               </div>
@@ -87,7 +87,7 @@ export default function IdeasSection() {
               </div>
               <div className="flex-1 min-w-0">
                 <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">{idea.type}</span>
-                <p className="text-[13px] text-[#1a1a1a] leading-snug mt-1 font-light group-hover:opacity-60 transition-opacity">
+                <p className="text-[13px] text-[#1a1a1a] leading-snug mt-1  group-hover:opacity-60 transition-opacity">
                   {idea.title}
                 </p>
               </div>

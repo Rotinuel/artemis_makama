@@ -23,7 +23,7 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[300] bg-[#111] text-white px-6 md:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <p className="text-[13px] text-[#ccc] leading-relaxed font-light">
+      <p className="text-[13px] text-[#ccc] leading-relaxed ">
         This site uses cookies.{' '}
         <Link href="#" className="text-white underline underline-offset-2 hover:opacity-70 transition-opacity">
           More Information

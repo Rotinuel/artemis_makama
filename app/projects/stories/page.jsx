@@ -37,7 +37,7 @@ export default function StoriesPage() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%)' }}>
               <div className="absolute bottom-0 left-0 p-8 md:p-12">
                 <span className="text-[10px] tracking-[0.12em] uppercase text-white/70 font-medium">{featured.category}</span>
-                <h2 className="text-white text-[24px] md:text-[40px] font-light mt-2 max-w-2xl leading-snug">{featured.title}</h2>
+                <h2 className="text-white text-[24px] md:text-[40px]  mt-2 max-w-2xl leading-snug">{featured.title}</h2>
                 <p className="text-white/60 text-[13px] mt-2">{featured.location}</p>
                 <span className="inline-block mt-5 text-white text-[11px] tracking-[0.12em] uppercase border-b border-white/50 pb-0.5">
                   Read Story
@@ -59,7 +59,7 @@ export default function StoriesPage() {
                 />
               </div>
               <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">{p.category}</span>
-              <h3 className="text-[16px] font-light text-[#1a1a1a] mt-1 leading-snug group-hover:opacity-60 transition-opacity">{p.title}</h3>
+              <h3 className="text-[16px]  text-[#1a1a1a] mt-1 leading-snug group-hover:opacity-60 transition-opacity">{p.title}</h3>
               <p className="text-[13px] text-[#6b6b6b] mt-1">{p.location}</p>
             </Link>
           ))}

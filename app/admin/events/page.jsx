@@ -6,9 +6,9 @@ import { createClient } from '@/utils/supabase/client'
 
 // ─── Date Range Picker ────────────────────────────────────────────────────────
 
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
-const SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa']
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 function formatDateRange(start, end) {
     if (!start) return ''
@@ -62,7 +62,7 @@ function DateRangePicker({ value, onChange }) {
     }
 
     function toISO(y, m, d) {
-        return `${y}-${String(m + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+        return `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`
     }
 
     function handleDayClick(iso) {
@@ -112,8 +112,8 @@ function DateRangePicker({ value, onChange }) {
                     {displayValue || 'Pick a date…'}
                 </span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, color: '#3a3530' }}>
-                    <rect x="1" y="2.5" width="12" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
-                    <path d="M1 6h12M4.5 1v3M9.5 1v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                    <rect x="1" y="2.5" width="12" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
+                    <path d="M1 6h12M4.5 1v3M9.5 1v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                 </svg>
             </button>
 
@@ -123,13 +123,13 @@ function DateRangePicker({ value, onChange }) {
                     <div className="dp-nav">
                         <button type="button" className="dp-nav-btn" onClick={prevMonth}>
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                <path d="M7.5 2L3.5 6l4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M7.5 2L3.5 6l4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                         <span className="dp-month-label">{MONTHS[viewMonth]} {viewYear}</span>
                         <button type="button" className="dp-nav-btn" onClick={nextMonth}>
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                <path d="M4.5 2l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M4.5 2l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -186,20 +186,20 @@ const EVENT_TYPES = ['Conference', 'Event', 'Trade Show', 'Webinar', 'Workshop']
 
 const TYPE_COLORS = {
     'Conference': '#2a3a2a',
-    'Event':      '#2a2a3a',
+    'Event': '#2a2a3a',
     'Trade Show': '#3a2a2a',
-    'Webinar':    '#2a3a3a',
-    'Workshop':   '#3a302a',
+    'Webinar': '#2a3a3a',
+    'Workshop': '#3a302a',
 }
 
 export default function AdminEventsPage() {
-    const [items, setItems]         = useState([])
-    const [loading, setLoading]     = useState(true)
-    const [saving, setSaving]       = useState(false)
+    const [items, setItems] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [saving, setSaving] = useState(false)
     const [editingId, setEditingId] = useState(null)
-    const [toast, setToast]         = useState(null)
-    const [form, setForm]           = useState({ title: '', type: 'Event', date: '', location: '', href: '' })
-    const [editForm, setEditForm]   = useState({})
+    const [toast, setToast] = useState(null)
+    const [form, setForm] = useState({ title: '', type: 'Event', date: '', location: '', href: '' })
+    const [editForm, setEditForm] = useState({})
 
     useEffect(() => { fetchItems() }, [])
 
@@ -259,7 +259,7 @@ export default function AdminEventsPage() {
         if (swapIdx < 0 || swapIdx >= items.length) return
         const next = [...items]
         const posA = next[idx].position, posB = next[swapIdx].position
-        ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
+            ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
         next[idx].position = posA; next[swapIdx].position = posB
         setItems(next)
         const supabase = createClient()
@@ -290,7 +290,7 @@ export default function AdminEventsPage() {
                         </div>
                         <Link href="/admin/news" className="back-btn">
                             <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                                <path d="M4 1L1 5M1 5L4 9M1 5H13" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M4 1L1 5M1 5L4 9M1 5H13" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             News Admin
                         </Link>
@@ -329,14 +329,14 @@ export default function AdminEventsPage() {
                             <div className="field-group">
                                 <label className="field-label">Location</label>
                                 <input type="text" placeholder="Chicago, IL" value={form.location}
-                                       onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
-                                       className="text-input" />
+                                    onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
+                                    className="text-input" />
                             </div>
                             <div className="field-group">
                                 <label className="field-label">Link <span style={{ color: '#2e2e2e' }}>(optional)</span></label>
                                 <input type="text" placeholder="https://…" value={form.href}
-                                       onChange={e => setForm(f => ({ ...f, href: e.target.value }))}
-                                       className="text-input" />
+                                    onChange={e => setForm(f => ({ ...f, href: e.target.value }))}
+                                    className="text-input" />
                             </div>
                         </div>
 
@@ -344,7 +344,7 @@ export default function AdminEventsPage() {
                             {saving ? <span className="btn-loading" /> : (
                                 <>
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                        <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                                        <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                     </svg>
                                     Add Event
                                 </>
@@ -361,8 +361,8 @@ export default function AdminEventsPage() {
                         {items.length === 0 ? (
                             <div className="empty-state">
                                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ marginBottom: '12px', opacity: 0.2 }}>
-                                    <rect x="3" y="7" width="30" height="26" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-                                    <path d="M3 14h30M12 3v8M24 3v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                                    <rect x="3" y="7" width="30" height="26" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                                    <path d="M3 14h30M12 3v8M24 3v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 </svg>
                                 <p>No events yet.</p>
                             </div>
@@ -413,12 +413,12 @@ export default function AdminEventsPage() {
                                             <div className="event-row">
                                                 <div className="event-drag">
                                                     <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-                                                        <circle cx="3" cy="3" r="1.2" fill="currentColor"/>
-                                                        <circle cx="9" cy="3" r="1.2" fill="currentColor"/>
-                                                        <circle cx="3" cy="7" r="1.2" fill="currentColor"/>
-                                                        <circle cx="9" cy="7" r="1.2" fill="currentColor"/>
-                                                        <circle cx="3" cy="11" r="1.2" fill="currentColor"/>
-                                                        <circle cx="9" cy="11" r="1.2" fill="currentColor"/>
+                                                        <circle cx="3" cy="3" r="1.2" fill="currentColor" />
+                                                        <circle cx="9" cy="3" r="1.2" fill="currentColor" />
+                                                        <circle cx="3" cy="7" r="1.2" fill="currentColor" />
+                                                        <circle cx="9" cy="7" r="1.2" fill="currentColor" />
+                                                        <circle cx="3" cy="11" r="1.2" fill="currentColor" />
+                                                        <circle cx="9" cy="11" r="1.2" fill="currentColor" />
                                                     </svg>
                                                 </div>
 
@@ -436,22 +436,22 @@ export default function AdminEventsPage() {
                                                 <div className="event-actions">
                                                     <button onClick={() => moveItem(item.id, -1)} disabled={i === 0} className="icon-btn" title="Move up">
                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                            <path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            <path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                                                         </svg>
                                                     </button>
                                                     <button onClick={() => moveItem(item.id, 1)} disabled={i === items.length - 1} className="icon-btn" title="Move down">
                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                            <path d="M6 2v8M10 6l-4 4-4-4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            <path d="M6 2v8M10 6l-4 4-4-4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                                                         </svg>
                                                     </button>
                                                     <button onClick={() => startEdit(item)} className="icon-btn" title="Edit">
                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                            <path d="M8.5 1.5l2 2L3 11H1v-2L8.5 1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
+                                                            <path d="M8.5 1.5l2 2L3 11H1v-2L8.5 1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
                                                         </svg>
                                                     </button>
                                                     <button onClick={() => deleteItem(item.id)} className="icon-btn delete-btn" title="Delete">
                                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                            <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                                                            <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
                                                         </svg>
                                                     </button>
                                                 </div>
@@ -469,7 +469,7 @@ export default function AdminEventsPage() {
                 <div className={`toast ${toast.type === 'error' ? 'toast-error' : ''}`}>
                     {toast.type !== 'error' && (
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
-                            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     )}
                     {toast.msg}
@@ -1655,7 +1655,7 @@ const styles = `
 // //     return (
 // //         <div className="max-w-3xl mx-auto px-6 py-10">
 // //             <div className="flex items-center justify-between mb-8">
-// //                 <h1 className="text-[24px] font-light text-[#1a1a1a]">Events Admin</h1>
+// //                 <h1 className="text-[24px]  text-[#1a1a1a]">Events Admin</h1>
 // //                 <Link
 // //                     href="/admin/news"
 // //                     className="text-[12px] uppercase tracking-wide text-[#6b6b6b] border border-[#e0e0e0] px-4 py-2 rounded hover:bg-[#f5f5f5] transition-colors"
@@ -1780,7 +1780,7 @@ const styles = `
 // //                                         <span className="text-[11px] text-[#6b6b6b]">{item.date}</span>
 // //                                         {item.location && <span className="text-[11px] text-[#6b6b6b]">· {item.location}</span>}
 // //                                     </div>
-// //                                     <p className="text-[13px] text-[#1a1a1a] leading-snug font-light">{item.title}</p>
+// //                                     <p className="text-[13px] text-[#1a1a1a] leading-snug ">{item.title}</p>
 // //                                 </div>
 // //                                 <div className="flex items-center gap-1 flex-shrink-0">
 // //                                     <button onClick={() => moveItem(item.id, -1)} disabled={i === 0}

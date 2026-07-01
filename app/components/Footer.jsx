@@ -66,7 +66,7 @@ export default function Footer() {
                 <text x="0" y="21" fontFamily="Helvetica Neue, Helvetica, Arial, sans-serif" fontSize="26" fontWeight="700" fill="white" letterSpacing="-1">AAL</text>
               </svg>
             </Link>
-            <p className="text-[13px] text-[#888] leading-relaxed mb-6 font-light">
+            <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
               A global design, architecture, engineering and planning firm with 27 studios on three continents.
             </p>
             {/* Social */}

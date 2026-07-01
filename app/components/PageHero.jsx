@@ -27,11 +27,11 @@ export default function PageHero({ label, title, description, image, dark = fals
             {label}
           </p>
         )}
-        {/* <h1 className={`text-[24px] md:text-[56px] lg:text-[68px] font-light leading-none mb-4 ${image ? 'text-white' : dark ? 'text-white' : 'text-[#1a1a1a]'}`}>
+        {/* <h1 className={`text-[24px] md:text-[56px] lg:text-[68px]  leading-none mb-4 ${image ? 'text-white' : dark ? 'text-white' : 'text-[#1a1a1a]'}`}>
           {title}
         </h1> */}
         {description && (
-          <p className={`text-[15px] md:text-[17px] font-light leading-relaxed max-w-2xl ${image ? 'text-white/80' : dark ? 'text-[#aaa]' : 'text-[#6b6b6b]'}`}>
+          <p className={`text-[15px] md:text-[17px]  leading-relaxed max-w-2xl ${image ? 'text-white/80' : dark ? 'text-[#aaa]' : 'text-[#6b6b6b]'}`}>
             {description}
           </p>
         )}

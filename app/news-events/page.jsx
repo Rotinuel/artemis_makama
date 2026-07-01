@@ -6,39 +6,39 @@ import PageHero from '../components/PageHero'
 import NewsEventsClient from './NewsEventsClient'
 
 export const metadata = {
-  title: 'News + Events',
-  description: 'The latest news, press coverage, and events.',
+    title: 'News + Events',
+    description: 'The latest news, press coverage, and events.',
 }
 
 export default async function NewsEventsPage() {
-  const supabase = await createClient()
+    const supabase = await createClient()
 
-  const { data: newsItems } = await supabase
-      .from('news_items')
-      .select('*')
-      .order('position', { ascending: true })
+    const { data: newsItems } = await supabase
+        .from('news_items')
+        .select('*')
+        .order('position', { ascending: true })
 
-  const { data: events } = await supabase
-      .from('events')
-      .select('*')
-      .order('position', { ascending: true })
+    const { data: events } = await supabase
+        .from('events')
+        .select('*')
+        .order('position', { ascending: true })
 
-  return (
-      <>
-        <Navigation />
-        <PageHero
-            label="Latest"
-            title="News + Events"
-            description="The latest news, press coverage, project announcements, and upcoming events."
-        />
-        <NewsEventsClient
-            newsItems={newsItems || []}
-            events={events || []}
-        />
-        <Footer />
-        <CookieBanner />
-      </>
-  )
+    return (
+        <>
+            <Navigation />
+            <PageHero
+                label="Latest"
+                title="News + Events"
+                description="The latest news, press coverage, project announcements, and upcoming events."
+            />
+            <NewsEventsClient
+                newsItems={newsItems || []}
+                events={events || []}
+            />
+            <Footer />
+            <CookieBanner />
+        </>
+    )
 }
 
 
@@ -105,7 +105,7 @@ export default async function NewsEventsPage() {
 //         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
 //           {/* Main news */}
 //           <div className="lg:col-span-2">
-//             <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">News</h2>
+//             <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">News</h2>
 //
 //             {/* Featured first item */}
 //             <Link href="#" className="block group mb-10">
@@ -114,7 +114,7 @@ export default async function NewsEventsPage() {
 //               </div>
 //               <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium">{newsItems[0].type}</span>
 //               <span className="text-[12px] text-[#6b6b6b] ml-3">{newsItems[0].date}</span>
-//               <h3 className="text-[20px] font-light text-[#1a1a1a] mt-2 leading-snug group-hover:opacity-60 transition-opacity">{newsItems[0].title}</h3>
+//               <h3 className="text-[20px]  text-[#1a1a1a] mt-2 leading-snug group-hover:opacity-60 transition-opacity">{newsItems[0].title}</h3>
 //             </Link>
 //
 //             {/* Remaining as list */}
@@ -131,7 +131,7 @@ export default async function NewsEventsPage() {
 //                         <span className="text-[#ddd]">·</span>
 //                         <span className="text-[11px] text-[#6b6b6b]">{item.date}</span>
 //                       </div>
-//                       <p className="text-[14px] text-[#1a1a1a] font-light leading-snug group-hover:opacity-60 transition-opacity">{item.title}</p>
+//                       <p className="text-[14px] text-[#1a1a1a]  leading-snug group-hover:opacity-60 transition-opacity">{item.title}</p>
 //                     </div>
 //                   </Link>
 //                 </li>
@@ -141,7 +141,7 @@ export default async function NewsEventsPage() {
 //
 //           {/* Sidebar: Upcoming Events */}
 //           <div>
-//             <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">Upcoming Events</h2>
+//             <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">Upcoming Events</h2>
 //             <ul className="space-y-6">
 //               {upcomingEvents.map((event, i) => (
 //                 <li key={i} className="border-b border-[#f0f0f0] pb-6 last:border-b-0 last:pb-0">
@@ -158,7 +158,7 @@ export default async function NewsEventsPage() {
 //             {/* Newsletter */}
 //             <div className="mt-12 bg-[#f5f5f5] p-6">
 //               <h3 className="text-[16px] font-medium text-[#1a1a1a] mb-2">Stay Connected</h3>
-//               <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 font-light">Get the latest HOK news and design insights delivered to your inbox.</p>
+//               <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 ">Get the latest HOK news and design insights delivered to your inbox.</p>
 //               <input
 //                 type="email"
 //                 placeholder="Your email address"

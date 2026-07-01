@@ -8,10 +8,10 @@ export default function CultureSection() {
           {/* Content */}
           <div>
             <p className="text-[11px] tracking-[0.14em] uppercase text-aal-gray mb-4 font-medium">Our Team</p>
-            <h2 className="text-[28px] md:text-[38px] font-light text-white leading-tight mb-6">
+            <h2 className="text-[28px] md:text-[38px]  text-white leading-tight mb-6">
               Culture
             </h2>
-            <p className="text-[15px] md:text-[16px] text-aal-gray-light leading-relaxed mb-8 font-light">
+            <p className="text-[15px] md:text-[16px] text-aal-gray-light leading-relaxed mb-8 ">
               We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special. We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge, research and innovations.
             </p>
             {/* <Link

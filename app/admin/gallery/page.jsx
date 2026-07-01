@@ -7,8 +7,10 @@ import { createClient } from '@/utils/supabase/client'
 function Field({ label, children }) {
     return (
         <div>
-            <label style={{ display:'block', fontSize:10, fontWeight:500, letterSpacing:'0.22em',
-                textTransform:'uppercase', color:'rgba(240,236,228,0.32)', marginBottom:6 }}>
+            <label style={{
+                display: 'block', fontSize: 10, fontWeight: 500, letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'rgba(240,236,228,0.32)', marginBottom: 6
+            }}>
                 {label}
             </label>
             {children}
@@ -17,10 +19,10 @@ function Field({ label, children }) {
 }
 
 const inputStyle = {
-    width:'100%', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.09)',
-    borderRadius:10, padding:'10px 13px', fontFamily:'inherit', fontSize:13, fontWeight:300,
-    color:'#f0ece4', outline:'none', transition:'border-color 0.2s, background 0.2s',
-    boxSizing:'border-box',
+    width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)',
+    borderRadius: 10, padding: '10px 13px', fontFamily: 'inherit', fontSize: 13, fontWeight: 300,
+    color: '#f0ece4', outline: 'none', transition: 'border-color 0.2s, background 0.2s',
+    boxSizing: 'border-box',
 }
 
 function StyledInput({ style, ...props }) {
@@ -32,7 +34,7 @@ function StyledInput({ style, ...props }) {
             onBlur={e => { setFocused(false); props.onBlur?.(e) }}
             style={{
                 ...inputStyle,
-                ...(focused ? { borderColor:'rgba(196,140,40,0.5)', background:'rgba(196,140,40,0.05)', boxShadow:'0 0 0 3px rgba(196,140,40,0.08)' } : {}),
+                ...(focused ? { borderColor: 'rgba(196,140,40,0.5)', background: 'rgba(196,140,40,0.05)', boxShadow: '0 0 0 3px rgba(196,140,40,0.08)' } : {}),
                 ...style,
             }}
         />
@@ -41,14 +43,14 @@ function StyledInput({ style, ...props }) {
 
 export default function AdminGalleryPage() {
     const [categories, setCategories] = useState([])
-    const [images, setImages]         = useState([])
+    const [images, setImages] = useState([])
     const [selectedCat, setSelectedCat] = useState(null)
-    const [loading, setLoading]       = useState(true)
-    const [uploading, setUploading]   = useState(false)
-    const [toast, setToast]           = useState(null)
-    const [form, setForm]             = useState({ title: '', description: '' })
-    const [dragOver, setDragOver]     = useState(false)
-    const fileRef                     = useRef(null)
+    const [loading, setLoading] = useState(true)
+    const [uploading, setUploading] = useState(false)
+    const [toast, setToast] = useState(null)
+    const [form, setForm] = useState({ title: '', description: '' })
+    const [dragOver, setDragOver] = useState(false)
+    const fileRef = useRef(null)
 
     useEffect(() => { fetchAll() }, [])
     useEffect(() => { if (selectedCat) fetchImages(selectedCat) }, [selectedCat])
@@ -89,7 +91,7 @@ export default function AdminGalleryPage() {
 
         for (let i = 0; i < files.length; i++) {
             const file = files[i]
-            const ext  = file.name.split('.').pop()
+            const ext = file.name.split('.').pop()
             const path = `${selectedCat}/${Date.now()}-${i}.${ext}`
 
             const { error: uploadError } = await supabase.storage
@@ -131,7 +133,7 @@ export default function AdminGalleryPage() {
         const next = [...images]
         const posA = next[idx].position
         const posB = next[swapIdx].position
-        ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
+            ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
         next[idx].position = posA
         next[swapIdx].position = posB
         setImages(next)
@@ -141,9 +143,11 @@ export default function AdminGalleryPage() {
     }
 
     if (loading) return (
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'center', minHeight:'100vh',
-            background:'#0b0b0b', fontFamily:'DM Sans, sans-serif', fontSize:13,
-            color:'rgba(240,236,228,0.3)', letterSpacing:'0.06em' }}>
+        <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh',
+            background: '#0b0b0b', fontFamily: 'DM Sans, sans-serif', fontSize: 13,
+            color: 'rgba(240,236,228,0.3)', letterSpacing: '0.06em'
+        }}>
             Loading…
         </div>
     )
@@ -423,9 +427,9 @@ export default function AdminGalleryPage() {
                                         <p className="drop-uploading">Uploading…</p>
                                     ) : (
                                         <>
-                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ display:'block', margin:'0 auto 12px' }}>
-                                                <path d="M12 16V8M12 8l-3 3M12 8l3 3" stroke="#f0ece4" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                                                <path d="M3 16.5V18a2 2 0 002 2h14a2 2 0 002-2v-1.5" stroke="#f0ece4" strokeWidth="1.4" strokeLinecap="round"/>
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ display: 'block', margin: '0 auto 12px' }}>
+                                                <path d="M12 16V8M12 8l-3 3M12 8l3 3" stroke="#f0ece4" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M3 16.5V18a2 2 0 002 2h14a2 2 0 002-2v-1.5" stroke="#f0ece4" strokeWidth="1.4" strokeLinecap="round" />
                                             </svg>
                                             <p className="drop-primary">Drop images here or click to browse</p>
                                             <p className="drop-secondary">JPG, PNG, WebP — multiple files supported</p>
@@ -434,7 +438,7 @@ export default function AdminGalleryPage() {
                                 </div>
                                 <input
                                     ref={fileRef} type="file" accept="image/*" multiple
-                                    style={{ display:'none' }}
+                                    style={{ display: 'none' }}
                                     onChange={e => uploadImages([...e.target.files])}
                                 />
                             </div>
@@ -603,7 +607,7 @@ export default function AdminGalleryPage() {
 //         <div className="max-w-5xl mx-auto px-6 py-10">
 //             {/* Header */}
 //             <div className="flex items-center justify-between mb-8">
-//                 <h1 className="text-[24px] font-light text-[#1a1a1a]">Gallery Admin</h1>
+//                 <h1 className="text-[24px]  text-[#1a1a1a]">Gallery Admin</h1>
 //                 <div className="flex items-center gap-3">
 //                     <Link
 //                         href="/admin/gallery/categories"
@@ -873,7 +877,7 @@ export default function AdminGalleryPage() {
 // //         <div className="max-w-5xl mx-auto px-6 py-10">
 // //             {/* Header */}
 // //             <div className="flex items-center justify-between mb-8">
-// //                 <h1 className="text-[24px] font-light text-[#1a1a1a]">Gallery Admin</h1>
+// //                 <h1 className="text-[24px]  text-[#1a1a1a]">Gallery Admin</h1>
 // //                 <div className="flex items-center gap-3">
 // //                     <Link
 // //                         href="/admin/gallery/categories"

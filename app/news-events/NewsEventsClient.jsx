@@ -12,7 +12,7 @@ export default function NewsEventsClient({ newsItems, events }) {
         ? newsItems
         : newsItems.filter(item => item.type === activeFilter)
 
-    const featured  = filtered[0]
+    const featured = filtered[0]
     const remaining = filtered.slice(1)
 
     return (
@@ -24,11 +24,10 @@ export default function NewsEventsClient({ newsItems, events }) {
                         <button
                             key={f}
                             onClick={() => setActiveFilter(f)}
-                            className={`text-[12px] tracking-wide py-4 px-4 border-b-2 flex-shrink-0 transition-colors ${
-                                activeFilter === f
+                            className={`text-[12px] tracking-wide py-4 px-4 border-b-2 flex-shrink-0 transition-colors ${activeFilter === f
                                     ? 'border-[#1a1a1a] text-[#1a1a1a] font-medium'
                                     : 'border-transparent text-[#6b6b6b] hover:text-[#1a1a1a]'
-                            }`}
+                                }`}
                         >
                             {f}
                         </button>
@@ -41,7 +40,7 @@ export default function NewsEventsClient({ newsItems, events }) {
 
                     {/* ── Main news ── */}
                     <div className="lg:col-span-2">
-                        <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
+                        <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
                             News
                         </h2>
 
@@ -66,13 +65,13 @@ export default function NewsEventsClient({ newsItems, events }) {
                                     </div>
                                 )}
                                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium">
-                    {featured.type}
-                  </span>
+                                    <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium">
+                                        {featured.type}
+                                    </span>
                                     <span className="text-[#ddd]">·</span>
                                     <span className="text-[12px] text-[#6b6b6b]">{featured.date}</span>
                                 </div>
-                                <h3 className="text-[20px] font-light text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity">
+                                <h3 className="text-[20px]  text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity">
                                     {featured.title}
                                 </h3>
                             </Link>
@@ -95,13 +94,13 @@ export default function NewsEventsClient({ newsItems, events }) {
                                             )}
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 mb-1">
-                          <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">
-                            {item.type}
-                          </span>
+                                                    <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">
+                                                        {item.type}
+                                                    </span>
                                                     <span className="text-[#ddd]">·</span>
                                                     <span className="text-[11px] text-[#6b6b6b]">{item.date}</span>
                                                 </div>
-                                                <p className="text-[14px] text-[#1a1a1a] font-light leading-snug group-hover:opacity-60 transition-opacity">
+                                                <p className="text-[14px] text-[#1a1a1a]  leading-snug group-hover:opacity-60 transition-opacity">
                                                     {item.title}
                                                 </p>
                                             </div>
@@ -115,7 +114,7 @@ export default function NewsEventsClient({ newsItems, events }) {
                     {/* ── Sidebar ── */}
                     <div>
                         {/* Upcoming Events */}
-                        <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
+                        <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
                             Upcoming Events
                         </h2>
 
@@ -126,9 +125,9 @@ export default function NewsEventsClient({ newsItems, events }) {
                                 {events.map(event => (
                                     <li key={event.id} className="border-b border-[#f0f0f0] pb-6 last:border-b-0 last:pb-0">
                                         <Link href={event.href || '#'} className="group block">
-                      <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium block mb-1">
-                        {event.type}
-                      </span>
+                                            <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium block mb-1">
+                                                {event.type}
+                                            </span>
                                             <p className="text-[14px] font-medium text-[#1a1a1a] leading-snug mb-2 group-hover:opacity-60 transition-opacity">
                                                 {event.title}
                                             </p>
@@ -145,7 +144,7 @@ export default function NewsEventsClient({ newsItems, events }) {
                         {/* Newsletter */}
                         <div className="bg-[#f5f5f5] p-6">
                             <h3 className="text-[16px] font-medium text-[#1a1a1a] mb-2">Stay Connected</h3>
-                            <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 font-light">
+                            <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 ">
                                 Get the latest news and design insights delivered to your inbox.
                             </p>
                             <input

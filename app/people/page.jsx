@@ -54,13 +54,13 @@ export default function PeoplePage() {
       <section className="px-6 md:px-10 py-16 max-w-400 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
           <div>
-            <h2 className="text-[28px] md:text-[40px] font-light text-[#1a1a1a] leading-tight mb-6">
+            <h2 className="text-[28px] md:text-[40px]  text-[#1a1a1a] leading-tight mb-6">
               Future-forward thinkers and designers
             </h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 font-light">
+            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 ">
               Artemis Atelier Ltd is a collective of future-forward thinkers and designers who are driven to face the critical challenges of our time. We are dedicated to improving people&apos;s lives, serving our clients and healing the planet.
             </p>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed font-light">
+            <p className="text-[15px] text-[#6b6b6b] leading-relaxed ">
               Together, we cultivate a culture of design excellence at the confluence of art and science, blending the power of creative expression with a clear sense of purpose.
             </p>
           </div>
@@ -85,8 +85,8 @@ export default function PeoplePage() {
           </div>
           <div>
             <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-3 font-medium">Our Studios</p>
-            <h2 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] mb-5">Culture</h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 font-light">
+            <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a] mb-5">Culture</h2>
+            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 ">
               We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special. We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge.
             </p>
             {/* <Link href="/people/culture" className="text-[12px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity">

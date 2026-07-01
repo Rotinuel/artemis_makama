@@ -7,28 +7,28 @@ import { createClient } from '@/utils/supabase/client'
 const TYPES = ['Firm News', 'Project News', 'Media Coverage', 'Award', 'Event']
 
 const TYPE_COLORS = {
-  'Firm News':     { bg: 'rgba(196,140,40,0.12)',  text: '#c48c28' },
-  'Project News':  { bg: 'rgba(80,140,200,0.12)',  text: '#5b9fd4' },
-  'Media Coverage':{ bg: 'rgba(120,180,120,0.12)', text: '#6db86d' },
-  'Award':         { bg: 'rgba(200,100,180,0.12)', text: '#d070c0' },
-  'Event':         { bg: 'rgba(200,120,80,0.12)',  text: '#d47850' },
+  'Firm News': { bg: 'rgba(196,140,40,0.12)', text: '#c48c28' },
+  'Project News': { bg: 'rgba(80,140,200,0.12)', text: '#5b9fd4' },
+  'Media Coverage': { bg: 'rgba(120,180,120,0.12)', text: '#6db86d' },
+  'Award': { bg: 'rgba(200,100,180,0.12)', text: '#d070c0' },
+  'Event': { bg: 'rgba(200,120,80,0.12)', text: '#d47850' },
 }
 
 /* ─── tiny date-picker helpers ─── */
-const MONTHS = ['January','February','March','April','May','June',
-  'July','August','September','October','November','December']
-const DAYS   = ['Su','Mo','Tu','We','Th','Fr','Sa']
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December']
+const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 function formatDisplay(dateStr) {
   if (!dateStr) return ''
   const [y, m, d] = dateStr.split('-').map(Number)
-  return `${MONTHS[m-1]} ${d}, ${y}`
+  return `${MONTHS[m - 1]} ${d}, ${y}`
 }
 
 function DatePicker({ value, onChange }) {
-  const [open, setOpen]     = useState(false)
-  const [view, setView]     = useState(() => {
-    if (value) { const [y,m] = value.split('-').map(Number); return { year:y, month:m-1 } }
+  const [open, setOpen] = useState(false)
+  const [view, setView] = useState(() => {
+    if (value) { const [y, m] = value.split('-').map(Number); return { year: y, month: m - 1 } }
     const n = new Date(); return { year: n.getFullYear(), month: n.getMonth() }
   })
   const ref = useRef(null)
@@ -40,193 +40,195 @@ function DatePicker({ value, onChange }) {
   }, [])
 
   function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate() }
-  function firstDay(y, m)    { return new Date(y, m, 1).getDay() }
+  function firstDay(y, m) { return new Date(y, m, 1).getDay() }
 
   function pickDay(d) {
-    const m = String(view.month + 1).padStart(2,'0')
-    const dd = String(d).padStart(2,'0')
+    const m = String(view.month + 1).padStart(2, '0')
+    const dd = String(d).padStart(2, '0')
     onChange(`${view.year}-${m}-${dd}`)
     setOpen(false)
   }
 
   function prevMonth() {
-    setView(v => v.month === 0 ? { year: v.year-1, month: 11 } : { ...v, month: v.month-1 })
+    setView(v => v.month === 0 ? { year: v.year - 1, month: 11 } : { ...v, month: v.month - 1 })
   }
   function nextMonth() {
-    setView(v => v.month === 11 ? { year: v.year+1, month: 0 } : { ...v, month: v.month+1 })
+    setView(v => v.month === 11 ? { year: v.year + 1, month: 0 } : { ...v, month: v.month + 1 })
   }
 
   const total = daysInMonth(view.year, view.month)
   const first = firstDay(view.year, view.month)
-  const cells = [...Array(first).fill(null), ...Array.from({length: total}, (_,i) => i+1)]
+  const cells = [...Array(first).fill(null), ...Array.from({ length: total }, (_, i) => i + 1)]
 
   const [selY, selM, selD] = value ? value.split('-').map(Number) : []
 
   return (
-      <div ref={ref} style={{ position:'relative' }}>
-        <button
-            type="button"
-            onClick={() => setOpen(o => !o)}
-            style={{
-              width:'100%', display:'flex', alignItems:'center', gap:8,
-              background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.09)',
-              borderRadius:10, padding:'10px 13px', cursor:'pointer',
-              fontFamily:'inherit', fontSize:13, fontWeight:300,
-              color: value ? '#f0ece4' : 'rgba(240,236,228,0.25)',
-              transition:'border-color 0.2s, background 0.2s',
-              textAlign:'left',
-            }}
-        >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{flexShrink:0,opacity:0.45}}>
-            <rect x="1" y="3" width="14" height="12" rx="2" stroke="#f0ece4" strokeWidth="1.3"/>
-            <path d="M1 7h14" stroke="#f0ece4" strokeWidth="1.3"/>
-            <path d="M5 1v3M11 1v3" stroke="#f0ece4" strokeWidth="1.3" strokeLinecap="round"/>
-          </svg>
-          {value ? formatDisplay(value) : 'Pick a date'}
-        </button>
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', gap: 8,
+          background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)',
+          borderRadius: 10, padding: '10px 13px', cursor: 'pointer',
+          fontFamily: 'inherit', fontSize: 13, fontWeight: 300,
+          color: value ? '#f0ece4' : 'rgba(240,236,228,0.25)',
+          transition: 'border-color 0.2s, background 0.2s',
+          textAlign: 'left',
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: 0.45 }}>
+          <rect x="1" y="3" width="14" height="12" rx="2" stroke="#f0ece4" strokeWidth="1.3" />
+          <path d="M1 7h14" stroke="#f0ece4" strokeWidth="1.3" />
+          <path d="M5 1v3M11 1v3" stroke="#f0ece4" strokeWidth="1.3" strokeLinecap="round" />
+        </svg>
+        {value ? formatDisplay(value) : 'Pick a date'}
+      </button>
 
-        {open && (
-            <div style={{
-              position:'absolute', top:'calc(100% + 8px)', left:0, zIndex:100,
-              background:'#111', border:'1px solid rgba(255,255,255,0.1)',
-              borderRadius:14, padding:'14px 14px 10px',
-              boxShadow:'0 20px 60px rgba(0,0,0,0.7)',
-              width:240,
-            }}>
-              {/* Month nav */}
-              <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:12 }}>
-                <button onClick={prevMonth} style={navBtn}>‹</button>
-                <span style={{ fontSize:12, fontWeight:500, letterSpacing:'0.06em', color:'#f0ece4' }}>
+      {open && (
+        <div style={{
+          position: 'absolute', top: 'calc(100% + 8px)', left: 0, zIndex: 100,
+          background: '#111', border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: 14, padding: '14px 14px 10px',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
+          width: 240,
+        }}>
+          {/* Month nav */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <button onClick={prevMonth} style={navBtn}>‹</button>
+            <span style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.06em', color: '#f0ece4' }}>
               {MONTHS[view.month]} {view.year}
             </span>
-                <button onClick={nextMonth} style={navBtn}>›</button>
+            <button onClick={nextMonth} style={navBtn}>›</button>
+          </div>
+          {/* Day headers */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 2, marginBottom: 4 }}>
+            {DAYS.map(d => (
+              <div key={d} style={{ textAlign: 'center', fontSize: 9, letterSpacing: '0.08em', color: 'rgba(240,236,228,0.3)', padding: '2px 0' }}>
+                {d}
               </div>
-              {/* Day headers */}
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:2, marginBottom:4 }}>
-                {DAYS.map(d => (
-                    <div key={d} style={{ textAlign:'center', fontSize:9, letterSpacing:'0.08em', color:'rgba(240,236,228,0.3)', padding:'2px 0' }}>
-                      {d}
-                    </div>
-                ))}
-              </div>
-              {/* Cells */}
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:2 }}>
-                {cells.map((d, i) => {
-                  const isSelected = d && selY === view.year && selM === view.month+1 && selD === d
-                  return (
-                      <button
-                          key={i}
-                          onClick={() => d && pickDay(d)}
-                          disabled={!d}
-                          style={{
-                            width:'100%', aspectRatio:'1', display:'flex', alignItems:'center', justifyContent:'center',
-                            fontSize:11, borderRadius:6, border:'none', cursor: d ? 'pointer' : 'default',
-                            background: isSelected ? '#c48c28' : 'transparent',
-                            color: isSelected ? '#080808' : d ? '#f0ece4' : 'transparent',
-                            fontWeight: isSelected ? 500 : 300,
-                            transition:'background 0.15s',
-                          }}
-                          onMouseEnter={e => { if (d && !isSelected) e.currentTarget.style.background = 'rgba(196,140,40,0.18)' }}
-                          onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
-                      >
-                        {d || ''}
-                      </button>
-                  )
-                })}
-              </div>
-            </div>
-        )}
-      </div>
+            ))}
+          </div>
+          {/* Cells */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 2 }}>
+            {cells.map((d, i) => {
+              const isSelected = d && selY === view.year && selM === view.month + 1 && selD === d
+              return (
+                <button
+                  key={i}
+                  onClick={() => d && pickDay(d)}
+                  disabled={!d}
+                  style={{
+                    width: '100%', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 11, borderRadius: 6, border: 'none', cursor: d ? 'pointer' : 'default',
+                    background: isSelected ? '#c48c28' : 'transparent',
+                    color: isSelected ? '#080808' : d ? '#f0ece4' : 'transparent',
+                    fontWeight: isSelected ? 500 : 300,
+                    transition: 'background 0.15s',
+                  }}
+                  onMouseEnter={e => { if (d && !isSelected) e.currentTarget.style.background = 'rgba(196,140,40,0.18)' }}
+                  onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
+                >
+                  {d || ''}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
 const navBtn = {
-  background:'none', border:'none', cursor:'pointer',
-  color:'rgba(240,236,228,0.5)', fontSize:18, lineHeight:1,
-  padding:'0 4px', transition:'color 0.15s',
+  background: 'none', border: 'none', cursor: 'pointer',
+  color: 'rgba(240,236,228,0.5)', fontSize: 18, lineHeight: 1,
+  padding: '0 4px', transition: 'color 0.15s',
 }
 
 /* ─── Field components ─── */
 function Field({ label, children }) {
   return (
-      <div>
-        <label style={{ display:'block', fontSize:10, fontWeight:500, letterSpacing:'0.22em',
-          textTransform:'uppercase', color:'rgba(240,236,228,0.32)', marginBottom:6 }}>
-          {label}
-        </label>
-        {children}
-      </div>
+    <div>
+      <label style={{
+        display: 'block', fontSize: 10, fontWeight: 500, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'rgba(240,236,228,0.32)', marginBottom: 6
+      }}>
+        {label}
+      </label>
+      {children}
+    </div>
   )
 }
 
 const inputStyle = {
-  width:'100%', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.09)',
-  borderRadius:10, padding:'10px 13px', fontFamily:'inherit', fontSize:13, fontWeight:300,
-  color:'#f0ece4', outline:'none', transition:'border-color 0.2s, background 0.2s',
-  boxSizing:'border-box',
+  width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)',
+  borderRadius: 10, padding: '10px 13px', fontFamily: 'inherit', fontSize: 13, fontWeight: 300,
+  color: '#f0ece4', outline: 'none', transition: 'border-color 0.2s, background 0.2s',
+  boxSizing: 'border-box',
 }
 
 function StyledInput({ style, ...props }) {
   const [focused, setFocused] = useState(false)
   return (
-      <input
-          {...props}
-          onFocus={e => { setFocused(true); props.onFocus?.(e) }}
-          onBlur={e => { setFocused(false); props.onBlur?.(e) }}
-          style={{
-            ...inputStyle,
-            ...(focused ? { borderColor:'rgba(196,140,40,0.5)', background:'rgba(196,140,40,0.05)', boxShadow:'0 0 0 3px rgba(196,140,40,0.08)' } : {}),
-            ...style,
-          }}
-      />
+    <input
+      {...props}
+      onFocus={e => { setFocused(true); props.onFocus?.(e) }}
+      onBlur={e => { setFocused(false); props.onBlur?.(e) }}
+      style={{
+        ...inputStyle,
+        ...(focused ? { borderColor: 'rgba(196,140,40,0.5)', background: 'rgba(196,140,40,0.05)', boxShadow: '0 0 0 3px rgba(196,140,40,0.08)' } : {}),
+        ...style,
+      }}
+    />
   )
 }
 
 function StyledTextarea({ style, ...props }) {
   const [focused, setFocused] = useState(false)
   return (
-      <textarea
-          {...props}
-          onFocus={e => { setFocused(true); props.onFocus?.(e) }}
-          onBlur={e => { setFocused(false); props.onBlur?.(e) }}
-          style={{
-            ...inputStyle, resize:'none',
-            ...(focused ? { borderColor:'rgba(196,140,40,0.5)', background:'rgba(196,140,40,0.05)', boxShadow:'0 0 0 3px rgba(196,140,40,0.08)' } : {}),
-            ...style,
-          }}
-      />
+    <textarea
+      {...props}
+      onFocus={e => { setFocused(true); props.onFocus?.(e) }}
+      onBlur={e => { setFocused(false); props.onBlur?.(e) }}
+      style={{
+        ...inputStyle, resize: 'none',
+        ...(focused ? { borderColor: 'rgba(196,140,40,0.5)', background: 'rgba(196,140,40,0.05)', boxShadow: '0 0 0 3px rgba(196,140,40,0.08)' } : {}),
+        ...style,
+      }}
+    />
   )
 }
 
 function StyledSelect({ style, ...props }) {
   const [focused, setFocused] = useState(false)
   return (
-      <select
-          {...props}
-          onFocus={e => { setFocused(true); props.onFocus?.(e) }}
-          onBlur={e => { setFocused(false); props.onBlur?.(e) }}
-          style={{
-            ...inputStyle, appearance:'none', cursor:'pointer',
-            backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(240,236,228,0.35)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")`,
-            backgroundRepeat:'no-repeat', backgroundPosition:'right 12px center',
-            paddingRight:32,
-            ...(focused ? { borderColor:'rgba(196,140,40,0.5)', background:'rgba(196,140,40,0.05)' } : {}),
-            ...style,
-          }}
-      />
+    <select
+      {...props}
+      onFocus={e => { setFocused(true); props.onFocus?.(e) }}
+      onBlur={e => { setFocused(false); props.onBlur?.(e) }}
+      style={{
+        ...inputStyle, appearance: 'none', cursor: 'pointer',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(240,236,228,0.35)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center',
+        paddingRight: 32,
+        ...(focused ? { borderColor: 'rgba(196,140,40,0.5)', background: 'rgba(196,140,40,0.05)' } : {}),
+        ...style,
+      }}
+    />
   )
 }
 
 /* ─── TypeBadge ─── */
 function TypeBadge({ type }) {
-  const c = TYPE_COLORS[type] || { bg:'rgba(255,255,255,0.08)', text:'rgba(240,236,228,0.5)' }
+  const c = TYPE_COLORS[type] || { bg: 'rgba(255,255,255,0.08)', text: 'rgba(240,236,228,0.5)' }
   return (
-      <span style={{
-        fontSize:9, fontWeight:500, letterSpacing:'0.18em', textTransform:'uppercase',
-        background: c.bg, color: c.text,
-        padding:'3px 8px', borderRadius:6,
-        flexShrink:0,
-      }}>
+    <span style={{
+      fontSize: 9, fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase',
+      background: c.bg, color: c.text,
+      padding: '3px 8px', borderRadius: 6,
+      flexShrink: 0,
+    }}>
       {type}
     </span>
   )
@@ -235,14 +237,14 @@ function TypeBadge({ type }) {
 /* ─── Main Page ─── */
 export default function NewsAdminPage() {
   const router = useRouter()
-  const [items, setItems]         = useState([])
-  const [loading, setLoading]     = useState(true)
-  const [saving, setSaving]       = useState(false)
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
   const [editingId, setEditingId] = useState(null)
-  const [toast, setToast]         = useState(null)
-  const [form, setForm]           = useState({ date: '', type: 'Firm News', title: '', href: '' })
-  const [editForm, setEditForm]   = useState({})
-  const [mounted, setMounted]     = useState(false)
+  const [toast, setToast] = useState(null)
+  const [form, setForm] = useState({ date: '', type: 'Firm News', title: '', href: '' })
+  const [editForm, setEditForm] = useState({})
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => { setMounted(true); fetchItems() }, [])
 
@@ -273,8 +275,8 @@ export default function NewsAdminPage() {
     const position = items.length ? Math.max(...items.map(i => i.position)) + 1 : 0
     const displayDate = formatDisplay(form.date)
     const { data, error } = await supabase.from('news_items')
-        .insert([{ ...form, date: displayDate, position, href: form.href || '#' }])
-        .select().single()
+      .insert([{ ...form, date: displayDate, position, href: form.href || '#' }])
+      .select().single()
     if (!error) {
       setItems(prev => [...prev, data].sort((a, b) => a.position - b.position))
       setForm({ date: '', type: 'Firm News', title: '', href: '' })
@@ -307,8 +309,8 @@ export default function NewsAdminPage() {
     const supabase = createClient()
     const displayDate = editForm.date ? formatDisplay(editForm.date) : ''
     const { data, error } = await supabase.from('news_items')
-        .update({ ...editForm, date: displayDate || editForm.date, href: editForm.href || '#' })
-        .eq('id', id).select().single()
+      .update({ ...editForm, date: displayDate || editForm.date, href: editForm.href || '#' })
+      .eq('id', id).select().single()
     if (!error) {
       setItems(prev => prev.map(i => i.id === id ? data : i))
       setEditingId(null)
@@ -324,7 +326,7 @@ export default function NewsAdminPage() {
     const next = [...items]
     const posA = next[idx].position
     const posB = next[swapIdx].position
-    ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
+      ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
     next[idx].position = posA
     next[swapIdx].position = posB
     setItems(next)
@@ -334,16 +336,18 @@ export default function NewsAdminPage() {
   }
 
   if (loading) return (
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'center', minHeight:'100vh',
-        background:'#0b0b0b', fontFamily:'DM Sans, sans-serif', fontSize:13,
-        color:'rgba(240,236,228,0.3)', letterSpacing:'0.06em' }}>
-        Loading…
-      </div>
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh',
+      background: '#0b0b0b', fontFamily: 'DM Sans, sans-serif', fontSize: 13,
+      color: 'rgba(240,236,228,0.3)', letterSpacing: '0.06em'
+    }}>
+      Loading…
+    </div>
   )
 
   return (
-      <>
-        <style>{`
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; }
         body { margin:0; }
@@ -518,134 +522,134 @@ export default function NewsAdminPage() {
         @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
       `}</style>
 
-        <div className="news-page">
-          <div className="inner fade-in">
+      <div className="news-page">
+        <div className="inner fade-in">
 
-            {/* ── Top bar ── */}
-            <div className="top-bar">
-              <div className="top-brand">
-                News <span>Admin</span>
-              </div>
-              <button className="logout-btn" onClick={handleLogout}>Sign Out</button>
+          {/* ── Top bar ── */}
+          <div className="top-bar">
+            <div className="top-brand">
+              News <span>Admin</span>
             </div>
-
-            {/* ── Add form ── */}
-            <div className="add-card">
-              <div className="section-label">Add News Item</div>
-
-              <div className="grid-2">
-                <Field label="Date">
-                  <DatePicker value={form.date} onChange={v => setForm(f => ({ ...f, date: v }))} />
-                </Field>
-                <Field label="Type">
-                  <StyledSelect value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
-                    {TYPES.map(t => <option key={t}>{t}</option>)}
-                  </StyledSelect>
-                </Field>
-              </div>
-
-              <div className="grid-1">
-                <Field label="Headline">
-                  <StyledTextarea
-                      rows={2}
-                      placeholder="Enter news headline…"
-                      value={form.title}
-                      onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
-                  />
-                </Field>
-              </div>
-
-              <div className="grid-1">
-                <Field label="Link (optional)">
-                  <StyledInput
-                      type="text"
-                      placeholder="https://…"
-                      value={form.href}
-                      onChange={e => setForm(f => ({ ...f, href: e.target.value }))}
-                  />
-                </Field>
-              </div>
-
-              <button className="add-btn" onClick={addItem} disabled={saving}>
-                + Add Item
-              </button>
-            </div>
-
-            {/* ── List ── */}
-            <div className="list-header">
-              <div className="list-count">All Items — {items.length}</div>
-            </div>
-
-            {items.length === 0 && <div className="empty">No items yet. Add one above.</div>}
-
-            <ul className="news-list">
-              {items.map((item, i) => (
-                  <li key={item.id} className="news-item">
-                    {editingId === item.id ? (
-                        <div style={{ padding:'12px 10px' }}>
-                          <div className="edit-panel">
-                            <div className="section-label" style={{ marginBottom:'1rem' }}>Editing</div>
-                            <div className="grid-2">
-                              <Field label="Date">
-                                <DatePicker value={editForm.date} onChange={v => setEditForm(f => ({ ...f, date: v }))} />
-                              </Field>
-                              <Field label="Type">
-                                <StyledSelect value={editForm.type} onChange={e => setEditForm(f => ({ ...f, type: e.target.value }))}>
-                                  {TYPES.map(t => <option key={t}>{t}</option>)}
-                                </StyledSelect>
-                              </Field>
-                            </div>
-                            <div className="grid-1" style={{ marginTop:12 }}>
-                              <Field label="Headline">
-                                <StyledTextarea rows={2} value={editForm.title}
-                                                onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))} />
-                              </Field>
-                            </div>
-                            <div className="grid-1" style={{ marginTop:12 }}>
-                              <Field label="Link">
-                                <StyledInput type="text" value={editForm.href}
-                                             onChange={e => setEditForm(f => ({ ...f, href: e.target.value }))} />
-                              </Field>
-                            </div>
-                            <div className="edit-actions">
-                              <button className="save-btn" onClick={() => saveEdit(item.id)} disabled={saving}>Save Changes</button>
-                              <button className="cancel-btn" onClick={() => setEditingId(null)}>Cancel</button>
-                            </div>
-                          </div>
-                        </div>
-                    ) : (
-                        <div className="item-row">
-                          <div className="item-body">
-                            <div className="item-meta">
-                              <TypeBadge type={item.type} />
-                              <span className="item-date">{item.date}</span>
-                            </div>
-                            <p className="item-title">{item.title}</p>
-                            {item.href && item.href !== '#' && (
-                                <p className="item-link">{item.href}</p>
-                            )}
-                          </div>
-                          <div className="icon-btn-group">
-                            <button className="icon-btn" onClick={() => moveItem(item.id, -1)} disabled={i === 0} title="Move up">↑</button>
-                            <button className="icon-btn" onClick={() => moveItem(item.id, 1)} disabled={i === items.length - 1} title="Move down">↓</button>
-                            <button className="icon-btn" onClick={() => startEdit(item)} title="Edit">✎</button>
-                            <button className="icon-btn del" onClick={() => deleteItem(item.id)} title="Delete">✕</button>
-                          </div>
-                        </div>
-                    )}
-                  </li>
-              ))}
-            </ul>
+            <button className="logout-btn" onClick={handleLogout}>Sign Out</button>
           </div>
-        </div>
 
-        {toast && (
-            <div className={`toast ${toast.type}`}>
-              <span className="toast-dot" />
-              {toast.msg}
+          {/* ── Add form ── */}
+          <div className="add-card">
+            <div className="section-label">Add News Item</div>
+
+            <div className="grid-2">
+              <Field label="Date">
+                <DatePicker value={form.date} onChange={v => setForm(f => ({ ...f, date: v }))} />
+              </Field>
+              <Field label="Type">
+                <StyledSelect value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
+                  {TYPES.map(t => <option key={t}>{t}</option>)}
+                </StyledSelect>
+              </Field>
             </div>
-        )}
-      </>
+
+            <div className="grid-1">
+              <Field label="Headline">
+                <StyledTextarea
+                  rows={2}
+                  placeholder="Enter news headline…"
+                  value={form.title}
+                  onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
+                />
+              </Field>
+            </div>
+
+            <div className="grid-1">
+              <Field label="Link (optional)">
+                <StyledInput
+                  type="text"
+                  placeholder="https://…"
+                  value={form.href}
+                  onChange={e => setForm(f => ({ ...f, href: e.target.value }))}
+                />
+              </Field>
+            </div>
+
+            <button className="add-btn" onClick={addItem} disabled={saving}>
+              + Add Item
+            </button>
+          </div>
+
+          {/* ── List ── */}
+          <div className="list-header">
+            <div className="list-count">All Items — {items.length}</div>
+          </div>
+
+          {items.length === 0 && <div className="empty">No items yet. Add one above.</div>}
+
+          <ul className="news-list">
+            {items.map((item, i) => (
+              <li key={item.id} className="news-item">
+                {editingId === item.id ? (
+                  <div style={{ padding: '12px 10px' }}>
+                    <div className="edit-panel">
+                      <div className="section-label" style={{ marginBottom: '1rem' }}>Editing</div>
+                      <div className="grid-2">
+                        <Field label="Date">
+                          <DatePicker value={editForm.date} onChange={v => setEditForm(f => ({ ...f, date: v }))} />
+                        </Field>
+                        <Field label="Type">
+                          <StyledSelect value={editForm.type} onChange={e => setEditForm(f => ({ ...f, type: e.target.value }))}>
+                            {TYPES.map(t => <option key={t}>{t}</option>)}
+                          </StyledSelect>
+                        </Field>
+                      </div>
+                      <div className="grid-1" style={{ marginTop: 12 }}>
+                        <Field label="Headline">
+                          <StyledTextarea rows={2} value={editForm.title}
+                            onChange={e => setEditForm(f => ({ ...f, title: e.target.value }))} />
+                        </Field>
+                      </div>
+                      <div className="grid-1" style={{ marginTop: 12 }}>
+                        <Field label="Link">
+                          <StyledInput type="text" value={editForm.href}
+                            onChange={e => setEditForm(f => ({ ...f, href: e.target.value }))} />
+                        </Field>
+                      </div>
+                      <div className="edit-actions">
+                        <button className="save-btn" onClick={() => saveEdit(item.id)} disabled={saving}>Save Changes</button>
+                        <button className="cancel-btn" onClick={() => setEditingId(null)}>Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="item-row">
+                    <div className="item-body">
+                      <div className="item-meta">
+                        <TypeBadge type={item.type} />
+                        <span className="item-date">{item.date}</span>
+                      </div>
+                      <p className="item-title">{item.title}</p>
+                      {item.href && item.href !== '#' && (
+                        <p className="item-link">{item.href}</p>
+                      )}
+                    </div>
+                    <div className="icon-btn-group">
+                      <button className="icon-btn" onClick={() => moveItem(item.id, -1)} disabled={i === 0} title="Move up">↑</button>
+                      <button className="icon-btn" onClick={() => moveItem(item.id, 1)} disabled={i === items.length - 1} title="Move down">↓</button>
+                      <button className="icon-btn" onClick={() => startEdit(item)} title="Edit">✎</button>
+                      <button className="icon-btn del" onClick={() => deleteItem(item.id)} title="Delete">✕</button>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {toast && (
+        <div className={`toast ${toast.type}`}>
+          <span className="toast-dot" />
+          {toast.msg}
+        </div>
+      )}
+    </>
   )
 }
 
@@ -758,7 +762,7 @@ export default function NewsAdminPage() {
 //   return (
 //     <div className="max-w-3xl mx-auto px-6 py-10">
 //       <div className="flex items-center justify-between mb-8">
-//         <h1 className="text-[24px] font-light text-[#1a1a1a]">News Admin</h1>
+//         <h1 className="text-[24px]  text-[#1a1a1a]">News Admin</h1>
 //         <button
 //           onClick={handleLogout}
 //           className="text-[12px] uppercase tracking-wide text-[#6b6b6b] border border-[#e0e0e0] px-4 py-2 rounded hover:bg-[#f5f5f5] transition-colors"
@@ -869,7 +873,7 @@ export default function NewsAdminPage() {
 //                     <span className="text-[10px] uppercase tracking-wide bg-[#f0f0f0] text-[#6b6b6b] px-2 py-0.5 rounded">{item.type}</span>
 //                     <span className="text-[11px] text-[#6b6b6b]">{item.date}</span>
 //                   </div>
-//                   <p className="text-[13px] text-[#1a1a1a] leading-snug font-light">{item.title}</p>
+//                   <p className="text-[13px] text-[#1a1a1a] leading-snug ">{item.title}</p>
 //                 </div>
 //                 <div className="flex items-center gap-1 flex-shrink-0">
 //                   <button onClick={() => moveItem(item.id, -1)} disabled={i === 0}

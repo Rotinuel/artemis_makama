@@ -342,7 +342,7 @@ export default async function GalleryImagePage({ params }) {
                             <div className="sidebar-footer">
                                 <Link href="/gallery" className="back-link">
                                     <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-                                        <path d="M5 1L1 5M1 5L5 9M1 5H15" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M5 1L1 5M1 5L5 9M1 5H15" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                     Back to Gallery
                                 </Link>
@@ -469,13 +469,13 @@ export default async function GalleryImagePage({ params }) {
 //                             </div>
 //
 //                             {image.title && (
-//                                 <h1 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-tight mb-4">
+//                                 <h1 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-tight mb-4">
 //                                     {image.title}
 //                                 </h1>
 //                             )}
 //
 //                             {image.description && (
-//                                 <p className="text-[14px] text-[#6b6b6b] leading-relaxed mb-8 font-light">
+//                                 <p className="text-[14px] text-[#6b6b6b] leading-relaxed mb-8 ">
 //                                     {image.description}
 //                                 </p>
 //                             )}
@@ -508,7 +508,7 @@ export default async function GalleryImagePage({ params }) {
 //                                             />
 //                                         </div>
 //                                         {rel.title && (
-//                                             <p className="mt-2 text-[12px] text-[#1a1a1a] font-light group-hover:opacity-60 transition-opacity">
+//                                             <p className="mt-2 text-[12px] text-[#1a1a1a]  group-hover:opacity-60 transition-opacity">
 //                                                 {rel.title}
 //                                             </p>
 //                                         )}
@@ -616,13 +616,13 @@ export default async function GalleryImagePage({ params }) {
 // //                             </div>
 // //
 // //                             {image.title && (
-// //                                 <h1 className="text-[28px] md:text-[36px] font-light text-[#1a1a1a] leading-tight mb-4">
+// //                                 <h1 className="text-[28px] md:text-[36px]  text-[#1a1a1a] leading-tight mb-4">
 // //                                     {image.title}
 // //                                 </h1>
 // //                             )}
 // //
 // //                             {image.description && (
-// //                                 <p className="text-[14px] text-[#6b6b6b] leading-relaxed mb-8 font-light">
+// //                                 <p className="text-[14px] text-[#6b6b6b] leading-relaxed mb-8 ">
 // //                                     {image.description}
 // //                                 </p>
 // //                             )}
@@ -655,7 +655,7 @@ export default async function GalleryImagePage({ params }) {
 // //                                             />
 // //                                         </div>
 // //                                         {rel.title && (
-// //                                             <p className="mt-2 text-[12px] text-[#1a1a1a] font-light group-hover:opacity-60 transition-opacity">
+// //                                             <p className="mt-2 text-[12px] text-[#1a1a1a]  group-hover:opacity-60 transition-opacity">
 // //                                                 {rel.title}
 // //                                             </p>
 // //                                         )}

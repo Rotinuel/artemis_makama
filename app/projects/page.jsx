@@ -8,7 +8,7 @@ import { allProjects, markets, disciplines } from '../data/projects'
 export const metadata = {
   title: 'Projects - Artemis Atelier Ltd',
   description: 'Artemis Atelier Ltd designs buildings and spaces that' +
-      ' respond to the needs of people and the environment.',
+    ' respond to the needs of people and the environment.',
 }
 
 function ProjectCard({ project }) {
@@ -22,7 +22,7 @@ function ProjectCard({ project }) {
         />
       </div>
       <span className="text-[10px] tracking-widest uppercase text-[#6b6b6b] font-medium">{project.category}</span>
-      <h3 className="text-[15px] font-light text-[#1a1a1a] mt-1 leading-snug group-hover:opacity-60 transition-opacity">{project.title}</h3>
+      <h3 className="text-[15px]  text-[#1a1a1a] mt-1 leading-snug group-hover:opacity-60 transition-opacity">{project.title}</h3>
       <p className="text-[13px] text-[#6b6b6b] mt-1">{project.location}</p>
     </Link>
   )

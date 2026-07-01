@@ -42,15 +42,15 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <div>
-            <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8">Send a Message</h2>
+            <h2 className="text-[22px]  text-[#1a1a1a] mb-8">Send a Message</h2>
             {submitted ? (
               <div className="bg-[#f5f5f5] p-10 text-center">
                 <svg className="mx-auto mb-4 text-[#1a1a1a]" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" />
                   <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <h3 className="text-[18px] font-light text-[#1a1a1a] mb-2">Message Received</h3>
-                <p className="text-[14px] text-[#6b6b6b] font-light">Thank you for reaching out. A member of our team will be in touch shortly.</p>
+                <h3 className="text-[18px]  text-[#1a1a1a] mb-2">Message Received</h3>
+                <p className="text-[14px] text-[#6b6b6b] ">Thank you for reaching out. A member of our team will be in touch shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -101,7 +101,7 @@ export default function ContactPage() {
 
           {/* Studio directory */}
           <div>
-            <h2 className="text-[22px] font-light text-[#1a1a1a] mb-8">Our Studios</h2>
+            <h2 className="text-[22px]  text-[#1a1a1a] mb-8">Our Studios</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {studios.map((s, i) => (
                 <div key={i} className="border-b border-[#f0f0f0] pb-5">

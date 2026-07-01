@@ -11,8 +11,10 @@ function toSlug(str) {
 function Field({ label, children }) {
     return (
         <div>
-            <label style={{ display:'block', fontSize:10, fontWeight:500, letterSpacing:'0.22em',
-                textTransform:'uppercase', color:'rgba(240,236,228,0.32)', marginBottom:6 }}>
+            <label style={{
+                display: 'block', fontSize: 10, fontWeight: 500, letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'rgba(240,236,228,0.32)', marginBottom: 6
+            }}>
                 {label}
             </label>
             {children}
@@ -21,10 +23,10 @@ function Field({ label, children }) {
 }
 
 const inputStyle = {
-    width:'100%', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.09)',
-    borderRadius:10, padding:'10px 13px', fontFamily:'inherit', fontSize:13, fontWeight:300,
-    color:'#f0ece4', outline:'none', transition:'border-color 0.2s, background 0.2s',
-    boxSizing:'border-box',
+    width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)',
+    borderRadius: 10, padding: '10px 13px', fontFamily: 'inherit', fontSize: 13, fontWeight: 300,
+    color: '#f0ece4', outline: 'none', transition: 'border-color 0.2s, background 0.2s',
+    boxSizing: 'border-box',
 }
 
 function StyledInput({ style, ...props }) {
@@ -36,7 +38,7 @@ function StyledInput({ style, ...props }) {
             onBlur={e => { setFocused(false); props.onBlur?.(e) }}
             style={{
                 ...inputStyle,
-                ...(focused ? { borderColor:'rgba(196,140,40,0.5)', background:'rgba(196,140,40,0.05)', boxShadow:'0 0 0 3px rgba(196,140,40,0.08)' } : {}),
+                ...(focused ? { borderColor: 'rgba(196,140,40,0.5)', background: 'rgba(196,140,40,0.05)', boxShadow: '0 0 0 3px rgba(196,140,40,0.08)' } : {}),
                 ...style,
             }}
         />
@@ -45,10 +47,10 @@ function StyledInput({ style, ...props }) {
 
 export default function AdminCategoriesPage() {
     const [categories, setCategories] = useState([])
-    const [loading, setLoading]       = useState(true)
-    const [name, setName]             = useState('')
-    const [saving, setSaving]         = useState(false)
-    const [toast, setToast]           = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [name, setName] = useState('')
+    const [saving, setSaving] = useState(false)
+    const [toast, setToast] = useState(null)
 
     useEffect(() => { fetchCategories() }, [])
 
@@ -102,7 +104,7 @@ export default function AdminCategoriesPage() {
         const next = [...categories]
         const posA = next[idx].position
         const posB = next[swapIdx].position
-        ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
+            ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
         next[idx].position = posA
         next[swapIdx].position = posB
         setCategories(next)
@@ -112,9 +114,11 @@ export default function AdminCategoriesPage() {
     }
 
     if (loading) return (
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'center', minHeight:'100vh',
-            background:'#0b0b0b', fontFamily:'DM Sans, sans-serif', fontSize:13,
-            color:'rgba(240,236,228,0.3)', letterSpacing:'0.06em' }}>
+        <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh',
+            background: '#0b0b0b', fontFamily: 'DM Sans, sans-serif', fontSize: 13,
+            color: 'rgba(240,236,228,0.3)', letterSpacing: '0.06em'
+        }}>
             Loading…
         </div>
     )
@@ -443,7 +447,7 @@ export default function AdminCategoriesPage() {
 //     return (
 //         <div className="max-w-2xl mx-auto px-6 py-10">
 //             <div className="flex items-center justify-between mb-8">
-//                 <h1 className="text-[24px] font-light text-[#1a1a1a]">Manage Categories</h1>
+//                 <h1 className="text-[24px]  text-[#1a1a1a]">Manage Categories</h1>
 //                 <Link
 //                     href="/admin/gallery"
 //                     className="text-[12px] uppercase tracking-wide text-[#6b6b6b] border border-[#e0e0e0] px-4 py-2 rounded hover:bg-[#f5f5f5] transition-colors"

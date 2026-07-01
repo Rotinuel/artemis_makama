@@ -21,10 +21,10 @@ export default function CareersSection() {
                 {/* Content */}
                 <div>
                     <p className="text-[11px] tracking-[0.14em] uppercase text-aal-gray mb-3 font-medium">Join Us</p>
-                    <h2 className="text-[26px] md:text-[34px] font-light text-aal-black leading-tight mb-4">
+                    <h2 className="text-[26px] md:text-[34px]  text-aal-black leading-tight mb-4">
                         Careers at Artemis Atelier Ltd
                     </h2>
-                    <p className="text-[14px] md:text-[15px] text-aal-gray leading-relaxed mb-6 font-light">
+                    <p className="text-[14px] md:text-[15px] text-aal-gray leading-relaxed mb-6 ">
                         We&apos;re excited about the future. Join our team and design it with us. Artemis Atelier Ltd designs buildings and spaces that inspire people. We&apos;re a diverse team of innovative, entrepreneurial people with an ambitious vision: to create the world&apos;s best, most sustainable places.
                     </p>
                     {/* <Link
