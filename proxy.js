@@ -36,7 +36,7 @@ export async function proxy(request) {
 
   if (user && request.nextUrl.pathname === '/login') {
     const url = request.nextUrl.clone()
-    url.pathname = '/admin/news'
+    url.pathname = '/admin'
     return NextResponse.redirect(url)
   }
 
