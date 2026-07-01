@@ -45,7 +45,10 @@ function MemberCard({ person, cardState, onAdvance, isActive }) {
                         </div>
                     </div>
                     <div style={{ width: 44, height: 44, borderRadius: '50%', overflow: 'hidden', border: '2px solid #e5e5e5', flexShrink: 0 }}>
-                        <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        {person.image ?
+                            <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            : <div style={{ width: '100%', height: '100%', background: '#1a1a1a' }} />
+                        }
                     </div>
                 </div>
             )}
@@ -58,8 +61,22 @@ function MemberCard({ person, cardState, onAdvance, isActive }) {
                             <ArrowIcon />
                         </div>
                     </div>
-                    <div style={{ position: 'relative', flex: 1, overflow: 'hidden', borderRadius: 12 }}>
+                    {/* <div style={{ position: 'relative', flex: 1, overflow: 'hidden', borderRadius: 12 }}>
                         <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                        <div style={{ position: 'absolute', bottom: 10, left: 10, right: 10, borderRadius: 12, padding: '8px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(6px)' }}>
+                            <div style={{ minWidth: 0, flex: 1, marginRight: 8 }}>
+                                <div style={{ fontWeight: 700, fontSize: 11, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</div>
+                                <div style={{ fontSize: 10, color: '#6b6b6b', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.title}</div>
+                            </div>
+                            {person.studio && (
+                                <span style={{ fontSize: 10, color: '#9b9b9b', flexShrink: 0 }}>{person.studio}</span>
+                            )}
+                        </div>
+                    </div> */}
+                    <div style={{ position: 'relative', flex: 1, overflow: 'hidden', borderRadius: 12, background: '#1a1a1a' }}>
+                        {person.image && (
+                            <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                        )}
                         <div style={{ position: 'absolute', bottom: 10, left: 10, right: 10, borderRadius: 12, padding: '8px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(6px)' }}>
                             <div style={{ minWidth: 0, flex: 1, marginRight: 8 }}>
                                 <div style={{ fontWeight: 700, fontSize: 11, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{person.name}</div>
@@ -90,8 +107,14 @@ function MemberCard({ person, cardState, onAdvance, isActive }) {
                         {person.studio && (
                             <span style={{ fontSize: 10, color: '#9b9b9b', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{person.studio}</span>
                         )}
-                        <div style={{ width: 36, height: 36, borderRadius: '50%', overflow: 'hidden', border: '1px solid #e5e5e5', marginLeft: 'auto' }}>
+                        {/* <div style={{ width: 36, height: 36, borderRadius: '50%', overflow: 'hidden', border: '1px solid #e5e5e5', marginLeft: 'auto' }}>
                             <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </div> */}
+                        <div style={{ width: 36, height: 36, borderRadius: '50%', overflow: 'hidden', border: '1px solid #e5e5e5', marginLeft: 'auto' }}>
+                            {person.image
+                                ? <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                : <div style={{ width: '100%', height: '100%', background: '#1a1a1a' }} />
+                            }
                         </div>
                     </div>
                 </div>
@@ -205,13 +228,6 @@ export default function LeadershipSection({ leaders = [] }) {
                         }}
                     />
                 ))}
-            </div>
-
-            {/* Mobile see all */}
-            <div className="mt-6 md:hidden">
-                <Link href="/people/leadership" className="text-[11px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b border-[#1a1a1a] pb-0.5">
-                    See All →
-                </Link>
             </div>
         </div>
     )

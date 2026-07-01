@@ -89,9 +89,7 @@ export default function PeoplePage() {
             <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-6 ">
               We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special. We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge.
             </p>
-            {/* <Link href="/people/culture" className="text-[12px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity">
-              Explore Culture
-            </Link> */}
+            
           </div>
         </div>
       </section>
