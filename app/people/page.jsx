@@ -66,7 +66,7 @@ export default function PeoplePage() {
           </div>
           <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">
             <img
-              src="/103.jpeg"
+              src="/3.jpg"
               alt="AAL team collaborating"
               className="w-full h-full object-cover"
             />
