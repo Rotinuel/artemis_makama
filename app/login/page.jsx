@@ -71,7 +71,7 @@ function LoginForm() {
           width: 600px;
           height: 600px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(196,140,40,0.18) 0%, rgba(160,90,10,0.08) 50%, transparent 70%);
+          background: radial-gradient(circle, rgba(8,183,150,0.18) 0%, rgba(5,120,100,0.08) 50%, transparent 70%);
           pointer-events: none;
           z-index: 0;
         }
@@ -93,7 +93,7 @@ function LoginForm() {
         .accent-line {
           width: 40px;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #c48c28, transparent);
+          background: linear-gradient(90deg, transparent, #08b796, transparent);
           margin: 0 auto 2rem;
         }
 
@@ -119,7 +119,7 @@ function LoginForm() {
           font-weight: 500;
           letter-spacing: 0.35em;
           text-transform: uppercase;
-          color: #c48c28;
+          color: #08b796;
           text-align: center;
           margin-bottom: 1rem;
         }
@@ -137,7 +137,7 @@ function LoginForm() {
 
         .headline em {
           font-style: italic;
-          color: #c48c28;
+          color: #08b796;
         }
 
         .subline {
@@ -160,7 +160,7 @@ function LoginForm() {
           box-shadow:
             0 0 0 1px rgba(196,140,40,0.06) inset,
             0 40px 80px rgba(0,0,0,0.5),
-            0 2px 4px rgba(0,0,0,0.3);
+            0 2px 4px #08b796;
           position: relative;
           overflow: hidden;
         }
@@ -171,7 +171,7 @@ function LoginForm() {
           position: absolute;
           top: 0; left: 10%; right: 10%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(196,140,40,0.5), transparent);
+          background: linear-gradient(90deg, transparent, #08b796, transparent);
         }
 
         /* Field group */
@@ -209,9 +209,9 @@ function LoginForm() {
         }
 
         .field-input:focus {
-          border-color: rgba(196,140,40,0.5);
-          background: rgba(196,140,40,0.05);
-          box-shadow: 0 0 0 3px rgba(196,140,40,0.08);
+          border-color: rgba(8,183,150,0.5);
+          background: rgba(8,183,150,0.05);
+          box-shadow: 0 0 0 3px rgba(8,183,150,0.08);
         }
 
         /* Error */
@@ -237,8 +237,8 @@ function LoginForm() {
           padding: 13px 0;
           border: none;
           border-radius: 10px;
-          background: linear-gradient(135deg, #c48c28 0%, #a06b10 100%);
-          color: #080808;
+          background: linear-gradient(135deg, rgba(8,183,150,0.85) 0%, rgba(5,107,88,0.85) 100%);
+          color: #08080;
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           font-weight: 500;
@@ -246,7 +246,7 @@ function LoginForm() {
           text-transform: uppercase;
           cursor: pointer;
           transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-          box-shadow: 0 4px 20px rgba(196,140,40,0.25);
+          box-shadow: 0 4px 20px #056b58;
           position: relative;
           overflow: hidden;
         }
@@ -262,7 +262,7 @@ function LoginForm() {
         .submit-btn:hover:not(:disabled) {
           opacity: 0.92;
           transform: translateY(-1px);
-          box-shadow: 0 6px 28px rgba(196,140,40,0.35);
+          box-shadow: 0 6px 28px rgba(8,183,150,0.35);
         }
 
         .submit-btn:active:not(:disabled) {
@@ -313,7 +313,7 @@ function LoginForm() {
         .footer-dot {
           width: 3px;
           height: 3px;
-          background: rgba(196,140,40,0.4);
+          background: rgba(8,183,150,0.4);
           border-radius: 50%;
           display: inline-block;
         }
@@ -325,7 +325,7 @@ function LoginForm() {
 
           <div className={`card-wrap ${mounted ? 'visible' : ''}`}>
             {/* Header */}
-            <p className="portal-label">Admin Portal</p>
+            <p className="portal-label">Artemis-Atelier Ltd Admin Portal</p>
             <h1 className="headline">
               Welcome <em>back</em>
             </h1>
