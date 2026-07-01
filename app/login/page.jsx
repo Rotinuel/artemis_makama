@@ -238,7 +238,7 @@ function LoginForm() {
           border: none;
           border-radius: 10px;
           background: linear-gradient(135deg, rgba(8,183,150,0.85) 0%, rgba(5,107,88,0.85) 100%);
-          color: #08080;
+          color: #f0ece4;
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           font-weight: 500;
