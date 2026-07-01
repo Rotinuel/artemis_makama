@@ -7,7 +7,7 @@ export default function CareersSection() {
                 {/* Image */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                     <img
-                        src="/8.jpg"
+                        src="/16.jpg"
                         alt="AAL Careers"
                         className="w-full h-full object-cover"
                         loading="lazy"
