@@ -7,7 +7,7 @@ import { createClient } from '@/utils/supabase/client'
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirectTo') || '/admin/news'
+  const redirectTo = searchParams.get('redirectTo') || '/admin'
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -36,8 +36,8 @@ function LoginForm() {
   }
 
   return (
-      <>
-        <style>{`
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
         .login-root {
@@ -319,85 +319,85 @@ function LoginForm() {
         }
       `}</style>
 
-        <div className="login-root">
-          <div className="orb-1" />
-          <div className="orb-2" />
+      <div className="login-root">
+        <div className="orb-1" />
+        <div className="orb-2" />
 
-          <div className={`card-wrap ${mounted ? 'visible' : ''}`}>
-            {/* Header */}
-            <p className="portal-label">Artemis-Atelier Ltd Admin Portal</p>
-            <h1 className="headline">
-              Welcome <em>back</em>
-            </h1>
-            <p className="subline">Sign in to continue to your dashboard</p>
+        <div className={`card-wrap ${mounted ? 'visible' : ''}`}>
+          {/* Header */}
+          <p className="portal-label">Artemis-Atelier Ltd Admin Portal</p>
+          <h1 className="headline">
+            Welcome <em>back</em>
+          </h1>
+          <p className="subline">Sign in to continue to your dashboard</p>
 
-            <div className="accent-line" />
+          <div className="accent-line" />
 
-            {/* Card */}
-            <div className="glass-card">
-              {/* Email */}
-              <div className="field-group">
-                <label className="field-label">Email Address</label>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && handleLogin()}
-                    placeholder="you@example.com"
-                    className="field-input"
-                />
+          {/* Card */}
+          <div className="glass-card">
+            {/* Email */}
+            <div className="field-group">
+              <label className="field-label">Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleLogin()}
+                placeholder="you@example.com"
+                className="field-input"
+              />
+            </div>
+
+            {/* Password */}
+            <div className="field-group">
+              <label className="field-label">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleLogin()}
+                placeholder="••••••••"
+                className="field-input"
+              />
+            </div>
+
+            {/* Error */}
+            {error && (
+              <div className="error-box">
+                <p>{error}</p>
               </div>
+            )}
 
-              {/* Password */}
-              <div className="field-group">
-                <label className="field-label">Password</label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && handleLogin()}
-                    placeholder="••••••••"
-                    className="field-input"
-                />
-              </div>
-
-              {/* Error */}
-              {error && (
-                  <div className="error-box">
-                    <p>{error}</p>
-                  </div>
-              )}
-
-              {/* Button */}
-              <button
-                  onClick={handleLogin}
-                  disabled={loading}
-                  className="submit-btn"
-              >
+            {/* Button */}
+            <button
+              onClick={handleLogin}
+              disabled={loading}
+              className="submit-btn"
+            >
               <span className="btn-content">
                 {loading && <span className="spinner" />}
                 {loading ? 'Signing in…' : 'Sign In'}
               </span>
-              </button>
-            </div>
-
-            {/* Footer */}
-            <p className="footer-note">
-              <span className="footer-dot" />
-              Secured with end-to-end encryption
-              <span className="footer-dot" />
-            </p>
+            </button>
           </div>
+
+          {/* Footer */}
+          <p className="footer-note">
+            <span className="footer-dot" />
+            Secured with end-to-end encryption
+            <span className="footer-dot" />
+          </p>
         </div>
-      </>
+      </div>
+    </>
   )
 }
 
 export default function LoginPage() {
   return (
-      <Suspense>
-        <LoginForm />
-      </Suspense>
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   )
 }
 
