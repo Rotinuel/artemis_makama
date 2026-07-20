@@ -63,10 +63,9 @@ export default function Footer() {
           {/* Logo + tagline */}
           <div className="md:col-span-1">
             <Link href="/" className="block mb-6">
-              {/* <svg width="60" height="24" viewBox="0 0 60 24">
-                <text x="0" y="21" fontFamily="Helvetica Neue, Helvetica, Arial, sans-serif" fontSize="26" fontWeight="700" fill="white" letterSpacing="-1">AAL</text>
-              </svg> */}
+            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
               <Image src="/logo-bg.png" alt="AAL Logo" width={60} height={24} />
+              </div>
             </Link>
             <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
               A global design, architecture, engineering and planning.
