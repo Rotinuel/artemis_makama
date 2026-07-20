@@ -113,6 +113,9 @@ export default function AboutPage() {
               sustainability while establishing lasting trust
               with clients, partners, and communities.
             </p>
+            <p className="text-[15px] text-black leading-relaxed mb-5  text-justify">
+              Every project we undertake is driven by a passion for innovative design, meticulous attention to detail, and a deep understanding of the people and communities our work serves. We believe that architecture should not only meet today's needs but also anticipate the challenges and opportunities of tomorrow, delivering spaces that remain relevant, adaptable, and meaningful for generations.
+            </p>
           </div>
 
           <div>
@@ -202,46 +205,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-
-      {/* Recognition */}
-      {/* <section className="px-6 md:px-10 py-20 max-w-[1600px] mx-auto border-b border-[#e0e0e0]">
-        <div className="mb-12">
-          <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-3 font-medium">Accolades</p>
-          <h2 className="text-[28px] md:text-[40px]  text-[#1a1a1a]">Recognition</h2>
-        </div>
-        <ul>
-          {recognitions.map((r, i) => (
-            <li key={i} className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 py-5 border-b border-[#e0e0e0] last:border-b-0">
-              <span className="text-[12px] text-[#6b6b6b] flex-shrink-0 sm:w-14">{r.year}</span>
-              <span className="flex-1 text-[15px] text-[#1a1a1a] ">{r.award}</span>
-              <span className="text-[11px] tracking-[0.1em] uppercase text-[#6b6b6b] border border-[#e0e0e0] px-3 py-1 flex-shrink-0">{r.category}</span>
-            </li>
-          ))}
-        </ul>
-      </section> */}
-
-      {/* Sustainability commitment */}
-      {/* <section className="bg-[#f5f5f5] py-20 px-6 md:px-10">
-        <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=900&q=80" alt="HOK sustainability" className="w-full h-full object-cover" />
-          </div>
-          <div>
-            <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-4 font-medium">Environment</p>
-            <h2 className="text-[28px] md:text-[38px]  text-[#1a1a1a] mb-6">Sustainability</h2>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-5  text-justify">
-              HOK is committed to achieving net-zero carbon in the buildings we design by 2030. We have been carbon neutral in our own operations since 2022.
-            </p>
-            <p className="text-[15px] text-[#6b6b6b] leading-relaxed mb-8  text-justify">
-              We pursue regenerative design strategies that not only minimize environmental impact but actively restore and improve the ecosystems in which our buildings exist.
-            </p>
-            <Link href="#" className="text-[12px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity">
-              Corporate Responsibility
-            </Link>
-          </div>
-        </div>
-      </section> */}
-
       <Footer />
       <CookieBanner />
     </>
