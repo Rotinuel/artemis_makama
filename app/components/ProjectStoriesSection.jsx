@@ -5,8 +5,8 @@ import { useState } from 'react'
 
 const projects = [
   {
-    category: 'Sports + Rec + Entertainment',
-    title: "St. Louis CITY SC's Energizer Park",
+    category: 'Residential',
+    title: "Proposed Residential Development at Atican Beach View Estate",
     href: '#',
     image: '/26.jpg',
     color: '#2d4a7a',
