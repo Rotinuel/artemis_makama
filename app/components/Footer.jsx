@@ -52,6 +52,20 @@ const socialLinks = [
     ),
   },
   {
+  label: 'TikTok',
+  href: 'https://www.tiktok.com/@AALNetwork',
+  icon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M19.589 6.686a4.793 4.793 0 01-3.77-4.237V2h-3.193v13.138a2.728 2.728 0 11-2.728-2.728c.226 0 .446.028.656.08V9.25a5.922 5.922 0 00-.656-.037A5.92 5.92 0 104.82 15.13a5.92 5.92 0 005.92 5.92 5.92 5.92 0 005.92-5.92V8.584a7.98 7.98 0 004.66 1.49V6.88a4.8 4.8 0 01-1.731-.194z" />
+    </svg>
+  ),
+},
+  {
     label: 'YouTube',
     href: 'https://www.youtube.com/user/aalnetwork',
     icon: (
