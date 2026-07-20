@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const studios = [
@@ -62,9 +63,10 @@ export default function Footer() {
           {/* Logo + tagline */}
           <div className="md:col-span-1">
             <Link href="/" className="block mb-6">
-              <svg width="60" height="24" viewBox="0 0 60 24">
+              {/* <svg width="60" height="24" viewBox="0 0 60 24">
                 <text x="0" y="21" fontFamily="Helvetica Neue, Helvetica, Arial, sans-serif" fontSize="26" fontWeight="700" fill="white" letterSpacing="-1">AAL</text>
-              </svg>
+              </svg> */}
+              <Image src="/logo-bg.png" alt="AAL Logo" width={60} height={24} />
             </Link>
             <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
               A global design, architecture, engineering and planning.

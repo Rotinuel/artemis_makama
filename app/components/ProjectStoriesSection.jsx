@@ -121,12 +121,12 @@ export default function ProjectStoriesSection() {
             <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Portfolio</p>
             <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">Project Stories</h2>
           </div>
-          <Link
+          {/* <Link
             href="/projects/stories"
             className="text-[12px] tracking-[0.1em] uppercase text-[#1a1a1a] border-b border-[#1a1a1a] pb-0.5 hover:opacity-60 transition-opacity hidden md:block"
           >
             See All Projects
-          </Link>
+          </Link> */}
         </div>
 
         {/* Grid */}
@@ -136,11 +136,11 @@ export default function ProjectStoriesSection() {
           ))}
         </div>
 
-        <div className="mt-8 md:hidden">
+        {/* <div className="mt-8 md:hidden">
           <Link href="/projects/stories" className="text-[12px] tracking-[0.1em] uppercase text-[#1a1a1a] border-b border-[#1a1a1a] pb-0.5">
             See All Projects
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )
