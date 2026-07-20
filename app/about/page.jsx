@@ -107,14 +107,7 @@ export default function AboutPage() {
           <div>
             <p className="text-[28px] tracking-[0.14em] uppercase text-[#08b796] mb-4 font-medium">Our Vision</p>
             <p className="text-[15px] text-black leading-relaxed mb-5  text-justify">
-              To redefine the built environment through
-              visionary architecture, creating timeless spaces
-              that balance aesthetics, functionality, and
-              sustainability while establishing lasting trust
-              with clients, partners, and communities.
-            </p>
-            <p className="text-[15px] text-black leading-relaxed mb-5  text-justify">
-              Every project we undertake is driven by a passion for innovative design, meticulous attention to detail, and a deep understanding of the people and communities our work serves. We believe that architecture should not only meet today's needs but also anticipate the challenges and opportunities of tomorrow, delivering spaces that remain relevant, adaptable, and meaningful for generations.
+              To redefine the built environment through visionary architecture that shapes thriving communities and enriches lives. We envision a future where every space we create seamlessly integrates timeless design, exceptional functionality, and sustainable innovation, setting new standards of excellence in the built environment. Through creativity, integrity, and collaboration, we aspire to build enduring landmarks, inspire meaningful human experiences, and cultivate lasting trust with our clients, partners, and communities while leaving a positive legacy for future generations.
             </p>
           </div>
 
