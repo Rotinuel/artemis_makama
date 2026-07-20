@@ -42,7 +42,7 @@ export default function PeoplePage() {
       <PageHero
         label="Our Team"
         title="People"
-        description="Our team is made up of talented, experienced, and passionate architects, designers, planners, engineers, and project specialists who are dedicated to delivering exceptional design solutions. Combining creativity with technical expertise, we approach every project with innovation, precision, and a deep understanding of our clients' unique goals. We believe that every successful project begins with listening, thoughtful planning, and a commitment to transforming ideas into functional, inspiring, and enduring spaces. Collaboration is at the heart of everything we do. We work closely with our clients, consultants, and stakeholders throughout every stage of the design and construction process to ensure each project is delivered to the highest standards of quality, sustainability, and excellence. By fostering strong partnerships built on trust, transparency, and professionalism, we consistently create spaces that not only meet expectations but also enrich communities and stand the test of time."
+        description="Our team is made up of talented, experienced, and passionate architects, designers, planners, engineers, and project specialists who are dedicated to delivering exceptional design solutions. Combining creativity with technical expertise, we approach every project with innovation, precision, and a deep understanding of our clients' unique goals. We believe that every successful project begins with listening, thoughtful planning, and a commitment to transforming ideas into functional, inspiring, and enduring spaces."
         image="/ja.jpeg"
       />
 

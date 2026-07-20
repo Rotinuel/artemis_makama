@@ -7,13 +7,16 @@ import CareersSection from './components/CareersSection'
 // import IdeasSection from './components/IdeasSection'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
+import WhyBuildWithUs from './components/Why'
 
 export default function HomePage() {
   return (
     <>
       <Navigation variant='hero' />
       <HeroVideo />
+      <WhyBuildWithUs />
       <ProjectStoriesSection />
+
       <CareersSection/>
       <NewsSection />
       {/* <CultureSection /> */}
