@@ -46,7 +46,7 @@ const socialLinks = [
     label: 'X',
     href: 'https://www.x.com/AALNetwork',
     icon: (
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 1200 1227">
         <path d="M714.163 519.284L1160.89 0H1055.56L667.137 451.887L356.937 0H0L468.492 681.821L0 1226.37H105.331L515.213 750.218L842.896 1226.37H1199.83L714.137 519.284H714.163ZM568.604 688.815L521.397 621.292L145.299 83.132H307.724L611.247 517.442L658.454 584.965L1055.61 1152.48H893.185L568.604 688.841V688.815Z" />
     </svg>
     ),
