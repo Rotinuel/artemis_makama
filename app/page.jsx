@@ -16,11 +16,8 @@ export default function HomePage() {
       <HeroVideo />
       <WhyBuildWithUs />
       <ProjectStoriesSection />
-
       <CareersSection/>
       <NewsSection />
-      {/* <CultureSection /> */}
-      {/* <IdeasSection /> */}
       <Footer />
       <CookieBanner />
     </>
