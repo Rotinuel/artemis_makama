@@ -22,3 +22,26 @@ body {
   overflow-x: hidden;
 }
 img { display: block; }
+
+@keyframes watermarkDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(1.5%, -1.5%) rotate(1.5deg) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+.watermark-mark {
+  animation: watermarkDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watermark-mark {
+    animation: none;
+  }
+}

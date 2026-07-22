@@ -1,4 +1,5 @@
 import './globals.css'
+import Watermark from './components/Watermark'
 
 export const metadata = {
   title: 'Artemis Atelier Ltd: A Global Design, Architecture,' +
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
+      <Watermark />
       <body>{children}</body>
     </html>
   )
