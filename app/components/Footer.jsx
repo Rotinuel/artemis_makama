@@ -91,7 +91,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
-              A global design, architecture, engineering and planning.
+              A global design, architecture, engineering and planning firm.
             </p>
             {/* Social */}
             <div className="flex gap-4">
