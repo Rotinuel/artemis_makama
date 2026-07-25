@@ -24,7 +24,7 @@ const socialLinks = [
   },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/aalnetwork/',
+    href: 'https://www.instagram.com/artemis_atelierltd/',
     icon: (
       <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
