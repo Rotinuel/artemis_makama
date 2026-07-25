@@ -14,7 +14,7 @@ const footerLinks = [
 const socialLinks = [
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/aal/',
+    href: 'https://www.linkedin.com/company/artemis-atelier-limited/',
     icon: (
       <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
@@ -48,23 +48,23 @@ const socialLinks = [
     icon: (
       <svg width="18" height="18" fill="currentColor" viewBox="0 0 1200 1227">
         <path d="M714.163 519.284L1160.89 0H1055.56L667.137 451.887L356.937 0H0L468.492 681.821L0 1226.37H105.331L515.213 750.218L842.896 1226.37H1199.83L714.137 519.284H714.163ZM568.604 688.815L521.397 621.292L145.299 83.132H307.724L611.247 517.442L658.454 584.965L1055.61 1152.48H893.185L568.604 688.841V688.815Z" />
-    </svg>
+      </svg>
     ),
   },
   {
-  label: 'TikTok',
-  href: 'https://www.tiktok.com/@AALNetwork',
-  icon: (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M19.589 6.686a4.793 4.793 0 01-3.77-4.237V2h-3.193v13.138a2.728 2.728 0 11-2.728-2.728c.226 0 .446.028.656.08V9.25a5.922 5.922 0 00-.656-.037A5.92 5.92 0 104.82 15.13a5.92 5.92 0 005.92 5.92 5.92 5.92 0 005.92-5.92V8.584a7.98 7.98 0 004.66 1.49V6.88a4.8 4.8 0 01-1.731-.194z" />
-    </svg>
-  ),
-},
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@AALNetwork',
+    icon: (
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M19.589 6.686a4.793 4.793 0 01-3.77-4.237V2h-3.193v13.138a2.728 2.728 0 11-2.728-2.728c.226 0 .446.028.656.08V9.25a5.922 5.922 0 00-.656-.037A5.92 5.92 0 104.82 15.13a5.92 5.92 0 005.92 5.92 5.92 5.92 0 005.92-5.92V8.584a7.98 7.98 0 004.66 1.49V6.88a4.8 4.8 0 01-1.731-.194z" />
+      </svg>
+    ),
+  },
   {
     label: 'YouTube',
     href: 'https://www.youtube.com/user/aalnetwork',
@@ -86,8 +86,8 @@ export default function Footer() {
           {/* Logo + tagline */}
           <div className="md:col-span-1">
             <Link href="/" className="block mb-6">
-            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-              <Image src="/logo-bg.png" alt="AAL Logo" width={60} height={24} />
+              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                <Image src="/logo-bg.png" alt="AAL Logo" width={60} height={24} />
               </div>
             </Link>
             <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
