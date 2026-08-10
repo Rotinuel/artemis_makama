@@ -18,7 +18,7 @@ const disciplines = [
 ]
 
 const NAV_ITEMS = [
-    { label: 'Projects', href: '/projects' },
+    // { label: 'Projects', href: '/projects' },
     { label: 'People', href: '/people' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'About', href: '/about' },

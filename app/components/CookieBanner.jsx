@@ -22,23 +22,23 @@ export default function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[300] bg-[#111] text-white px-6 md:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div className="fixed bottom-0 left-0 right-0 z-300 bg-[#111] text-white px-6 md:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <p className="text-[13px] text-[#ccc] leading-relaxed ">
         This site uses cookies.{' '}
         <Link href="#" className="text-white underline underline-offset-2 hover:opacity-70 transition-opacity">
           More Information
         </Link>
       </p>
-      <div className="flex gap-4 flex-shrink-0">
+      <div className="flex gap-4 shrink-0">
         <button
           onClick={dismiss}
-          className="text-[12px] tracking-[0.1em] uppercase text-white border border-white px-5 py-2 hover:bg-white hover:text-[#111] transition-all"
+          className="text-[12px] tracking-widest uppercase text-white border border-white px-5 py-2 hover:bg-white hover:text-[#111] transition-all"
         >
           Accept
         </button>
         <button
           onClick={dismiss}
-          className="text-[12px] tracking-[0.1em] uppercase text-[#888] hover:text-white transition-colors"
+          className="text-[12px] tracking-widest uppercase text-[#888] hover:text-white transition-colors"
         >
           Dismiss
         </button>
