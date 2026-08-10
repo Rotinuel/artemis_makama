@@ -109,6 +109,24 @@ const PILLARS = [
   },
 ];
 
+const PROTECTION_LAYERS = [
+  { n: "01", label: "Artemis Atelier Ltd", desc: "Responsible for the agreed architectural, construction and project-management obligations." },
+  { n: "02", label: "Independent Inspector", desc: "Verifies agreed construction milestones before any payment is released." },
+  { n: "03", label: "Insurance Partner", desc: "Provides applicable coverage under an issued policy, subject to its terms." },
+  { n: "04", label: "Digital Records", desc: "Evidence of project activity — photographs, videos, reports and documentation." },
+  { n: "05", label: "Contractual Controls", desc: "Defined scope, payments, variations, responsibilities and dispute procedures." },
+];
+
+const HONESTY_POINTS = [
+  "Construction will never experience delays",
+  "Material prices will never change",
+  "Government approvals will always be immediate",
+  "Weather will never affect construction",
+  "Every possible construction risk is insured",
+  "Insurance will cover every loss",
+  "The project will never require a variation",
+];
+
 function useReveal() {
   const ref = useRef(null);
   useEffect(() => {
@@ -196,10 +214,10 @@ function LoopDiagram() {
 
 export default function WhyBuildWithUs() {
   return (
-    <main className="bg-[#fbfaf8] text-[#1a1a1a]">
+    <main className="bg-[#fbfaf8] text-aal-black">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#1a1a1a] text-white">
-        <div className="absolute inset-0 opacity-[0.06] pointer-events-none [background-image:linear-gradient(#08b796_1px,transparent_1px),linear-gradient(90deg,#08b796_1px,transparent_1px)] [background-size:48px_48px]" />
+      <section className="relative overflow-hidden bg-aal-black text-white">
+        <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[linear-gradient(#08b796_1px,transparent_1px),linear-gradient(90deg,#08b796_1px,transparent_1px)] bg-size-[48px_48px]" />
         <div className="relative max-w-5xl mx-auto px-6 pt-28 pb-24 md:pt-36 md:pb-32">
           <Reveal>
             <p
@@ -249,7 +267,7 @@ export default function WhyBuildWithUs() {
                 The Four R's
               </h2>
               <p
-                className="text-[#1a1a1a]/70 leading-relaxed"
+                className="text-aal-black/70 leading-relaxed"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 De-risking the build earns trust. Trust, documented well, becomes
@@ -273,19 +291,19 @@ export default function WhyBuildWithUs() {
       {PILLARS.map((p, i) => (
         <section
           key={p.tag}
-          className={`border-t border-[#1a1a1a]/10 ${i % 2 === 1 ? "bg-white" : "bg-[#f4f2ee]"}`}
+          className={`border-t border-aal-black/10 ${i % 2 === 1 ? "bg-white" : "bg-[#f4f2ee]"}`}
         >
           <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
             <Reveal>
               <div className="flex items-baseline gap-4 mb-4">
                 <span
-                  className={`text-xs font-semibold tracking-widest text-white px-2.5 py-1 rounded-full bg-gradient-to-r ${p.accent}`}
+                  className={`text-xs font-semibold tracking-widest text-white px-2.5 py-1 rounded-full bg-linear-to-r ${p.accent}`}
                   style={{ fontFamily: "DM Sans, sans-serif" }}
                 >
                   {p.tag}
                 </span>
                 <span
-                  className="uppercase tracking-[0.2em] text-xs text-[#1a1a1a]/50"
+                  className="uppercase tracking-[0.2em] text-xs text-aal-black/50"
                   style={{ fontFamily: "DM Sans, sans-serif" }}
                 >
                   {p.subtitle}
@@ -304,7 +322,7 @@ export default function WhyBuildWithUs() {
 
             <Reveal delay={140}>
               <p
-                className="text-[#1a1a1a]/70 leading-relaxed max-w-2xl mt-6 mb-12"
+                className="text-aal-black/70 leading-relaxed max-w-2xl mt-6 mb-12"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 {p.lede}
@@ -322,7 +340,7 @@ export default function WhyBuildWithUs() {
                       {f.h}
                     </h4>
                     <p
-                      className="text-sm text-[#1a1a1a]/65 leading-relaxed"
+                      className="text-sm text-aal-black/65 leading-relaxed"
                       style={{ fontFamily: "DM Sans, sans-serif" }}
                     >
                       {f.p}
@@ -335,8 +353,123 @@ export default function WhyBuildWithUs() {
         </section>
       ))}
 
+      {/* PROTECTION STRUCTURE */}
+      <section className="bg-aal-black text-white border-t border-white/10">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <Reveal>
+            <p
+              className="uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4 text-center"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            >
+              You Don't Have To Trust Us Blindly
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2
+              className="text-3xl md:text-5xl mb-16 text-center"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Five layers of client protection
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-5 gap-6">
+            {PROTECTION_LAYERS.map((layer, idx) => (
+              <Reveal key={layer.n} delay={100 + idx * 80}>
+                <div className="text-center md:text-left">
+                  <span
+                    className="text-3xl text-[#08b796]/40 block mb-3"
+                    style={{ fontFamily: "Cormorant Garamond, serif" }}
+                  >
+                    {layer.n}
+                  </span>
+                  <h4
+                    className="text-sm mb-2"
+                    style={{ fontFamily: "DM Sans, sans-serif", fontWeight: 600 }}
+                  >
+                    {layer.label}
+                  </h4>
+                  <p
+                    className="text-xs text-white/60 leading-relaxed"
+                    style={{ fontFamily: "DM Sans, sans-serif" }}
+                  >
+                    {layer.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT WE DON'T PROMISE */}
+      <section className="bg-[#f4f2ee] border-t border-aal-black/10">
+        <div className="max-w-4xl mx-auto px-6 py-20 md:py-28">
+          <Reveal>
+            <p
+              className="uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            >
+              Honesty Over Hype
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2
+              className="text-3xl md:text-5xl mb-6"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              What we don't promise
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <p
+              className="text-aal-black/70 leading-relaxed max-w-xl mb-12"
+              style={{ fontFamily: "DM Sans, sans-serif" }}
+            >
+              We believe trust requires honesty. Construction has too many
+              variables for anyone to promise perfection — so we won't.
+            </p>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-16">
+            {HONESTY_POINTS.map((point, idx) => (
+              <Reveal key={point} delay={180 + idx * 60}>
+                <div className="flex items-start gap-3">
+                  <span className="text-aal-black/30 mt-0.5 text-sm">✕</span>
+                  <span
+                    className="text-sm text-aal-black/60"
+                    style={{ fontFamily: "DM Sans, sans-serif" }}
+                  >
+                    We don't promise {point.charAt(0).toLowerCase() + point.slice(1)}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={200}>
+            <div className="border-l-2 border-[#08b796] pl-6">
+              <p
+                className="text-sm uppercase tracking-[0.15em] text-aal-black/50 mb-3"
+                style={{ fontFamily: "DM Sans, sans-serif" }}
+              >
+                Instead, our commitment is to
+              </p>
+              <p
+                className="text-lg leading-relaxed"
+                style={{ fontFamily: "Cormorant Garamond, serif" }}
+              >
+                Identify risks early. Communicate them promptly. Document
+                decisions. Control changes. Report progress honestly. Manage
+                the project professionally.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="bg-[#1a1a1a] text-white">
+      {/* <section className="bg-aal-black text-white">
         <div className="max-w-5xl mx-auto px-6 py-24 text-center">
           <Reveal>
             <h2
@@ -360,7 +493,7 @@ export default function WhyBuildWithUs() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="px-8 py-3.5 rounded-full bg-[#08b796] text-[#1a1a1a] font-medium hover:bg-[#0a8f79] hover:text-white transition-colors"
+                className="px-8 py-3.5 rounded-full bg-[#08b796] text-aal-black font-medium hover:bg-[#0a8f79] hover:text-white transition-colors"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
                 Schedule a Project Consultation
@@ -375,7 +508,7 @@ export default function WhyBuildWithUs() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
