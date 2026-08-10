@@ -413,7 +413,7 @@ export default function WhyBuildWithUs() {
               Honesty Over Hype
             </p>
           </Reveal>
-          <Reveal delay={80}>
+          {/* <Reveal delay={80}>
             <h2
               className="text-3xl md:text-5xl mb-6"
               style={{ fontFamily: "Cormorant Garamond, serif" }}
@@ -429,9 +429,9 @@ export default function WhyBuildWithUs() {
               We believe trust requires honesty. Construction has too many
               variables for anyone to promise perfection — so we won't.
             </p>
-          </Reveal>
+          </Reveal> */}
 
-          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-16">
+          {/* <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-16">
             {HONESTY_POINTS.map((point, idx) => (
               <Reveal key={point} delay={180 + idx * 60}>
                 <div className="flex items-start gap-3">
@@ -445,7 +445,7 @@ export default function WhyBuildWithUs() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </div> */}
 
           <Reveal delay={200}>
             <div className="border-l-2 border-[#08b796] pl-6">
@@ -453,7 +453,7 @@ export default function WhyBuildWithUs() {
                 className="text-sm uppercase tracking-[0.15em] text-aal-black/50 mb-3"
                 style={{ fontFamily: "DM Sans, sans-serif" }}
               >
-                Instead, our commitment is to
+                Our commitment is to
               </p>
               <p
                 className="text-lg leading-relaxed"
