@@ -383,7 +383,7 @@ export default function DiasporaConsultationClient() {
       {/* Minimal footer — contact only, still no nav */}
       <footer className="px-6 md:px-10 py-10 max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#8a8a8a]">
         <span>Artemis Atelier Ltd — Architecture · Construction · Project Management</span>
-        <span>WhatsApp: [Insert Number] · Email: [Insert Email]</span>
+        <span> Email: info@artemisatelierltd.com</span>
       </footer>
 
       {/* Floating WhatsApp button — stays visible over every section */}
