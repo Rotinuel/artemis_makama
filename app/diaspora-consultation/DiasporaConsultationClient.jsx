@@ -388,7 +388,7 @@ export default function DiasporaConsultationClient() {
 
       {/* Floating WhatsApp button — stays visible over every section */}
       <a
-        href="https://wa.me/2348033502393?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20diaspora%20consultation."
+        href="https://wa.me/2348033502393?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20product%20%26%20services.&type=phone_number&app_absent=0"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
