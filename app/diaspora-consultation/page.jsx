@@ -1,6 +1,6 @@
 import DiasporaConsultationClient from './DiasporaConsultationClient'
 
-const SITE_URL = 'https://artemisatelier.com' // update to your real domain
+const SITE_URL = 'https://artemisatelierltd.com' 
 const PAGE_PATH = '/diaspora-consultation'
 
 export const metadata = {
@@ -11,7 +11,7 @@ export const metadata = {
         canonical: `${SITE_URL}${PAGE_PATH}`,
     },
     openGraph: {
-        title: 'Build Your Home in Nigeria — Without Living in Nigeria',
+        title: 'Build Your Home in Nigeria — Without Nigeria Trust Issues',
         description:
             'Documented milestones, independent inspection and insured payments — monitor your Nigerian construction project from anywhere. Book a free consultation.',
         url: `${SITE_URL}${PAGE_PATH}`,
