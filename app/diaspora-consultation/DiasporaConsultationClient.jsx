@@ -86,7 +86,7 @@ export default function DiasporaConsultationClient() {
 
   return (
     <main
-      className="bg-white text-[#1a1a1a]"
+      className="bg-white text-aal-black"
       style={{ fontFamily: "DM Sans, sans-serif" }}
     >
       <style>{`
@@ -137,7 +137,7 @@ export default function DiasporaConsultationClient() {
             </p>
             <a
               href="/"
-              className="inline-block text-[12px] text-[#5a5a5a] underline underline-offset-4 decoration-[#e0e0e0] hover:text-[#1a1a1a] hover:decoration-[#1a1a1a] transition-colors mt-3"
+              className="inline-block text-[12px] text-[#5a5a5a] underline underline-offset-4 decoration-aal-border hover:text-aal-black hover:decoration-aal-black transition-colors mt-3"
             >
               Learn more about us →
             </a>
@@ -154,8 +154,8 @@ export default function DiasporaConsultationClient() {
       </section>
 
       {/* THE WORRY — names the fear directly, builds relevance fast */}
-      <section className="bg-[#1a1a1a] text-white">
-        <div className="px-6 md:px-10 py-16 md:py-20 max-w-[1200px] mx-auto">
+      <section className="bg-aal-black text-white">
+        <div className="px-6 md:px-10 py-16 md:py-20 max-w-300 mx-auto">
           <p className="text-[11px] tracking-[0.2em] uppercase text-[#08b796] font-medium mb-6 text-center">
             The Question Every Diaspora Client Asks
           </p>
@@ -175,7 +175,7 @@ export default function DiasporaConsultationClient() {
       </section>
 
       {/* HOW IT WORKS — real sequence, so numbering is justified */}
-      <section className="px-6 md:px-10 py-20 md:py-28 max-w-[1200px] mx-auto">
+      <section className="px-6 md:px-10 py-20 md:py-28 max-w-300 mx-auto">
         <p className="text-[11px] tracking-[0.2em] uppercase text-[#08b796] font-medium mb-4 text-center">
           What Happens Next
         </p>
