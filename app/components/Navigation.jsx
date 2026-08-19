@@ -21,6 +21,7 @@ const NAV_ITEMS = [
     // { label: 'Projects', href: '/projects' },
     { label: 'People', href: '/people' },
     { label: 'Gallery', href: '/gallery' },
+    { label: 'Partners', href: '/partners' },
     { label: 'About', href: '/about' },
 ]
 
