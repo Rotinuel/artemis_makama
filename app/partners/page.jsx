@@ -39,7 +39,7 @@ const partnerCategories = [
             "Independent coverage that backs the build — the second layer of protection between a client's capital and the site.",
         partners: [
             {
-                name: "Lasaco",
+                name: "",
                 role: "Assurance Partner",
                 summary:
                     "Placeholder description — provides applicable insurance coverage for projects under an issued policy, subject to its terms.",
