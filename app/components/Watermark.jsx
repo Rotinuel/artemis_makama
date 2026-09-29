@@ -13,6 +13,7 @@ export default function Watermark() {
           src="/watermark.png"
           alt=""
           fill
+          sizes="70vmin"
           priority={false}
           className="object-contain"
         />

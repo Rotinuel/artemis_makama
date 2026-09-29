@@ -2,15 +2,20 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import MaterialPrices from './MaterialPrices'
 
-const FILTERS = ['All', 'Firm News', 'Project News', 'Media Coverage', 'Award', 'Event']
+const BASE_FILTERS = ['All', 'Firm News', 'Project News', 'Media Coverage', 'Award', 'Event']
+const INDUSTRY = 'Industry News'
 
-export default function NewsEventsClient({ newsItems, events }) {
+// `feed` arrives already merged + sorted newest-first (see lib/news-feed.js)
+export default function NewsEventsClient({ feed = [], events, prices }) {
     const [activeFilter, setActiveFilter] = useState('All')
+    const hasIndustry = feed.some(i => i.kind === 'industry')
+    const filters = hasIndustry ? [...BASE_FILTERS, INDUSTRY] : BASE_FILTERS
 
-    const filtered = activeFilter === 'All'
-        ? newsItems
-        : newsItems.filter(item => item.type === activeFilter)
+    const filtered = activeFilter === 'All' ? feed
+        : activeFilter === INDUSTRY ? feed.filter(i => i.kind === 'industry')
+            : feed.filter(i => i.kind === 'firm' && i.label === activeFilter)
 
     const featured = filtered[0]
     const remaining = filtered.slice(1)
@@ -20,7 +25,7 @@ export default function NewsEventsClient({ newsItems, events }) {
             {/* Filter bar */}
             <div className="border-b border-[#e0e0e0] px-6 md:px-10 sticky top-[72px] bg-white z-10">
                 <div className="max-w-[1600px] mx-auto flex gap-0 overflow-x-auto">
-                    {FILTERS.map(f => (
+                    {filters.map(f => (
                         <button
                             key={f}
                             onClick={() => setActiveFilter(f)}
@@ -38,23 +43,23 @@ export default function NewsEventsClient({ newsItems, events }) {
             <div className="px-6 md:px-10 py-16 max-w-[1600px] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
 
-                    {/* ── Main news ── */}
+                    {/* ── Main news (newest first, firm + industry together) ── */}
                     <div className="lg:col-span-2">
                         <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
                             News
                         </h2>
 
-                        {newsItems.length === 0 && (
+                        {feed.length === 0 && (
                             <p className="text-[14px] text-[#6b6b6b] py-8">No news items yet.</p>
                         )}
 
-                        {filtered.length === 0 && newsItems.length > 0 && (
+                        {filtered.length === 0 && feed.length > 0 && (
                             <p className="text-[14px] text-[#6b6b6b] py-8">No items in this category.</p>
                         )}
 
-                        {/* Featured first item */}
+                        {/* Featured (newest) item */}
                         {featured && (
-                            <Link href={featured.href || '#'} className="block group mb-10">
+                            <ItemLink item={featured} className="block group mb-10">
                                 {featured.image && (
                                     <div className="overflow-hidden mb-5" style={{ aspectRatio: '16/9' }}>
                                         <img
@@ -64,25 +69,23 @@ export default function NewsEventsClient({ newsItems, events }) {
                                         />
                                     </div>
                                 )}
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-[10px] tracking-[0.12em] uppercase text-[#6b6b6b] font-medium">
-                                        {featured.type}
-                                    </span>
-                                    <span className="text-[#ddd]">·</span>
-                                    <span className="text-[12px] text-[#6b6b6b]">{featured.date}</span>
-                                </div>
+                                <Meta item={featured} />
                                 <h3 className="text-[20px]  text-[#1a1a1a] leading-snug group-hover:opacity-60 transition-opacity">
                                     {featured.title}
                                 </h3>
-                            </Link>
+                                {featured.summary && (
+                                    <p className="text-[14px] text-[#6b6b6b] leading-relaxed mt-2">{featured.summary}</p>
+                                )}
+                                {featured.kind === 'industry' && <ReadOn item={featured} />}
+                            </ItemLink>
                         )}
 
                         {/* Remaining list */}
                         {remaining.length > 0 && (
                             <ul>
                                 {remaining.map(item => (
-                                    <li key={item.id} className="border-b border-[#e0e0e0] last:border-b-0">
-                                        <Link href={item.href || '#'} className="flex gap-5 py-5 group">
+                                    <li key={item.key} className="border-b border-[#e0e0e0] last:border-b-0">
+                                        <ItemLink item={item} className="flex gap-5 py-5 group">
                                             {item.image && (
                                                 <div className="flex-shrink-0 w-24 h-16 overflow-hidden">
                                                     <img
@@ -93,18 +96,16 @@ export default function NewsEventsClient({ newsItems, events }) {
                                                 </div>
                                             )}
                                             <div className="flex-1 min-w-0">
-                                                <div className="flex items-center gap-2 mb-1">
-                                                    <span className="text-[10px] tracking-[0.1em] uppercase text-[#6b6b6b] font-medium">
-                                                        {item.type}
-                                                    </span>
-                                                    <span className="text-[#ddd]">·</span>
-                                                    <span className="text-[11px] text-[#6b6b6b]">{item.date}</span>
-                                                </div>
+                                                <Meta item={item} small />
                                                 <p className="text-[14px] text-[#1a1a1a]  leading-snug group-hover:opacity-60 transition-opacity">
                                                     {item.title}
                                                 </p>
+                                                {item.kind === 'industry' && item.summary && (
+                                                    <p className="text-[13px] text-[#6b6b6b] leading-relaxed mt-1">{item.summary}</p>
+                                                )}
+                                                {item.kind === 'industry' && <ReadOn item={item} />}
                                             </div>
-                                        </Link>
+                                        </ItemLink>
                                     </li>
                                 ))}
                             </ul>
@@ -113,6 +114,9 @@ export default function NewsEventsClient({ newsItems, events }) {
 
                     {/* ── Sidebar ── */}
                     <div>
+                        {/* Building material prices */}
+                        <MaterialPrices board={prices?.board} lastUpdated={prices?.lastUpdated} />
+
                         {/* Upcoming Events */}
                         <h2 className="text-[22px]  text-[#1a1a1a] mb-8 border-b border-[#e0e0e0] pb-4">
                             Upcoming Events
@@ -161,5 +165,47 @@ export default function NewsEventsClient({ newsItems, events }) {
                 </div>
             </div>
         </>
+    )
+}
+
+function ItemLink({ item, className, children }) {
+    if (item.external) {
+        return (
+            <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+                {children}
+            </a>
+        )
+    }
+    return <Link href={item.href || '#'} className={className}>{children}</Link>
+}
+
+function Meta({ item, small = false }) {
+    const isIndustry = item.kind === 'industry'
+    return (
+        <div className={`flex flex-wrap items-center gap-2 ${small ? 'mb-1' : 'mb-2'}`}>
+            <span className={`text-[10px] tracking-[0.1em] uppercase font-medium ${isIndustry ? 'text-[#08b796]' : 'text-[#6b6b6b]'}`}>
+                {item.label}
+            </span>
+            {item.date && (
+                <>
+                    <span className="text-[#ddd]">·</span>
+                    <span className={`${small ? 'text-[11px]' : 'text-[12px]'} text-[#6b6b6b]`}>{item.date}</span>
+                </>
+            )}
+            {isIndustry && item.source && (
+                <>
+                    <span className="text-[#ddd]">·</span>
+                    <span className={`${small ? 'text-[11px]' : 'text-[12px]'} text-[#6b6b6b]`}>{item.source}</span>
+                </>
+            )}
+        </div>
+    )
+}
+
+function ReadOn({ item }) {
+    return (
+        <span className="inline-block text-[11px] tracking-[0.08em] uppercase text-[#1a1a1a] mt-3 border-b border-[#1a1a1a]/30 group-hover:border-[#1a1a1a] transition-colors">
+            Read on {item.source} ↗
+        </span>
     )
 }

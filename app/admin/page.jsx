@@ -17,6 +17,28 @@ const pages = [
         ),
     },
     {
+        href: '/admin/industry-news',
+        label: 'Industry Watch',
+        description: 'Review the daily AI-picked industry news before it goes live.',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M2.5 10h15M10 2.5c2 2.2 3 4.7 3 7.5s-1 5.3-3 7.5M10 2.5C8 4.7 7 7.2 7 10s1 5.3 3 7.5" stroke="currentColor" strokeWidth="1.3" />
+            </svg>
+        ),
+    },
+    {
+        href: '/admin/material-prices',
+        label: 'Material Prices',
+        description: 'Approve daily price updates for cement, rebar, granite, sand and more.',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 16V9M8 16V5M13 16v-4M18 16V3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                <path d="M2 17.5h16" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+            </svg>
+        ),
+    },
+    {
         href: '/admin/events',
         label: 'Events',
         description: 'Add and reorder upcoming events, conferences, and trade shows.',

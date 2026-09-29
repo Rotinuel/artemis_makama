@@ -2,8 +2,11 @@ import { createClient } from '@/utils/supabase/server'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
-import PageHero from '../components/PageHero'
+import HeroCarousel from '../components/HeroCarousel'
 import NewsEventsClient from './NewsEventsClient'
+import { NEWS_HERO_SLIDES } from './heroSlides'
+import { buildNewsFeed } from '@/lib/news-feed'
+import { buildPriceBoard } from '@/lib/material-prices/board'
 
 export const metadata = {
     title: 'News + Events',
@@ -23,17 +26,42 @@ export default async function NewsEventsPage() {
         .select('*')
         .order('position', { ascending: true })
 
+    // Industry Watch — approved AI-curated stories from the last 30 days
+    const since = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString()
+    const { data: industryNews } = await supabase
+        .from('industry_news')
+        .select('id, headline, summary, category, source, url, published_at')
+        .eq('status', 'published')
+        .gte('published_at', since)
+        .order('published_at', { ascending: false })
+        .limit(20)
+
+    // One feed, newest first — firm news and Industry Watch together
+    const feed = buildNewsFeed(newsItems || [], industryNews || [])
+
+    // Building material prices — latest + previous approved price per item/city
+    const { data: priceRows } = await supabase
+        .from('material_prices')
+        .select('item_key, city, price_min, price_max, source_name, source_url, effective_date, created_at')
+        .eq('status', 'published')
+        .order('effective_date', { ascending: false })
+        .order('created_at', { ascending: false })
+        .limit(1000)
+    const prices = buildPriceBoard(priceRows || [])
+
     return (
         <>
             <Navigation />
-            <PageHero
+            <HeroCarousel
                 label="Latest"
                 title="News + Events"
                 description="The latest news, press coverage, project announcements, and upcoming events."
+                slides={NEWS_HERO_SLIDES}
             />
             <NewsEventsClient
-                newsItems={newsItems || []}
+                feed={feed}
                 events={events || []}
+                prices={prices}
             />
             <Footer />
             <CookieBanner />

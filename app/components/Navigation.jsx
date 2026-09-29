@@ -293,7 +293,7 @@ function LogoMark({ color = '#07ba93', size = 24 }) {
         <Image
             src="/logo-bg.png"
             alt="logo"
-            className="mr-14 w-7 lg:w-14 cursor-pointer object-cover"
+            className="mr-14 w-7 lg:w-14 h-auto cursor-pointer object-cover"
             width={size}
             height={size}
         />

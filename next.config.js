@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['www.hok.com', 'images.unsplash.com', 'player.vimeo.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.hok.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'player.vimeo.com' },
+    ],
   },
 }
 

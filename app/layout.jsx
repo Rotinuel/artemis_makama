@@ -10,12 +10,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: browser extensions (e.g. crxlauncher) add
+    // attributes to <html> before React loads, which is harmless
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <Watermark />
-      <body>{children}</body>
+      <body>
+        <Watermark />
+        {children}
+      </body>
     </html>
   )
 }
