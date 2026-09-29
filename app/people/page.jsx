@@ -120,9 +120,9 @@ export default function PeoplePage() {
             </h2>
           </div>
         </Reveal>
-        <Reveal delay={100}>
-          <LeadershipSection leaders={leaders} />
-        </Reveal>
+        {/* Not wrapped in <Reveal>: this section is very tall (it pins while you
+            scroll through each person) and must be visible immediately */}
+        <LeadershipSection leaders={leaders} />
       </section>
 
       {/* Culture callout */}
