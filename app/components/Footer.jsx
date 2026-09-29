@@ -8,7 +8,7 @@ const studios = [
 const footerLinks = [
   { label: 'Home', href: '/' },
   { label: 'People', href: '/people' },
-  { label: 'Gallery', href: '/gallery' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'News + Events', href: '/news-events' },
   { label: 'Partners', href: '/partners' },
   { label: 'Contact', href: '/contact' },

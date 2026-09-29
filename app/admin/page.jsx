@@ -30,8 +30,8 @@ const pages = [
     },
     {
         href: '/admin/gallery',
-        label: 'Gallery',
-        description: 'Upload and organise images across project categories.',
+        label: 'Portfolio',
+        description: 'Upload and order the images for each portfolio project.',
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <rect x="2" y="2" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.3" />
@@ -42,8 +42,8 @@ const pages = [
     },
     {
         href: '/admin/gallery/categories',
-        label: 'Gallery Categories',
-        description: 'Create, rename, and reorder gallery categories.',
+        label: 'Portfolio Projects',
+        description: 'Create, reorder and remove portfolio projects.',
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
@@ -479,4 +479,4 @@ export default function AdminIndexPage() {
 //       </div>
 //     </>
 //   )
-// }
+// }

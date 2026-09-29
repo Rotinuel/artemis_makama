@@ -21,7 +21,7 @@ const NAV_ITEMS = [
     // { label: 'Projects', href: '/projects' },
     { label: 'Home', href: '/' },
     { label: 'People', href: '/people' },
-    { label: 'Gallery', href: '/gallery' },
+    { label: 'Portfolio', href: '/portfolio' },
     { label: 'Partners', href: '/partners' },
     { label: 'About', href: '/about' },
 ]

@@ -285,19 +285,19 @@ export default function AdminCategoriesPage() {
                     {/* ── Top bar ── */}
                     <div className="top-bar">
                         <div className="top-brand">
-                            Gallery <span>Categories</span>
+                            Portfolio <span>Projects</span>
                         </div>
-                        <Link href="/admin/gallery" className="back-btn">← Back to Gallery</Link>
+                        <Link href="/admin/gallery" className="back-btn">← Back to Portfolio Admin</Link>
                     </div>
 
                     {/* ── Add form ── */}
                     <div className="add-card">
-                        <div className="section-label">Add Category</div>
-                        <Field label="Category Name">
+                        <div className="section-label">Add Project</div>
+                        <Field label="Project Name">
                             <div className="input-row">
                                 <StyledInput
                                     type="text"
-                                    placeholder="e.g. Architecture, Interiors, Landscapes…"
+                                    placeholder="e.g. Ikoyi Residence, Lekki Office Fit-out…"
                                     value={name}
                                     onChange={e => setName(e.target.value)}
                                     onKeyDown={e => e.key === 'Enter' && addCategory()}
@@ -310,7 +310,7 @@ export default function AdminCategoriesPage() {
                         </Field>
                         {name && (
                             <p className="slug-hint">
-                                Slug: <code>/{toSlug(name)}</code>
+                                Page: <code>/portfolio/{toSlug(name)}</code>
                             </p>
                         )}
                     </div>
@@ -318,12 +318,12 @@ export default function AdminCategoriesPage() {
                     {/* ── List ── */}
                     <div className="list-header">
                         <div className="list-count">
-                            {categories.length} Categor{categories.length !== 1 ? 'ies' : 'y'}
+                            {categories.length} Project{categories.length !== 1 ? 's' : ''}
                         </div>
                     </div>
 
                     {categories.length === 0 && (
-                        <div className="empty">No categories yet. Add one above.</div>
+                        <div className="empty">No projects yet. Add one above.</div>
                     )}
 
                     <ul className="cat-list">
@@ -331,7 +331,7 @@ export default function AdminCategoriesPage() {
                             <li key={cat.id} className="cat-item">
                                 <div className="cat-body">
                                     <p className="cat-name">{cat.name}</p>
-                                    <p className="cat-slug">/{cat.slug}</p>
+                                    <p className="cat-slug">/portfolio/{cat.slug}</p>
                                 </div>
                                 <div className="icon-btn-group">
                                     <button className="icon-btn" onClick={() => moveCategory(cat.id, -1)} disabled={i === 0} title="Move up">↑</button>
@@ -340,7 +340,7 @@ export default function AdminCategoriesPage() {
                                         className="icon-btn del"
                                         title="Delete"
                                         onClick={() => {
-                                            if (confirm(`Delete "${cat.name}"? All images in this category will also be deleted.`)) {
+                                            if (confirm(`Delete "${cat.name}"? All images in this project will also be deleted.`)) {
                                                 deleteCategory(cat.id)
                                             }
                                         }}

@@ -362,10 +362,10 @@ export default function AdminGalleryPage() {
 
                     {/* ── Top bar ── */}
                     <div className="top-bar">
-                        <div className="top-brand">Gallery <span>Admin</span></div>
+                        <div className="top-brand">Portfolio <span>Admin</span></div>
                         <div className="nav-btns">
                             <Link href="/admin/gallery/categories" className="nav-btn primary">
-                                Manage Categories
+                                Manage Projects
                             </Link>
                             <Link href="/admin/news" className="nav-btn">
                                 ← News Admin
@@ -375,9 +375,9 @@ export default function AdminGalleryPage() {
 
                     {categories.length === 0 ? (
                         <div className="empty-state">
-                            <p>No categories yet. Create one to get started.</p>
+                            <p>No projects yet. Create one to get started.</p>
                             <Link href="/admin/gallery/categories" className="cta-btn">
-                                Create a Category
+                                Create a Project
                             </Link>
                         </div>
                     ) : (
@@ -398,6 +398,9 @@ export default function AdminGalleryPage() {
                              {/* ── Upload card ── */}
                              <div className="upload-card">
                                  <div className="section-label">Upload to "{activeCat?.name}"</div>
+                                 <p className="drop-secondary" style={{ margin: '-6px 0 16px' }}>
+                                     The first image is the project cover. The first description you add is shown as the project overview.
+                                 </p>
 
                                  <div className="grid-2">
                                      <Field label="Title (optional — applies to all)">
