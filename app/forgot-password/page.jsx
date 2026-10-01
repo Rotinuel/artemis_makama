@@ -11,7 +11,7 @@ function ForgotPasswordForm() {
   const linkError = searchParams.get('error') === 'link'
 
   const [email, setEmail] = useState(searchParams.get('email') || '')
-  const [error, setError] = useState(linkError ? 'That reset link is invalid or has expired. Request a new one below.' : '')
+  const [error, setError] = useState(linkError ? 'That link is invalid or has expired. Request a new one below.' : '')
   const [sentTo, setSentTo] = useState('')
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -56,7 +56,7 @@ function ForgotPasswordForm() {
         <>
           <div className="success-box">
             <p>
-              If an admin account exists for <strong>{sentTo}</strong>, a password reset link is on its way.
+              If an account exists for <strong>{sentTo}</strong>, a password reset link is on its way.
               It may take a minute — check your spam folder too.
             </p>
           </div>

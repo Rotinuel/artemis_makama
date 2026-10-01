@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { SITE, whatsappLink } from '@/lib/site'
 
 const studios = [
   '70B Olorunlogbon Street, Anthony Village, Lagos, Nigeria'
@@ -91,11 +92,11 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="block mb-6">
               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                <Image src="/logo-bg.png" alt="AAL Logo" width={60} height={24} />
+                <Image src="/logo-bg.png" alt="Artemis Atelier Ltd logo" width={60} height={24} />
               </div>
             </Link>
             <p className="text-[13px] text-[#888] leading-relaxed mb-6 ">
-              A global design, architecture, engineering and planning firm.
+              Design, construction and renovation in Lagos since 2010, for clients at home and abroad.
             </p>
             {/* Social */}
             <div className="flex gap-4">
@@ -123,23 +124,26 @@ export default function Footer() {
 
           {/* Studios — two sub-columns */}
           <div className="md:col-span-2">
-            <p className="text-[11px] tracking-[0.12em] uppercase text-[#555] font-medium mb-5">Studios</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">
-              {studios.map(s => (
-                <Link key={s} href="#" className="text-[13px] text-[#888] hover:text-white transition-colors leading-snug">
-                  {s}
-                </Link>
-              ))}
-            </div>
+            <p className="text-[11px] tracking-[0.12em] uppercase text-[#555] font-medium mb-5">Studio</p>
+            <address className="not-italic text-[13px] text-[#888] leading-relaxed space-y-2">
+              {studios.map(s => <p key={s}>{s}</p>)}
+              <p>
+                <a href={`tel:${SITE.phoneE164}`} className="hover:text-white transition-colors">{SITE.phone}</a>
+                {' · '}
+                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
+              </p>
+              {SITE.email && <p><a href={`mailto:${SITE.email}`} className="hover:text-white transition-colors">{SITE.email}</a></p>}
+            </address>
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-400 mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026</p>
+        <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026 · {SITE.rc}</p>
         <div className="flex flex-wrap gap-6">
-          <Link href="https://immanuel-ten.vercel.app" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Site Credit</Link>
+          <Link href="/portal" className="text-[12px] text-[#888] hover:text-white transition-colors">Client portal</Link>
+          <a href="https://immanuel-ten.vercel.app" rel="nofollow noopener" target="_blank" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Site Credit</a>
         </div>
       </div>
     </footer>

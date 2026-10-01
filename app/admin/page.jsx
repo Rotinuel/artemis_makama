@@ -76,6 +76,18 @@ const pages = [
         ),
     },
     {
+        href: '/admin/portal',
+        label: 'Client Portal',
+        description: 'Client projects: stages, payments, documents, updates, camera and defect requests.',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 9.5 10 3.5l7 6V17a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+                <circle cx="10" cy="11.5" r="1.8" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M7 18c.4-1.9 1.6-3 3-3s2.6 1.1 3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+            </svg>
+        ),
+    },
+    {
         href: '/admin/leads',
         label: 'Leads',
         description: 'View diaspora consultation submissions from prospective clients.',

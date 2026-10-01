@@ -6,9 +6,10 @@ import LeadershipSection from '../components/LeaderShipSection'
 import Reveal from '../components/Reveal'
 
 export const metadata = {
-  title: 'People - Artemis Atelier Ltd',
+  title: { absolute: 'Our Team | Architects & Engineers in Lagos' },
   description:
-    "Artemis Atelier Ltd's team brings together a global network of experts across architecture, urban design, engineering, and planning.",
+    'Meet the architects, COREN-registered engineers, project managers and specialists behind every Artemis project.',
+  alternates: { canonical: '/people' },
 }
 
 const leaders = [

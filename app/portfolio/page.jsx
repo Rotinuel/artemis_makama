@@ -4,8 +4,9 @@ import CookieBanner from '../components/CookieBanner'
 import { buildProjects } from './lib'
 
 export const metadata = {
-    title: 'Portfolio - Artemis Atelier Ltd',
-    description: 'Selected architecture, interiors and construction projects by Artemis Atelier Ltd.',
+    title: { absolute: 'Our Projects in Lagos | Artemis Atelier Ltd' },
+    description: 'Homes, estates, churches and commercial buildings we have designed and built across Lagos, with photos from foundation to handover.',
+    alternates: { canonical: '/portfolio' },
 }
 
 export default async function PortfolioPage() {

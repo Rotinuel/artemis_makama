@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
+import { safeNext } from '@/lib/auth/roles'
 
 // Landing point for links in Supabase auth emails (e.g. password reset).
 // Turns the one-time code in the link into a signed-in session, then
@@ -10,8 +11,8 @@ export async function GET(request) {
     const tokenHash = searchParams.get('token_hash')
     const type = searchParams.get('type')
 
-    let next = searchParams.get('next') || '/admin'
-    if (!next.startsWith('/') || next.startsWith('//')) next = '/admin'
+    // Default: the login page, which forwards admins to /admin and clients to /portal
+    const next = safeNext(searchParams.get('next')) || '/login'
 
     const supabase = await createClient()
     let error = null

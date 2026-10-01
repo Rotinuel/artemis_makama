@@ -170,6 +170,9 @@ export default function Navigation({ variant = 'default' }) {
                             <LogoMark color="white" size={56} />
                         </Link>
                         <div style={{ position: 'absolute', top: 28, right: 28, display: 'flex', alignItems: 'center', gap: 24 }}>
+                            <a href="tel:+2348033502393" aria-label="Call Artemis Atelier" className="mobile-only" style={{ ...iconBtn('white'), textDecoration: 'none' }}>
+                                <PhoneIcon />
+                            </a>
                             <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={iconBtn('white')}>
                                 <HamburgerIcon />
                             </button>
@@ -230,6 +233,9 @@ export default function Navigation({ variant = 'default' }) {
                 </nav>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+                    <a href="tel:+2348033502393" aria-label="Call Artemis Atelier" className="mobile-only" style={{ ...iconBtn('#1a1a1a'), textDecoration: 'none' }}>
+                        <PhoneIcon />
+                    </a>
                     <button onClick={() => setMobileOpen(true)} aria-label="Open menu" className="mobile-only" style={iconBtn('#1a1a1a')}>
                         <HamburgerIcon />
                     </button>
@@ -326,7 +332,7 @@ function LogoMark({ color = '#07ba93', size = 24 }) {
     return (
         <Image
             src="/logo-bg.png"
-            alt="logo"
+            alt="Artemis Atelier Ltd"
             className="mr-14 w-7 lg:w-14 h-auto cursor-pointer object-cover"
             width={size}
             height={size}
@@ -346,3 +352,11 @@ function ChevronIcon({ rotated }) {
     return <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{ transform: rotated ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}><path d="M6 9l6 6 6-6" strokeLinecap="round" /></svg>
 }
 const iconBtn = (color) => ({ color, background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center' })
+
+function PhoneIcon() {
+    return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+        </svg>
+    )
+}

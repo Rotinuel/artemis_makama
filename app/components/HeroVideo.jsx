@@ -17,7 +17,7 @@ export default function HeroVideo() {
                 loop
                 muted={muted}
                 playsInline
-                poster="https://www.hok.com/wp-content/uploads/2022/10/013-Boston-Consulting-Group-1900x1270-2.jpg"
+                poster="https://www.artemisatelierltd.com/wp-content/uploads/2022/10/013-Boston-Consulting-Group-1900x1270-2.jpg"
                 style={{
                     position: 'absolute',
                     top: '50%', left: '50%',

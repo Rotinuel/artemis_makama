@@ -1,12 +1,30 @@
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/server'
+import { buildNewsFeed } from '@/lib/news-feed'
 
+const HOMEPAGE_COUNT = 6
+
+// Homepage "Latest News": the same feed as the News + Events page — your own
+// news and approved Industry Watch stories together, newest first.
 export default async function NewsSection() {
     const supabase = await createClient()
-    const { data: newsItems = [] } = await supabase
-        .from('news_items')
-        .select('*')
-        .order('position', { ascending: true })
+    const since = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString()
+
+    const [{ data: newsItems }, { data: industryNews }] = await Promise.all([
+        supabase
+            .from('news_items')
+            .select('*')
+            .order('position', { ascending: true }),
+        supabase
+            .from('industry_news')
+            .select('id, headline, summary, category, source, url, published_at')
+            .eq('status', 'published')
+            .gte('published_at', since)
+            .order('published_at', { ascending: false })
+            .limit(20),
+    ])
+
+    const feed = buildNewsFeed(newsItems || [], industryNews || []).slice(0, HOMEPAGE_COUNT)
 
     return (
         <section className="px-6 md:px-10 max-w-[1600px] mx-auto py-20 md:py-28 overflow-hidden">
@@ -32,27 +50,40 @@ export default async function NewsSection() {
 
             {/* News list */}
             <div className="mt-10">
-                {newsItems.length === 0 ? (
+                {feed.length === 0 ? (
                     <p className="text-[14px] text-[#6b6b6b] py-10 border-t border-[#e0e0e0]">
                         No news items yet.
                     </p>
                 ) : (
                     <ul className="border-t border-[#e0e0e0]">
-                        {newsItems.map((item) => (
-                            <li key={item.id} className="border-b border-[#e0e0e0]">
-                                <Link
-                                    href={item.href || '#'}
-                                    className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 group"
-                                >
-                                    <span className="text-[11px] text-[#9b9b9b] flex-shrink-0 sm:w-32 tracking-wide">
+                        {feed.map((item) => {
+                            const row = (
+                                <>
+                                    <span className="text-[11px] text-[#9b9b9b] flex-shrink-0 sm:w-36 tracking-wide">
                                         {item.date}
                                     </span>
-                                    <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity  min-w-0 truncate">
-                                        {item.title}
+                                    <span className={`text-[10px] tracking-[0.1em] uppercase font-medium flex-shrink-0 sm:w-36 ${item.kind === 'industry' ? 'text-[#08b796]' : 'text-[#6b6b6b]'}`}>
+                                        {item.label}
                                     </span>
-                                </Link>
-                            </li>
-                        ))}
+                                    <span className="text-[14px] md:text-[15px] text-[#1a1a1a] leading-snug group-hover:opacity-50 transition-opacity min-w-0 truncate">
+                                        {item.title}
+                                        {item.kind === 'industry' && item.source && (
+                                            <span className="text-[12px] text-[#9b9b9b]"> · {item.source} ↗</span>
+                                        )}
+                                    </span>
+                                </>
+                            )
+                            const cls = 'flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 group'
+                            return (
+                                <li key={item.key} className="border-b border-[#e0e0e0]">
+                                    {item.external ? (
+                                        <a href={item.href} target="_blank" rel="noopener noreferrer" className={cls}>{row}</a>
+                                    ) : (
+                                        <Link href={item.href || '/news-events'} className={cls}>{row}</Link>
+                                    )}
+                                </li>
+                            )
+                        })}
                     </ul>
                 )}
             </div>

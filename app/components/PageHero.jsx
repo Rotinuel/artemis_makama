@@ -22,6 +22,8 @@ export default function PageHero({ label, title, description, image, dark = fals
         </>
       )}
       <div className="relative z-10 px-6 md:px-10 pb-14 pt-20 max-w-400 mx-auto w-full">
+        {/* One H1 per page for search engines and screen readers (visually hidden to keep the design) */}
+        {title && <h1 className="sr-only">{title}</h1>}
         {label && (
           <p className={`text-[36px] tracking-[0.14em] uppercase font-medium mb-3 ${image ? 'text-[#08b796]' : dark ? 'text-[#08b796]' : 'text-[#6b6b6b]'}`}>
             {label}

@@ -32,7 +32,7 @@ export const partnerCategories = [
         name: "High-End All-Aluminium Integrated Space",
         role: "Construction & Procurement Partner",
         summary:
-          "Placeholder description — supplies and installs high-spec aluminium systems as part of our vetted construction and procurement network.",
+          "Supplies and installs high-spec aluminium systems as part of our vetted construction and procurement network.",
         documents: [
           { name: "compressed collection of simple and elegant series", url: "/documents/compressed collection of simple and elegant series.pdf" },
           // { name: "Product Specification Sheet", url: "/documents/haas-spec-sheet.pdf" },
@@ -50,10 +50,10 @@ export const partnerCategories = [
     partners: [
       {
         slug: "lasaco",
-        name: "",
+        name: "LASACO Assurance Plc",
         role: "Assurance Partner",
         summary:
-          "Placeholder description — provides applicable insurance coverage for projects under an issued policy, subject to its terms.",
+          "Provides applicable insurance coverage for our projects under an issued policy, subject to its terms.",
         documents: [
           // { name: "Sample Policy Document", url: "/documents/lasaco-policy.pdf" },
           // { name: "Certificate of Coverage", url: "/documents/lasaco-certificate.pdf" },

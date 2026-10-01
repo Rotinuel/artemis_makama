@@ -1,6 +1,6 @@
 'use client'
 
-// Shared look + pieces for the admin auth pages (login, forgot / reset password)
+// Shared look + pieces for the auth pages (login, forgot / reset password, invites)
 
 import { useState } from 'react'
 
@@ -323,7 +323,7 @@ export const authStyles = `
         .back-row { text-align: center; margin-top: 1.25rem; }
 `
 
-export function AuthShell({ label = 'Artemis-Atelier Ltd Admin Portal', title, subtitle, mounted = true, children, footer }) {
+export function AuthShell({ label = 'Artemis Atelier Ltd Portal', title, subtitle, mounted = true, children, footer }) {
   return (
     <>
       <style>{authStyles}</style>

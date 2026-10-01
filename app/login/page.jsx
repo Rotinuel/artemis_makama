@@ -5,11 +5,12 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { AuthShell, PasswordInput, Spinner } from './auth-ui'
+import { homeFor, safeNext } from '@/lib/auth/roles'
 
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirectTo') || '/admin'
+  const redirectTo = safeNext(searchParams.get('redirectTo'))
   const justReset = searchParams.get('reset') === '1'
 
   const [email, setEmail] = useState('')
@@ -31,13 +32,14 @@ function LoginForm() {
     setError('')
     const supabase = createClient()
 
-    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password })
+    const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password })
 
     if (error) {
       setError(error.message)
       setLoading(false)
     } else {
-      router.push(redirectTo)
+      // Admins → dashboard, clients → their project portal
+      router.push(redirectTo || await homeFor(supabase, data.user?.id))
       router.refresh()
     }
   }
@@ -48,7 +50,7 @@ function LoginForm() {
     <AuthShell
       mounted={mounted}
       title={<>Welcome <em>back</em></>}
-      subtitle="Sign in to continue to your dashboard"
+      subtitle="Sign in to your dashboard or client portal"
       footer={
         <p className="footer-note">
           <span className="footer-dot" />

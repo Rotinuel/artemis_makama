@@ -6,32 +6,24 @@ import Link from 'next/link'
 import { ShieldCheck, Lightbulb, Target, Users, Medal, HardHat } from "lucide-react";
 
 export const metadata = {
-  title: 'About - ARTEMIS ATELIER LTD',
-  description: 'Construction without limits — residential, commercial, civil, and beyond.',
+  title: { absolute: 'About Artemis Atelier | Lagos Builders Since 2010' },
+  description: 'Architects, engineers and builders in Anthony Village, Lagos, delivering homes, renovations and commercial projects for clients at home and abroad.',
+  alternates: { canonical: '/about' },
 }
 
 const stats = [
   { number: '30+', label: 'Design Professionals' },
-  { number: '2', label: 'Studios Worldwide' },
-  { number: '1', label: 'Continent' },
+  { number: '2010', label: 'Founded in Lagos' },
+  { number: 'COREN', label: 'Registered engineer on our team' },
   { number: '15+', label: 'Years of Experience' },
 ]
 
-const recognitions = [
-  { year: '2026', award: "Fast Company's Most Innovative Companies", category: 'Innovation' },
-  { year: '2025', award: 'AIA Architecture Firm Award', category: 'Architecture' },
-  { year: '2025', award: "IIDA's Firm of the Year", category: 'Interior Design' },
-  { year: '2025', award: "Architect Magazine's Top 50 Firms", category: 'Recognition' },
-  { year: '2025', award: 'ENR Top 500 Design Firms', category: 'Engineering' },
-  { year: '2024', award: 'Interior Design Hall of Fame', category: 'Interior Design' },
-]
+// (Removed a placeholder awards list that belonged to another firm. Add real awards here if you win any.)
 
 const milestones = [
   { year: '2010', event: 'Artemis Atelier Ltd is founded in Ikeja, Lagos by Edward Makama.' },
   { year: '2012', event: 'Artemis Atelier Ltd designs its first major project.' },
   { year: '2016', event: 'Artemis Atelier Ltd expands and begins its federal government practice.' },
-  { year: '2020', event: 'Artemis Atelier Ltd expands its global presence with offices in Asia and the Middle East.' },
-  { year: '2026', event: 'Artemis expands global Sports, Recreation and Entertainment practice.' },
 ]
 
 const values = [
@@ -96,8 +88,8 @@ export default function AboutPage() {
       <Navigation />
       <PageHero
         label="Who We Are"
-        title="About Artemis Atelier Ltd"
-        description="Construction without limits — residential, commercial, civil, and beyond."
+        title="A Lagos building firm built on one idea: you should never have to build blind."
+        description="Artemis Atelier Ltd (RC 1484495) has designed, built and renovated homes, estates, churches and commercial buildings across Lagos since 2010, from our studio at 70B Olorunlogbon Street, Anthony Village. Live site cameras, payments in checked stages, costs on an open book and documents for everything."
         image="/100.jpeg"
       />
 
@@ -147,7 +139,7 @@ export default function AboutPage() {
           <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">
             <img
               src="/101.jpeg"
-              alt="AAL office"
+              alt="Completed residence by Artemis Atelier Ltd in Lagos"
               className="w-full h-full object-cover"
             />
           </div>

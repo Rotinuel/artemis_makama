@@ -9,8 +9,9 @@ import { buildNewsFeed } from '@/lib/news-feed'
 import { buildPriceBoard } from '@/lib/material-prices/board'
 
 export const metadata = {
-    title: 'News + Events',
-    description: 'The latest news, press coverage, and events.',
+    title: 'News, Industry Updates & Material Prices',
+    description: 'Artemis Atelier news, construction and architecture updates, and current building material prices in Lagos, Abuja and Port Harcourt.',
+    alternates: { canonical: '/news-events' },
 }
 
 export default async function NewsEventsPage() {
@@ -77,27 +78,27 @@ export default async function NewsEventsPage() {
 // import Link from 'next/link'
 //
 // export const metadata = {
-//   title: 'News + Events - HOK',
-//   description: 'The latest news, press coverage, and events from HOK.',
+//   title: 'News + Events - ARTEMISATELIERLTD',
+//   description: 'The latest news, press coverage, and events from ARTEMISATELIERLTD.',
 // }
 //
 // const newsItems = [
-//   { date: 'May 15, 2026', type: 'Media Coverage', title: "HOK's Rashed Singaby Discusses USL's Promotion and Relegation Plans with Forbes", image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+//   { date: 'May 15, 2026', type: 'Media Coverage', title: "ARTEMISATELIERLTD's Rashed Singaby Discusses USL's Promotion and Relegation Plans with Forbes", image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
 //   { date: 'May 13, 2026', type: 'Project News', title: "Alaska Airlines' Modernized North Main Terminal Unveiled at Seattle-Tacoma International Airport", image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80' },
-//   { date: 'May 11, 2026', type: 'Media Coverage', title: "HOK's John Rhodes Talks Sports Venue Brand Engagement with the Financial Times", image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
+//   { date: 'May 11, 2026', type: 'Media Coverage', title: "ARTEMISATELIERLTD's John Rhodes Talks Sports Venue Brand Engagement with the Financial Times", image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80' },
 //   { date: 'May 6, 2026', type: 'Project News', title: 'Miami to Expand Paddock Club Hospitality With New Extension Overlooking Turn 1, Making It One of the Largest in Formula 1', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80' },
-//   { date: 'May 4, 2026', type: 'Firm News', title: 'HOK Names New Leaders to Chicago Office', image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
-//   { date: 'April 28, 2026', type: 'Firm News', title: 'HOK and ROSSETTI Join Forces to Create Expanded Global Sports, Recreation and Entertainment Design Practice', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80' },
-//   { date: 'April 23, 2026', type: 'Firm News', title: 'HOK Promotes Two Senior Executives to New Roles', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80' },
-//   { date: 'April 20, 2026', type: 'Project News', title: 'HOK Unveils Design of Major Departure Spaces at Phu Quoc International Airport in Vietnam', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80' },
+//   { date: 'May 4, 2026', type: 'Firm News', title: 'ARTEMISATELIERLTD Names New Leaders to Chicago Office', image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
+//   { date: 'April 28, 2026', type: 'Firm News', title: 'ARTEMISATELIERLTD and ROSSETTI Join Forces to Create Expanded Global Sports, Recreation and Entertainment Design Practice', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80' },
+//   { date: 'April 23, 2026', type: 'Firm News', title: 'ARTEMISATELIERLTD Promotes Two Senior Executives to New Roles', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80' },
+//   { date: 'April 20, 2026', type: 'Project News', title: 'ARTEMISATELIERLTD Unveils Design of Major Departure Spaces at Phu Quoc International Airport in Vietnam', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80' },
 //   { date: 'April 17, 2026', type: 'Project News', title: 'Toronto Tempo to Develop World-Class Performance Centre', image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80' },
-//   { date: 'April 15, 2026', type: 'Project News', title: 'Five HOK-Designed Projects Top Out', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80' },
-//   { date: 'March 28, 2026', type: 'Award', title: 'Fast Company Names HOK a 2026 Most Innovative Company', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80' },
-//   { date: 'March 20, 2026', type: 'Project News', title: 'HOK Tops Out New Orleans Jazz Market Project', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
+//   { date: 'April 15, 2026', type: 'Project News', title: 'Five ARTEMISATELIERLTD-Designed Projects Top Out', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80' },
+//   { date: 'March 28, 2026', type: 'Award', title: 'Fast Company Names ARTEMISATELIERLTD a 2026 Most Innovative Company', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80' },
+//   { date: 'March 20, 2026', type: 'Project News', title: 'ARTEMISATELIERLTD Tops Out New Orleans Jazz Market Project', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80' },
 // ]
 //
 // const upcomingEvents = [
-//   { date: 'June 3–5, 2026', title: 'HOK at AIA Conference on Architecture', location: 'Chicago, IL', type: 'Conference' },
+//   { date: 'June 3–5, 2026', title: 'ARTEMISATELIERLTD at AIA Conference on Architecture', location: 'Chicago, IL', type: 'Conference' },
 //   { date: 'June 12, 2026', title: 'Design Futures Symposium: AI in Architecture', location: 'New York, NY', type: 'Event' },
 //   { date: 'June 18–21, 2026', title: 'IIDA NEOCON 2026', location: 'Chicago, IL', type: 'Trade Show' },
 //   { date: 'July 8, 2026', title: 'Healthcare Design Innovation Summit', location: 'Virtual', type: 'Webinar' },
@@ -112,7 +113,7 @@ export default async function NewsEventsPage() {
 //       <PageHero
 //         label="Latest"
 //         title="News + Events"
-//         description="The latest news, press coverage, project announcements, and upcoming events from HOK."
+//         description="The latest news, press coverage, project announcements, and upcoming events from ARTEMISATELIERLTD."
 //       />
 //
 //       {/* Filter bar */}
@@ -186,7 +187,7 @@ export default async function NewsEventsPage() {
 //             {/* Newsletter */}
 //             <div className="mt-12 bg-[#f5f5f5] p-6">
 //               <h3 className="text-[16px] font-medium text-[#1a1a1a] mb-2">Stay Connected</h3>
-//               <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 ">Get the latest HOK news and design insights delivered to your inbox.</p>
+//               <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 ">Get the latest ARTEMISATELIERLTD news and design insights delivered to your inbox.</p>
 //               <input
 //                 type="email"
 //                 placeholder="Your email address"

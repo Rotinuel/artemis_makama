@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/utils/supabase/server'
+import { requireAdmin } from '@/lib/auth/require-admin'
 import { runMaterialPricesJob } from '@/lib/material-prices/job'
 
 export const dynamic = 'force-dynamic'
@@ -16,9 +16,8 @@ export async function GET(request) {
 
 // POST — "Check prices now" button in the admin (logged-in admins only)
 export async function POST() {
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    const { response } = await requireAdmin()
+    if (response) return response
     return run()
 }
 

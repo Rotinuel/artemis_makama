@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { AuthShell, PasswordInput, Spinner } from '../login/auth-ui'
+import { homeFor } from '@/lib/auth/roles'
 
 const MIN_LENGTH = 8
 
@@ -16,9 +17,11 @@ export default function ResetPasswordPage() {
   const [confirm, setConfirm] = useState('')
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
+  const [welcome, setWelcome] = useState(false) // first visit from a client invite
 
   // The reset link signs the user in (via /auth/callback) before landing here
   useEffect(() => {
+    setWelcome(new URLSearchParams(window.location.search).get('welcome') === '1')
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) {
@@ -43,8 +46,9 @@ export default function ResetPasswordPage() {
       return
     }
     setStatus('done')
+    const home = await homeFor(supabase, (await supabase.auth.getUser()).data.user?.id)
     setTimeout(() => {
-      router.push('/admin')
+      router.push(home)
       router.refresh()
     }, 1500)
   }
@@ -65,7 +69,7 @@ export default function ResetPasswordPage() {
 
   if (status === 'no-session') {
     return (
-      <AuthShell title={<>Link <em>expired</em></>} subtitle="This reset link is invalid or has already been used" footer={footer}>
+      <AuthShell title={<>Link <em>expired</em></>} subtitle="This link is invalid or has already been used" footer={footer}>
         <Link href="/forgot-password" className="submit-btn" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>
           <span className="btn-content">Request a new link</span>
         </Link>
@@ -75,7 +79,7 @@ export default function ResetPasswordPage() {
 
   if (status === 'done') {
     return (
-      <AuthShell title={<>All <em>set</em></>} subtitle="Taking you to your dashboard…" footer={footer}>
+      <AuthShell title={<>All <em>set</em></>} subtitle={welcome ? 'Opening your project portal…' : 'Taking you to your dashboard…'} footer={footer}>
         <div className="success-box" style={{ marginBottom: 0 }}>
           <p>Your password has been updated.</p>
         </div>
@@ -85,8 +89,10 @@ export default function ResetPasswordPage() {
 
   return (
     <AuthShell
-      title={<>New <em>password</em></>}
-      subtitle={email ? `For ${email}` : 'Choose a new password'}
+      title={welcome ? <>Choose a <em>password</em></> : <>New <em>password</em></>}
+      subtitle={welcome
+        ? `You’ll use it with ${email || 'your email'} to sign in to your project portal`
+        : email ? `For ${email}` : 'Choose a new password'}
       footer={footer}
     >
       <div className="field-group">
@@ -122,7 +128,7 @@ export default function ResetPasswordPage() {
       <button onClick={save} disabled={saving} className="submit-btn">
         <span className="btn-content">
           {saving && <Spinner />}
-          {saving ? 'Saving…' : 'Save new password'}
+          {saving ? 'Saving…' : welcome ? 'Save and open my portal' : 'Save new password'}
         </span>
       </button>
     </AuthShell>

@@ -8,7 +8,7 @@ export default function CareersSection() {
                 <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                     <img
                         src="/16.jpg"
-                        alt="AAL Careers"
+                        alt="Residential development designed by Artemis Atelier Ltd"
                         className="w-full h-full object-cover"
                         loading="lazy"
                     />
@@ -25,8 +25,14 @@ export default function CareersSection() {
                         Careers at Artemis Atelier Ltd
                     </h2>
                     <p className="text-[14px] md:text-[15px] text-aal-gray leading-relaxed mb-6 ">
-                        We&apos;re excited about the future. Join our team and design it with us. Artemis Atelier Ltd designs buildings and spaces that inspire people. We&apos;re a diverse team of innovative, entrepreneurial people with an ambitious vision: to create the world&apos;s best, most sustainable places.
+                        We are a Lagos team of architects, engineers and builders who care about doing things properly. If you share that, we would like to hear from you.
                     </p>
+                    <Link
+                        href="/contact"
+                        className="inline-block text-[11px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity"
+                    >
+                        Get in touch
+                    </Link>
                     {/* <Link
                         href="/people/careers"
                         className="inline-block text-[11px] tracking-[0.12em] uppercase text-[#1a1a1a] border-b-2 border-[#1a1a1a] pb-1 hover:opacity-60 transition-opacity"

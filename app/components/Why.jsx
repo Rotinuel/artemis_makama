@@ -1,112 +1,44 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { whatsappLink, SITE } from "@/lib/site";
 
 /**
- * /why-build-with-us
- *
- * Framework: "The Four R's" — a mnemonic device that gives the four pillars
- * a memorable, ordered logic (each R feeds the next, and Retention loops
- * back into Relationships via referrals). Built on the existing AAL design
- * system: #08b796 teal / #1a1a1a dark / Cormorant Garamond + DM Sans.
- *
- * Drop this file at app/why-build-with-us/page.jsx
- * No extra dependencies — scroll reveals run on a plain IntersectionObserver.
+ * Homepage body: why clients choose Artemis, what we do, the five layers of
+ * protection, how it works, our commitment, and a closing call to action.
+ * Copy follows the SEO & conversion plan: written for the client (what they
+ * get), not about our internal strategy.
  */
 
-const PILLARS = [
+const REASONS = [
   {
-    tag: "R1",
-    word: "De-risk",
-    title: "De-Risk the Diaspora Market",
-    subtitle: "The Trust Framework",
-    lede:
-      "Building from abroad shouldn't cost you sleep. We replaced blind trust with verifiable proof — you see the site, control the funds, and approve every material line item.",
-    features: [
-      {
-        h: "24/7 live site streaming",
-        p: "HD camera access plus bi-weekly drone coverage, so you watch progress in real time instead of waiting on secondhand updates.",
-      },
-      {
-        h: "Stage-gate payments",
-        p: "Capital releases in milestone-based phases — substructure, superstructure, roofing, finishing — only after each stage is independently verified.",
-      },
-      {
-        h: "Open-book BOQs",
-        p: "Itemized material pricing with zero hidden markups. Every bag of cement and ton of rebar is accounted for.",
-      },
-    ],
-    accent: "from-[#08b796] to-[#0a8f79]",
+    n: "01",
+    h: "You see everything.",
+    p: "Live camera access to your site, plus drone footage of progress. You watch your building rise from London, Houston or Toronto, not through a relative's phone.",
   },
   {
-    tag: "R2",
-    word: "Reach",
-    title: "High-Impact Visual Marketing & Digital Authority",
-    subtitle: "The Proof Engine",
-    lede:
-      "The same drone footage and CAD precision that reassure our clients also become our best sales material. Every build compounds our authority in the market.",
-    features: [
-      {
-        h: "Cinematic progress content",
-        p: "Weekly drone and site footage repurposed into case-study reels that show real builds, not stock renders.",
-      },
-      {
-        h: "Revit-grade visualization",
-        p: "Photoreal walkthroughs and structural renders that let prospects experience a project before ground is broken.",
-      },
-      {
-        h: "Documented track record",
-        p: "A growing public library of completed projects, before/after transformations, and client testimonials that outsell any brochure.",
-      },
-    ],
-    accent: "from-[#0a8f79] to-[#08b796]",
+    n: "02",
+    h: "You control the money.",
+    p: "Your funds are released in stages: foundation, frame, roof and finishing. An independent inspector checks each stage before the next payment.",
   },
   {
-    tag: "R3",
-    word: "Relationships",
-    title: "B2B Partnerships & Referral Networks",
-    subtitle: "The Growth Multiplier",
-    lede:
-      "Our best clients arrive through people who already trust us — estate agents, mortgage partners, and diaspora associations who stake their own reputation on the referral.",
-    features: [
-      {
-        h: "Realtor & developer alliances",
-        p: "Structured partnerships with land agents and property developers who need a construction partner they can vouch for.",
-      },
-      {
-        h: "Diaspora association channels",
-        p: "Direct relationships with community and alumni groups abroad, where trust travels faster than advertising.",
-      },
-      {
-        h: "Formal referral incentives",
-        p: "A transparent commission structure that rewards every partner who brings us a client we deliver for.",
-      },
-    ],
-    accent: "from-[#08b796] to-[#0a8f79]",
+    n: "03",
+    h: "You know every cost.",
+    p: "Our bill of quantities is open-book. Every bag of cement and every tonne of steel is itemised, with no hidden mark-ups.",
   },
   {
-    tag: "R4",
-    word: "Retention",
-    title: "Structured Client Experience",
-    subtitle: "The Retention Engine",
-    lede:
-      "The relationship doesn't end at handover. A structured post-completion experience turns finished clients into repeat clients — and into the referral network above.",
-    features: [
-      {
-        h: "6–12 month defect liability warranty",
-        p: "Guaranteed post-completion support, so issues are fixed as a matter of course, not a fight.",
-      },
-      {
-        h: "Complete as-built dossier",
-        p: "Full CAD drawings, electrical schematics, plumbing layouts, and structural certifications, handed over with the keys.",
-      },
-      {
-        h: "Dedicated client portal",
-        p: "One place to revisit project history, documents, and warranty claims long after the ribbon is cut.",
-      },
-    ],
-    accent: "from-[#0a8f79] to-[#08b796]",
+    n: "04",
+    h: "You are covered after handover.",
+    p: "A 6 to 12 month defect liability period, and a complete handover pack: architectural drawings, electrical and plumbing layouts, and structural certificates.",
   },
+];
+
+const SERVICES = [
+  { h: "Architecture & design", p: "Plans, 3D visuals and approvals-ready drawings." },
+  { h: "Construction", p: "New homes, duplexes, estates, churches and commercial buildings." },
+  { h: "Renovation & interiors", p: "Remodelling, fit-outs, kitchens, wardrobes and wall finishes." },
+  { h: "Project management", p: "We manage your project, your budget and your contractors, and we report to you every week." },
 ];
 
 const PROTECTION_LAYERS = [
@@ -117,14 +49,12 @@ const PROTECTION_LAYERS = [
   { n: "05", label: "Contractual Controls", desc: "Defined scope, payments, variations, responsibilities and dispute procedures." },
 ];
 
-const HONESTY_POINTS = [
-  "Construction will never experience delays",
-  "Material prices will never change",
-  "Government approvals will always be immediate",
-  "Weather will never affect construction",
-  "Every possible construction risk is insured",
-  "Insurance will cover every loss",
-  "The project will never require a variation",
+const STEPS = [
+  { h: "Free consultation", p: "By video call or WhatsApp, at a time that suits your time zone." },
+  { h: "Design and estimate", p: "Drawings and an open-book cost estimate you can check line by line." },
+  { h: "Contract", p: "Agreed stages, payments and an inspection schedule, in writing." },
+  { h: "Build", p: "Live site access and weekly updates from start to finish." },
+  { h: "Handover", p: "Keys, a full document pack and a defect liability period." },
 ];
 
 function useReveal() {
@@ -161,215 +91,83 @@ function Reveal({ children, className = "", delay = 0 }) {
   );
 }
 
-function LoopDiagram() {
-  const nodes = [
-    { label: "De-risk", x: 90, y: 30 },
-    { label: "Reach", x: 270, y: 30 },
-    { label: "Retention", x: 90, y: 190 },
-    { label: "Relationships", x: 270, y: 190 },
-  ];
+const serif = { fontFamily: "Cormorant Garamond, serif" };
+const sans = { fontFamily: "DM Sans, sans-serif" };
+
+function Eyebrow({ children, className = "" }) {
   return (
-    <svg
-      viewBox="0 0 360 220"
-      className="w-full max-w-md mx-auto"
-      role="img"
-      aria-label="The Four R's flow into one another: De-risk leads to Reach, which leads to Relationships, which leads to Retention, which loops back into Relationships through referrals."
-    >
-      <defs>
-        <marker
-          id="arrow"
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
-          markerWidth="6"
-          markerHeight="6"
-          orient="auto-start-reverse"
-        >
-          <path d="M0,0 L10,5 L0,10 z" fill="#08b796" />
-        </marker>
-      </defs>
-
-      {/* connectors */}
-      <line x1="130" y1="30" x2="230" y2="30" stroke="#08b796" strokeWidth="1.5" markerEnd="url(#arrow)" opacity="0.6" />
-      <line x1="270" y1="55" x2="270" y2="165" stroke="#08b796" strokeWidth="1.5" markerEnd="url(#arrow)" opacity="0.6" />
-      <line x1="230" y1="190" x2="130" y2="190" stroke="#08b796" strokeWidth="1.5" markerEnd="url(#arrow)" opacity="0.6" />
-      <line x1="90" y1="165" x2="90" y2="55" stroke="#08b796" strokeWidth="1.5" strokeDasharray="4 3" markerEnd="url(#arrow)" opacity="0.35" />
-
-      {nodes.map((n) => (
-        <g key={n.label} transform={`translate(${n.x},${n.y})`}>
-          <circle r="26" fill="#1a1a1a" stroke="#08b796" strokeWidth="1.5" />
-          <text
-            textAnchor="middle"
-            dy="5"
-            className="fill-white"
-            style={{ fontFamily: "DM Sans, sans-serif", fontSize: "9px", fontWeight: 600 }}
-          >
-            {n.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+    <p className={`uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4 ${className}`} style={sans}>
+      {children}
+    </p>
   );
 }
 
 export default function WhyBuildWithUs() {
   return (
     <main className="bg-[#fbfaf8] text-aal-black">
-      {/* HERO */}
+      {/* WHY CLIENTS CHOOSE US */}
       <section className="relative overflow-hidden bg-aal-black text-white">
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[linear-gradient(#08b796_1px,transparent_1px),linear-gradient(90deg,#08b796_1px,transparent_1px)] bg-size-[48px_48px]" />
-        <div className="relative max-w-5xl mx-auto px-6 pt-28 pb-24 md:pt-36 md:pb-32">
+        <div className="relative max-w-5xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-28">
           <Reveal>
-            <p
-              className="uppercase tracking-[0.25em] text-xs md:text-sm text-[#08b796] mb-6"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              Why Build With Us
-            </p>
+            <Eyebrow className="md:text-sm mb-6">Why clients choose us</Eyebrow>
           </Reveal>
           <Reveal delay={100}>
-            <h1
-              className="text-4xl md:text-6xl leading-[1.08] mb-8 max-w-3xl"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
-            >
-              Four disciplines. One firm you never have to worry about.
-            </h1>
+            <h2 className="text-4xl md:text-6xl leading-[1.08] mb-8 max-w-3xl" style={serif}>
+              Building from abroad should not cost you sleep.
+            </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p
-              className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              We didn't set out to be another contractor. We built a firm around
-              the four things that actually determine whether a diaspora build
-              succeeds — starting with trust, and ending with a client who
-              refers us to the next one.
+            <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed mb-16" style={sans}>
+              Most diaspora building stories end the same way: money sent home, photos that never come,
+              and a site that has barely moved. We built Artemis Atelier to make that impossible.
             </p>
           </Reveal>
+
+          <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+            {REASONS.map((r, idx) => (
+              <Reveal key={r.n} delay={120 + idx * 80}>
+                <div className="border-l-2 border-[#08b796] pl-6">
+                  <span className="block text-3xl text-[#08b796]/50 mb-2" style={serif}>{r.n}</span>
+                  <h3 className="text-xl mb-2" style={{ ...sans, fontWeight: 600 }}>{r.h}</h3>
+                  <p className="text-sm text-white/65 leading-relaxed" style={sans}>{r.p}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FRAMEWORK OVERVIEW */}
+      {/* WHAT WE DO */}
       <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <Reveal>
-            <div>
-              <p
-                className="uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
-              >
-                The Framework
-              </p>
-              <h2
-                className="text-3xl md:text-4xl mb-6"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
-              >
-                The Four R's
-              </h2>
-              <p
-                className="text-aal-black/70 leading-relaxed"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
-              >
-                De-risking the build earns trust. Trust, documented well, becomes
-                proof that <span className="text-[#08b796] font-medium">reaches</span> new
-                clients. New clients arrive through the{" "}
-                <span className="text-[#08b796] font-medium">relationships</span> we
-                keep with partners on the ground. And a client we{" "}
-                <span className="text-[#08b796] font-medium">retain</span> through a
-                structured experience becomes the next referral — closing the
-                loop.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={150}>
-            <LoopDiagram />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PILLARS */}
-      {PILLARS.map((p, i) => (
-        <section
-          key={p.tag}
-          className={`border-t border-aal-black/10 ${i % 2 === 1 ? "bg-white" : "bg-[#f4f2ee]"}`}
-        >
-          <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-            <Reveal>
-              <div className="flex items-baseline gap-4 mb-4">
-                <span
-                  className={`text-xs font-semibold tracking-widest text-white px-2.5 py-1 rounded-full bg-linear-to-r ${p.accent}`}
-                  style={{ fontFamily: "DM Sans, sans-serif" }}
-                >
-                  {p.tag}
-                </span>
-                <span
-                  className="uppercase tracking-[0.2em] text-xs text-aal-black/50"
-                  style={{ fontFamily: "DM Sans, sans-serif" }}
-                >
-                  {p.subtitle}
-                </span>
+        <Reveal>
+          <Eyebrow>What we do</Eyebrow>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 className="text-3xl md:text-5xl mb-12" style={serif}>One team from drawing to keys.</h2>
+        </Reveal>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-aal-black/10">
+          {SERVICES.map((s, idx) => (
+            <Reveal key={s.h} delay={120 + idx * 70} className="bg-[#fbfaf8]">
+              <div className="p-7 h-full">
+                <div className="w-2 h-2 rounded-full bg-[#08b796] mb-5" />
+                <h3 className="text-lg mb-2" style={{ ...sans, fontWeight: 600 }}>{s.h}</h3>
+                <p className="text-sm text-aal-black/65 leading-relaxed" style={sans}>{s.p}</p>
               </div>
             </Reveal>
-
-            <Reveal delay={80}>
-              <h3
-                className="text-3xl md:text-5xl mb-2"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
-              >
-                {p.title}
-              </h3>
-            </Reveal>
-
-            <Reveal delay={140}>
-              <p
-                className="text-aal-black/70 leading-relaxed max-w-2xl mt-6 mb-12"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
-              >
-                {p.lede}
-              </p>
-            </Reveal>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {p.features.map((f, idx) => (
-                <Reveal key={f.h} delay={200 + idx * 80}>
-                  <div className="border-l-2 border-[#08b796] pl-5">
-                    <h4
-                      className="text-lg mb-2"
-                      style={{ fontFamily: "DM Sans, sans-serif", fontWeight: 600 }}
-                    >
-                      {f.h}
-                    </h4>
-                    <p
-                      className="text-sm text-aal-black/65 leading-relaxed"
-                      style={{ fontFamily: "DM Sans, sans-serif" }}
-                    >
-                      {f.p}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+          ))}
+        </div>
+      </section>
 
       {/* PROTECTION STRUCTURE */}
       <section className="bg-aal-black text-white border-t border-white/10">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <Reveal>
-            <p
-              className="uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4 text-center"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              You Don't Have To Trust Us Blindly
-            </p>
+            <Eyebrow className="text-center">You don&apos;t have to trust us blindly</Eyebrow>
           </Reveal>
           <Reveal delay={80}>
-            <h2
-              className="text-3xl md:text-5xl mb-16 text-center"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
-            >
-              Five layers of client protection
+            <h2 className="text-3xl md:text-5xl mb-16 text-center" style={serif}>
+              Five layers between your money and the risk.
             </h2>
           </Reveal>
 
@@ -377,24 +175,9 @@ export default function WhyBuildWithUs() {
             {PROTECTION_LAYERS.map((layer, idx) => (
               <Reveal key={layer.n} delay={100 + idx * 80}>
                 <div className="text-center md:text-left">
-                  <span
-                    className="text-3xl text-[#08b796]/40 block mb-3"
-                    style={{ fontFamily: "Cormorant Garamond, serif" }}
-                  >
-                    {layer.n}
-                  </span>
-                  <h4
-                    className="text-sm mb-2"
-                    style={{ fontFamily: "DM Sans, sans-serif", fontWeight: 600 }}
-                  >
-                    {layer.label}
-                  </h4>
-                  <p
-                    className="text-xs text-white/60 leading-relaxed"
-                    style={{ fontFamily: "DM Sans, sans-serif" }}
-                  >
-                    {layer.desc}
-                  </p>
+                  <span className="text-3xl text-[#08b796]/40 block mb-3" style={serif}>{layer.n}</span>
+                  <h3 className="text-sm mb-2" style={{ ...sans, fontWeight: 600 }}>{layer.label}</h3>
+                  <p className="text-xs text-white/60 leading-relaxed" style={sans}>{layer.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -402,113 +185,85 @@ export default function WhyBuildWithUs() {
         </div>
       </section>
 
-      {/* WHAT WE DON'T PROMISE */}
-      <section className="bg-[#f4f2ee] border-t border-aal-black/10">
-        <div className="max-w-4xl mx-auto px-6 py-20 md:py-28">
+      {/* HOW IT WORKS */}
+      <section className="bg-white border-t border-aal-black/10">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <Reveal>
-            <p
-              className="uppercase tracking-[0.2em] text-xs text-[#08b796] mb-4"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              Honesty Over Hype
-            </p>
+            <Eyebrow>How it works</Eyebrow>
           </Reveal>
-          {/* <Reveal delay={80}>
-            <h2
-              className="text-3xl md:text-5xl mb-6"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
-            >
-              What we don't promise
-            </h2>
+          <Reveal delay={80}>
+            <h2 className="text-3xl md:text-5xl mb-12" style={serif}>From first call to keys in five steps.</h2>
           </Reveal>
-          <Reveal delay={140}>
-            <p
-              className="text-aal-black/70 leading-relaxed max-w-xl mb-12"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              We believe trust requires honesty. Construction has too many
-              variables for anyone to promise perfection — so we won't.
-            </p>
-          </Reveal> */}
-
-          {/* <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-16">
-            {HONESTY_POINTS.map((point, idx) => (
-              <Reveal key={point} delay={180 + idx * 60}>
-                <div className="flex items-start gap-3">
-                  <span className="text-aal-black/30 mt-0.5 text-sm">✕</span>
-                  <span
-                    className="text-sm text-aal-black/60"
-                    style={{ fontFamily: "DM Sans, sans-serif" }}
-                  >
-                    We don't promise {point.charAt(0).toLowerCase() + point.slice(1)}
+          <ol className="grid md:grid-cols-5 gap-8">
+            {STEPS.map((s, idx) => (
+              <li key={s.h} className="list-none">
+                <Reveal delay={120 + idx * 70}>
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full bg-aal-black text-white text-sm mb-4" style={sans}>
+                    {idx + 1}
                   </span>
-                </div>
-              </Reveal>
+                  <h3 className="text-base mb-1" style={{ ...sans, fontWeight: 600 }}>{s.h}</h3>
+                  <p className="text-sm text-aal-black/60 leading-relaxed" style={sans}>{s.p}</p>
+                </Reveal>
+              </li>
             ))}
-          </div> */}
+          </ol>
+        </div>
+      </section>
 
-          <Reveal delay={200}>
+      {/* OUR COMMITMENT */}
+      <section className="bg-[#f4f2ee] border-t border-aal-black/10">
+        <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
+          <Reveal>
+            <Eyebrow>Honesty over hype</Eyebrow>
+          </Reveal>
+          <Reveal delay={120}>
             <div className="border-l-2 border-[#08b796] pl-6">
-              <p
-                className="text-sm uppercase tracking-[0.15em] text-aal-black/50 mb-3"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
-              >
+              <p className="text-sm uppercase tracking-[0.15em] text-aal-black/50 mb-3" style={sans}>
                 Our commitment is to
               </p>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
-              >
-                Identify risks early. Communicate them promptly. Document
-                decisions. Control changes. Report progress honestly. Manage
-                the project professionally.
+              <p className="text-lg md:text-xl leading-relaxed" style={serif}>
+                Identify risks early. Communicate them promptly. Document decisions. Control changes.
+                Report progress honestly. Manage the project professionally.
               </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* CTA */}
-      {/* <section className="bg-aal-black text-white">
-        <div className="max-w-5xl mx-auto px-6 py-24 text-center">
+      {/* CLOSING CALL TO ACTION */}
+      <section className="bg-aal-black text-white">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24 text-center">
           <Reveal>
-            <h2
-              className="text-3xl md:text-5xl mb-6"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
-            >
-              Ready to turn your blueprint into reality?
-            </h2>
+            <h2 className="text-3xl md:text-5xl mb-6" style={serif}>Ready to build without the worry?</h2>
           </Reveal>
           <Reveal delay={100}>
-            <p
-              className="text-white/70 max-w-xl mx-auto mb-10"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-              Whether it's a commercial development, a residential estate, or
-              your private dream home — partner with a firm that treats your
-              investment like its own.
+            <p className="text-white/70 max-w-xl mx-auto mb-10 leading-relaxed" style={sans}>
+              Tell us about your land, your budget and your timeline. We will reply within one working day
+              with honest advice, even if it is to wait.
             </p>
           </Reveal>
           <Reveal delay={200}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/contact"
-                className="px-8 py-3.5 rounded-full bg-[#08b796] text-aal-black font-medium hover:bg-[#0a8f79] hover:text-white transition-colors"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
+                className="px-8 py-3.5 rounded-full bg-[#08b796] text-aal-black font-medium hover:bg-white transition-colors"
+                style={sans}
               >
-                Schedule a Project Consultation
-              </a>
+                Book a free consultation
+              </Link>
               <a
-                href="/boq-audit"
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3.5 rounded-full border border-white/30 text-white font-medium hover:border-[#08b796] hover:text-[#08b796] transition-colors"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
+                style={sans}
               >
-                Request a Free BOQ Audit
+                WhatsApp {SITE.phone}
               </a>
             </div>
           </Reveal>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }

@@ -3,6 +3,13 @@ import Link from "next/link";
 import Navigation from "../components/Navigation";
 import { partnerCategories } from "../../lib/partners";
 
+export const metadata = {
+  title: "Our Partners",
+  description:
+    "The suppliers and insurance partner behind every Artemis Atelier project in Lagos, vetted and held to our stage-gate standards.",
+  alternates: { canonical: "/partners" },
+};
+
 /**
  * Partners listing page — Artemis Atelier Ltd
  *

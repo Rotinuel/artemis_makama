@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { whatsappLink } from '@/lib/site'
 
 /*
  * Home page hero — full-screen slideshow of Artemis Atelier's own work:
@@ -75,11 +77,24 @@ export default function HeroSlideshow() {
 
             {/* Bottom content */}
             <div className="hs-bottom">
-                <div>
-                    <p className="hs-eyebrow">Our work</p>
-                    <h2 className="hs-title">
-                        Artemis Atelier Ltd designs buildings and spaces that respond to the needs of people and the environment
-                    </h2>
+                <div className="hs-copy">
+                    <p className="hs-eyebrow">Design · Build · Renovate — Lagos</p>
+                    <h1 className="hs-h1">Build your home in Nigeria. <span className="hs-line">Watch every block go in.</span></h1>
+                    <p className="hs-sub">
+                        Artemis Atelier designs, builds and renovates homes and commercial spaces in Lagos for clients at home
+                        and abroad. You see the site live, approve every cost, and pay only when each stage has been
+                        independently checked.
+                    </p>
+                    <div className="hs-ctas">
+                        <Link href="/contact" className="hs-btn primary">Book a free consultation</Link>
+                        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hs-btn ghost">
+                            Chat with us on WhatsApp
+                        </a>
+                    </div>
+                    <p className="hs-trust">
+                        <span>Since 2010</span><span>COREN-registered engineer</span><span>Insured</span><span>Live site cameras</span>
+                    </p>
+                    <Link href="/diaspora-consultation" className="hs-abroad">Living abroad? See how we build for you →</Link>
                 </div>
 
                 <div className="hs-controls">
@@ -122,7 +137,7 @@ export default function HeroSlideshow() {
 
                 .hs-shade {
                     position: absolute; inset: 0; z-index: 2; pointer-events: none;
-                    background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.65) 100%);
+                    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.08) 30%, rgba(0,0,0,0.78) 100%);
                 }
                 .hs-bottom {
                     position: absolute; left: 0; right: 0; bottom: 0; z-index: 5;
@@ -132,11 +147,43 @@ export default function HeroSlideshow() {
                     color: #fff; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
                     margin: 0 0 10px; opacity: 0.85; font-family: sans-serif;
                 }
-                .hs-title {
-                    color: #fff; font-size: clamp(16px, 2vw, 22px); font-weight: 300; line-height: 1.45; max-width: 420px;
-                    font-family: 'Helvetica Neue', Helvetica, sans-serif; margin: 0;
+                .hs-copy { max-width: 620px; }
+                .hs-line { display: block; }
+                .hs-h1 {
+                    color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400;
+                    font-size: clamp(30px, 3.6vw, 52px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;
+                    text-shadow: 0 2px 18px rgba(0,0,0,0.35);
                 }
-                .hs-controls { width: min(320px, 40vw); flex-shrink: 0; }
+                .hs-sub {
+                    color: rgba(255,255,255,0.88); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-weight: 300;
+                    font-size: clamp(14px, 1.15vw, 16px); line-height: 1.6; margin: 0 0 20px; max-width: 560px;
+                }
+                .hs-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+                .hs-btn {
+                    display: inline-flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 999px;
+                    font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+                    text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s;
+                }
+                .hs-btn.primary { background: #08b796; color: #04120f; }
+                .hs-btn.primary:hover { background: #fff; }
+                .hs-btn.ghost { border: 1px solid rgba(255,255,255,0.6); color: #fff; }
+                .hs-btn.ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+                .hs-trust {
+                    display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; color: rgba(255,255,255,0.8);
+                    font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+                }
+                .hs-trust span::before { content: '✓'; color: #08b796; margin-right: 6px; }
+                .hs-abroad {
+                    color: #fff; font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 13px; text-decoration: none;
+                    border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 2px;
+                }
+                .hs-abroad:hover { border-bottom-color: #08b796; color: #08b796; }
+                /* Desktop: the big centred menu sits mid-screen, so keep this block
+                   compact on shorter screens to avoid overlapping it */
+                @media (min-width: 769px) and (max-height: 879px) {
+                    .hs-eyebrow, .hs-sub { display: none; }
+                }
+                .hs-controls { width: min(320px, 40vw); flex-shrink: 0; margin-bottom: 76px; } /* clear the WhatsApp button */
                 .hs-stage {
                     color: #fff; font-size: 12px; letter-spacing: 0.06em; margin: 0 0 10px; text-align: right;
                     font-family: 'Helvetica Neue', Helvetica, sans-serif; opacity: 0.9;
@@ -164,8 +211,10 @@ export default function HeroSlideshow() {
                 }
                 @media (max-width: 768px) {
                     .hs-scroll { display: none; }
-                    .hs-bottom { flex-direction: column; align-items: stretch; padding: 0 20px 28px; gap: 20px; }
-                    .hs-controls { width: 100%; }
+                    .hs-bottom { flex-direction: column; align-items: stretch; padding: 0 20px 88px; gap: 18px; }
+                    .hs-controls { width: 100%; margin-bottom: 0; }
+                    .hs-btn { height: 42px; padding: 0 16px; font-size: 12px; }
+                    .hs-sub { font-size: 14px; margin-bottom: 16px; }
                     .hs-stage { text-align: left; }
                 }
                 @media (prefers-reduced-motion: reduce) {
