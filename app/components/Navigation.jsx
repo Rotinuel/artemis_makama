@@ -42,6 +42,31 @@ export default function Navigation({ variant = 'default' }) {
     const isHero = variant === 'hero'
     const searchInputRef = useRef(null)
     const dropdownTimer = useRef(null)
+    const heroNavRef = useRef(null)
+    const [heroFit, setHeroFit] = useState(1)
+
+    // Shrink the big centred hero nav so it always fits the screen width,
+    // however many links there are and whatever the screen size.
+    useEffect(() => {
+        if (!isHero) return
+        const nav = heroNavRef.current
+        if (!nav) return
+        const measure = () => {
+            const side = Math.max(24, window.innerWidth * 0.04)       // breathing room each side
+            const available = window.innerWidth - side * 2
+            const natural = nav.offsetWidth                             // unaffected by transform
+            setHeroFit(natural > 0 ? Math.min(1, available / natural) : 1)
+        }
+        measure()
+        const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null
+        ro?.observe(nav)
+        window.addEventListener('resize', measure)
+        document.fonts?.ready?.then(measure)
+        return () => {
+            ro?.disconnect()
+            window.removeEventListener('resize', measure)
+        }
+    }, [isHero])
 
     useEffect(() => {
         if (!isHero) return
@@ -92,7 +117,15 @@ export default function Navigation({ variant = 'default' }) {
                             willChange: 'transform, opacity',
                         }}
                     >
-                        <nav style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(40px, 8vw, 120px)' }}>
+                        <nav
+                            ref={heroNavRef}
+                            style={{
+                                display: 'flex', justifyContent: 'center', flexShrink: 0,
+                                gap: 'clamp(20px, 3.5vw, 120px)',
+                                transform: `scale(${heroFit})`,
+                                transformOrigin: 'center',
+                            }}
+                        >
                             {NAV_ITEMS.map(item => (
                                 <div
                                     key={item.label}
@@ -104,7 +137,7 @@ export default function Navigation({ variant = 'default' }) {
                                         href={item.href}
                                         style={{
                                             color: 'white',
-                                            fontSize: 'clamp(28px, 4vw, 52px)',
+                                            fontSize: 'clamp(20px, 3.2vw, 52px)',
                                             fontFamily: "'Georgia', 'Times New Roman', serif",
                                             fontWeight: 400,
                                             letterSpacing: '-0.01em',

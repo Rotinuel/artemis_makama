@@ -4,18 +4,19 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 /*
- * Home page hero — full-screen slideshow of Artemis Atelier's own site
- * photos (replaces the stock video). Add/remove slides in SLIDES below;
- * files live in /public.
+ * Home page hero — full-screen slideshow of Artemis Atelier's own work:
+ * design visuals alongside photos of completed buildings.
+ * Photo guideline (international audience): no bamboo/stick scaffolding,
+ * no workers without proper clothing/PPE.
+ * Add/remove slides in SLIDES below; files live in /public.
  */
 const SLIDES = [
-    { src: '/2.jpg', stage: 'Structural works', alt: 'Workers on site during blockwork and slab preparation' },
-    { src: '/7.jpg', stage: 'Frame & blockwork', alt: 'Building frame and blockwork under construction' },
-    { src: '/4.jpg', stage: 'Scaffolding & rendering', alt: 'Two-storey building under scaffolding' },
-    { src: '/11.jpg', stage: 'Façade works', alt: 'Terrace building façade under scaffolding' },
-    { src: '/10.jpg', stage: 'Finishing', alt: 'Three-storey building nearing completion' },
-    { src: '/30.jpg', stage: 'Completed', alt: 'Completed duplex with gate and fence' },
-    { src: '/100.jpeg', stage: 'Handover', alt: 'Finished home with paved courtyard' },
+    { src: '/31.jpg', stage: 'Design · Residential development, Arepo', alt: 'Design visual of a residential development at Arepo' },
+    { src: '/5.jpg', stage: 'On site · Blockwork materials', alt: 'Sandcrete blocks curing on site' },
+    { src: '/33.jpg', stage: 'Design · Residential development, Opic', alt: 'Design visual of a residential development at Opic' },
+    { src: '/100.jpeg', stage: 'Completed · Private residence', alt: 'Completed home with paved courtyard' },
+    { src: '/36.jpg', stage: 'Design · Catholic Church complex, Epe', alt: 'Design visual of a church complex at Epe' },
+    { src: '/101-hero.jpeg', stage: 'Completed · Gate and boundary works', alt: 'Completed residence with gate and boundary wall' },
 ]
 
 const INTERVAL = 5500
@@ -45,7 +46,7 @@ export default function HeroSlideshow() {
         <section
             className="hs-root"
             aria-roledescription="carousel"
-            aria-label="Our work on site"
+            aria-label="Our work"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
         >
@@ -75,7 +76,7 @@ export default function HeroSlideshow() {
             {/* Bottom content */}
             <div className="hs-bottom">
                 <div>
-                    <p className="hs-eyebrow">Our work on site</p>
+                    <p className="hs-eyebrow">Our work</p>
                     <h2 className="hs-title">
                         Artemis Atelier Ltd designs buildings and spaces that respond to the needs of people and the environment
                     </h2>

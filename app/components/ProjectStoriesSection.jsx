@@ -22,7 +22,7 @@ const projects = [
     category: 'Residential',
     title: 'Residential Development at Atican Beach View Estate',
     href: '#',
-    image: '/32.jpg',
+    image: '/32-atican.jpg', // cropped: neighbouring scaffolding removed
     color: '#1a3a2a',
   },
   {
