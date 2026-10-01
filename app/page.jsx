@@ -1,5 +1,5 @@
 import Navigation from './components/Navigation'
-import HeroVideo from './components/HeroVideo'
+import HeroSlideshow from './components/HeroSlideshow'
 import NewsSection from './components/NewsSection'
 import ProjectStoriesSection from './components/ProjectStoriesSection'
 import CareersSection from './components/CareersSection'
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Navigation variant='hero' />
-      <HeroVideo />
+      <HeroSlideshow />
       <WhyBuildWithUs />
       <ProjectStoriesSection />
       <CareersSection/>
