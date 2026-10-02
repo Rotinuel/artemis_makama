@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 import { portfolioStyles } from '../styles'
@@ -72,7 +73,7 @@ export default function ProjectClient({ project, next, total, initialImageId }) 
                     aria-label={`View ${project.name} images full screen`}
                     onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && cover && setLightbox(0)}
                 >
-                    {cover && <img src={cover.url} alt={cleanCaption(cover.title) || project.name} />}
+                    {cover && <Image src={cover.url} alt={cleanCaption(cover.title) || project.name} width={1800} height={1200} sizes="100vw" priority />}
                     <div className="pf-wrap pf-hero-body">
                         <p className="pf-eyebrow">Project {pad(project.number)}</p>
                         <h1 className="pf-hero-title">{project.name}</h1>
@@ -115,7 +116,7 @@ export default function ProjectClient({ project, next, total, initialImageId }) 
                                     return (
                                         <figure key={img.id} className="pf-fig pf-reveal">
                                             <button onClick={() => setLightbox(index)} aria-label={`Open image ${index + 1}`}>
-                                                <img src={img.url} alt={caption || `${project.name} — image ${index + 1}`} loading="lazy" />
+                                                <Image src={img.url} alt={caption || `${project.name} — image ${index + 1}`} width={1200} height={900} sizes="(min-width: 1024px) 50vw, 100vw" />
                                             </button>
                                             <figcaption>
                                                 <span className="pf-num">{pad(index + 1)}</span>
@@ -138,7 +139,7 @@ export default function ProjectClient({ project, next, total, initialImageId }) 
                 {/* ── Next project ── */}
                 {next && (
                     <Link href={`/portfolio/${next.slug}`} className="pf-next">
-                        {next.cover && <img src={next.cover} alt="" loading="lazy" />}
+                        {next.cover && <Image src={next.cover} alt="" width={1200} height={800} sizes="100vw" />}
                         <div className="pf-wrap pf-next-body">
                             <p className="pf-eyebrow">Next Project</p>
                             <h2 className="pf-next-title">
@@ -224,7 +225,7 @@ function Lightbox({ images, index, title, onChange, onClose }) {
                     touchX.current = null
                 }}
             >
-                <img key={img.id} src={img.url} alt={caption || `${title} — image ${index + 1}`} />
+                <Image key={img.id} src={img.url} alt={caption || `${title} — image ${index + 1}`} width={2000} height={1500} sizes="100vw" />
                 {count > 1 && (
                     <>
                         <button className="pf-lb-btn pf-lb-nav prev" onClick={() => go(-1)} aria-label="Previous image"><Arrow left /></button>

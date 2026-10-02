@@ -61,7 +61,7 @@ function CollapsedCard({ person, active, onClick }) {
 }
 
 function OpenCard({ person, index, total }) {
-    const bio = person.bio || `${person.name} is part of the leadership team at Artemis Atelier Ltd, serving as ${person.title}.`
+    const bio = person.bio || ''
     return (
         <article className="ls-card open" aria-live="polite">
             <div className="ls-photo">
@@ -72,7 +72,7 @@ function OpenCard({ person, index, total }) {
                 <h3 className="ls-name">{person.name}</h3>
                 <p className="ls-title">{person.title}</p>
                 <div className="ls-rule" />
-                <p className="ls-text">{bio}</p>
+                {bio && <p className="ls-text">{bio}</p>}
             </div>
         </article>
     )

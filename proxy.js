@@ -2,7 +2,13 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 import { isAdminUser } from '@/lib/auth/roles'
 
+// Only these areas need the signed-in user. Every other page skips the
+// auth check entirely, so public pages stay fast and cacheable.
+const AUTH_PATHS = /^\/(admin|portal|login|reset-password)(\/|$)/
+
 export async function proxy(request) {
+  if (!AUTH_PATHS.test(request.nextUrl.pathname)) return NextResponse.next()
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -61,5 +67,6 @@ export async function proxy(request) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
+  // Run only where it matters (see AUTH_PATHS)
+  matcher: ['/admin/:path*', '/portal/:path*', '/login', '/reset-password'],
 }

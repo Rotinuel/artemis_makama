@@ -1,16 +1,22 @@
-import { createClient } from '@/utils/supabase/server'
+import { createPublicClient } from '@/utils/supabase/public'
 import PortfolioClient from './PortfolioClient'
-import CookieBanner from '../components/CookieBanner'
+import Breadcrumbs from '../components/content/Breadcrumbs'
 import { buildProjects } from './lib'
+import { PROJECTS } from '@/lib/content/projects'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata = {
-    title: { absolute: 'Our Projects in Lagos | Artemis Atelier Ltd' },
-    description: 'Homes, estates, churches and commercial buildings we have designed and built across Lagos, with photos from foundation to handover.',
-    alternates: { canonical: '/portfolio' },
-}
+// Statically generated; new portfolio images appear within 10 minutes
+export const revalidate = 600
+
+export const metadata = pageMetadata({
+    title: 'Our Projects in Lagos: Homes, Estates & Churches | Artemis Atelier',
+    description: 'Homes, estates, churches and commercial buildings we have designed and built across Lagos and Ogun State, with location, scope and photos from foundation to handover.',
+    path: '/portfolio',
+    image: '/26.jpg',
+})
 
 export default async function PortfolioPage() {
-    const supabase = await createClient()
+    const supabase = createPublicClient()
 
     const [{ data: categories }, { data: images }] = await Promise.all([
         supabase
@@ -32,11 +38,12 @@ export default async function PortfolioPage() {
 
     return (
         <>
+            <Breadcrumbs items={[{ name: 'Projects', path: '/portfolio' }]} schemaOnly />
             <PortfolioClient
                 projects={projects}
                 totalImages={(images || []).length}
+                stories={PROJECTS}
             />
-            <CookieBanner />
         </>
     )
 }

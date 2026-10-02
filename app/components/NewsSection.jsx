@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { createClient } from '@/utils/supabase/server'
+import { createPublicClient } from '@/utils/supabase/public'
 import { buildNewsFeed } from '@/lib/news-feed'
 
 const HOMEPAGE_COUNT = 6
@@ -7,7 +7,7 @@ const HOMEPAGE_COUNT = 6
 // Homepage "Latest News": the same feed as the News + Events page — your own
 // news and approved Industry Watch stories together, newest first.
 export default async function NewsSection() {
-    const supabase = await createClient()
+    const supabase = createPublicClient()
     const since = new Date(Date.now() - 30 * 24 * 3600 * 1000).toISOString()
 
     const [{ data: newsItems }, { data: industryNews }] = await Promise.all([

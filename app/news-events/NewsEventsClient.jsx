@@ -1,5 +1,7 @@
 'use client'
 
+import SubscribeForm from '../components/SubscribeForm'
+
 import { useState } from 'react'
 import Link from 'next/link'
 import MaterialPrices from './MaterialPrices'
@@ -149,16 +151,10 @@ export default function NewsEventsClient({ feed = [], events, prices }) {
                         <div className="bg-[#f5f5f5] p-6">
                             <h3 className="text-[16px] font-medium text-[#1a1a1a] mb-2">Stay Connected</h3>
                             <p className="text-[13px] text-[#6b6b6b] leading-relaxed mb-4 ">
-                                Get the latest news and design insights delivered to your inbox.
+                                Project news and the monthly material price update, by email.
                             </p>
-                            <input
-                                type="email"
-                                placeholder="Your email address"
-                                className="w-full border border-[#e0e0e0] px-4 py-3 text-[13px] outline-none focus:border-[#1a1a1a] transition-colors mb-3 bg-white"
-                            />
-                            <button className="w-full bg-[#1a1a1a] text-white text-[12px] tracking-[0.1em] uppercase py-3 hover:bg-[#333] transition-colors">
-                                Subscribe
-                            </button>
+                            <SubscribeForm list="news" note="No spam. Unsubscribe any time." />
+                            <Link href="/news/material-prices" className="block mt-4 text-[12px] underline text-[#1a1a1a]">See the full material price tracker →</Link>
                         </div>
                     </div>
 

@@ -1,62 +1,63 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const projects = [
   {
     category: 'Residential',
     title: "Proposed Residential Development at Atican Beach View Estate",
-    href: '/portfolio',
+    href: '/portfolio/atican-beach-view-estate-residential',
     image: '/26.jpg',
     color: '#2d4a7a',
   },
   {
     category: 'Residential',
     title: 'Proposed Residential Development at Arepo',
-    href: '/portfolio',
+    href: '/portfolio/arepo-residential-development',
     image: '/31.jpg',
     color: '#3a3a3a',
   },
   {
     category: 'Residential',
     title: 'Residential Development at Atican Beach View Estate',
-    href: '/portfolio',
+    href: '/portfolio/atican-beach-view-estate-residential',
     image: '/32-atican.jpg', // cropped: neighbouring scaffolding removed
     color: '#1a3a2a',
   },
   {
     category: 'Residential',
-    title: 'Proposed Residential Development at Opic',
-    href: '/portfolio',
+    title: 'Proposed Residential Development at OPIC',
+    href: '/portfolio/opic-residential-development',
     image: '/33.jpg',
     color: '#4a3a1a',
   },
   {
     category: 'Residential',
-    title: 'Proposed Residential Development at Opic',
-    href: '/portfolio',
+    title: 'Proposed Residential Development at OPIC',
+    href: '/portfolio/opic-residential-development',
     image: '/34.jpg',
     color: '#2a1a3a',
   },
   {
     category: 'Religious',
     title: 'Proposed Catholic Church Complex at Epe',
-    href: '/portfolio',
+    href: '/portfolio/epe-catholic-church-complex',
     image: '/36.jpg',
     color: '#1a2a3a',
   },
   {
     category: 'Residential',
     title: 'Residential Development at Ikoyi',
-    href: '/portfolio',
+    href: '/portfolio/ikoyi-residential-development',
     image: '/38.jpg',
     color: '#3a1a1a',
   },
   {
     category: 'Religious',
     title: 'Proposed Catholic Church Complex at Epe',
-    href: '/portfolio',
+    href: '/portfolio/epe-catholic-church-complex',
     image: '/44.jpg',
     color: '#1a3a3a',
   },
@@ -74,12 +75,13 @@ function ProjectCard({ project }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image */}
-      <img
+      <Image
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-700 ease-out"
+        fill
+        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+        className="object-cover transition-transform duration-700 ease-out"
         style={{ transform: hovered ? 'scale(1.06)' : 'scale(1)' }}
-        loading="lazy"
       />
 
       {/* Category pill */}
@@ -121,6 +123,12 @@ export default function ProjectStoriesSection() {
             <p className="text-[11px] tracking-[0.14em] uppercase text-[#6b6b6b] mb-2 font-medium">Portfolio</p>
             <h2 className="text-[28px] md:text-[36px]  text-[#1a1a1a]">Project Stories</h2>
           </div>
+          <Link
+            href="/portfolio"
+            className="text-[12px] tracking-[0.1em] uppercase text-[#1a1a1a] border-b border-[#1a1a1a] pb-0.5 hover:opacity-60 transition-opacity hidden md:block"
+          >
+            See all projects
+          </Link>
           {/* <Link
             href="/projects/stories"
             className="text-[12px] tracking-[0.1em] uppercase text-[#1a1a1a] border-b border-[#1a1a1a] pb-0.5 hover:opacity-60 transition-opacity hidden md:block"

@@ -2,7 +2,11 @@ import { FileText, Download, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import Breadcrumbs from "../../components/content/Breadcrumbs";
 import { getPartnerBySlug, getAllPartnerSlugs } from "../../../lib/partners";
+import { pageMetadata } from "@/lib/seo";
+import { TRUST } from "@/lib/trust";
 
 /**
  * Individual partner page — e.g. /partners/lasaco
@@ -19,6 +23,17 @@ export function generateStaticParams() {
     return getAllPartnerSlugs().map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({ params }) {
+    const { slug } = await params;
+    const partner = getPartnerBySlug(slug);
+    if (!partner) return {};
+    return pageMetadata({
+        title: partner.seoTitle || `${partner.name}: ${partner.role} | Artemis Atelier`,
+        description: partner.seoDescription || `${partner.name} — ${partner.summary}`.slice(0, 155),
+        path: `/partners/${slug}`,
+    });
+}
+
 export default async function PartnerDetailPage({ params }) {
     const { slug } = await params;
     const partner = getPartnerBySlug(slug);
@@ -26,6 +41,14 @@ export default async function PartnerDetailPage({ params }) {
     if (!partner) {
         notFound();
     }
+
+    // Partner PDFs, plus the redacted insurance certificate once it's added in lib/trust.js
+    const documents = [
+        ...(partner.documents || []),
+        ...(slug === "lasaco" && TRUST.insuranceCertificateUrl
+            ? [{ name: "Insurance certificate (redacted)", url: TRUST.insuranceCertificateUrl }]
+            : []),
+    ];
 
     const initials = partner.name
         .split(" ")
@@ -48,6 +71,7 @@ export default async function PartnerDetailPage({ params }) {
             <Navigation />
 
             <section className="aal-sans mx-auto max-w-3xl px-6 pb-20 pt-28 md:pt-36">
+                <Breadcrumbs items={[{ name: "Partners", path: "/partners" }, { name: partner.name, path: `/partners/${slug}` }]} schemaOnly />
                 <Link
                     href="/partners"
                     className="aal-accent mb-10 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em]"
@@ -70,14 +94,34 @@ export default async function PartnerDetailPage({ params }) {
                     {partner.summary}
                 </p>
 
+                {partner.protects?.length > 0 && (
+                    <div className="mb-12 border-t border-zinc-200 pt-10">
+                        <h2 className="aal-serif mb-5 text-xl text-zinc-900">
+                            What this partnership means for your project
+                        </h2>
+                        <ul className="flex flex-col gap-3">
+                            {partner.protects.map((p) => (
+                                <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-zinc-700">
+                                    <span className="aal-accent">✓</span>
+                                    <span>{p}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-6 text-sm text-zinc-500">
+                            See how this fits into <Link href="/how-we-build" className="underline">how we build</Link> and{" "}
+                            <Link href="/build-from-abroad" className="underline">building from abroad</Link>.
+                        </p>
+                    </div>
+                )}
+
                 <div className="border-t border-zinc-200 pt-10">
                     <h2 className="aal-serif mb-6 text-xl text-zinc-900">
                         Documents
                     </h2>
 
-                    {partner.documents && partner.documents.length > 0 ? (
+                    {documents.length > 0 ? (
                         <ul className="flex flex-col gap-3">
-                            {partner.documents.map((doc) => (
+                            {documents.map((doc) => (
                                 <li key={doc.url}>
                                     <a
                                         href={doc.url}
@@ -106,6 +150,7 @@ export default async function PartnerDetailPage({ params }) {
                     )}
                 </div>
             </section>
+            <Footer />
         </main>
     );
 }

@@ -11,6 +11,13 @@
 // ─────────────────────────────────────────────────────────────
 
 export const projectMeta = {
+    // Search descriptions for the portfolio category pages (140–155 characters)
+    residential: { seoDescription: 'Residential projects by Artemis Atelier in Lagos: family homes, duplexes and estates designed and built for clients in Nigeria and abroad, with photos.' },
+    commercial: { seoDescription: 'Commercial buildings by Artemis Atelier in Lagos: offices, retail and mixed-use projects designed and built with open-book costs and inspected stages.' },
+    public: { seoDescription: 'Public and institutional projects by Artemis Atelier, including churches and community buildings in Lagos State, from design visuals to construction.' },
+    'residential-interior': { seoDescription: 'Residential interiors by Artemis Atelier in Lagos: kitchens, wardrobes, ceilings, tiling and finishes for family homes, shown in project photos.' },
+    'during-construction': { seoDescription: 'Artemis Atelier building sites in Lagos during construction: foundations, frames, blockwork and roofing, photographed stage by stage for clients.' },
+
     // 'example-slug': {
     //     sector: 'Hospitality',
     //     location: 'Lagos, Nigeria',

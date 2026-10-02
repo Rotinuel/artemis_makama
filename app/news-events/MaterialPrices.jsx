@@ -26,10 +26,11 @@ function Change({ pct }) {
 
 /** Sidebar board of building-material prices (Lagos / Abuja / Port Harcourt) */
 export default function MaterialPrices({ board, lastUpdated }) {
-    const [city, setCity] = useState(CITIES[0])
+    // Only offer cities that actually have prices
+    const cities = CITIES.filter(c => (board?.[c] || []).some(r => r.current))
+    const [city, setCity] = useState(cities[0] || CITIES[0])
     const rows = board?.[city] || []
-    const anyPrices = CITIES.some(c => (board?.[c] || []).some(r => r.current))
-    if (!anyPrices) return null
+    if (!cities.length) return null
 
     return (
         <section className="mb-12" aria-labelledby="material-prices-heading">
@@ -45,8 +46,8 @@ export default function MaterialPrices({ board, lastUpdated }) {
             </div>
 
             {/* City tabs */}
-            <div className="flex gap-1 mb-3" role="tablist" aria-label="City">
-                {CITIES.map(c => (
+            {cities.length > 1 && <div className="flex gap-1 mb-3" role="tablist" aria-label="City">
+                {cities.map(c => (
                     <button
                         key={c}
                         role="tab"
@@ -59,7 +60,7 @@ export default function MaterialPrices({ board, lastUpdated }) {
                         {c}
                     </button>
                 ))}
-            </div>
+            </div>}
 
             <ul role="tabpanel" aria-label={`${city} prices`}>
                 {rows.map(r => (
@@ -101,7 +102,8 @@ export default function MaterialPrices({ board, lastUpdated }) {
 
             <p className="text-[11px] text-[#9a9a9a] leading-relaxed mt-3">
                 Indicative market prices from public sources, reviewed by Artemis Atelier. Actual prices vary
-                by supplier, brand, quantity and delivery location — contact us for a project quote.
+                by supplier, brand, quantity and delivery location — contact us for a project quote.{' '}
+                <a href="/news/material-prices" className="underline text-[#1a1a1a]">Price history and monthly updates</a>
             </p>
         </section>
     )

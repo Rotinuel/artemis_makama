@@ -94,7 +94,7 @@ export default function HeroSlideshow() {
                     <p className="hs-trust">
                         <span>Since 2010</span><span>COREN-registered engineer</span><span>Insured</span><span>Live site cameras</span>
                     </p>
-                    <Link href="/diaspora-consultation" className="hs-abroad">Living abroad? See how we build for you →</Link>
+                    <Link href="/build-from-abroad" className="hs-abroad">Living abroad? See how we build for you →</Link>
                 </div>
 
                 <div className="hs-controls">

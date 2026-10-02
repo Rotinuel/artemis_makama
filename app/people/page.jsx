@@ -4,13 +4,18 @@ import CookieBanner from '../components/CookieBanner'
 import PageHero from '../components/PageHero'
 import LeadershipSection from '../components/LeaderShipSection'
 import Reveal from '../components/Reveal'
+import { pageMetadata, breadcrumbSchema } from '@/lib/seo'
+import { TRUST } from '@/lib/trust'
+import { SITE } from '@/lib/site'
+import JsonLd from '../components/JsonLd'
+import TrustEvidence from '../components/content/TrustEvidence'
+import Image from 'next/image'
 
-export const metadata = {
-  title: { absolute: 'Our Team | Architects & Engineers in Lagos' },
-  description:
-    'Meet the architects, COREN-registered engineers, project managers and specialists behind every Artemis project.',
-  alternates: { canonical: '/people' },
-}
+export const metadata = pageMetadata({
+  title: 'Our Team: Architects & Engineers in Lagos | Artemis Atelier',
+  description: 'Meet the directors, COREN-registered engineer, project managers and specialists behind every Artemis Atelier project in Lagos, with roles and credentials.',
+  path: '/people',
+})
 
 const leaders = [
   { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', bio: '' },
@@ -27,17 +32,35 @@ const leaders = [
   { name: 'Olasunkammi Oladiran ESQ', title: 'Head of legal', bio: '' },
 ]
 
-// TODO: replace with verified figures before publishing
+// Bios from lib/trust.js replace empty ones (real bios only — empty ones show just the role)
+const leadersWithBios = leaders.map(l => ({ ...l, bio: l.bio || TRUST.bios?.[l.name] || '' }))
+
+// Headline numbers. Years in practice comes from the founding year; the
+// others only show once lib/trust.js links to a list that backs them up.
 const stats = [
-  { value: '15+', label: 'Years in practice' },
-  { value: '120+', label: 'Projects delivered' },
-  { value: '8', label: 'Disciplines under one roof' },
-  { value: '4', label: 'Countries served' },
-]
+  { value: `${new Date().getFullYear() - Number(SITE.founded)}+`, label: 'Years in practice' },
+  TRUST.stats.projectsDelivered.evidenceUrl && { value: TRUST.stats.projectsDelivered.value, label: 'Projects delivered', href: TRUST.stats.projectsDelivered.evidenceUrl },
+  { value: String(leaders.length), label: 'People on the leadership team' },
+  TRUST.stats.countriesServed.evidenceUrl && { value: TRUST.stats.countriesServed.value, label: 'Countries served', href: TRUST.stats.countriesServed.evidenceUrl },
+].filter(Boolean)
+
+// Person schema for each team member (credentials from lib/trust.js where given)
+const peopleSchema = leaders.map(l => {
+  const reg = (TRUST.registrations || []).find(r => r.person && l.name.includes(r.person))
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: l.name,
+    jobTitle: l.title,
+    worksFor: { '@id': `${SITE.url}/#organization` },
+    ...(reg ? { hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Professional registration', name: `${reg.body} ${reg.number}` } } : {}),
+  }
+})
 
 export default function PeoplePage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema([{ name: 'People', path: '/people' }]), ...peopleSchema]} />
       <Navigation />
       <PageHero
         label="Our Team"
@@ -73,11 +96,7 @@ export default function PeoplePage() {
               style={{ aspectRatio: '4/3' }}
               className="overflow-hidden group relative"
             >
-              <img
-                src="/3.jpg"
-                alt="AAL team collaborating"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+              <Image src="/3.jpg" alt="AAL team collaborating" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
               <div className="absolute inset-0 ring-1 ring-inset ring-[#08b796]/20 pointer-events-none" />
             </div>
           </Reveal>
@@ -123,7 +142,8 @@ export default function PeoplePage() {
         </Reveal>
         {/* Not wrapped in <Reveal>: this section is very tall (it pins while you
             scroll through each person) and must be visible immediately */}
-        <LeadershipSection leaders={leaders} />
+        <LeadershipSection leaders={leadersWithBios} />
+        <div className="mt-16 max-w-3xl"><TrustEvidence title="Registrations you can check" /></div>
       </section>
 
       {/* Culture callout */}
@@ -134,11 +154,7 @@ export default function PeoplePage() {
               style={{ aspectRatio: '4/3' }}
               className="overflow-hidden group relative"
             >
-              <img
-                src="/104.jpeg"
-                alt="Culture"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+              <Image src="/104.jpeg" alt="Culture" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
             </div>
           </Reveal>
           <Reveal delay={150}>

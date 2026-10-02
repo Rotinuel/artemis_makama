@@ -2,13 +2,14 @@ import { ArrowUpRight, Handshake } from "lucide-react";
 import Link from "next/link";
 import Navigation from "../components/Navigation";
 import { partnerCategories } from "../../lib/partners";
+import { pageMetadata } from "@/lib/seo";
+import Breadcrumbs from "../components/content/Breadcrumbs";
 
-export const metadata = {
-  title: "Our Partners",
-  description:
-    "The suppliers and insurance partner behind every Artemis Atelier project in Lagos, vetted and held to our stage-gate standards.",
-  alternates: { canonical: "/partners" },
-};
+export const metadata = pageMetadata({
+  title: "Our Partners: Suppliers & Insurer | Artemis Atelier",
+  description: "The vetted suppliers and NAICOM-licensed insurance partner behind every Artemis Atelier project in Lagos, held to our stage-gate standards and open-book BOQ.",
+  path: "/partners",
+});
 
 /**
  * Partners listing page — Artemis Atelier Ltd
@@ -70,6 +71,7 @@ export default function PartnersPage() {
         .aal-cta:hover { background-color: #069c80; }
       `}</style>
 
+      <Breadcrumbs items={[{ name: "Partners", path: "/partners" }]} schemaOnly />
       <Navigation />
 
       <section className="aal-sans mx-auto max-w-5xl px-6 pb-16 pt-28 md:pt-36">

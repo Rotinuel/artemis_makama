@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { portfolioStyles } from './styles'
@@ -29,7 +30,7 @@ const ListIcon = () => (
     </svg>
 )
 
-export default function PortfolioClient({ projects, totalImages }) {
+export default function PortfolioClient({ projects, totalImages, stories = [] }) {
     const [view, setView] = useState('grid')
 
     // Remember the visitor's preferred view
@@ -58,13 +59,13 @@ export default function PortfolioClient({ projects, totalImages }) {
                 <header className="pf-wrap pf-intro">
                     <div className="pf-reveal">
                         <p className="pf-eyebrow">Selected Work</p>
-                        <h1 className="pf-title">Portfolio</h1>
+                        <h1 className="pf-title">Our projects</h1>
                     </div>
                     <div className="pf-reveal">
                         <p className="pf-lede">
-                            Architecture, interiors and construction — a record of spaces
-                            designed and delivered by Artemis Atelier, from first sketch to
-                            site handover.
+                            Homes, estates, churches and commercial buildings designed and built by
+                            Artemis Atelier across Lagos and Ogun State, from first sketch to site
+                            handover. Open a project for its location, scope and photos from each stage.
                         </p>
                         <dl className="pf-stats">
                             <div><dt>Projects</dt><dd>{pad(projects.length)}</dd></div>
@@ -72,6 +73,27 @@ export default function PortfolioClient({ projects, totalImages }) {
                         </dl>
                     </div>
                 </header>
+
+                {/* ── Named project stories ── */}
+                {stories.length > 0 && (
+                    <section className="pf-wrap" aria-labelledby="stories-title" style={{ marginBottom: 56 }}>
+                        <h2 id="stories-title" className="pf-eyebrow" style={{ marginBottom: 18 }}>Project stories</h2>
+                        <div className="pf-grid">
+                            {stories.map((p, i) => (
+                                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="pf-card pf-reveal">
+                                    <div className="pf-card-media">
+                                        <Image src={p.images[0].src} alt={p.images[0].alt} width={1200} height={900} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+                                    </div>
+                                    <div className="pf-card-body">
+                                        <span className="pf-num">{pad(i + 1)}</span>
+                                        <h3 className="pf-card-title">{p.name}</h3>
+                                        <p className="pf-card-meta">{[p.type, p.location].filter(Boolean).join(' · ')}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* ── Toolbar ── */}
                 <div className="pf-toolbar">
@@ -119,7 +141,7 @@ function FeaturedProject({ project }) {
     const meta = metaLine(project.meta)
     return (
         <Link href={`/portfolio/${project.slug}`} className="pf-featured pf-reveal">
-            {project.cover && <img src={project.cover} alt={project.name} />}
+            {project.cover && <Image src={project.cover} alt={project.name} width={1800} height={1200} sizes="100vw" priority />}
             <div className="pf-featured-body">
                 <div>
                     <span className="pf-num">{pad(project.number)} — Featured</span>
@@ -139,7 +161,7 @@ function ProjectCard({ project }) {
     return (
         <Link href={`/portfolio/${project.slug}`} className="pf-card pf-reveal">
             <div className="pf-card-media">
-                {project.cover && <img src={project.cover} alt={project.name} loading="lazy" />}
+                {project.cover && <Image src={project.cover} alt={project.name} width={1200} height={900} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />}
                 <span className="pf-card-count">
                     {project.imageCount} image{project.imageCount !== 1 ? 's' : ''}
                 </span>
@@ -191,7 +213,7 @@ function ProjectIndex({ projects }) {
                     onMouseEnter={() => setHovered(p)}
                 >
                     <span className="pf-num">{pad(p.number)}</span>
-                    {p.cover && <img className="pf-row-thumb" src={p.cover} alt="" loading="lazy" />}
+                    {p.cover && <Image className="pf-row-thumb" src={p.cover} alt="" width={160} height={120} sizes="160px" />}
                     <span className="pf-row-title">
                         {p.name}
                         <span className="pf-row-sub">
@@ -211,7 +233,7 @@ function ProjectIndex({ projects }) {
             ))}
 
             <div ref={previewRef} className={`pf-preview${hovered ? ' on' : ''}`} aria-hidden="true">
-                {hovered?.cover && <img key={hovered.id} src={hovered.cover} alt="" />}
+                {hovered?.cover && <Image key={hovered.id} src={hovered.cover} alt="" width={900} height={675} sizes="40vw" />}
             </div>
         </div>
     )

@@ -17,14 +17,39 @@ const disciplines = [
     'Sustainable Design', 'Engineering', 'Consulting',
 ]
 
+// Main menu (from the SEO & conversion audit). `children` show as a
+// dropdown in the top bar and as an indented list on mobile.
 const NAV_ITEMS = [
-    // { label: 'Projects', href: '/projects' },
-    { label: 'Home', href: '/' },
-    { label: 'People', href: '/people' },
-    { label: 'News+Events', href: '/news-events' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Partners', href: '/partners' },
-    { label: 'About', href: '/about' },
+    {
+        label: 'Services', href: '/services', children: [
+            { label: 'Design and build', href: '/services/design-and-build' },
+            { label: 'Renovation and interiors', href: '/services/renovation-and-interior-finishing' },
+            { label: 'Facility management and commercial', href: '/services/facility-management-and-commercial' },
+            { label: 'Building contractor in Lagos', href: '/building-contractor-lagos' },
+            { label: 'House plans', href: '/house-plans' },
+        ],
+    },
+    { label: 'Projects', href: '/portfolio' },
+    {
+        label: 'Build from Abroad', href: '/build-from-abroad', children: [
+            { label: 'How it works', href: '/build-from-abroad' },
+            { label: 'Cost of building in Nigeria', href: '/guides/cost-of-building-a-house-in-nigeria' },
+            { label: 'Buying land from abroad', href: '/guides/buying-land-in-nigeria-from-abroad' },
+            { label: 'Scams to avoid', href: '/guides/property-scams-in-nigeria-to-avoid' },
+            { label: 'All guides', href: '/guides' },
+        ],
+    },
+    { label: 'Process', href: '/how-we-build' },
+    {
+        label: 'About', href: '/about', children: [
+            { label: 'About us', href: '/about' },
+            { label: 'People', href: '/people' },
+            { label: 'Partners', href: '/partners' },
+            { label: 'News + Events', href: '/news-events' },
+            { label: 'Material prices', href: '/news/material-prices' },
+        ],
+    },
+    { label: 'Contact', href: '/contact' },
 ]
 
 const SCROLL_THRESHOLD = 120
@@ -211,6 +236,10 @@ export default function Navigation({ variant = 'default' }) {
                         <div
                             key={item.label}
                             style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
+                            onMouseEnter={() => item.children && enterDropdown(item.label)}
+                            onMouseLeave={leaveDropdown}
+                            onFocus={() => item.children && enterDropdown(item.label)}
+                            onBlur={leaveDropdown}
                         >
                             <Link
                                 href={item.href}
@@ -218,16 +247,39 @@ export default function Navigation({ variant = 'default' }) {
                                     color: '#1a1a1a', fontSize: 13,
                                     fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
                                     fontWeight: 600, letterSpacing: '0.12em',
-                                    textDecoration: 'none', padding: '0 20px',
+                                    textDecoration: 'none', padding: '0 16px',
                                     display: 'flex', alignItems: 'center',
                                     height: '100%', textTransform: 'uppercase',
                                     transition: 'opacity 0.15s',
                                 }}
                                 onMouseEnter={e => e.currentTarget.style.opacity = '0.5'}
                                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                                aria-haspopup={item.children ? 'true' : undefined}
+                                aria-expanded={item.children ? activeDropdown === item.label : undefined}
                             >
                                 {item.label}
                             </Link>
+                            {item.children && activeDropdown === item.label && (
+                                <div
+                                    style={{
+                                        position: 'absolute', top: '100%', left: 8, minWidth: 260,
+                                        background: 'white', border: '1px solid #e5e5e5', borderTop: '2px solid #08b796',
+                                        boxShadow: '0 12px 32px rgba(0,0,0,0.08)', padding: '8px 0', zIndex: 60,
+                                    }}
+                                >
+                                    {item.children.map(c => (
+                                        <Link
+                                            key={c.href + c.label}
+                                            href={c.href}
+                                            onClick={() => setActiveDropdown(null)}
+                                            className="nav-drop-link"
+                                            style={{ display: 'block', padding: '10px 20px', fontSize: 14, color: '#1a1a1a', textDecoration: 'none', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </nav>
@@ -260,15 +312,50 @@ export default function Navigation({ variant = 'default' }) {
                 <nav style={{ padding: '24px 24px 40px' }}>
                     {NAV_ITEMS.map(item => (
                         <div key={item.label} style={{ borderBottom: '1px solid #e5e5e5' }}>
-                            <Link
-                                href={item.href}
-                                onClick={() => setMobileOpen(false)}
-                                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 0', fontSize: 18, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', fontFamily: 'sans-serif' }}
-                            >
-                                {item.label}
-                            </Link>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <Link
+                                    href={item.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 0', fontSize: 18, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', fontFamily: 'sans-serif' }}
+                                >
+                                    {item.label}
+                                </Link>
+                                {item.children && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                                        aria-expanded={mobileExpanded === item.label}
+                                        aria-label={`Show ${item.label} pages`}
+                                        style={{ ...iconBtn('#1a1a1a'), padding: 12 }}
+                                    >
+                                        <ChevronIcon rotated={mobileExpanded === item.label} />
+                                    </button>
+                                )}
+                            </div>
+                            {item.children && mobileExpanded === item.label && (
+                                <div style={{ padding: '0 0 14px 14px' }}>
+                                    {item.children.map(c => (
+                                        <Link
+                                            key={c.href + c.label}
+                                            href={c.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            style={{ display: 'block', padding: '10px 0', fontSize: 15, color: '#444', textDecoration: 'none', fontFamily: 'sans-serif' }}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
+                    <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        <Link href="/build-from-abroad#book" onClick={() => setMobileOpen(false)} style={{ display: 'block', textAlign: 'center', background: '#08b796', color: 'white', padding: '14px 0', borderRadius: 999, fontSize: 14, fontWeight: 500, textDecoration: 'none' }}>
+                            Book a free consultation
+                        </Link>
+                        <a href="tel:+2348033502393" style={{ display: 'block', textAlign: 'center', border: '1px solid #1a1a1a', color: '#1a1a1a', padding: '13px 0', borderRadius: 999, fontSize: 14, textDecoration: 'none' }}>
+                            Call +234 803 350 2393
+                        </a>
+                    </div>
                 </nav>
             </div>
 
@@ -322,6 +409,10 @@ export default function Navigation({ variant = 'default' }) {
                 }
                 @media (min-width: 769px) {
                     .mobile-only { display: none !important; }
+                }
+                .nav-drop-link:hover, .nav-drop-link:focus-visible { background: #f5f5f3; color: #067a64 !important; }
+                @media (min-width: 769px) and (max-width: 1100px) {
+                    .scrolled-nav-links > div > a { padding: 0 10px !important; font-size: 12px !important; letter-spacing: 0.08em !important; }
                 }
             `}</style>
         </>

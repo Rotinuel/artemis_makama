@@ -1,35 +1,29 @@
 import './globals.css'
 import Watermark from './components/Watermark'
 import WhatsAppButton from './components/WhatsAppButton'
+import Analytics from './components/Analytics'
+import CookieBanner from './components/CookieBanner'
+import JsonLd from './components/JsonLd'
 import { SITE } from '@/lib/site'
+import { pageMetadata, organizationSchema, websiteSchema } from '@/lib/seo'
 
-const DEFAULT_TITLE = 'Build in Lagos from Anywhere | Design & Construction | Artemis Atelier Ltd'
+const DEFAULT_TITLE = 'Building Contractor in Lagos | Build in Nigeria From Abroad | Artemis Atelier'
 const DEFAULT_DESCRIPTION =
-  'Lagos design and construction firm since 2010. Live site cameras, stage-checked payments and open-book costs. Book a free consultation.'
+  'Lagos building contractor since 2010 (RC 1484495). Design and build, renovation and diaspora projects with live site cameras, stage-checked payments and open-book BOQs.'
+
+const base = pageMetadata({ title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: '/' })
 
 export const metadata = {
+  ...base,
   metadataBase: new URL(SITE.url),
-  title: {
-    default: DEFAULT_TITLE,
-    template: '%s | Artemis Atelier Ltd',
-  },
-  description: DEFAULT_DESCRIPTION,
+  title: { default: DEFAULT_TITLE, template: '%s | Artemis Atelier' },
+  // Pages set their own canonical and og:url; don't inherit the homepage ones
+  alternates: undefined,
+  openGraph: { ...base.openGraph, url: undefined },
   applicationName: SITE.name,
-  openGraph: {
-    type: 'website',
-    siteName: SITE.name,
-    locale: 'en_NG',
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-    images: [{ url: SITE.ogImage, width: 1280, height: 720, alt: 'Residential development designed by Artemis Atelier Ltd' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@AALNetwork',
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-    images: [SITE.ogImage],
-  },
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
 }
 
 export default function RootLayout({ children }) {
@@ -41,9 +35,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <Watermark />
         {children}
         <WhatsAppButton />
+        <CookieBanner />
+        <Analytics />
       </body>
     </html>
   )

@@ -33,8 +33,16 @@ export const partnerCategories = [
         role: "Construction & Procurement Partner",
         summary:
           "Supplies and installs high-spec aluminium systems as part of our vetted construction and procurement network.",
+        seoTitle: "Aluminium Windows & Doors Partner | Artemis Atelier",
+        seoDescription:
+          "Our aluminium systems partner supplies and installs aluminium windows, doors and integrated spaces on Artemis Atelier projects in Lagos. Download the product catalogue.",
+        protects: [
+          "Windows, doors and aluminium systems are specified on the drawings and itemised in your BOQ, so you can see what you are paying for.",
+          "Supply and installation come from one vetted partner, inspected at our finishing stage gate.",
+          "Product information is available to you before you choose, so finishes are agreed in writing.",
+        ],
         documents: [
-          { name: "compressed collection of simple and elegant series", url: "/documents/compressed collection of simple and elegant series.pdf" },
+          { name: "Simple and elegant series: product catalogue (PDF, 3 MB)", url: "/documents/aluminium-simple-elegant-series.pdf" },
           // { name: "Product Specification Sheet", url: "/documents/haas-spec-sheet.pdf" },
         ],
       },
@@ -54,6 +62,15 @@ export const partnerCategories = [
         role: "Assurance Partner",
         summary:
           "Provides applicable insurance coverage for our projects under an issued policy, subject to its terms.",
+        seoTitle: "LASACO Assurance: Our Insurance Partner | Artemis Atelier",
+        seoDescription:
+          "LASACO Assurance Plc, a NAICOM-licensed insurer, provides cover for eligible risks on Artemis Atelier construction projects, subject to the policy issued.",
+        protects: [
+          "Contractors' all risks: physical loss or damage to the works during construction, depending on the policy issued.",
+          "Third-party / public liability: claims for injury or property damage to others arising from the site.",
+          "Plant and equipment used on your site, where included in the policy.",
+          "You receive the policy number, schedule and claims procedure directly from the insurer, not from us.",
+        ],
         documents: [
           // { name: "Sample Policy Document", url: "/documents/lasaco-policy.pdf" },
           // { name: "Certificate of Coverage", url: "/documents/lasaco-certificate.pdf" },

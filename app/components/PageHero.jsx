@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function PageHero({ label, title, description, image, dark = false }) {
   return (
     <div
@@ -10,11 +12,7 @@ export default function PageHero({ label, title, description, image, dark = fals
     >
       {image && (
         <>
-          <img
-            src={image}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <Image src={image} alt={title || ''} fill priority sizes="100vw" className="object-cover" />
           <div
             className="absolute inset-0"
             style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%)' }}

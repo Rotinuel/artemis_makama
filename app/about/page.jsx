@@ -4,12 +4,16 @@ import CookieBanner from '../components/CookieBanner'
 import PageHero from '../components/PageHero'
 import Link from 'next/link'
 import { ShieldCheck, Lightbulb, Target, Users, Medal, HardHat } from "lucide-react";
+import { pageMetadata } from '@/lib/seo'
+import Breadcrumbs from '../components/content/Breadcrumbs'
+import Image from 'next/image'
 
-export const metadata = {
-  title: { absolute: 'About Artemis Atelier | Lagos Builders Since 2010' },
-  description: 'Architects, engineers and builders in Anthony Village, Lagos, delivering homes, renovations and commercial projects for clients at home and abroad.',
-  alternates: { canonical: '/about' },
-}
+export const metadata = pageMetadata({
+  title: 'About Artemis Atelier | Lagos Building Firm Since 2010',
+  description: 'Artemis Atelier Ltd (RC 1484495): architects, engineers and builders in Anthony Village, Lagos, delivering homes and commercial projects since 2010.',
+  path: '/about',
+  image: '/100.jpeg',
+})
 
 const stats = [
   { number: '30+', label: 'Design Professionals' },
@@ -85,6 +89,7 @@ const services = [
 export default function AboutPage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: 'About', path: '/about' }]} schemaOnly />
       <Navigation />
       <PageHero
         label="Who We Are"
@@ -136,12 +141,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div style={{ aspectRatio: '4/3' }} className="overflow-hidden">
-            <img
-              src="/101.jpeg"
-              alt="Completed residence by Artemis Atelier Ltd in Lagos"
-              className="w-full h-full object-cover"
-            />
+          <div style={{ aspectRatio: '4/3' }} className="relative overflow-hidden">
+            <Image src="/101.jpeg" alt="Completed residence by Artemis Atelier Ltd in Lagos" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function CareersSection() {
     return (
@@ -6,12 +7,7 @@ export default function CareersSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 {/* Image */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                    <img
-                        src="/16.jpg"
-                        alt="Residential development designed by Artemis Atelier Ltd"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                    />
+                    <Image src="/16.jpg" alt="Residential development designed by Artemis Atelier Ltd" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                     <div
                         className="absolute inset-0"
                         style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%)' }}

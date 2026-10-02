@@ -4,55 +4,37 @@ import NewsSection from './components/NewsSection'
 import ProjectStoriesSection from './components/ProjectStoriesSection'
 import CareersSection from './components/CareersSection'
 import Footer from './components/Footer'
-import CookieBanner from './components/CookieBanner'
 import WhyBuildWithUs from './components/Why'
-import { SITE } from '@/lib/site'
+import Faq from './components/content/Faq'
+import Testimonials from './components/content/Testimonials'
+import { pageMetadata } from '@/lib/seo'
+import { homeFaqs } from '@/lib/content/process'
 
-export const metadata = {
-  alternates: { canonical: '/' },
-}
+// Statically generated; the news strip refreshes every 10 minutes
+export const revalidate = 600
 
-// Tells Google and AI assistants who we are, where, and what we do
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'GeneralContractor',
-  '@id': `${SITE.url}/#organization`,
-  name: SITE.name,
-  alternateName: 'AAL',
-  url: `${SITE.url}/`,
-  logo: `${SITE.url}/logo-bg.png`,
-  image: `${SITE.url}${SITE.ogImage}`,
-  description: SITE.description,
-  foundingDate: SITE.founded,
-  telephone: SITE.phoneE164,
-  ...(SITE.email ? { email: SITE.email } : {}),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: SITE.address.street,
-    addressLocality: SITE.address.city,
-    addressRegion: SITE.address.region,
-    addressCountry: SITE.address.country,
-  },
-  areaServed: ['Lagos', 'Nigeria'],
-  knowsAbout: ['Residential construction', 'Renovation', 'Architectural design', 'Project management', 'Diaspora home building'],
-  sameAs: SITE.social,
-}
+export const metadata = pageMetadata({
+  title: 'Building Contractor in Lagos | Build in Nigeria From Abroad | Artemis Atelier',
+  description: 'Lagos building contractor since 2010 (RC 1484495). Design and build, renovation and diaspora projects with live site cameras, stage-checked payments and open-book BOQs.',
+  path: '/',
+})
 
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c') }}
-      />
       <Navigation variant='hero' />
       <HeroSlideshow />
       <WhyBuildWithUs />
       <ProjectStoriesSection />
+      <Testimonials />
+      <section className="bg-white">
+        <div className="mx-auto max-w-[900px] px-6 py-20 md:py-24">
+          <Faq faqs={homeFaqs} title="Questions we are often asked" />
+        </div>
+      </section>
       <CareersSection/>
       <NewsSection />
       <Footer />
-      <CookieBanner />
     </>
   )
 }

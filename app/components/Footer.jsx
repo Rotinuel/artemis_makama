@@ -1,19 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SITE, whatsappLink } from '@/lib/site'
+import { TRUST } from '@/lib/trust'
 
 const studios = [
   '70B Olorunlogbon Street, Anthony Village, Lagos, Nigeria'
 ]
 
 const footerLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Projects', href: '/portfolio' },
+  { label: 'Build from Abroad', href: '/build-from-abroad' },
+  { label: 'How We Build', href: '/how-we-build' },
+  { label: 'House Plans', href: '/house-plans' },
+  { label: 'About', href: '/about' },
   { label: 'People', href: '/people' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'News + Events', href: '/news-events' },
   { label: 'Partners', href: '/partners' },
+  { label: 'News + Events', href: '/news-events' },
   { label: 'Contact', href: '/contact' },
-  { label: 'About', href: '/about' }
+]
+
+const guideLinks = [
+  { label: 'Cost of building a house in Nigeria', href: '/guides/cost-of-building-a-house-in-nigeria' },
+  { label: 'Cost of building a duplex', href: '/guides/cost-of-building-a-duplex-in-nigeria' },
+  { label: 'Buying land from abroad', href: '/guides/buying-land-in-nigeria-from-abroad' },
+  { label: 'Choosing a building contractor', href: '/guides/how-to-choose-a-building-contractor-in-nigeria' },
+  { label: 'Building material prices', href: '/news/material-prices' },
+  { label: 'All guides', href: '/guides' },
 ]
 
 const socialLinks = [
@@ -109,7 +122,7 @@ export default function Footer() {
           </div>
 
           {/* Quick links */}
-          <div>
+          <nav aria-label="Footer">
             <p className="text-[11px] tracking-[0.12em] uppercase text-[#555] font-medium mb-5">Navigation</p>
             <ul className="space-y-3">
               {footerLinks.map(l => (
@@ -120,10 +133,24 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </nav>
+
+          {/* Guides */}
+          <div>
+            <p className="text-[11px] tracking-[0.12em] uppercase text-[#555] font-medium mb-5">Guides</p>
+            <ul className="space-y-3">
+              {guideLinks.map(l => (
+                <li key={l.label}>
+                  <Link href={l.href} className="text-[13px] text-[#888] hover:text-white transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Studios — two sub-columns */}
-          <div className="md:col-span-2">
+          {/* Studio */}
+          <div>
             <p className="text-[11px] tracking-[0.12em] uppercase text-[#555] font-medium mb-5">Studio</p>
             <address className="not-italic text-[13px] text-[#888] leading-relaxed space-y-2">
               {studios.map(s => <p key={s}>{s}</p>)}
@@ -133,7 +160,14 @@ export default function Footer() {
                 <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
               </p>
               {SITE.email && <p><a href={`mailto:${SITE.email}`} className="hover:text-white transition-colors">{SITE.email}</a></p>}
+              <p>{SITE.hours.days}, {SITE.hours.opens}–{SITE.hours.closes} (Lagos time)</p>
+              {TRUST.googleBusinessProfileUrl && (
+                <p><a href={TRUST.googleBusinessProfileUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Find us on Google</a></p>
+              )}
             </address>
+            <Link href="/build-from-abroad#book" className="mt-6 inline-block rounded-full bg-[#08b796] px-5 py-2.5 text-[12px] font-medium text-[#04120f] hover:bg-white transition-colors">
+              Book a free consultation
+            </Link>
           </div>
         </div>
       </div>
@@ -142,8 +176,9 @@ export default function Footer() {
       <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-400 mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026 · {SITE.rc}</p>
         <div className="flex flex-wrap gap-6">
+          <Link href="/privacy" className="text-[12px] text-[#888] hover:text-white transition-colors">Privacy &amp; cookies</Link>
+          <Link href="/terms" className="text-[12px] text-[#888] hover:text-white transition-colors">Terms</Link>
           <Link href="/portal" className="text-[12px] text-[#888] hover:text-white transition-colors">Client portal</Link>
-          <a href="https://immanuel-ten.vercel.app" rel="nofollow noopener" target="_blank" className="text-[12px] text-[#555] hover:text-[#aaa] transition-colors">Site Credit</a>
         </div>
       </div>
     </footer>

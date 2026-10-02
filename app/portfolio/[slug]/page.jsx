@@ -1,13 +1,18 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+import { createPublicClient } from '@/utils/supabase/public'
 import ProjectClient from './ProjectClient'
-import CookieBanner from '../../components/CookieBanner'
+import NamedProject from './NamedProject'
+import Breadcrumbs from '../../components/content/Breadcrumbs'
 import { toProject, metaLine } from '../lib'
+import { projectBySlug, PROJECTS } from '@/lib/content/projects'
+import { pageMetadata } from '@/lib/seo'
+
+export const revalidate = 600
 
 // cache() so generateMetadata and the page share one set of queries
 const loadProject = cache(async function loadProject(slug) {
-    const supabase = await createClient()
+    const supabase = createPublicClient()
 
     // All categories (in order) with image counts — used for numbering + next project
     const { data: categories } = await supabase
@@ -46,34 +51,59 @@ const loadProject = cache(async function loadProject(slug) {
 
 export async function generateMetadata({ params }) {
     const { slug } = await params
+    const path = `/portfolio/${slug}`
+
+    // Named project page (homepage "Project Stories")
+    const named = projectBySlug(slug)
+    if (named) {
+        const facts = [named.type, named.location].filter(Boolean).join(' in ')
+        return pageMetadata({
+            title: `${named.name} | Artemis Atelier`.slice(0, 70),
+            description: `${named.summary} ${facts ? `${facts}.` : ''} See the design and photos, and book a consultation about a similar build.`.slice(0, 158),
+            path,
+            image: named.images[0]?.src,
+            imageAlt: named.images[0]?.alt,
+        })
+    }
+
     const data = await loadProject(slug)
-    if (!data) return { title: 'Project not found - Artemis Atelier Ltd' }
+    if (!data) return { title: { absolute: 'Project not found | Artemis Atelier' }, robots: { index: false } }
     const { project } = data
     const description =
-        project.summary?.slice(0, 160) ||
-        [project.name, metaLine(project.meta)].filter(Boolean).join(' — ')
-    return {
-        title: `${project.name} - Portfolio - Artemis Atelier Ltd`,
+        project.meta?.seoDescription ||
+        project.summary?.slice(0, 155) ||
+        `${project.name} by Artemis Atelier, Lagos: ${metaLine(project.meta) || `${project.imageCount} photos`} of projects we have designed and built.`
+    return pageMetadata({
+        title: `${project.name} Projects in Lagos | Artemis Atelier`,
         description,
-        openGraph: project.cover ? { images: [project.cover] } : undefined,
-    }
+        path,
+        image: project.cover || undefined,
+        imageAlt: project.name,
+    })
 }
 
 export default async function ProjectPage({ params, searchParams }) {
     const { slug } = await params
+
+    const named = projectBySlug(slug)
+    if (named) {
+        const others = PROJECTS.filter(p => p.slug !== slug).slice(0, 3)
+        return <NamedProject project={named} others={others} />
+    }
+
     const { image } = (await searchParams) || {}
     const data = await loadProject(slug)
     if (!data) notFound()
 
     return (
         <>
+            <Breadcrumbs items={[{ name: 'Projects', path: '/portfolio' }, { name: data.project.name, path: `/portfolio/${slug}` }]} schemaOnly />
             <ProjectClient
                 project={data.project}
                 next={data.next}
                 total={data.total}
                 initialImageId={image || null}
             />
-            <CookieBanner />
         </>
     )
 }
