@@ -1,5 +1,5 @@
 import { SITE } from '@/lib/site'
-import { getAllPartnerSlugs } from '@/lib/partners'
+import { getIndexablePartnerSlugs } from '@/lib/partners'
 import { createPublicClient } from '@/utils/supabase/public'
 import { GUIDES } from '@/lib/content/guides'
 import { SERVICES, contractorLagos } from '@/lib/content/services'
@@ -79,7 +79,7 @@ export default async function sitemap() {
     add('/about', day(PAGES_UPDATED['/about']), 0.6)
     add('/people', day(PAGES_UPDATED['/people']), 0.6)
     add('/partners', day(PAGES_UPDATED['/partners']), 0.4)
-    for (const slug of getAllPartnerSlugs()) add(`/partners/${slug}`, day(PAGES_UPDATED['/partners']), 0.4)
+    for (const slug of getIndexablePartnerSlugs()) add(`/partners/${slug}`, day(PAGES_UPDATED['/partners']), 0.4)
     add('/contact', day(PAGES_UPDATED['/contact']), 0.7)
     add('/privacy', day(PAGES_UPDATED['/privacy']), 0.2)
     add('/terms', day(PAGES_UPDATED['/terms']), 0.2)

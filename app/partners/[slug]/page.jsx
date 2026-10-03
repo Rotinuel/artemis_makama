@@ -10,13 +10,13 @@ import { TRUST } from "@/lib/trust";
 import { whatsappLink } from "@/lib/site";
 
 /**
- * Individual partner page — e.g. /partners/lasaco
+ * Individual partner page — e.g. /partners/insurance-partner
  *
  * Shows the partner's info plus a list of downloadable PDFs.
  * Add documents for a partner in lib/partners.js (each partner's
  * `documents` array). Put the actual PDF files in /public/documents/
  * and reference them here starting with a leading slash, e.g.
- * "/documents/lasaco-policy.pdf".
+ * "/documents/insurer-policy.pdf".
  */
 
 // Pre-render a static page for every known partner at build time.
@@ -32,6 +32,8 @@ export async function generateMetadata({ params }) {
         title: partner.seoTitle || `${partner.name}: ${partner.role} | Artemis Atelier`,
         description: partner.seoDescription || `${partner.name} — ${partner.summary}`.slice(0, 155),
         path: `/partners/${slug}`,
+        // Placeholder partners (no signed agreement yet) stay out of search results
+        noindex: !!partner.placeholder,
     });
 }
 
@@ -46,7 +48,7 @@ export default async function PartnerDetailPage({ params }) {
     // Partner PDFs, plus the redacted insurance certificate once it's added in lib/trust.js
     const documents = [
         ...(partner.documents || []),
-        ...(slug === "lasaco" && TRUST.insuranceCertificateUrl
+        ...(partner.insurance && TRUST.insuranceCertificateUrl
             ? [{ name: "Insurance certificate (redacted)", url: TRUST.insuranceCertificateUrl }]
             : []),
     ];

@@ -181,6 +181,19 @@ export const authStyles = `
           box-shadow: 0 0 0 3px rgba(8,183,150,0.08);
         }
 
+        /* Browser autofill (saved logins) paints inputs light blue with dark
+           text, which hid the show-password eye. Keep the dark theme instead. */
+        .field-input:-webkit-autofill,
+        .field-input:-webkit-autofill:hover,
+        .field-input:-webkit-autofill:focus {
+          -webkit-text-fill-color: #f0ece4;
+          caret-color: #f0ece4;
+          -webkit-box-shadow: 0 0 0 1000px #16191a inset;
+          box-shadow: 0 0 0 1000px #16191a inset;
+          border-color: rgba(8,183,150,0.35);
+          transition: background-color 9999s ease-out 0s;
+        }
+
         /* Error */
         .error-box {
           background: rgba(220,60,60,0.08);
@@ -293,10 +306,11 @@ export const authStyles = `
           width: 34px; height: 34px; border-radius: 8px;
           display: flex; align-items: center; justify-content: center;
           background: transparent; border: none; cursor: pointer;
-          color: rgba(240,236,228,0.4);
+          color: rgba(240,236,228,0.65);
+          z-index: 1;
           transition: color 0.2s ease, background 0.2s ease;
         }
-        .pw-toggle:hover { color: #f0ece4; background: rgba(255,255,255,0.05); }
+        .pw-toggle:hover { color: #08b796; background: rgba(255,255,255,0.06); }
         .pw-toggle:focus-visible { outline: none; color: #08b796; box-shadow: 0 0 0 2px rgba(8,183,150,0.4); }
 
         /* Label row with a link on the right */

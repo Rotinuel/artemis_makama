@@ -15,7 +15,7 @@ import { Building2, ShieldCheck } from "lucide-react";
  *
  * TO ATTACH DOWNLOADABLE PDFs TO A PARTNER:
  * Add entries to that partner's `documents` array. Put the actual PDF files
- * in your `public/` folder (e.g. public/documents/lasaco-policy.pdf) and
+ * in your `public/` folder (e.g. public/documents/insurer-policy.pdf) and
  * reference them here with a path starting at "/".
  */
 
@@ -54,26 +54,32 @@ export const partnerCategories = [
     label: "Assurance",
     icon: ShieldCheck,
     description:
-      "Independent coverage that backs the build — the second layer of protection between a client's capital and the site.",
+      "Insurance cover that backs the build: the second layer of protection between a client's capital and the site.",
     partners: [
+      // PLACEHOLDER: no insurer is named until a written partnership agreement
+      // is signed. When it is, replace name/summary/seo* with the insurer's
+      // details (and only use their logo with written permission), and
+      // remove `placeholder: true` so the page is indexed again.
       {
-        slug: "lasaco",
-        name: "LASACO Assurance Plc",
-        role: "Assurance Partner",
+        slug: "insurance-partner",
+        placeholder: true,
+        insurance: true,
+        name: "Insurance Partner",
+        role: "Assurance Partner (to be announced)",
         summary:
-          "Provides applicable insurance coverage for our projects under an issued policy, subject to its terms.",
-        seoTitle: "LASACO Assurance: Our Insurance Partner | Artemis Atelier",
+          "We are finalising a formal agreement with a NAICOM-licensed insurer. Until then, cover for your project is arranged and confirmed in writing in your contract.",
+        seoTitle: "Insurance Partner (To Be Announced) | Artemis Atelier",
         seoDescription:
-          "LASACO Assurance Plc, a NAICOM-licensed insurer, provides cover for eligible risks on Artemis Atelier construction projects, subject to the policy issued.",
+          "Artemis Atelier is finalising a formal agreement with a NAICOM-licensed insurer. Until then, project cover is arranged and confirmed in your contract.",
         protects: [
-          "Contractors' all risks: physical loss or damage to the works during construction, depending on the policy issued.",
+          "Contractors' all risks: physical loss or damage to the works during construction, where included in the policy issued.",
           "Third-party / public liability: claims for injury or property damage to others arising from the site.",
           "Plant and equipment used on your site, where included in the policy.",
           "You receive the policy number, schedule and claims procedure directly from the insurer, not from us.",
         ],
         documents: [
-          // { name: "Sample Policy Document", url: "/documents/lasaco-policy.pdf" },
-          // { name: "Certificate of Coverage", url: "/documents/lasaco-certificate.pdf" },
+          // { name: "Sample Policy Document", url: "/documents/insurer-policy.pdf" },
+          // { name: "Certificate of Coverage", url: "/documents/insurer-certificate.pdf" },
         ],
       },
       // Add the next assurance partner here.
@@ -89,6 +95,11 @@ export function getPartnerBySlug(slug) {
     if (found) return { ...found, category };
   }
   return null;
+}
+
+// Partner pages that should appear in the sitemap (placeholders are left out)
+export function getIndexablePartnerSlugs() {
+  return partnerCategories.flatMap((c) => c.partners.filter((p) => !p.placeholder).map((p) => p.slug));
 }
 
 export function getAllPartnerSlugs() {

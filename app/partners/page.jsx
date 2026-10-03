@@ -6,8 +6,8 @@ import { pageMetadata } from "@/lib/seo";
 import Breadcrumbs from "../components/content/Breadcrumbs";
 
 export const metadata = pageMetadata({
-  title: "Our Partners: Suppliers & Insurer | Artemis Atelier",
-  description: "The vetted suppliers and NAICOM-licensed insurance partner behind every Artemis Atelier project in Lagos, held to our stage-gate standards and open-book BOQ.",
+  title: "Our Partners: Suppliers & Assurance | Artemis Atelier",
+  description: "The vetted suppliers and assurance partners behind Artemis Atelier projects in Lagos, held to our stage-gate standards and open-book BOQ.",
   path: "/partners",
 });
 

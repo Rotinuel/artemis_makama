@@ -210,7 +210,7 @@ export default function DiasporaConsultationClient() {
               </h2>
               <p className="text-[14px] md:text-[15px] text-[#5a5a5a] leading-relaxed mb-6 max-w-md">
                 Alongside our own reporting and stage inspections, we
-                coordinate with a licensed Nigerian insurance partner so that
+                coordinate with a licensed Nigerian insurer so that
                 eligible project risks — not just our word — stand behind
                 every payment you make.
               </p>
