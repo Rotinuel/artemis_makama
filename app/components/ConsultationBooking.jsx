@@ -150,18 +150,20 @@ export default function ConsultationBooking({ rates = FALLBACK, source = 'bookin
         )
     }
 
-    const input = 'w-full border border-[#dcdcdc] bg-white px-4 py-3 text-[14px] outline-none transition-colors focus:border-[#1a1a1a]'
+    const input = 'w-full min-w-0 max-w-full border border-[#dcdcdc] bg-white px-4 py-3 text-[14px] outline-none transition-colors focus:border-[#1a1a1a]'
     const label = 'mb-1.5 block text-[11px] font-medium uppercase tracking-[0.1em] text-[#6b6b6b]'
 
     return (
-        <form onSubmit={submit} className="space-y-6 border border-[#e0e0e0] bg-white p-6 md:p-10" noValidate>
+        <form onSubmit={submit} className="w-full min-w-0 max-w-full space-y-6 border border-[#e0e0e0] bg-white p-6 md:p-10" noValidate>
             {heading && <p className="text-[24px] leading-tight text-[#1a1a1a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{heading}</p>}
 
             {/* Honeypot: real people never see or fill this */}
             <input type="text" name="website" value={form.website} onChange={set('website')} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
             {/* ── 1. Pick a time ── */}
-            <fieldset>
+            {/* min-w-0: a <fieldset> otherwise grows to fit the scrolling day
+                strip, which pushed the whole form wider than a phone screen */}
+            <fieldset className="min-w-0">
                 <legend className={label}>1 · Pick a time (optional)</legend>
                 <div className="mb-3">
                     <label htmlFor="bk-tz" className="sr-only">Your time zone</label>
@@ -209,7 +211,7 @@ export default function ConsultationBooking({ rates = FALLBACK, source = 'bookin
             </fieldset>
 
             {/* ── 2. About you ── */}
-            <fieldset className="space-y-4">
+            <fieldset className="min-w-0 space-y-4">
                 <legend className={label}>2 · About you and your project</legend>
                 <div className="grid gap-4 sm:grid-cols-2">
                     <div>
