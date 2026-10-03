@@ -44,7 +44,11 @@ const leaders = [
     bio: 'Utibe is a COREN-registered civil engineer (Reg. No. R.74112) with over 10 years of experience on high-end structural projects in Lagos. He designs and checks foundations, frames and slabs, and signs off the structural certificates in each client’s handover pack, so every Artemis building is safe, sound and properly documented.',
   },
   { name: 'Ajayi Olanrewaju', title: 'IT/ELV', bio: '' },
-  { name: 'Emmanuel Okhuarobo', title: 'IT Team Lead', bio: '' },
+  {
+    name: 'Emmanuel Okhuarobo',
+    title: 'IT Team Lead',
+    bio: 'Emmanuel studied Chemical Engineering at the University of Benin (UNIBEN) and built his software skills through professional online certifications. He designed and developed the Artemis Atelier platform: this website, the private client portal where clients follow their stages, payments, documents and site camera, and the tools our team uses to run every project. He leads the IT team and makes sure clients can follow their build easily and securely from anywhere in the world.',
+  },
   {
     name: 'Olasunkanmi Oladiran, Esq.',
     title: 'Head of Legal',
