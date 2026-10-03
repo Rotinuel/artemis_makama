@@ -83,7 +83,7 @@ export default function HeroSlideshow() {
                     <p className="hs-sub">
                         Artemis Atelier designs, builds and renovates homes and commercial spaces in Lagos for clients at home
                         and abroad. You see the site live, approve every cost, and pay only when each stage has been
-                        independently checked.
+                        inspected and signed off.
                     </p>
                     <div className="hs-ctas">
                         <Link href="/contact" className="hs-btn primary">Book a free consultation</Link>

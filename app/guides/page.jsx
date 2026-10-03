@@ -6,7 +6,7 @@ import { GUIDE_GROUPS } from '@/lib/content/guides'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
-    title: 'Building in Nigeria: Cost, Land & Contractor Guides | Artemis',
+    title: 'Building in Nigeria: Cost, Land & Contractor Guides',
     description: 'Guides to building in Nigeria from home or abroad: 2026 build costs in ₦, £ and $, buying land safely, avoiding scams and choosing a contractor.',
     path: '/guides',
 })

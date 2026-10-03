@@ -40,10 +40,18 @@ function buildSequence(images, start = 0) {
     return rows
 }
 
-export default function ProjectClient({ project, next, total, initialImageId }) {
+export default function ProjectClient({ project, next, total }) {
     const { images, meta } = project
-    const initialIndex = initialImageId ? images.findIndex(img => String(img.id) === String(initialImageId)) : -1
-    const [lightbox, setLightbox] = useState(initialIndex >= 0 ? initialIndex : null)
+    const [lightbox, setLightbox] = useState(null)
+
+    // Old /gallery/<id> links arrive as ?image=<id>: open that photo.
+    // Read in the browser so the page itself can be statically cached.
+    useEffect(() => {
+        const id = new URLSearchParams(window.location.search).get('image')
+        if (!id) return
+        const i = images.findIndex(img => String(img.id) === String(id))
+        if (i >= 0) setLightbox(i)
+    }, [images])
 
     useReveal([project.id])
 

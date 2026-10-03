@@ -1,4 +1,5 @@
 import { projectMeta } from '../data/portfolio-meta'
+import { canonicalSlug } from '@/lib/portfolio-slugs'
 
 export const FACT_FIELDS = [
     ['sector', 'Sector'],
@@ -27,14 +28,15 @@ export function cleanCaption(title) {
 
 // Turn a category + its images into a "project"
 export function toProject(category, images, number) {
-    const meta = projectMeta[category.slug] || {}
+    const slug = canonicalSlug(category.slug)
+    const meta = projectMeta[slug] || projectMeta[category.slug] || {}
     const summary =
         meta.summary ||
         images.find(img => img.description && img.description.trim())?.description ||
         ''
     return {
         id: category.id,
-        slug: category.slug,
+        slug,
         name: category.name,
         number,
         cover: images[0]?.url || null,

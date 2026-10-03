@@ -7,8 +7,33 @@ import Breadcrumbs from '../../components/content/Breadcrumbs'
 import { toProject, metaLine } from '../lib'
 import { projectBySlug, PROJECTS } from '@/lib/content/projects'
 import { pageMetadata } from '@/lib/seo'
+import { canonicalSlug } from '@/lib/portfolio-slugs'
 
 export const revalidate = 600
+
+// Keep meta descriptions within 155 characters, cutting at a word
+function fitDescription(...parts) {
+    const text = parts.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
+    if (text.length <= 155) return text
+    const first = parts.filter(Boolean)[0] || text
+    const base = first.length <= 155 ? first : first.slice(0, 154).replace(/\s+\S*$/, '') + '…'
+    return base
+}
+
+// Pre-render every project at build time; new categories render on first
+// visit and are then cached (ISR). The page reads no searchParams, so it
+// stays static — ?image= deep links are handled in the browser.
+export async function generateStaticParams() {
+    const named = PROJECTS.map(p => ({ slug: p.slug }))
+    try {
+        const { data } = await createPublicClient().from('gallery_categories').select('slug')
+        const db = (data || []).map(c => ({ slug: canonicalSlug(c.slug) }))
+        const seen = new Set()
+        return [...named, ...db].filter(p => p.slug && !seen.has(p.slug) && seen.add(p.slug))
+    } catch {
+        return named
+    }
+}
 
 // cache() so generateMetadata and the page share one set of queries
 const loadProject = cache(async function loadProject(slug) {
@@ -21,7 +46,7 @@ const loadProject = cache(async function loadProject(slug) {
         .order('position', { ascending: true })
 
     const withImages = (categories || []).filter(c => (c.gallery_images?.[0]?.count ?? 0) > 0)
-    const index = withImages.findIndex(c => c.slug === slug)
+    const index = withImages.findIndex(c => canonicalSlug(c.slug) === slug)
     if (index === -1) return null
     const category = withImages[index]
 
@@ -43,7 +68,7 @@ const loadProject = cache(async function loadProject(slug) {
             .eq('category_id', nextCat.id)
             .order('position', { ascending: true })
             .limit(1)
-        next = { slug: nextCat.slug, name: nextCat.name, cover: nextCover?.[0]?.url || null }
+        next = { slug: canonicalSlug(nextCat.slug), name: nextCat.name, cover: nextCover?.[0]?.url || null }
     }
 
     return { project, next, total: withImages.length }
@@ -56,10 +81,10 @@ export async function generateMetadata({ params }) {
     // Named project page (homepage "Project Stories")
     const named = projectBySlug(slug)
     if (named) {
-        const facts = [named.type, named.location].filter(Boolean).join(' in ')
+        const title = [`${named.name} | Artemis Atelier`, `${named.name} | Artemis`, named.name].find(t => t.length <= 60) || named.name
         return pageMetadata({
-            title: `${named.name} | Artemis Atelier`.slice(0, 70),
-            description: `${named.summary} ${facts ? `${facts}.` : ''} See the design and photos, and book a consultation about a similar build.`.slice(0, 158),
+            title,
+            description: fitDescription(named.summary, 'See the design and photos, and book a call about a similar build.'),
             path,
             image: named.images[0]?.src,
             imageAlt: named.images[0]?.alt,
@@ -71,7 +96,7 @@ export async function generateMetadata({ params }) {
     const { project } = data
     const description =
         project.meta?.seoDescription ||
-        project.summary?.slice(0, 155) ||
+        (project.summary && fitDescription(project.summary)) ||
         `${project.name} by Artemis Atelier, Lagos: ${metaLine(project.meta) || `${project.imageCount} photos`} of projects we have designed and built.`
     return pageMetadata({
         title: `${project.name} Projects in Lagos | Artemis Atelier`,
@@ -82,7 +107,7 @@ export async function generateMetadata({ params }) {
     })
 }
 
-export default async function ProjectPage({ params, searchParams }) {
+export default async function ProjectPage({ params }) {
     const { slug } = await params
 
     const named = projectBySlug(slug)
@@ -91,7 +116,6 @@ export default async function ProjectPage({ params, searchParams }) {
         return <NamedProject project={named} others={others} />
     }
 
-    const { image } = (await searchParams) || {}
     const data = await loadProject(slug)
     if (!data) notFound()
 
@@ -102,7 +126,6 @@ export default async function ProjectPage({ params, searchParams }) {
                 project={data.project}
                 next={data.next}
                 total={data.total}
-                initialImageId={image || null}
             />
         </>
     )

@@ -4,7 +4,7 @@ import { SITE } from '@/lib/site'
 
 export const metadata = pageMetadata({
     title: 'Privacy & Cookie Policy | Artemis Atelier',
-    description: 'How Artemis Atelier Ltd collects, uses and protects personal data from website forms, the client portal and analytics, under the Nigeria Data Protection Act.',
+    description: 'How Artemis Atelier collects, uses and protects personal data from website forms, the client portal and analytics under the Nigeria Data Protection Act.',
     path: '/privacy',
 })
 

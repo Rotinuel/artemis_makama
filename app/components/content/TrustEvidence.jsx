@@ -1,23 +1,34 @@
 import { TRUST } from '@/lib/trust'
 
 /**
- * Shows the inspector and supporting documents from lib/trust.js.
- * Each line only appears once the fact has been filled in.
+ * Shows the inspection team, any independent inspector, registrations and
+ * supporting documents from lib/trust.js. Each line only appears once the
+ * fact has been filled in.
  */
-export default function TrustEvidence({ title = 'Proof, not promises' }) {
+export default function TrustEvidence({ title = 'Proof, not promises', showTeam = true }) {
     const ins = TRUST.inspector
+    const team = showTeam ? (TRUST.inspectionTeam || []) : []
     const docs = [
         TRUST.sampleMilestoneScheduleUrl && { label: 'Sample milestone schedule (PDF)', href: TRUST.sampleMilestoneScheduleUrl },
         TRUST.contractExcerptUrl && { label: 'Redacted contract and BOQ excerpt (PDF)', href: TRUST.contractExcerptUrl },
         TRUST.insuranceCertificateUrl && { label: 'Insurance certificate, redacted (PDF)', href: TRUST.insuranceCertificateUrl },
     ].filter(Boolean)
     const regs = TRUST.registrations || []
-    if (!ins && !docs.length && !regs.length) return null
+    if (!team.length && !ins && !docs.length && !regs.length) return null
 
     return (
         <section className="mb-10 border border-[#e6e6e6] bg-[#fafaf8] p-6" aria-labelledby="trust-evidence">
             <h2 id="trust-evidence" className="mb-4 text-[24px] text-[#1a1a1a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{title}</h2>
             <ul className="space-y-3 text-[15px] leading-relaxed text-[#333]">
+                {team.length > 0 && (
+                    <li>
+                        <strong>Our inspection team:</strong>{' '}
+                        {team.map((m, i) => (
+                            <span key={m.name}>{i > 0 && '; '}{m.name}{m.credentials ? `, ${m.credentials}` : ''} ({m.role.toLowerCase()})</span>
+                        ))}.
+                        {!ins && <> You can also appoint an independent inspector of your choice to check any stage before you pay.</>}
+                    </li>
+                )}
                 {ins && (
                     <li>
                         <strong>Independent inspector:</strong> {ins.name}{ins.firm ? `, ${ins.firm}` : ''}{ins.registration ? ` (${ins.registration})` : ''}

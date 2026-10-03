@@ -26,10 +26,18 @@ const nextConfig = {
       { source: '/projects', destination: '/portfolio', permanent: true },
       { source: '/projects/:path*', destination: '/portfolio', permanent: true },
       { source: '/news', destination: '/news-events', permanent: true },
-      // Fix the misspelt portfolio URL. Run supabase/fix_during_construction_slug.sql
-      // at the same time so the corrected address has a page behind it.
+      // Fix the misspelt portfolio URL. The project page accepts either database
+      // slug (lib/portfolio-slugs.js), so this works before and after
+      // supabase/fix_during_construction_slug.sql is run.
       { source: '/portfolio/during-contrustion', destination: '/portfolio/during-construction', permanent: true },
       { source: '/gallery/during-contrustion', destination: '/portfolio/during-construction', permanent: true },
+      // Old 3 MB catalogue with spaces in its name → the compressed, renamed one.
+      // (Regex so it matches the space whether or not it arrives as %20.)
+      { source: '/documents/:file(compressed.*simple.*elegant.*series\\.pdf)', destination: '/documents/aluminium-simple-elegant-series.pdf', permanent: true },
+      // The cost guide now sits behind a short email form (/cost-guide). The old
+      // direct link goes to the form; the PDF itself is at COST_GUIDE_PDF in
+      // lib/site.js and is only linked after sign-up.
+      { source: '/downloads/diaspora-build-cost-guide-2026.pdf', destination: '/cost-guide', permanent: false },
     ]
   },
   async headers() {

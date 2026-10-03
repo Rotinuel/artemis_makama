@@ -49,13 +49,17 @@ export default async function MaterialPricesPage() {
         rows: history.filter(h => h.item_key === m.key).slice(-12).reverse(),
     })).filter(m => m.rows.length)
 
+    // Only name the cities that actually have published prices
+    const cities = Object.entries(board.board || {}).filter(([, rows]) => rows.some(r => r.current)).map(([c]) => c)
+    const where = cities.length ? cities.join(', ').replace(/, ([^,]*)$/, ' and $1') : 'Lagos'
+
     return (
         <>
             <JsonLd data={{
                 '@context': 'https://schema.org',
                 '@type': 'Dataset',
                 name: `Building material prices in Nigeria (${YEAR})`,
-                description: 'Indicative prices of cement, rebar, granite, sharp sand, aggregate and ready-mix concrete in Lagos, Abuja and Port Harcourt, with dates and sources.',
+                description: `Indicative prices of cement, rebar, granite, sharp sand, aggregate and ready-mix concrete in ${where}, with dates and sources.`,
                 url: absoluteUrl(PATH),
                 creator: { '@id': ORG_ID },
                 ...(board.lastUpdated ? { dateModified: board.lastUpdated } : {}),

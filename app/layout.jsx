@@ -7,7 +7,7 @@ import JsonLd from './components/JsonLd'
 import { SITE } from '@/lib/site'
 import { pageMetadata, organizationSchema, websiteSchema } from '@/lib/seo'
 
-const DEFAULT_TITLE = 'Building Contractor in Lagos | Build in Nigeria From Abroad | Artemis Atelier'
+const DEFAULT_TITLE = 'Building Contractor in Lagos & Build From Abroad | Artemis'
 const DEFAULT_DESCRIPTION =
   'Lagos building contractor since 2010 (RC 1484495). Design and build, renovation and diaspora projects with live site cameras, stage-checked payments and open-book BOQs.'
 
@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         {children}
         <WhatsAppButton />
         <CookieBanner />
-        <Analytics />
+        <Analytics gaId={process.env.NEXT_PUBLIC_GA_ID || process.env.GA_ID || ''} />
       </body>
     </html>
   )

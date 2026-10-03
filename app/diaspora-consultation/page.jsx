@@ -6,14 +6,14 @@ const PAGE_PATH = '/diaspora-consultation'
 export const metadata = {
     title: 'Build Your Home in Nigeria From Abroad | Free Consultation — Artemis Atelier',
     description:
-        'Nigerians in the diaspora: build your dream home in Nigeria with documented milestones, independent inspection, insured payments and weekly progress reports. Book a free 20-minute consultation.',
+        'Nigerians in the diaspora: build your dream home in Nigeria with documented milestones, stage inspection, insured payments and weekly progress reports. Book a free 20-minute consultation.',
     alternates: {
         canonical: `${SITE_URL}${PAGE_PATH}`,
     },
     openGraph: {
         title: 'Build Your Home in Nigeria — Without Nigeria Trust Issues',
         description:
-            'Documented milestones, independent inspection and insured payments — monitor your Nigerian construction project from anywhere. Book a free consultation.',
+            'Documented milestones, stage inspection and insured payments — monitor your Nigerian construction project from anywhere. Book a free consultation.',
         url: `${SITE_URL}${PAGE_PATH}`,
         siteName: 'Artemis Atelier Ltd',
         images: [
@@ -31,7 +31,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: 'Build Your Home in Nigeria — Without Living in Nigeria',
         description:
-            'Documented milestones, independent inspection and insured payments. Book a free diaspora consultation with Artemis Atelier.',
+            'Documented milestones, stage inspection and insured payments. Book a free diaspora consultation with Artemis Atelier.',
         images: [`${SITE_URL}/51.jpg`],
     },
     robots: {
@@ -58,7 +58,7 @@ const jsonLd = {
         audienceType: 'Nigerians living abroad planning to build property in Nigeria',
     },
     description:
-        'Milestone-based construction management, independent inspection, insured payments and digital project monitoring for Nigerians building from abroad.',
+        'Milestone-based construction management, stage inspection, insured payments and digital project monitoring for Nigerians building from abroad.',
     offers: {
         '@type': 'Offer',
         name: 'Free Diaspora Project Consultation',

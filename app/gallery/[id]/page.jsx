@@ -1,5 +1,6 @@
 import { notFound, permanentRedirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { canonicalSlug } from '@/lib/portfolio-slugs'
 
 // Old single-image URLs (/gallery/<image id>) now open that image
 // inside its project page: /portfolio/<project slug>?image=<image id>
@@ -15,5 +16,5 @@ export default async function GalleryImageRedirect({ params }) {
 
     if (!image?.gallery_categories?.slug) notFound()
 
-    permanentRedirect(`/portfolio/${image.gallery_categories.slug}?image=${image.id}`)
+    permanentRedirect(`/portfolio/${canonicalSlug(image.gallery_categories.slug)}?image=${image.id}`)
 }

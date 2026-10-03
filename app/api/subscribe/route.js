@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { NextResponse } from 'next/server'
 
-// Newsletter / monthly material-price update sign-ups → newsletter_subscribers
+// Newsletter, monthly material-price and cost-guide sign-ups → newsletter_subscribers
 // (table from supabase/seo_conversion.sql). Export the list from Supabase
 // into your email tool (Mailchimp, Brevo, etc.) when you send an update.
 export async function POST(request) {
@@ -13,7 +13,7 @@ export async function POST(request) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
     }
-    const list = ['news', 'material-prices'].includes(body.list) ? body.list : 'news'
+    const list = ['news', 'material-prices', 'cost-guide'].includes(body.list) ? body.list : 'news'
 
     const supabase = await createClient()
     const { error } = await supabase.from('newsletter_subscribers').insert({ email, list, source_page: String(body.page || '').slice(0, 200) || null })

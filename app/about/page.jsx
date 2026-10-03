@@ -16,10 +16,10 @@ export const metadata = pageMetadata({
 })
 
 const stats = [
-  { number: '30+', label: 'Design Professionals' },
   { number: '2010', label: 'Founded in Lagos' },
-  { number: 'COREN', label: 'Registered engineer on our team' },
-  { number: '15+', label: 'Years of Experience' },
+  { number: `${new Date().getFullYear() - 2010}+`, label: 'Years in practice' },
+  { number: 'COREN', label: 'Registered engineer (R.74112)' },
+  { number: '6', label: 'Inspected stages on every build' },
 ]
 
 // (Removed a placeholder awards list that belonged to another firm. Add real awards here if you win any.)

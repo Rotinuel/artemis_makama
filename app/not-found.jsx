@@ -3,8 +3,9 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
 export const metadata = {
+    // Next.js adds <meta name="robots" content="noindex"> to 404s itself,
+    // so no robots field here (it would print a second robots tag).
     title: { absolute: 'Page not found | Artemis Atelier' },
-    robots: { index: false, follow: true },
 }
 
 const LINKS = [

@@ -14,7 +14,7 @@ import { homeFaqs } from '@/lib/content/process'
 export const revalidate = 600
 
 export const metadata = pageMetadata({
-  title: 'Building Contractor in Lagos | Build in Nigeria From Abroad | Artemis Atelier',
+  title: 'Building Contractor in Lagos & Build From Abroad | Artemis',
   description: 'Lagos building contractor since 2010 (RC 1484495). Design and build, renovation and diaspora projects with live site cameras, stage-checked payments and open-book BOQs.',
   path: '/',
 })

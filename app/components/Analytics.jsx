@@ -5,7 +5,6 @@ import Script from 'next/script'
 import { usePathname } from 'next/navigation'
 import { track } from '@/lib/track'
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID // e.g. G-XXXXXXXXXX
 const VERCEL_ANALYTICS = process.env.NEXT_PUBLIC_VERCEL_ANALYTICS !== 'off'
 
 export const CONSENT_KEY = 'aal-consent' // 'granted' | 'denied'
@@ -16,7 +15,9 @@ export const CONSENT_KEY = 'aal-consent' // 'granted' | 'denied'
  * Also tracks every WhatsApp, phone, email and file-download click
  * site-wide, so individual buttons don't need wiring.
  */
-export default function Analytics() {
+export default function Analytics({ gaId }) {
+    // Passed in from the server layout (NEXT_PUBLIC_GA_ID or GA_ID, e.g. G-XXXXXXXXXX)
+    const GA_ID = gaId
     const pathname = usePathname() || ''
     const isPrivate = pathname.startsWith('/admin') || pathname.startsWith('/portal')
 

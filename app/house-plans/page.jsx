@@ -62,6 +62,9 @@ export default function HousePlansPage() {
                             ))}
                         </div>
                         <p className="mt-4 text-[13px] text-[#8a8a8a]">Costs: Lagos, 2026, excluding land. See the <Link href="/guides/cost-of-building-a-house-in-nigeria" className="underline">full cost guide</Link>.</p>
+                        <p className="mt-6 border-l-2 border-[#08b796] pl-4 text-[15px] leading-relaxed text-[#333]">
+                            Building with your own contractor? Our <Link href="/services/design-only-package" className="underline decoration-[#08b796] underline-offset-[3px]">design-only package</Link> gives you architectural and structural drawings and approval support, ready for any builder.
+                        </p>
 
                         <h2 className="mb-6 mt-14 text-[30px] text-[#1a1a1a]" style={serif}>Designs we have drawn</h2>
                         <div className="grid gap-4 sm:grid-cols-2">

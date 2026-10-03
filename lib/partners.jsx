@@ -35,14 +35,14 @@ export const partnerCategories = [
           "Supplies and installs high-spec aluminium systems as part of our vetted construction and procurement network.",
         seoTitle: "Aluminium Windows & Doors Partner | Artemis Atelier",
         seoDescription:
-          "Our aluminium systems partner supplies and installs aluminium windows, doors and integrated spaces on Artemis Atelier projects in Lagos. Download the product catalogue.",
+          "Our aluminium partner supplies and installs windows, doors and integrated aluminium spaces on Artemis Atelier projects in Lagos. Download the catalogue.",
         protects: [
           "Windows, doors and aluminium systems are specified on the drawings and itemised in your BOQ, so you can see what you are paying for.",
           "Supply and installation come from one vetted partner, inspected at our finishing stage gate.",
           "Product information is available to you before you choose, so finishes are agreed in writing.",
         ],
         documents: [
-          { name: "Simple and elegant series: product catalogue (PDF, 3 MB)", url: "/documents/aluminium-simple-elegant-series.pdf" },
+          { name: "Simple and elegant series: product catalogue (PDF, under 1 MB)", url: "/documents/aluminium-simple-elegant-series.pdf" },
           // { name: "Product Specification Sheet", url: "/documents/haas-spec-sheet.pdf" },
         ],
       },

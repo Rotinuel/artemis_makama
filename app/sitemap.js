@@ -5,6 +5,7 @@ import { GUIDES } from '@/lib/content/guides'
 import { SERVICES, contractorLagos } from '@/lib/content/services'
 import { howWeBuild } from '@/lib/content/process'
 import { PROJECTS } from '@/lib/content/projects'
+import { canonicalSlug } from '@/lib/portfolio-slugs'
 
 // Served at /sitemap.xml — submit it in Google Search Console and Bing
 // Webmaster Tools. lastmod is the real date each page's content changed
@@ -42,7 +43,7 @@ async function dbDates() {
         ])
         const portfolio = (cats.data || [])
             .filter(c => (c.gallery_images || []).length > 0)
-            .map(c => ({ slug: c.slug, updated: latest(...c.gallery_images.map(i => i.created_at)) }))
+            .map(c => ({ slug: canonicalSlug(c.slug), updated: latest(...c.gallery_images.map(i => i.created_at)) }))
         return {
             portfolio,
             news: latest(news.data?.[0]?.created_at, industry.data?.[0]?.published_at),
@@ -67,7 +68,9 @@ export default async function sitemap() {
     add(contractorLagos.path, day(contractorLagos.updated), 0.8)
     add('/portfolio', latest(latestPortfolio, '2026-10-02'), 0.8)
     for (const p of PROJECTS) add(`/portfolio/${p.slug}`, day('2026-10-02'), 0.6)
-    for (const p of db.portfolio) add(`/portfolio/${p.slug}`, p.updated, 0.6)
+    const named = new Set(PROJECTS.map(p => p.slug))
+    for (const p of db.portfolio) if (!named.has(p.slug)) add(`/portfolio/${p.slug}`, p.updated, 0.6)
+    add('/cost-guide', day('2026-10-03'), 0.6)
     add('/house-plans', day(PAGES_UPDATED['/house-plans']), 0.7)
     add('/guides', day(PAGES_UPDATED['/guides']), 0.7)
     for (const g of GUIDES) add(g.path, latest(g.updated, g.blocks?.some(b => b.t === 'prices') ? db.prices : null), 0.8)

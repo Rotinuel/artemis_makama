@@ -18,18 +18,38 @@ export const metadata = pageMetadata({
 })
 
 const leaders = [
-  { name: 'Chief Chinedu Edward Makama MBA', title: 'Managing Director', bio: '' },
-  { name: 'Ewomazino Makama', title: 'Director', bio: '' },
+  {
+    name: 'Chief Chinedu Edward Makama, MBA',
+    title: 'Managing Director',
+    bio: 'An architect by training, Chief Makama founded Artemis Atelier in 2010 with one conviction: building in Nigeria should never require blind trust. He holds an MBA from Nexford University and brings many years of consulting experience across the architecture, engineering and construction industry. That mix of design skill and business discipline shaped the systems clients rely on today, including open-book costing, inspected stage payments and live site access.',
+  },
+  {
+    name: 'Ewomazino Makama',
+    title: 'Director',
+    bio: 'Ewomazino holds a BSc in Psychology and has built her career around understanding what clients need, often before they say it. She leads client relationships and brings experience in finance and design oversight. Having worked with diaspora clients for years, particularly in Europe, she knows the worries of building from abroad and makes sure every client feels informed, heard and in control.',
+  },
   {
     name: 'Tobi Awojobi',
-    title: 'ED Operations and Business Development',
-    bio: 'Tobi Awojobi is a business development and operations leader with a focus on driving growth, strategic partnerships, and market expansion. He combines strong commercial insight with operational leadership to identify opportunities, structure deals, and deliver sustainable revenue streams. His experience spans project development, stakeholder engagement, and business scaling within the built environment sector. At ARTEMIS ATELIER LTD, he oversees operations and business development, ensuring efficient execution while positioning the company for continued growth and competitive advantage.',
+    title: 'Executive Director, Operations & Business Development',
+    bio: 'A quantity surveyor with a BSc and an MSc in Quantity Surveying from the University of Lagos, Tobi makes sure every naira in a project is accounted for. He has spent many years in senior roles across major Nigerian industries, including BCL and Arbico, and brings that large-project discipline to every Artemis site. He oversees operations, keeps budgets honest and leads the firm’s growth among clients at home and abroad.',
   },
-  { name: 'Zeb Ejiro OON', title: 'Director', bio: '' },
-  { name: 'Collins Nneji', title: 'Consultant Civil Engineer MNSE COREN', bio: '' },
+  {
+    name: 'Zeb Ejiro, OON',
+    title: 'Director',
+    bio: 'A well-known Nigerian and recipient of the Officer of the Order of the Niger national honour, Zeb Ejiro brings years of experience managing large projects with state governments. As a member of the board, he advises on strategy, governance and partnerships, helping the firm grow with integrity.',
+  },
+  {
+    name: 'Engr. Utibe Collins Nneke, MNSE',
+    title: 'Consultant Civil Engineer',
+    bio: 'Utibe is a COREN-registered civil engineer (Reg. No. R.74112) with over 10 years of experience on high-end structural projects in Lagos. He designs and checks foundations, frames and slabs, and signs off the structural certificates in each client’s handover pack, so every Artemis building is safe, sound and properly documented.',
+  },
   { name: 'Ajayi Olanrewaju', title: 'IT/ELV', bio: '' },
   { name: 'Emmanuel Okhuarobo', title: 'IT Team Lead', bio: '' },
-  { name: 'Olasunkammi Oladiran ESQ', title: 'Head of legal', bio: '' },
+  {
+    name: 'Olasunkanmi Oladiran, Esq.',
+    title: 'Head of Legal',
+    bio: 'Called to the Nigerian Bar in 2015, Olasunkanmi has spent over a decade practising law. He drafts the contracts that protect clients’ money: clear scope, staged payments, variation rules and dispute procedures, all in writing. He also advises on land title checks, approvals and property documentation, all of which matter greatly for clients building from abroad.',
+  },
 ]
 
 // Bios from lib/trust.js replace empty ones (real bios only — empty ones show just the role)
@@ -46,12 +66,14 @@ const stats = [
 
 // Person schema for each team member (credentials from lib/trust.js where given)
 const peopleSchema = leaders.map(l => {
-  const reg = (TRUST.registrations || []).find(r => r.person && l.name.includes(r.person))
+  const reg = (TRUST.registrations || []).find(r => r.person && (l.name.includes(r.person) || r.person.includes(l.name.split(',')[0])))
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: l.name,
+    name: l.name.split(',')[0].replace(/^(Chief|Engr\.)\s+/, ''),
+    ...(l.name.includes(',') ? { honorificSuffix: l.name.split(',').slice(1).join(',').trim() } : {}),
     jobTitle: l.title,
+    ...(l.bio ? { description: l.bio } : {}),
     worksFor: { '@id': `${SITE.url}/#organization` },
     ...(reg ? { hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Professional registration', name: `${reg.body} ${reg.number}` } } : {}),
   }
@@ -64,8 +86,8 @@ export default function PeoplePage() {
       <Navigation />
       <PageHero
         label="Our Team"
-        title="People"
-        description="Our team is made up of talented, experienced, and passionate architects, designers, planners, engineers, and project specialists who are dedicated to delivering exceptional design solutions. Combining creativity with technical expertise, we approach every project with innovation, precision, and a deep understanding of our clients' unique goals. We believe that every successful project begins with listening, thoughtful planning, and a commitment to transforming ideas into functional, inspiring, and enduring spaces."
+        title="Architects and engineers in Lagos"
+        description="Meet the people behind every Artemis Atelier project: an architect-led leadership team, a COREN-registered civil engineer, a quantity surveyor, our in-house legal team and the inspectors who check each stage before you pay for the next."
         image="/ja.jpeg"
       />
 
@@ -143,7 +165,28 @@ export default function PeoplePage() {
         {/* Not wrapped in <Reveal>: this section is very tall (it pins while you
             scroll through each person) and must be visible immediately */}
         <LeadershipSection leaders={leadersWithBios} />
-        <div className="mt-16 max-w-3xl"><TrustEvidence title="Registrations you can check" /></div>
+
+        {/* Inspection team (from lib/trust.js) */}
+        {TRUST.inspectionTeam?.length > 0 && (
+          <div id="inspection-team" className="mt-20 scroll-mt-24">
+            <p className="text-[11px] tracking-[0.14em] uppercase text-[#08b796] mb-3 font-medium">Inspection team</p>
+            <h2 className="text-[28px] md:text-[38px] text-aal-black leading-tight mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              Who checks each stage before you pay
+            </h2>
+            <p className="text-[15px] text-aal-gray leading-relaxed max-w-2xl mb-8">
+              Every stage is checked against the drawings by our inspection team, and you receive the report before the next payment is due. They are Artemis staff; if you want a second opinion, you are welcome to appoint an independent inspector of your own to check any stage.
+            </p>
+            <ul className="grid gap-4 sm:grid-cols-3">
+              {TRUST.inspectionTeam.map(m => (
+                <li key={m.name} className="border border-aal-black/10 p-5">
+                  <p className="text-[17px] font-semibold text-aal-black">{m.name}{m.credentials ? `, ${m.credentials}` : ''}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#08b796] font-semibold">{m.role}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="mt-16 max-w-3xl"><TrustEvidence title="Registrations you can check" showTeam={false} /></div>
       </section>
 
       {/* Culture callout */}

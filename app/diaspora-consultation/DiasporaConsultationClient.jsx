@@ -122,7 +122,7 @@ export default function DiasporaConsultationClient() {
               Build your dream home in Nigeria — without Nigeria trust issues.
             </h1>
             <p className="text-[15px] md:text-[16px] text-[#5a5a5a] leading-relaxed mb-8 max-w-md">
-              Documented milestones, independent inspection, and weekly
+              Documented milestones, stage inspection, and weekly
               progress reports — so you can watch your project rise from
               London, Houston, Toronto or Dubai, with confidence.
             </p>
@@ -209,7 +209,7 @@ export default function DiasporaConsultationClient() {
                 Your milestone payments, backed by insurance.
               </h2>
               <p className="text-[14px] md:text-[15px] text-[#5a5a5a] leading-relaxed mb-6 max-w-md">
-                Alongside our own reporting and independent inspection, we
+                Alongside our own reporting and stage inspections, we
                 coordinate with a licensed Nigerian insurance partner so that
                 eligible project risks — not just our word — stand behind
                 every payment you make.

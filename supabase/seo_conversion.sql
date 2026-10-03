@@ -29,7 +29,7 @@ end $$;
 create table if not exists public.newsletter_subscribers (
     id          bigint generated always as identity primary key,
     email       text not null,
-    list        text not null default 'news' check (list in ('news', 'material-prices')),
+    list        text not null default 'news' check (list in ('news', 'material-prices', 'cost-guide')),
     source_page text,
     created_at  timestamptz not null default now(),
     unique (email, list)

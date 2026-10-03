@@ -27,6 +27,10 @@ const NAV_ITEMS = [
             { label: 'Facility management and commercial', href: '/services/facility-management-and-commercial' },
             { label: 'Building contractor in Lagos', href: '/building-contractor-lagos' },
             { label: 'House plans', href: '/house-plans' },
+            { label: 'Feasibility and cost report', href: '/services/feasibility-and-cost-report' },
+            { label: 'Land title verification', href: '/services/land-title-verification' },
+            { label: 'Design-only package', href: '/services/design-only-package' },
+            { label: 'Construction monitoring', href: '/services/build-monitoring' },
         ],
     },
     { label: 'Projects', href: '/portfolio' },
@@ -259,9 +263,11 @@ export default function Navigation({ variant = 'default' }) {
                             >
                                 {item.label}
                             </Link>
-                            {item.children && activeDropdown === item.label && (
+                            {/* Always in the HTML so crawlers see the links; shown on hover/focus */}
+                            {item.children && (
                                 <div
                                     style={{
+                                        display: activeDropdown === item.label ? 'block' : 'none',
                                         position: 'absolute', top: '100%', left: 8, minWidth: 260,
                                         background: 'white', border: '1px solid #e5e5e5', borderTop: '2px solid #08b796',
                                         boxShadow: '0 12px 32px rgba(0,0,0,0.08)', padding: '8px 0', zIndex: 60,

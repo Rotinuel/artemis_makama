@@ -20,7 +20,7 @@ const REASONS = [
   {
     n: "02",
     h: "You control the money.",
-    p: "Your funds are released in stages: foundation, frame, roof and finishing. An independent inspector checks each stage before the next payment.",
+    p: "Your funds are released in stages: foundation, frame, roof and finishing. Our inspection team, led by Chief Chinedu Makama, checks each stage before the next payment, and you can add an independent inspector of your own.",
   },
   {
     n: "03",
@@ -43,7 +43,7 @@ const SERVICES = [
 
 const PROTECTION_LAYERS = [
   { n: "01", label: "Artemis Atelier Ltd", desc: "Responsible for the agreed architectural, construction and project-management obligations." },
-  { n: "02", label: "Independent Inspector", desc: "Verifies agreed construction milestones before any payment is released." },
+  { n: "02", label: "Inspection Team", desc: "Our named inspectors verify each agreed milestone before any payment is released. You can also appoint an independent inspector." },
   { n: "03", label: "Insurance Partner", desc: "Provides applicable coverage under an issued policy, subject to its terms." },
   { n: "04", label: "Digital Records", desc: "Evidence of project activity — photographs, videos, reports and documentation." },
   { n: "05", label: "Contractual Controls", desc: "Defined scope, payments, variations, responsibilities and dispute procedures." },

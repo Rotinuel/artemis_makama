@@ -7,6 +7,7 @@ import Breadcrumbs from "../../components/content/Breadcrumbs";
 import { getPartnerBySlug, getAllPartnerSlugs } from "../../../lib/partners";
 import { pageMetadata } from "@/lib/seo";
 import { TRUST } from "@/lib/trust";
+import { whatsappLink } from "@/lib/site";
 
 /**
  * Individual partner page — e.g. /partners/lasaco
@@ -145,7 +146,7 @@ export default async function PartnerDetailPage({ params }) {
                         </ul>
                     ) : (
                         <p className="text-sm leading-relaxed text-zinc-500">
-                            No documents have been uploaded for this partner yet.
+                            Documents for this partner (such as a redacted policy certificate or product sheets) are available on request. <a href={whatsappLink(`Hi Artemis, please send me the documents for ${partner.name}.`)} target="_blank" rel="noopener noreferrer" className="underline">Ask us on WhatsApp</a>.
                         </p>
                     )}
                 </div>

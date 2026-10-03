@@ -28,7 +28,7 @@ export default function ArticleShell({ page, rates = null, priceBoard = null, no
     const isGuide = page.kind === 'guide'
 
     const schema = page.kind === 'service'
-        ? serviceSchema({ name: page.serviceName || page.h1, description: page.description, path: page.path, serviceType: page.serviceType })
+        ? serviceSchema({ name: page.serviceName || page.h1, description: page.description, path: page.path, serviceType: page.serviceType, price: page.price })
         : articleSchema({
             title: page.h1, description: page.description, path: page.path, image: page.hero,
             published: page.published || page.updated, modified: page.updated,
@@ -56,7 +56,7 @@ export default function ArticleShell({ page, rates = null, priceBoard = null, no
                     {(page.updated || isGuide) && (
                         <p className="mt-6 text-[12px] text-white/55">
                             {isGuide && (reviewer
-                                ? <>Reviewed by <span className="text-white/85">{reviewer.name}</span>{reviewer.credentials ? `, ${reviewer.credentials}` : ''} · </>
+                                ? <>By {reviewer.url ? <Link href={reviewer.url} className="text-white/85 underline decoration-white/30 underline-offset-[3px] hover:decoration-white">{reviewer.name}</Link> : <span className="text-white/85">{reviewer.name}</span>}{reviewer.credentials ? `, ${reviewer.credentials}` : ''} · </>
                                 : <>By the Artemis Atelier editorial team · </>)}
                             {page.updated && <>Last verified <time dateTime={page.updated}>{fmtDate(page.updated)}</time></>}
                         </p>

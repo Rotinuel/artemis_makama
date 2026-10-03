@@ -17,7 +17,7 @@ export const revalidate = 86400
 
 const PATH = '/build-from-abroad'
 const TITLE = 'Build a House in Nigeria From Abroad | Artemis Atelier'
-const DESCRIPTION = 'Building a house in Nigeria from the UK, US or Canada? Payments released after independent inspection, open-book BOQs, a live site camera and a free call.'
+const DESCRIPTION = 'Building a house in Nigeria from the UK, US or Canada? Payments released after each stage is inspected, open-book BOQs, a live site camera and a free call.'
 
 export const metadata = pageMetadata({ title: TITLE, description: DESCRIPTION, path: PATH, image: '/51.jpg', imageAlt: 'Artemis Atelier construction project' })
 
@@ -29,7 +29,7 @@ const WORRIES = [
 ]
 
 const ANSWERS = [
-    { h: 'You never pay ahead of the work', p: 'Each payment covers one stage. It is only due after an independent inspector has checked the previous stage.' },
+    { h: 'You never pay ahead of the work', p: 'Each payment covers one stage. It is only due after our inspection team has checked the previous stage, and you can bring in an independent inspector too.' },
     { h: 'Every cost is on an open book', p: 'An itemised BOQ: every bag of cement and tonne of rebar, checkable against our live material price tracker.' },
     { h: 'Materials are inspected, not assumed', p: 'Rebar sizes, block quality and concrete cube tests are checked at the stage gates.' },
     { h: 'You can see the site any day', p: 'A live camera, dated weekly reports, drone or video walk-rounds, and your own client portal.' },
@@ -65,11 +65,11 @@ export default async function BuildFromAbroadPage() {
                         <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-[#08b796]">For Nigerians building from abroad</p>
                         <h1 className="mb-6 text-[40px] leading-[1.05] md:text-[56px]" style={serif}>Build a house in Nigeria from abroad, and watch every block go in.</h1>
                         <p className="mb-8 max-w-md text-[16px] leading-relaxed text-[#555]">
-                            Stage payments released only after independent inspection, an open-book bill of quantities, and a live site camera, so you can manage your build from London, Houston, Toronto or Sydney.
+                            Stage payments released only after each stage is inspected, an open-book bill of quantities, and a live site camera, so you can manage your build from London, Houston, Toronto or Sydney.
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
                             <a href="#book" className="rounded-full bg-[#08b796] px-8 py-4 text-center text-[13px] font-medium text-white hover:bg-[#079e82]">Book your free 20-minute consultation</a>
-                            <a href="/downloads/diaspora-build-cost-guide-2026.pdf" className="rounded-full border border-[#1a1a1a] px-8 py-4 text-center text-[13px] font-medium hover:bg-[#1a1a1a] hover:text-white">Download the 2026 cost guide</a>
+                            <a href="/cost-guide" className="rounded-full border border-[#1a1a1a] px-8 py-4 text-center text-[13px] font-medium hover:bg-[#1a1a1a] hover:text-white">Get the free 2026 cost guide</a>
                         </div>
                         <p className="mt-4 text-[12px] text-[#8a8a8a]">No obligation. No payment required to speak with us. {SITE.rc}.</p>
                     </div>
@@ -118,7 +118,7 @@ export default async function BuildFromAbroadPage() {
                         <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#08b796]">An extra layer of protection</p>
                         <h2 className="mb-6 text-[30px] leading-tight md:text-[42px]" style={serif}>Your project, backed by insurance.</h2>
                         <p className="mb-5 max-w-md text-[15px] leading-relaxed text-[#555]">
-                            Alongside our own reporting and independent inspection, we arrange cover with our licensed insurance partner, <Link href="/partners/lasaco" className="underline">LASACO Assurance Plc</Link>, so eligible project risks are insured.
+                            Alongside our reporting and stage inspections, we arrange cover with our licensed insurance partner, <Link href="/partners/lasaco" className="underline">LASACO Assurance Plc</Link>, so eligible project risks are insured.
                         </p>
                         <p className="max-w-md text-[13px] leading-relaxed text-[#8a8a8a]">Coverage is subject to the terms, conditions, exclusions and deductibles of the policy issued. We walk you through exactly what is covered before your first payment.</p>
                         <div className="mt-8"><TrustEvidence title="See the evidence" /></div>

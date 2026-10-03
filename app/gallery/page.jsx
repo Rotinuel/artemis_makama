@@ -1,5 +1,6 @@
 import { redirect, permanentRedirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { canonicalSlug } from '@/lib/portfolio-slugs'
 
 // The Gallery has become the Portfolio. Old links keep working:
 //   /gallery                  → /portfolio
@@ -14,7 +15,7 @@ export default async function GalleryRedirect({ searchParams }) {
             .select('slug')
             .eq('slug', category)
             .maybeSingle()
-        if (data) redirect(`/portfolio/${data.slug}`)
+        if (data) redirect(`/portfolio/${canonicalSlug(data.slug)}`)
     }
 
     permanentRedirect('/portfolio')

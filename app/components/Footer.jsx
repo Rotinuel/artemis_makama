@@ -23,8 +23,14 @@ const footerLinks = [
 const guideLinks = [
   { label: 'Cost of building a house in Nigeria', href: '/guides/cost-of-building-a-house-in-nigeria' },
   { label: 'Cost of building a duplex', href: '/guides/cost-of-building-a-duplex-in-nigeria' },
+  { label: 'Cost of building a 3-bedroom bungalow', href: '/guides/cost-of-building-a-bungalow-in-nigeria' },
+  { label: 'How much is a house in Nigeria?', href: '/guides/how-much-is-a-house-in-nigeria' },
   { label: 'Buying land from abroad', href: '/guides/buying-land-in-nigeria-from-abroad' },
+  { label: 'Property scams to avoid', href: '/guides/property-scams-in-nigeria-to-avoid' },
+  { label: 'Managing a build from abroad', href: '/guides/managing-a-build-in-nigeria-from-abroad' },
   { label: 'Choosing a building contractor', href: '/guides/how-to-choose-a-building-contractor-in-nigeria' },
+  { label: 'Construction companies in Lagos', href: '/guides/construction-companies-in-lagos' },
+  { label: 'Construction companies in Abuja', href: '/guides/construction-companies-in-abuja' },
   { label: 'Building material prices', href: '/news/material-prices' },
   { label: 'All guides', href: '/guides' },
 ]

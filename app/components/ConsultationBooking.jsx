@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { SITE, whatsappLink } from '@/lib/site'
+import { SITE, whatsappLink, COST_GUIDE_PDF } from '@/lib/site'
 import { formatMoney, fromNaira, FALLBACK } from '@/lib/fx'
 import { track } from '@/lib/track'
 
@@ -142,7 +142,7 @@ export default function ConsultationBooking({ rates = FALLBACK, source = 'bookin
                     <a href={whatsappLink(msg)} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#08b796] px-6 py-3 text-[13px] font-medium text-[#04120f] hover:bg-[#1a1a1a] hover:text-white">
                         Confirm on WhatsApp
                     </a>
-                    <a href="/downloads/diaspora-build-cost-guide-2026.pdf" className="rounded-full border border-[#1a1a1a] px-6 py-3 text-[13px] font-medium text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white">
+                    <a href={COST_GUIDE_PDF} download className="rounded-full border border-[#1a1a1a] px-6 py-3 text-[13px] font-medium text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white">
                         Download the 2026 build cost guide (PDF)
                     </a>
                 </div>
