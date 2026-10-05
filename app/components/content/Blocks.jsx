@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Inline, { slugify } from './Inline'
 import { Money } from './Currency'
 import PriceBoardTable from './PriceBoardTable'
+import { INFOGRAPHICS } from '../infographics/Infographics'
 
 function Cell({ value }) {
     if (value && typeof value === 'object' && 'ngn' in value) return <Money ngn={value.ngn} suffix={value.suffix || ''} plus={value.plus} />
@@ -124,6 +125,12 @@ export default function Blocks({ blocks = [], ctx = {} }) {
                         <Link href={b.href} className="shrink-0 rounded-full bg-[#08b796] px-6 py-3 text-center text-[13px] font-medium text-[#04120f] hover:bg-white">{b.label}</Link>
                     </div>
                 )
+            case 'infographic': {
+                // { t: 'infographic', name: 'stages', ...props } (see components/infographics)
+                const Graphic = INFOGRAPHICS[b.name]
+                const { t, name, ...props } = b
+                return Graphic ? <Graphic key={i} compact {...props} /> : null
+            }
             case 'node':
                 return <div key={i}>{ctx.nodes?.[b.key] || null}</div>
             default:

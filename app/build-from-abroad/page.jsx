@@ -8,6 +8,7 @@ import Faq from '../components/content/Faq'
 import Testimonials from '../components/content/Testimonials'
 import TrustEvidence from '../components/content/TrustEvidence'
 import ConsultationBooking from '../components/ConsultationBooking'
+import { MoneyProtection, InspectionOptions, RemoteJourney, ReportingCadence } from '../components/infographics/Infographics'
 import { pageMetadata, serviceSchema } from '@/lib/seo'
 import { buildFromAbroadFaqs } from '@/lib/content/process'
 import { getFxRates } from '@/lib/fx'
@@ -96,6 +97,11 @@ export default async function BuildFromAbroadPage() {
                 </div>
             </section>
 
+            {/* Six steps (infographic) */}
+            <section className="mx-auto max-w-[1200px] px-6 md:px-10">
+                <RemoteJourney />
+            </section>
+
             {/* Hub */}
             <section className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 md:py-24" aria-labelledby="hub-title">
                 <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-[#08b796]">Your building-from-abroad toolkit</p>
@@ -109,6 +115,13 @@ export default async function BuildFromAbroadPage() {
                         </Link>
                     ))}
                 </div>
+            </section>
+
+            {/* How your money is protected, who inspects, what you see (infographics) */}
+            <section className="mx-auto max-w-[1200px] px-6 pb-8 md:px-10">
+                <MoneyProtection />
+                <InspectionOptions />
+                <ReportingCadence />
             </section>
 
             {/* Insurance */}

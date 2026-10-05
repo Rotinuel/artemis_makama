@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CostPerM2 } from '../components/infographics/Infographics'
 import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
@@ -65,6 +66,7 @@ export default function HousePlansPage() {
                         <p className="mt-6 border-l-2 border-[#08b796] pl-4 text-[15px] leading-relaxed text-[#333]">
                             Building with your own contractor? Our <Link href="/services/design-only-package" className="underline decoration-[#08b796] underline-offset-[3px]">design-only package</Link> gives you architectural and structural drawings and approval support, ready for any builder.
                         </p>
+                        <CostPerM2 compact example="duplex-4" title="What each finish level costs per m²" />
 
                         <h2 className="mb-6 mt-14 text-[30px] text-[#1a1a1a]" style={serif}>Designs we have drawn</h2>
                         <div className="grid gap-4 sm:grid-cols-2">

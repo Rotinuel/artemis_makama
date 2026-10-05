@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import WhyBuildWithUs from './components/Why'
 import Faq from './components/content/Faq'
 import Testimonials from './components/content/Testimonials'
+import { MoneyProtection, InspectionOptions } from './components/infographics/Infographics'
 import { pageMetadata } from '@/lib/seo'
 import { homeFaqs } from '@/lib/content/process'
 
@@ -25,6 +26,12 @@ export default function HomePage() {
       <Navigation variant='hero' />
       <HeroSlideshow />
       <WhyBuildWithUs />
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1200px] px-6 py-8 md:px-10 md:py-12">
+          <MoneyProtection />
+          <InspectionOptions />
+        </div>
+      </section>
       <ProjectStoriesSection />
       <Testimonials />
       <section className="bg-white">

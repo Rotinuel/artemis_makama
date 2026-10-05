@@ -9,6 +9,7 @@ import { TRUST } from '@/lib/trust'
 import { SITE } from '@/lib/site'
 import JsonLd from '../components/JsonLd'
 import TrustEvidence from '../components/content/TrustEvidence'
+import { InspectionOptions } from '../components/infographics/Infographics'
 import Image from 'next/image'
 
 export const metadata = pageMetadata({
@@ -174,26 +175,10 @@ export default function PeoplePage() {
             scroll through each person) and must be visible immediately */}
         <LeadershipSection leaders={leadersWithBios} />
 
-        {/* Inspection team (from lib/trust.js) */}
-        {TRUST.inspectionTeam?.length > 0 && (
-          <div id="inspection-team" className="mt-20 scroll-mt-24">
-            <p className="text-[11px] tracking-[0.14em] uppercase text-[#08b796] mb-3 font-medium">Inspection team</p>
-            <h2 className="text-[28px] md:text-[38px] text-aal-black leading-tight mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              Who checks each stage before you pay
-            </h2>
-            <p className="text-[15px] text-aal-gray leading-relaxed max-w-2xl mb-8">
-              Every stage is checked against the drawings by our inspection team, and you receive the report before the next payment is due. They are Artemis staff; if you want a second opinion, you are welcome to appoint an independent inspector of your own to check any stage.
-            </p>
-            <ul className="grid gap-4 sm:grid-cols-3">
-              {TRUST.inspectionTeam.map(m => (
-                <li key={m.name} className="border border-aal-black/10 p-5">
-                  <p className="text-[17px] font-semibold text-aal-black">{m.name}{m.credentials ? `, ${m.credentials}` : ''}</p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#08b796] font-semibold">{m.role}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* Inspection options: our team, the independent panel, or your own inspector (lib/trust.js) */}
+        <div id="inspection-team" className="mt-20 scroll-mt-24">
+          <InspectionOptions title="Who checks each stage before you pay" eyebrow="Inspection team" />
+        </div>
         <div className="mt-16 max-w-3xl"><TrustEvidence title="Registrations you can check" showTeam={false} /></div>
       </section>
 
