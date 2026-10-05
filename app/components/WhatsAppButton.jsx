@@ -1,11 +1,22 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { whatsappLink } from '@/lib/site'
 
 // Floating "Chat on WhatsApp" button shown on every public page
 export default function WhatsAppButton() {
     const pathname = usePathname() || ''
+    // When the footer scrolls into view, shrink to a round icon so the
+    // button doesn't sit on top of the footer's links and contact details
+    const [atFooter, setAtFooter] = useState(false)
+    useEffect(() => {
+        const footer = document.querySelector('footer')
+        if (!footer || !('IntersectionObserver' in window)) return
+        const io = new IntersectionObserver(([e]) => setAtFooter(e.isIntersecting), { rootMargin: '0px 0px -40px 0px' })
+        io.observe(footer)
+        return () => io.disconnect()
+    }, [pathname])
     // Not on the admin area, sign-in pages or the client portal (it has its own contact button)
     if (pathname.startsWith('/admin') || pathname.startsWith('/portal') || pathname.startsWith('/auth') ||
         pathname === '/login' || pathname.startsWith('/forgot-password') || pathname.startsWith('/reset-password')) return null
@@ -15,7 +26,7 @@ export default function WhatsAppButton() {
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="wa-float"
+            className={`wa-float${atFooter ? ' wa-compact' : ''}`}
             aria-label="Chat with Artemis Atelier on WhatsApp"
         >
             <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
@@ -35,6 +46,8 @@ export default function WhatsAppButton() {
                 .wa-float:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(0,0,0,0.28); }
                 .wa-float:focus-visible { outline: 3px solid #08b796; outline-offset: 3px; }
                 .wa-label { padding-right: 4px; }
+                .wa-compact { width: 52px; height: 52px; padding: 0; justify-content: center; opacity: 0.92; }
+                .wa-compact .wa-label { display: none; }
                 @media (max-width: 640px) {
                     .wa-float { width: 56px; padding: 0; justify-content: center; right: 16px; bottom: 16px; }
                     .wa-label { display: none; }

@@ -179,7 +179,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#2a2a2a] px-6 md:px-10 py-6 max-w-400 mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="border-t border-[#2a2a2a] px-6 md:px-10 pt-6 pb-24 max-w-400 mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-[12px] text-[#555]">© Artemis Atelier Ltd 2026 · {SITE.rc}</p>
         <div className="flex flex-wrap gap-6">
           <Link href="/privacy" className="text-[12px] text-[#888] hover:text-white transition-colors">Privacy &amp; cookies</Link>
