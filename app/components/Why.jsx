@@ -20,7 +20,7 @@ const REASONS = [
   {
     n: "02",
     h: "You control the money.",
-    p: "Your funds are released in stages: foundation, frame, roof and finishing. Our inspection team, led by Chief Chinedu Makama, checks each stage before the next payment, and you can add an independent inspector of your own.",
+    p: "Your funds are released in stages: foundation, frame, roof and finishing. Our inspection team of engineers and an architect checks each stage before the next payment, and you can add an independent inspector of your own.",
   },
   {
     n: "03",
