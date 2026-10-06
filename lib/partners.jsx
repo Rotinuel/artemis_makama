@@ -56,19 +56,27 @@ export const partnerCategories = [
     description:
       "Insurance cover that backs the build: the second layer of protection between a client's capital and the site.",
     partners: [
-      // Insurance partner. Add its NAICOM licence number and website to
-      // `licence` / `website` when available (shown on the partner page), and
-      // only use its logo with written permission.
+      // Insurance: no fixed partner. The client picks any insurer licensed by
+      // NAICOM (National Insurance Commission) and the policy is in their name.
       {
-        slug: "chemix",
+        slug: "choose-your-insurer",
         insurance: true,
-        name: "chemiX",
-        role: "Insurance Partner",
+        name: "Your choice of NAICOM-licensed insurer",
+        role: "Insurance: you choose the insurer",
         summary:
-          "Our insurance partner for eligible risks on Artemis Atelier projects. Cover is confirmed in writing in your contract and is subject to the policy issued.",
-        seoTitle: "chemiX: Our Insurance Partner | Artemis Atelier",
+          "You choose the insurance company from NAICOM's list of licensed insurers. We give them the drawings, BOQ and programme they need to quote, and the policy is issued in your name.",
+        seoTitle: "Choose Your Own NAICOM-Licensed Insurer | Artemis Atelier",
         seoDescription:
-          "chemiX is Artemis Atelier's insurance partner for eligible construction risks, with cover confirmed in your contract and subject to the policy issued.",
+          "On Artemis Atelier projects you choose the insurer from NAICOM's list of licensed companies. We supply the drawings and BOQ; the policy is in your name.",
+        links: [
+          { name: "NAICOM: check that an insurer is licensed", url: 'https://www.naicom.gov.ng/' },
+        ],
+        steps: [
+          "Pick any insurer on NAICOM's list of licensed companies (or ask us for a shortlist to compare).",
+          "We send them the drawings, BOQ, programme and site details so they can quote.",
+          "You agree the cover and premium directly with the insurer; the policy is issued in your name.",
+          "We add the policy details to your contract and client portal before work starts.",
+        ],
         protects: [
           "Contractors' all risks: physical loss or damage to the works during construction, where included in the policy issued.",
           "Third-party / public liability: claims for injury or property damage to others arising from the site.",
@@ -76,8 +84,7 @@ export const partnerCategories = [
           "You receive the policy number, schedule and claims procedure directly from the insurer, not from us.",
         ],
         documents: [
-          // { name: "Sample Policy Document", url: "/documents/chemix-policy.pdf" },
-          // { name: "Certificate of Coverage", url: "/documents/chemix-certificate.pdf" },
+          // { name: "Sample policy schedule (redacted)", url: "/documents/sample-policy.pdf" },
         ],
       },
       // Add the next assurance partner here.

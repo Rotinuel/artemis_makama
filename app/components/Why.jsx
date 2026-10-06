@@ -44,7 +44,7 @@ const SERVICES = [
 const PROTECTION_LAYERS = [
   { n: "01", label: "Artemis Atelier Ltd", desc: "Responsible for the agreed architectural, construction and project-management obligations." },
   { n: "02", label: "Inspection Team", desc: "Our named inspectors verify each agreed milestone before any payment is released. You can also appoint an independent inspector." },
-  { n: "03", label: "Insurance", desc: "Cover through our insurance partner chemiX where agreed, under an issued policy and subject to its terms." },
+  { n: "03", label: "Insurance", desc: "You choose any NAICOM-licensed insurer; the policy is issued in your name and is subject to its terms." },
   { n: "04", label: "Digital Records", desc: "Evidence of project activity — photographs, videos, reports and documentation." },
   { n: "05", label: "Contractual Controls", desc: "Defined scope, payments, variations, responsibilities and dispute procedures." },
 ];

@@ -117,6 +117,35 @@ export default async function PartnerDetailPage({ params }) {
                     </div>
                 )}
 
+                {partner.steps?.length > 0 && (
+                    <div className="mb-10 border-t border-zinc-200 pt-10">
+                        <h2 className="aal-serif mb-6 text-xl text-zinc-900">How it works</h2>
+                        <ol className="space-y-3">
+                            {partner.steps.map((step, i) => (
+                                <li key={step} className="flex gap-4 text-sm leading-relaxed text-zinc-700">
+                                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#08b796] text-xs font-semibold text-white">{i + 1}</span>
+                                    <span className="pt-1">{step}</span>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                )}
+
+                {partner.links?.length > 0 && (
+                    <div className="mb-10 border-t border-zinc-200 pt-10">
+                        <h2 className="aal-serif mb-6 text-xl text-zinc-900">Useful links</h2>
+                        <ul className="flex flex-col gap-3">
+                            {partner.links.map((l) => (
+                                <li key={l.url}>
+                                    <a href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-4 rounded-sm border border-zinc-200 bg-white px-5 py-4 text-sm text-zinc-900 transition-colors duration-300 hover:border-zinc-400">
+                                        {l.name}<span aria-hidden="true" className="text-zinc-400">↗</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
                 <div className="border-t border-zinc-200 pt-10">
                     <h2 className="aal-serif mb-6 text-xl text-zinc-900">
                         Documents

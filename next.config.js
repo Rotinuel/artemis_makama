@@ -31,9 +31,10 @@ const nextConfig = {
       // supabase/fix_during_construction_slug.sql is run.
       { source: '/portfolio/during-contrustion', destination: '/portfolio/during-construction', permanent: true },
       { source: '/gallery/during-contrustion', destination: '/portfolio/during-construction', permanent: true },
-      // Insurance partner pages: old addresses → current insurance partner
-      { source: '/partners/lasaco', destination: '/partners/chemix', permanent: true },
-      { source: '/partners/insurance-partner', destination: '/partners/chemix', permanent: true },
+      // Old insurance partner pages → clients now choose any NAICOM-licensed insurer
+      { source: '/partners/lasaco', destination: '/partners/choose-your-insurer', permanent: true },
+      { source: '/partners/insurance-partner', destination: '/partners/choose-your-insurer', permanent: true },
+      { source: '/partners/chemix', destination: '/partners/choose-your-insurer', permanent: true },
       // Old 3 MB catalogue with spaces in its name → the compressed, renamed one.
       // (Regex so it matches the space whether or not it arrives as %20.)
       { source: '/documents/:file(compressed.*simple.*elegant.*series\\.pdf)', destination: '/documents/aluminium-simple-elegant-series.pdf', permanent: true },
