@@ -6,6 +6,7 @@ import { SERVICES, contractorLagos } from '@/lib/content/services'
 import { howWeBuild } from '@/lib/content/process'
 import { PROJECTS } from '@/lib/content/projects'
 import { canonicalSlug } from '@/lib/portfolio-slugs'
+import { TRACK_RECORD } from '@/lib/content/track-record'
 
 // Served at /sitemap.xml — submit it in Google Search Console and Bing
 // Webmaster Tools. lastmod is the real date each page's content changed
@@ -78,6 +79,8 @@ export default async function sitemap() {
     add('/news-events', db.news, 0.6)
     add('/about', day(PAGES_UPDATED['/about']), 0.6)
     add('/people', day(PAGES_UPDATED['/people']), 0.6)
+    if (TRACK_RECORD.length) add('/track-record', day('2026-10-06'), 0.5)
+    add('/press', day('2026-10-06'), 0.3)
     add('/partners', day(PAGES_UPDATED['/partners']), 0.4)
     for (const slug of getIndexablePartnerSlugs()) add(`/partners/${slug}`, day(PAGES_UPDATED['/partners']), 0.4)
     add('/contact', day(PAGES_UPDATED['/contact']), 0.7)

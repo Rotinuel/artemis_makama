@@ -54,7 +54,7 @@ function LoginForm() {
       footer={
         <p className="footer-note">
           <span className="footer-dot" />
-          Secured with end-to-end encryption
+          Secure connection (HTTPS)
           <span className="footer-dot" />
         </p>
       }

@@ -15,7 +15,9 @@ const serif = { fontFamily: "'Cormorant Garamond', Georgia, serif" }
 export default function NamedProject({ project: p, others = [] }) {
     const path = `/portfolio/${p.slug}`
     const facts = PROJECT_FACTS.filter(([k]) => p[k])
-    const isDesign = /design|proposed/i.test(p.status || '') || /^Proposed/i.test(p.name)
+    const isDesign = !p.completed && (/proposed/i.test(p.status || '') || /^Proposed/i.test(p.name))
+    const badge = p.completed ? { t: 'Completed', c: '#08b796' } : isDesign ? { t: 'Design · not yet built', c: '#4a3aa7' } : p.status ? { t: p.status, c: '#2a78d6' } : null
+    const story = [['The brief', p.brief], ['What we did', p.approach], ['The result', p.result]].filter(([, v]) => v)
 
     return (
         <>
@@ -28,6 +30,7 @@ export default function NamedProject({ project: p, others = [] }) {
                 creator: { '@id': ORG_ID },
                 image: p.images.map(i => absoluteUrl(i.src)),
                 ...(p.year ? { dateCreated: p.year } : {}),
+                ...(p.completed ? { dateModified: p.completed } : {}),
                 locationCreated: { '@type': 'Place', name: p.location, address: { '@type': 'PostalAddress', addressLocality: p.location, addressCountry: 'NG' } },
                 genre: p.type,
             }} />
@@ -37,6 +40,9 @@ export default function NamedProject({ project: p, others = [] }) {
                     <Breadcrumbs items={[{ name: 'Projects', path: '/portfolio' }, { name: p.name, path }]} />
                     <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-[#08b796]">{[p.type, p.location].filter(Boolean).join(' · ')}</p>
                     <h1 className="max-w-4xl text-[36px] leading-[1.08] text-[#1a1a1a] md:text-[52px]" style={serif}>{p.name}</h1>
+                    {badge && (
+                        <p className="mt-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[12px] font-semibold text-white" style={{ background: badge.c }}>{badge.t}</p>
+                    )}
                 </header>
 
                 <div className="mx-auto max-w-[1200px] px-6 md:px-10">
@@ -58,6 +64,24 @@ export default function NamedProject({ project: p, others = [] }) {
                                     </div>
                                 ))}
                             </dl>
+                        )}
+
+                        {story.length > 0 && (
+                            <div className="mb-10 space-y-6">
+                                {story.map(([h, t]) => (
+                                    <section key={h}>
+                                        <h2 className="mb-2 text-[24px] text-[#1a1a1a]" style={serif}>{h}</h2>
+                                        <p className="text-[16px] leading-relaxed text-[#333]">{t}</p>
+                                    </section>
+                                ))}
+                            </div>
+                        )}
+
+                        {p.review?.quote && (
+                            <figure className="mb-10 border-l-4 border-[#08b796] bg-[#f6f5f2] p-6">
+                                <blockquote className="text-[18px] leading-relaxed text-[#1a1a1a]" style={serif}>“{p.review.quote}”</blockquote>
+                                <figcaption className="mt-3 text-[13px] text-[#555]"><span className="font-semibold">{p.review.name}</span>{p.review.location ? ` · ${p.review.location}` : ''}</figcaption>
+                            </figure>
                         )}
 
                         {p.images.length > 1 && (

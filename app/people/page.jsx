@@ -10,6 +10,7 @@ import { SITE } from '@/lib/site'
 import JsonLd from '../components/JsonLd'
 import TrustEvidence from '../components/content/TrustEvidence'
 import { InspectionOptions } from '../components/infographics/Infographics'
+import { TRACK_RECORD } from '@/lib/content/track-record'
 import Image from 'next/image'
 
 export const metadata = pageMetadata({
@@ -68,7 +69,10 @@ const leadersWithBios = leaders.map(l => ({ ...l, bio: l.bio || TRUST.bios?.[l.n
 // others only show once lib/trust.js links to a list that backs them up.
 const stats = [
   { value: `${new Date().getFullYear() - Number(SITE.founded)}+`, label: 'Years in practice' },
-  TRUST.stats.projectsDelivered.evidenceUrl && { value: TRUST.stats.projectsDelivered.value, label: 'Projects delivered', href: TRUST.stats.projectsDelivered.evidenceUrl },
+  // Projects: counted from the track record list, so it can't overstate
+  TRACK_RECORD.length
+    ? { value: String(TRACK_RECORD.length), label: 'Projects on our track record', href: '/track-record' }
+    : TRUST.stats.projectsDelivered.evidenceUrl && { value: TRUST.stats.projectsDelivered.value, label: 'Projects delivered', href: TRUST.stats.projectsDelivered.evidenceUrl },
   { value: String(leaders.length), label: 'People on the leadership team' },
   TRUST.stats.countriesServed.evidenceUrl && { value: TRUST.stats.countriesServed.value, label: 'Countries served', href: TRUST.stats.countriesServed.evidenceUrl },
 ].filter(Boolean)
@@ -150,7 +154,7 @@ export default function PeoplePage() {
                   {s.value}
                 </p>
                 <p className="text-[13px] text-aal-gray uppercase tracking-[0.08em]">
-                  {s.label}
+                  {s.href ? <a href={s.href} className="underline decoration-[#08b796] underline-offset-[3px]">{s.label}</a> : s.label}
                 </p>
               </div>
             ))}
@@ -196,7 +200,7 @@ export default function PeoplePage() {
           <Reveal delay={150}>
             <div>
               <p className="text-[11px] tracking-[0.14em] uppercase text-[#08b796] mb-3 font-medium">
-                Our Studios
+                Our Studio
               </p>
               <h2
                 className="text-[28px] md:text-[38px] text-aal-black mb-6"
@@ -205,7 +209,7 @@ export default function PeoplePage() {
                 Culture
               </h2>
               <p className="text-[15px] text-aal-gray leading-relaxed mb-8">
-                We think the warm, friendly culture in our studios—each with its own local vibe—is pretty special. We&apos;re a highly collaborative group of people who enjoy working together and are generous about sharing our knowledge.
+                Our studio in Anthony Village, Lagos is where design, costing, legal and site teams sit together, so the people who draw your building, price it and inspect it talk to each other every day. Clients are welcome to visit by appointment.
               </p>
               <blockquote className="border-l-2 border-[#08b796] pl-6">
                 <p

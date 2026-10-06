@@ -19,6 +19,7 @@ const page = {
         { t: 'ul', items: [
             '**Enquiry and consultation forms:** your name, where you are based, where you plan to build, land status, budget range, WhatsApp number or email, any message, and a preferred call time and time zone.',
             '**Newsletter sign-ups:** your email address and which list you joined.',
+            '**Reviews:** if you review your project, your name, email (never published), location, project, rating and review. We publish only reviews we have checked, with your full name only if you ask us to; otherwise your first name and initial.',
             '**Client portal:** your name, email, password (stored encrypted by our authentication provider), and the project records, documents, photos and defect reports we share with you.',
             '**Analytics:** pages visited, device and approximate location, and which buttons were used (for example a WhatsApp click), only with your consent for cookie-based analytics.',
             '**Messages:** what you send us by WhatsApp, email or phone.',
@@ -53,6 +54,7 @@ const page = {
             'Enquiries that do not become projects: up to 24 months, then deleted.',
             'Project and portal records: for the project, the defects liability period and as long as the law requires us to keep business records.',
             'Newsletter: until you unsubscribe.',
+            'Reviews: while published, or until you ask us to remove yours.',
         ] },
         { t: 'h2', text: 'Your rights' },
         { t: 'p', text: `You can ask to see, correct, delete or move your data, object to or restrict how we use it, and withdraw consent. Email [${SITE.email}](mailto:${SITE.email}). We reply within 30 days. You may also complain to the Nigeria Data Protection Commission (NDPC), or your local data protection authority if you live outside Nigeria.` },

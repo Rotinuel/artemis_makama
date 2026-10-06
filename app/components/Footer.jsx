@@ -17,6 +17,7 @@ const footerLinks = [
   { label: 'People', href: '/people' },
   { label: 'Partners', href: '/partners' },
   { label: 'News + Events', href: '/news-events' },
+  { label: 'Press & Media Kit', href: '/press' },
   { label: 'Contact', href: '/contact' },
 ]
 

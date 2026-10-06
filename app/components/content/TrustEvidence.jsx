@@ -14,7 +14,7 @@ export default function TrustEvidence({ title = 'Proof, not promises', showTeam 
         TRUST.insuranceCertificateUrl && { label: 'Insurance certificate, redacted (PDF)', href: TRUST.insuranceCertificateUrl },
     ].filter(Boolean)
     const regs = TRUST.registrations || []
-    if (!team.length && !ins && !docs.length && !regs.length) return null
+    if (!team.length && !ins && !docs.length && !regs.length && !TRUST.leadArchitect?.name) return null
 
     return (
         <section className="mb-10 border border-[#e6e6e6] bg-[#fafaf8] p-6" aria-labelledby="trust-evidence">
@@ -33,6 +33,12 @@ export default function TrustEvidence({ title = 'Proof, not promises', showTeam 
                     <li>
                         <strong>Independent inspector:</strong> {ins.name}{ins.firm ? `, ${ins.firm}` : ''}{ins.registration ? ` (${ins.registration})` : ''}
                         {ins.url && <> · <a href={ins.url} target="_blank" rel="noopener noreferrer" className="underline">website</a></>}
+                    </li>
+                )}
+                {TRUST.leadArchitect?.name && (
+                    <li>
+                        <strong>Lead architect:</strong> {TRUST.leadArchitect.name}{TRUST.leadArchitect.arcon ? ` (${TRUST.leadArchitect.arcon})` : ''}{TRUST.leadArchitect.nia ? `, ${TRUST.leadArchitect.nia}` : ''}
+                        {TRUST.leadArchitect.verifyUrl && <> · <a href={TRUST.leadArchitect.verifyUrl} target="_blank" rel="noopener noreferrer" className="underline">check the register</a></>}
                     </li>
                 )}
                 {regs.map(r => (

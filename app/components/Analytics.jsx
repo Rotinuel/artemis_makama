@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
+import { useReportWebVitals } from 'next/web-vitals'
 import { track } from '@/lib/track'
 
 const VERCEL_ANALYTICS = process.env.NEXT_PUBLIC_VERCEL_ANALYTICS !== 'off'
@@ -20,6 +21,19 @@ export default function Analytics({ gaId }) {
     const GA_ID = gaId
     const pathname = usePathname() || ''
     const isPrivate = pathname.startsWith('/admin') || pathname.startsWith('/portal')
+
+    // Real-visitor speed (Core Web Vitals) → GA4 events LCP, INP, CLS, FCP, TTFB.
+    // In GA4: Reports → Engagement → Events, or Explore by event name.
+    useReportWebVitals(metric => {
+        if (typeof window === 'undefined' || !window.gtag) return
+        window.gtag('event', metric.name, {
+            value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+            metric_id: metric.id,
+            metric_rating: metric.rating, // good | needs-improvement | poor
+            page_path: window.location.pathname,
+            non_interaction: true,
+        })
+    })
 
     // One delegated listener for outbound contact clicks
     useEffect(() => {
