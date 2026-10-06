@@ -5,10 +5,11 @@
 --  How it works:
 --   • Clients submit a review at artemisatelierltd.com/review.
 --     It is saved here with status = 'pending'. Nothing is published yet.
---   • To publish one: Supabase → Table Editor → client_reviews →
---     change its status to 'approved'. It appears on the homepage within
---     about 10 minutes and on Build from Abroad within a day.
---   • Set status to 'rejected' to hide it. Only approve real clients.
+--   • To publish one: Admin dashboard → Client Reviews (/admin/reviews)
+--     → "Approve and publish". It appears on the homepage and Build from
+--     Abroad straight away. "Unpublish", "Reject" and "Delete" are there too.
+--     (Changing status to 'approved' in Supabase → Table Editor also works.)
+--   • Only approve reviews from real clients.
 --   • The website can only read approved reviews, through the
 --     public_reviews view, which never exposes emails.
 -- ═════════════════════════════════════════════════════════════

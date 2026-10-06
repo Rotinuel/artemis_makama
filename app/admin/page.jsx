@@ -88,6 +88,16 @@ const pages = [
         ),
     },
     {
+        href: '/admin/reviews',
+        label: 'Client Reviews',
+        description: 'Approve, unpublish or delete reviews sent through /review before they appear on the site.',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="m10 2.8 2.1 4.3 4.7.7-3.4 3.3.8 4.7L10 13.6l-4.2 2.2.8-4.7-3.4-3.3 4.7-.7L10 2.8Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+            </svg>
+        ),
+    },
+    {
         href: '/admin/leads',
         label: 'Leads',
         description: 'View diaspora consultation submissions from prospective clients.',
