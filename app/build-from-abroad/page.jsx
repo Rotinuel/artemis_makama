@@ -131,7 +131,7 @@ export default async function BuildFromAbroadPage() {
                         <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#08b796]">An extra layer of protection</p>
                         <h2 className="mb-6 text-[30px] leading-tight md:text-[42px]" style={serif}>Your project, backed by insurance.</h2>
                         <p className="mb-5 max-w-md text-[15px] leading-relaxed text-[#555]">
-                            Alongside our reporting and stage inspections, we can arrange contractor’s all-risk and public liability cover for your project with a NAICOM-licensed insurer, so eligible project risks are insured. The insurer and policy are confirmed in writing in your contract.
+                            Alongside our reporting and stage inspections, we arrange contractor’s all-risk and public liability cover for your project through our insurance partner, <Link href="/partners/chemix" className="underline">chemiX</Link>, so eligible project risks are insured. The insurer and policy are confirmed in writing in your contract.
                         </p>
                         <p className="max-w-md text-[13px] leading-relaxed text-[#8a8a8a]">Coverage is subject to the terms, conditions, exclusions and deductibles of the policy issued. We walk you through exactly what is covered before your first payment.</p>
                         <div className="mt-8"><TrustEvidence title="See the evidence" /></div>
@@ -151,7 +151,7 @@ export default async function BuildFromAbroadPage() {
                                 </li>
                             ))}
                         </ul>
-                        <p className="mt-6 border-t border-[#e0e0e0] pt-6 text-[12px] text-[#8a8a8a]">Policies are issued by a NAICOM-licensed insurer, not by Artemis Atelier Ltd. You receive the policy number, coverage schedule and claims procedure directly.</p>
+                        <p className="mt-6 border-t border-[#e0e0e0] pt-6 text-[12px] text-[#8a8a8a]">Policies are issued by the insurer, not by Artemis Atelier Ltd. You receive the policy number, coverage schedule and claims procedure directly.</p>
                     </div>
                 </div>
             </section>

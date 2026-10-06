@@ -56,21 +56,19 @@ export const partnerCategories = [
     description:
       "Insurance cover that backs the build: the second layer of protection between a client's capital and the site.",
     partners: [
-      // PLACEHOLDER: no insurer is named until a written partnership agreement
-      // is signed. When it is, replace name/summary/seo* with the insurer's
-      // details (and only use their logo with written permission), and
-      // remove `placeholder: true` so the page is indexed again.
+      // Insurance partner. Add its NAICOM licence number and website to
+      // `licence` / `website` when available (shown on the partner page), and
+      // only use its logo with written permission.
       {
-        slug: "insurance-partner",
-        placeholder: true,
+        slug: "chemix",
         insurance: true,
-        name: "Insurance Partner",
-        role: "Assurance Partner (to be announced)",
+        name: "chemiX",
+        role: "Insurance Partner",
         summary:
-          "We are finalising a formal agreement with a NAICOM-licensed insurer. Until then, cover for your project is arranged and confirmed in writing in your contract.",
-        seoTitle: "Insurance Partner (To Be Announced) | Artemis Atelier",
+          "Our insurance partner for eligible risks on Artemis Atelier projects. Cover is confirmed in writing in your contract and is subject to the policy issued.",
+        seoTitle: "chemiX: Our Insurance Partner | Artemis Atelier",
         seoDescription:
-          "Artemis Atelier is finalising a formal agreement with a NAICOM-licensed insurer. Until then, project cover is arranged and confirmed in your contract.",
+          "chemiX is Artemis Atelier's insurance partner for eligible construction risks, with cover confirmed in your contract and subject to the policy issued.",
         protects: [
           "Contractors' all risks: physical loss or damage to the works during construction, where included in the policy issued.",
           "Third-party / public liability: claims for injury or property damage to others arising from the site.",
@@ -78,8 +76,8 @@ export const partnerCategories = [
           "You receive the policy number, schedule and claims procedure directly from the insurer, not from us.",
         ],
         documents: [
-          // { name: "Sample Policy Document", url: "/documents/insurer-policy.pdf" },
-          // { name: "Certificate of Coverage", url: "/documents/insurer-certificate.pdf" },
+          // { name: "Sample Policy Document", url: "/documents/chemix-policy.pdf" },
+          // { name: "Certificate of Coverage", url: "/documents/chemix-certificate.pdf" },
         ],
       },
       // Add the next assurance partner here.

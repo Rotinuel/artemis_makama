@@ -79,7 +79,7 @@ const LAYERS = [
     { icon: 'coins', h: 'Stage payments', p: 'You pay for one stage at a time, never ahead of the work.' },
     { icon: 'search', h: 'Inspection', p: 'Every stage is checked before you pay: by our team, an independent firm, or your own inspector.' },
     { icon: 'list', h: 'Open-book BOQ', p: 'Every bag of cement and tonne of rebar itemised, so you can compare with market prices.' },
-    { icon: 'shield', h: 'Insurance', p: 'Contractor’s all-risk cover with a licensed insurer, where agreed in your contract.' },
+    { icon: 'shield', h: 'Insurance', p: 'Contractor’s all-risk cover through our insurance partner chemiX, where agreed in your contract.' },
     { icon: 'pen', h: 'Written contract', p: 'Scope, payments, changes and disputes agreed in writing before work starts.' },
 ]
 
