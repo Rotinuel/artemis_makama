@@ -60,6 +60,11 @@ const leaders = [
     title: 'Head of Legal',
     bio: 'Called to the Nigerian Bar in 2015, Olasunkanmi has spent over a decade practising law. He drafts the contracts that protect clients’ money: clear scope, staged payments, variation rules and dispute procedures, all in writing. He also advises on land title checks, approvals and property documentation, all of which matter greatly for clients building from abroad.',
   },
+  {
+    name: 'Pepe Milne-Rodrigues, LLB',
+    title: 'Representative, Oceania',
+    bio: "Pepe Milne-Rodrigues serves as the Oceania Representative of Artemis Atelier Ltd, based in Napier, New Zealand. She holds a Bachelor of Laws from Delta State University, Nigeria, and began her career in the Nigerian real estate sector, where she gained first-hand knowledge of the country's property market before relocating to New Zealand. There she has worked in legal administration, including as Estates Secretary at a law firm, and has completed formal qualifications in computing, business accounting and data analytics. Drawing on her legal, real estate and technical training, Pepe supports clients in New Zealand, Australia and the wider Pacific who are considering construction and property projects in Nigeria. She serves as their first point of contact, providing clear guidance on the process and connecting them with the Artemis Atelier team in Lagos."
+  }
 ]
 
 // Bios from lib/trust.js replace empty ones (real bios only — empty ones show just the role)
